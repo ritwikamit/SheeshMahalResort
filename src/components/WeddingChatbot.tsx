@@ -1,18 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send, ArrowRight } from 'lucide-react';
-import { RESORT_CONTACT, VENUE_SPACES, RESORT_SERVICES } from '../data/resortData.ts';
-import { WhatsAppIcon } from './WhatsAppIcon.tsx';
-
-interface Message {
-  id: string;
-  sender: 'bot' | 'user';
-  text: string;
-  timestamp: string;
-  quickActions?: {
-    label: string;
-    action: () => void;
-  }[];
-}
+import { RESORT_CONTACT } from '../data/resortData.ts';
+import { sendChatMessage, ChatMessage } from '../services/aiChatService.ts';
 
 interface WeddingChatbotProps {
   onOpenInquiry: () => void;
@@ -24,7 +13,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const initialGreeting: Message = {
+  const initialGreeting: ChatMessage = {
     id: 'welcome',
     sender: 'bot',
     text: "Namaste! I am Raj, your personal wedding concierge at Sheesh Mahal Resort. How may I assist your royal wedding planning in Patna today?",
@@ -41,7 +30,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
     ]
   };
 
-  const [messages, setMessages] = useState<Message[]>([initialGreeting]);
+  const [messages, setMessages] = useState<ChatMessage[]>([initialGreeting]);
 
   const quickPrompts = [
     "Venue Capacity & Lawns",
@@ -60,84 +49,25 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
     }
   }, [messages, isOpen]);
 
-  // Comprehensive Knowledge Engine based on verified resortData
-  const generateBotReply = (userQuery: string): { text: string; quickActions?: { label: string; action: () => void }[] } => {
-    const q = userQuery.toLowerCase();
-
-    if (q.includes('capacity') || q.includes('guest') || q.includes('people') || q.includes('how many')) {
-      return {
-        text: "Sheesh Mahal Resort spans over 45,000 sq. ft. of royal celebration grounds and can comfortably host up to 2,000+ wedding guests:\n\n• Shahi Utsav Lawn: 1,200 – 2,000+ guests for grand Baraats\n• The Sheesh Banquet: 600 – 900 guests (Fully Air-Conditioned)\n• Vedic Mandap Courtyard: 300 – 500 guests for Saat Phere\n• Swarna Bridal Suites: Private luxury vanity chambers.",
-        quickActions: [
-          { label: 'View Spaces', action: () => onOpenInquiry() }
-        ]
-      };
-    }
-
-    if (q.includes('cater') || q.includes('food') || q.includes('menu') || q.includes('veg') || q.includes('non-veg') || q.includes('mithai')) {
-      return {
-        text: "Our In-House Shahi Banqueting features stone-ground heritage recipes prepared in pure desi ghee:\n\n• Royal Awadhi & Mughal: Zafrani Gosht Biryani, Subz Dum Biryani, Galouti Kebabs\n• Traditional Bihari: Authentic Champaran Meat Handi, Litti Chokha with Ghee\n• Live Counters: Banarasi Tamatar Chaat, 5-Water Crispy Golgappa\n• Shahi Mithai: Live Rabri Jalebi, Moong Dal Halwa, Matka Kulfi.\n\nStrict 100% separate kitchen lines are maintained for pure vegetarian and non-vegetarian catering.",
-        quickActions: [
-          { label: 'Book Catering Tasting', action: () => onOpenInquiry() }
-        ]
-      };
-    }
-
-    if (q.includes('where') || q.includes('location') || q.includes('address') || q.includes('reach') || q.includes('map') || q.includes('direction')) {
-      return {
-        text: `Sheesh Mahal Resort is situated at:\n\n${RESORT_CONTACT.address}\n(Directly opposite St. Xavier's College Main Gate & adjacent to Bharat Petrol Pump, Mica Colony, Digha).\n\n• 20 mins from Patna Junction (8.4 km)\n• 22 mins from Patna Airport (9.2 km)\n• 5 mins from Ganga Marine Drive (2.1 km).`,
-        quickActions: [
-          { label: 'Open Google Maps', action: () => window.open(RESORT_CONTACT.googleMapsUrl, '_blank') }
-        ]
-      };
-    }
-
-    if (q.includes('book') || q.includes('date') || q.includes('muhurat') || q.includes('price') || q.includes('package') || q.includes('cost')) {
-      return {
-        text: "Wedding dates for the 2026–2027 auspicious wedding seasons (Sawa / Lagan) are booking rapidly. We offer bespoke packages starting from Royal Intimate Weddings to Grand Rajwada Celebrations including venue, decor, and royal feast.",
-        quickActions: [
-          { label: 'Check Your Dates Now', action: () => onOpenInquiry() },
-          { label: 'Call Wedding Manager', action: () => window.open(`tel:${RESORT_CONTACT.primaryPhone}`, '_self') }
-        ]
-      };
-    }
-
-    if (q.includes('phone') || q.includes('contact') || q.includes('call') || q.includes('whatsapp') || q.includes('number')) {
-      return {
-        text: `Our Wedding Concierge Desk operates 24/7:\n\n• Primary Call: ${RESORT_CONTACT.primaryPhone}\n• WhatsApp Direct: +${RESORT_CONTACT.whatsappNumber}\n• Email: ${RESORT_CONTACT.email}\n\nOur team is available round-the-clock for venue walkthroughs.`,
-        quickActions: [
-          { label: 'Chat on WhatsApp', action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}`, '_blank') },
-          { label: 'Call Now', action: () => window.open(`tel:${RESORT_CONTACT.primaryPhone}`, '_self') }
-        ]
-      };
-    }
-
-    return {
-      text: "Thank you for asking! Sheesh Mahal Resort is dedicated exclusively to royal weddings in Patna. You can reserve dates for your auspicious wedding muhurat, explore our starlit Baraat lawns and AC ballrooms, or speak directly with our concierge desk.",
-      quickActions: [
-        { label: 'Check Wedding Dates', action: () => onOpenInquiry() },
-        { label: 'WhatsApp Concierge', action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}`, '_blank') }
-      ]
-    };
-  };
-
-  const handleSend = (textToSend?: string) => {
+  const handleSend = async (textToSend?: string) => {
     const text = (textToSend || input).trim();
     if (!text) return;
 
-    const userMsg: Message = {
+    const userMsg: ChatMessage = {
       id: Date.now().toString(),
       sender: 'user',
       text,
       timestamp: 'Just now'
     };
 
-    setMessages((prev) => [...prev, userMsg]);
+    const newHistory = [...messages, userMsg];
+    setMessages(newHistory);
     setInput('');
     setIsTyping(true);
 
-    setTimeout(() => {
-      const replyData = generateBotReply(text);
-      const botMsg: Message = {
+    try {
+      const replyData = await sendChatMessage(text, newHistory, onOpenInquiry);
+      const botMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         sender: 'bot',
         text: replyData.text,
@@ -145,8 +75,11 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
         quickActions: replyData.quickActions
       };
       setMessages((prev) => [...prev, botMsg]);
+    } catch (err) {
+      console.error('Chat error:', err);
+    } finally {
       setIsTyping(false);
-    }, 550);
+    }
   };
 
   return (

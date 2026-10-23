@@ -67,14 +67,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                   className="transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:translate-x-2 text-[#161726]"
                 />
               </button>
-
-              <button
-                type="button"
-                onClick={onOpenInquiry}
-                className="text-xs font-black tracking-[0.2em] uppercase text-[#161726] hover:bg-[#FAEE2F] transition-all cursor-pointer bg-[#D9F9DF] px-6 py-3 rounded-lg border border-[#9FA1FF]/30 shadow-xs"
-              >
-                CHECK WEDDING DATES
-              </button>
             </div>
           </div>
 

@@ -1,0 +1,6 @@
+{
+  "name": "Sheesh Mahal Resort — Patna's Premier Royal Wedding Destination",
+  "description": "Patna's premier luxury wedding resort and royal banquet hall opposite St. Xavier's College on Ashiana-Digha Road. Exclusively dedicated to grand weddings, royal Baraats, sacred Saat Phere, Haldi, Sangeet, and lavish wedding feasts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

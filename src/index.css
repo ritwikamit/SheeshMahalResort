@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-spartan: 'League Spartan', sans-serif;
+    --font-cursive: 'Great Vibes', 'Pinyon Script', cursive;
+    --font-script: 'Pinyon Script', 'Great Vibes', cursive;
+    --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Specified Palette: https://colorhunt.co/palette/9fa1ffb5baffaee2ffd9f9df */
+    --color-periwinkle: #9FA1FF;
+    --color-lavender: #B5BAFF;
+    --color-festive-gold: #FAEE2F;
+    --color-mint-canvas: #D9F9DF;
+    
+    /* High contrast text & structural anchors */
+    --color-text-dark: #161726;
+    --color-bg-base: #FAFDFB;
+  }
+
+  * {
+    font-family: var(--font-spartan);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #FAFDFB;
+    color: #161726;
+  }
+
+  body {
+    background-color: #FAFDFB;
+    color: #161726;
+    overflow-x: hidden;
+  }
+}
+
+.font-cursive {
+  font-family: 'Great Vibes', 'Pinyon Script', cursive !important;
+}
+
+.font-script {
+  font-family: 'Pinyon Script', 'Great Vibes', cursive !important;
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(-5%);
+  }
+  50% {
+    transform: translateY(5%);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 4s ease-in-out infinite;
+}
+
+@keyframes flowDash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+/* Luxury transitions */
+.transition-luxury {
+  transition-property: all;
+  transition-duration: 1000ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.transition-luxury-transform {
+  transition-property: transform, filter, opacity;
+  transition-duration: 1000ms;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Grayscale to color image hover */
+.img-luxury-hover {
+  filter: grayscale(100%);
+  transform: scale(1);
+  transition: filter 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .img-luxury-hover,
+.img-luxury-hover:hover {
+  filter: grayscale(0%);
+  transform: scale(1.08);
+}
+
+/* Reveal-up entrance animation */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom utility typography styles */
+.label-utility {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+}
+
+.heading-massive {
+  font-size: 15vw;
+  line-height: 0.8;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.heading-services {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  line-height: 0.85;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+/* Custom scrollbar matching palette */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #D9F9DF;
+}
+::-webkit-scrollbar-thumb {
+  background: #9FA1FF;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FAEE2F;
+}

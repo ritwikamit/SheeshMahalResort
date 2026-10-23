@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sparkles, Send, X, Bot, User, Calendar, MessageSquare, ArrowRight, Phone } from 'lucide-react';
+import { MessageSquare, X, Send, ArrowRight } from 'lucide-react';
 import { RESORT_CONTACT, VENUE_SPACES, RESORT_SERVICES } from '../data/resortData.ts';
 import { WhatsAppIcon } from './WhatsAppIcon.tsx';
 
@@ -27,7 +27,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
   const initialGreeting: Message = {
     id: 'welcome',
     sender: 'bot',
-    text: "Namaste! Welcome to Sheesh Mahal Resort, Patna's royal wedding sanctuary. I am your 24/7 Wedding Concierge. How may I assist your wedding preparations today?",
+    text: "Namaste! I am Raj, your personal wedding concierge at Sheesh Mahal Resort. How may I assist your royal wedding planning in Patna today?",
     timestamp: 'Just now',
     quickActions: [
       {
@@ -36,7 +36,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
       },
       {
         label: 'Chat on WhatsApp',
-        action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20would%20like%20to%20inquire%20about%20booking%20wedding%20dates.`, '_blank')
+        action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Raj,%20I%20would%20like%20to%20inquire%20about%20booking%20wedding%20dates%20at%20Sheesh%20Mahal%20Resort.`, '_blank')
       }
     ]
   };
@@ -151,24 +151,18 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
 
   return (
     <>
-      {/* Trigger Button: Exactly matches ScrollToTop size (w-12 h-12 sm:w-14 sm:h-14) in the same line */}
+      {/* Minimalist Chat Trigger Button: Exactly matches ScrollToTop size (w-12 h-12 sm:w-14 sm:h-14) in the same line */}
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#161726] text-[#FAEE2F] border-2 border-[#FAEE2F] shadow-2xl transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer group focus:outline-none focus:ring-4 focus:ring-[#FAEE2F]/40 shrink-0"
-        aria-label="Open Sheesh Mahal Wedding AI Concierge"
-        title="Chat with AI Wedding Concierge"
+        aria-label="Chat with Raj - Wedding Concierge"
+        title="Chat with Raj"
       >
-        {/* Subtle decorative glow ring */}
-        <span className="absolute -inset-1 rounded-full bg-[#FAEE2F]/25 animate-pulse pointer-events-none"></span>
-
         {isOpen ? (
-          <X size={20} className="relative z-10 text-[#FAEE2F] transition-transform duration-200" />
+          <X size={20} className="relative z-10 text-[#FAEE2F] transition-transform duration-200" strokeWidth={2} />
         ) : (
-          <div className="relative z-10 flex items-center justify-center">
-            <Sparkles size={18} className="text-[#FAEE2F] group-hover:rotate-12 transition-transform duration-300" />
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#25D366] border border-[#161726]"></span>
-          </div>
+          <MessageSquare size={20} className="relative z-10 text-[#FAEE2F] transition-transform duration-200 group-hover:scale-110" strokeWidth={2} />
         )}
       </button>
 
@@ -182,16 +176,21 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
           {/* Header */}
           <div className="px-5 py-3.5 bg-[#161726] text-[#FAFDFB] border-b border-[#9FA1FF]/20 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[#FAEE2F] text-[#161726] flex items-center justify-center font-bold text-xs shadow-sm">
-                SM
+              <div className="relative shrink-0">
+                <img
+                  src="/images/raj-concierge.jpg"
+                  alt="Raj - Sheesh Mahal Wedding Concierge"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-[#FAEE2F] shadow-sm"
+                />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#25D366] border-2 border-[#161726]"></span>
               </div>
               <div>
                 <h4 className="text-xs font-black uppercase tracking-wider text-[#FAFDFB] flex items-center gap-1.5">
-                  <span>WEDDING CONCIERGE</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#25D366]"></span>
+                  <span>RAJ</span>
+                  <span className="text-[10px] text-[#FAEE2F] font-semibold tracking-normal normal-case">· Wedding Concierge</span>
                 </h4>
                 <p className="text-[10px] text-[#FAEE2F] font-cursive tracking-wide">
-                  Sheesh Mahal Resort · 24/7 AI Desk
+                  Sheesh Mahal Resort · 24/7 Royal Desk
                 </p>
               </div>
             </div>
@@ -228,9 +227,11 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
                 className={`flex gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-full bg-[#9FA1FF] text-[#161726] flex items-center justify-center shrink-0 text-[10px] font-bold mt-0.5">
-                    <Bot size={14} />
-                  </div>
+                  <img
+                    src="/images/raj-concierge.jpg"
+                    alt="Raj"
+                    className="w-7 h-7 rounded-full object-cover border border-[#FAEE2F]/70 shrink-0 mt-0.5 shadow-xs"
+                  />
                 )}
 
                 <div
@@ -267,7 +268,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
                 <span className="w-1.5 h-1.5 rounded-full bg-[#9FA1FF] animate-bounce"></span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#9FA1FF] animate-bounce [animation-delay:0.2s]"></span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#9FA1FF] animate-bounce [animation-delay:0.4s]"></span>
-                <span className="text-[11px] font-medium ml-1">Concierge is writing...</span>
+                <span className="text-[11px] font-medium ml-1">Raj is typing...</span>
               </div>
             )}
             <div ref={messagesEndRef} />

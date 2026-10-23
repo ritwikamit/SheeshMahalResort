@@ -52,7 +52,7 @@ export const ScrollToTopProgress: React.FC<ScrollToTopProgressProps> = ({
     : `transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isVisible
           ? 'opacity-100 scale-100 pointer-events-auto'
-          : 'opacity-0 scale-75 pointer-events-none w-0 -mr-2.5 sm:-mr-3 overflow-hidden'
+          : 'opacity-0 scale-75 pointer-events-none h-0 -mb-2.5 sm:-mb-3 overflow-hidden'
       } ${className}`;
 
   return (

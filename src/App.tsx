@@ -14,7 +14,6 @@ import { WeddingChatbot } from './components/WeddingChatbot.tsx';
 import { MobileQuickBar } from './components/MobileQuickBar.tsx';
 import { LoadingScreen } from './components/LoadingScreen.tsx';
 import { CookieConsentBanner } from './components/CookieConsentBanner.tsx';
-import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton.tsx';
 
 // Dedicated Pages
 import { VenuesPage } from './pages/VenuesPage.tsx';
@@ -199,8 +198,6 @@ export default function App() {
         onOpenInquiry={() => setIsInquiryModalOpen(true)}
       />
 
-      {/* Floating 24/7 WhatsApp Wedding Desk Button */}
-      <FloatingWhatsAppButton isLoading={isLoading} />
 
       {/* Cookie Consent Box appearing for new visitors after loading screen */}
       <CookieConsentBanner

@@ -185,7 +185,7 @@ export default function App() {
       {/* Bottom-Right Floating Actions: Chatbot & Scroll-to-Top aligned vertically in column */}
       <aside
         aria-label="Floating Actions"
-        className="fixed bottom-[74px] md:bottom-6 right-3 sm:right-6 z-40 flex flex-col-reverse items-center gap-2.5 sm:gap-3"
+        className="fixed bottom-[74px] md:bottom-6 right-3 sm:right-6 z-[60] flex flex-col-reverse items-center gap-2.5 sm:gap-3"
       >
         <WeddingChatbot onOpenInquiry={() => setIsInquiryModalOpen(true)} />
         <ScrollToTopProgress isStandalone={false} />

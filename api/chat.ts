@@ -24,13 +24,16 @@ function getFallbackReply(query: string): string {
   }
 
   // Greetings & Identity
-  if (q === 'hi' || q === 'hello' || q === 'hey' || q === 'namaste' || q.includes('who are you') || q.includes('who is raj') || q.includes('your name') || q.includes('kaun ho')) {
-    return "Namaste! I am Raj, your Senior Royal Wedding Concierge at Sheesh Mahal Resort in Patna. I am here to guide you with reserving our 45,000 sq. ft. wedding grounds, starlit lawns, 1,200-guest AC ballroom, in-house royal Awadhi & Bihari catering, or securing auspicious 2026–2027 Lagan dates. How may I assist your royal celebration today?";
+  if (q === 'hi' || q === 'hello' || q === 'hey' || q === 'namaste' || q === 'pranam') {
+    return "Namaste! How may I assist your royal wedding planning in Patna today?";
+  }
+  if (q.includes('who are you') || q.includes('who is raj') || q.includes('your name') || q.includes('kaun ho')) {
+    return "I am Raj, your dedicated royal wedding concierge at Sheesh Mahal Resort in Patna. How may I assist your celebration?";
   }
 
   // Hindi / Hinglish Inquiries
   if (q.includes('shaadi') || q.includes('shadi') || q.includes('vivah') || q.includes('karna hai') || q.includes('chahiye') || q.includes('kahan') || q.includes('kharcha') || q.includes('kitna')) {
-    return "Namaste! शीश महल रिसॉर्ट (Sheesh Mahal Resort) पटना में शाही शादियों के लिए सबसे प्रतिष्ठित और भव्य स्थल है:\n\n• 45,000+ वर्ग फुट का विशाल शाही मैदान (2,000+ अतिथियों के लिए लॉन)\n• 1,200 अतिथियों के लिए सेंट्रली वातानुकूलित (AC) शीश बॉलरूम\n• 100% शुद्ध देसी घी में निर्मित अवधी और पारंपरिक बिहारी व्यंजन (वेज और नॉन-वेज के लिए अलग किचन)\n• 24 घंटे लगातार जनरेटर बैकअप, वैदिक मंडप और ऑन-साइट वैलेट पार्किंग\n\nशुभ लगन और मुहूर्त की तारीखें तेज़ी से बुक हो रही हैं। क्या आप तारीख की उपलब्धता या पैकेज की जानकारी चाहते हैं?";
+    return "शीश महल रिसॉर्ट (Sheesh Mahal Resort) पटना में शाही शादियों के लिए सबसे प्रतिष्ठित और भव्य स्थल है:\n\n• 45,000+ वर्ग फुट का विशाल शाही मैदान (2,000+ अतिथियों के लिए लॉन)\n• 1,200 अतिथियों के लिए सेंट्रली वातानुकूलित (AC) शीश बॉलरूम\n• 100% शुद्ध देसी घी में निर्मित अवधी और पारंपरिक बिहारी व्यंजन (वेज और नॉन-वेज के लिए अलग किचन)\n• 24 घंटे लगातार जनरेटर बैकअप, वैदिक मंडप और ऑन-साइट वैलेट पार्किंग\n\nशुभ लगन और मुहूर्त की तारीखें तेज़ी से बुक हो रही हैं। क्या आप तारीख की उपलब्धता या पैकेज की जानकारी चाहते हैं?";
   }
 
   // Capacity / Lawns
@@ -53,8 +56,8 @@ function getFallbackReply(query: string): string {
     return "Auspicious Lagan and Muhurat dates for 2026–2027 are booking rapidly! We offer three bespoke royal packages:\n\n1. Shahi Utsav Package (300–500 Guests): Ballroom/Lawn, 45-dish multi-cuisine dinner feast, stage & mandap decor, 1 bridal suite, valet.\n2. Imperial Palace Package (600–1,200 Guests): Ballroom + Consecrated Mandap, 65-dish royal feast, hydraulic Varmala stage, cold-pyro reveals, Baraat Dhol welcome, 2 luxury suites.\n3. Royal Residency Retreat (Up to 2,000+ Guests): Complete 3-day resort takeover.\n\nWould you like our wedding desk to check date availability for your family?";
   }
 
-  // Default resort concierge welcome
-  return "Namaste! I am Raj, your Senior Royal Wedding Concierge at Sheesh Mahal Resort in Patna.\n\nWhether you wish to know about our 45,000 sq. ft. wedding grounds, starlit Baraat lawns, 1,200-guest AC ballroom, in-house royal Awadhi & Bihari catering, or available 2026–2027 Lagan dates—I am here to assist. How may I help your wedding preparations?";
+  // Default resort concierge welcome (No repetitive intro)
+  return "Whether you wish to know about our 45,000 sq. ft. wedding grounds, starlit Baraat lawns, 1,200-guest AC ballroom, in-house royal Awadhi & Bihari catering, or available 2026–2027 Lagan dates—I am glad to assist. How may I help your wedding preparations?";
 }
 
 export default async function handler(req: any, res: any) {
@@ -97,14 +100,20 @@ You represent Sheesh Mahal Resort with supreme elegance, warmth, and hospitality
 =======================================================
 STRICT BEHAVIORAL & PERSONA GUIDELINES:
 =======================================================
-1. GREETING & TONE:
-   - Greet guests with warm Indian hospitality ("Namaste! I am Raj, your royal wedding concierge at Sheesh Mahal Resort...").
+1. CONVERSATION FLOW & NO REPETITIVE INTRODUCTIONS (CRITICAL RULE):
+   - NEVER start normal replies with "Namaste! I am Raj, your royal wedding concierge at Sheesh Mahal Resort..." or repeat who you are in every message.
+   - The user already sees your name and avatar in the chat interface and received the initial welcome message.
+   - Answer the guest's questions directly, warmly, and helpfully with royal grace.
+   - Only introduce yourself by name if the user explicitly asks "Who are you?", "What is your name?", or "Who is Raj?".
+   - For simple greetings like "hi", reply naturally: "Namaste! How may I assist your wedding planning today?" without any biographical preamble.
+
+2. GREETING & TONE:
    - Speak with refined charm, polite confidence, and deep wedding expertise.
    - Always speak from the first-person perspective of Sheesh Mahal Resort ("Our resort spans...", "We offer...", "Our Shahi Utsav Lawn...", "Our chefs prepare...").
-   - You are fluent in both English and Hindi/Hinglish. If the user addresses you in Hindi or Hinglish, warmly answer in Hindi or Hinglish.
-   - Warmly welcome polite conversation, greetings like "hi", "hello", "namaste", "who are you", "are you Raj", and all questions about our venue.
+   - You are fluent in English, Hindi, and Hinglish. If the user writes in Hindi or Hinglish, warmly answer in Hindi or Hinglish.
+   - Warmly welcome polite conversation, brief greetings, and all questions about our venue.
 
-2. POINT OF VIEW:
+3. POINT OF VIEW:
    - You represent Sheesh Mahal Resort exclusively.
    - Highlight our venue's grand scale (45,000+ sq. ft., up to 2,000+ guests), climate-controlled Sheesh Banquet, consecrated Vedic Mandap, starlit lawns, and in-house royal Awadhi/Bihari catering.
    - Guide prospective brides, grooms, and parents towards booking their wedding dates and scheduling a venue walkthrough or tasting.

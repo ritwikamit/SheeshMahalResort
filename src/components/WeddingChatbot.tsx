@@ -104,7 +104,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
         <div
           role="dialog"
           aria-label="Wedding Concierge Chatbot"
-          className="fixed top-[84px] sm:top-auto bottom-[72px] sm:bottom-24 right-3 sm:right-6 w-[calc(100vw-24px)] sm:w-[380px] max-w-[420px] max-h-[calc(100dvh-164px)] sm:max-h-[min(540px,calc(100vh-120px))] bg-[#FAFDFB] text-[#161726] rounded-[24px] shadow-2xl border border-[#9FA1FF]/30 flex flex-col overflow-hidden z-[60] animate-in fade-in slide-in-from-bottom-5 duration-300"
+          className="fixed top-[88px] sm:top-auto bottom-[76px] sm:bottom-24 right-3 sm:right-6 w-[calc(100vw-24px)] sm:w-[380px] max-w-[420px] max-h-[calc(100dvh-174px)] sm:max-h-[min(520px,calc(100vh-190px))] bg-[#FAFDFB] text-[#161726] rounded-[24px] shadow-2xl border border-[#9FA1FF]/30 flex flex-col overflow-hidden z-[70] animate-in fade-in slide-in-from-bottom-5 duration-300"
         >
           {/* Header */}
           <div className="px-5 py-3.5 bg-[#161726] text-[#FAFDFB] border-b border-[#9FA1FF]/20 flex items-center justify-between shrink-0 sticky top-0 z-20">

@@ -36,24 +36,24 @@ function generateLocalKnowledgeReply(
     };
   }
 
-  // 2. Greetings, Introductions & Identity
-  if (
-    q === 'hi' ||
-    q === 'hello' ||
-    q === 'hey' ||
-    q === 'namaste' ||
-    q === 'pranam' ||
-    q.includes('who are you') ||
-    q.includes('who is raj') ||
-    q.includes('your name') ||
-    q.includes('introduce') ||
-    q.includes('kaun ho')
-  ) {
+  // 2. Brief Greetings (Warm, direct, no repetitive intro)
+  if (q === 'hi' || q === 'hello' || q === 'hey' || q === 'namaste' || q === 'pranam') {
     return {
-      text: `Namaste! I am Raj, your Senior Royal Wedding Concierge at Sheesh Mahal Resort in Patna.\n\nI am here to personally guide you with every detail of your wedding planning—from reserving our 45,000 sq. ft. starlit Baraat lawns and 1,200-guest AC ballroom, to organizing royal Awadhi & Bihari feast tastings, bridal vanity suites, and auspicious 2026–2027 Lagan dates.\n\nHow may I assist your family's royal celebration today?`,
+      text: "Namaste! How may I assist your royal wedding planning in Patna today?",
       quickActions: [
         { label: 'Check Lagan Dates', action: () => onOpenInquiry() },
-        { label: 'WhatsApp Raj Directly', action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Raj,%20I%20would%20like%20to%20discuss%20wedding%20plans%20at%20Sheesh%20Mahal%20Resort.`, '_blank') }
+        { label: 'Chat on WhatsApp', action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Raj,%20I%20would%20like%20to%20discuss%20wedding%20plans%20at%20Sheesh%20Mahal%20Resort.`, '_blank') }
+      ]
+    };
+  }
+
+  // 3. Identity Inquiries (Only introduced if explicitly asked)
+  if (q.includes('who are you') || q.includes('who is raj') || q.includes('your name') || q.includes('introduce') || q.includes('kaun ho')) {
+    return {
+      text: "I am Raj, your royal wedding concierge at Sheesh Mahal Resort. I am here to help you with our 45,000 sq. ft. wedding grounds, starlit lawns, 1,200-guest AC ballroom, catering tastings, and auspicious Lagan dates. How can I assist you today?",
+      quickActions: [
+        { label: 'Explore Venues', action: () => onOpenInquiry() },
+        { label: 'WhatsApp Raj', action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Raj,%20I%20would%20like%20to%20discuss%20wedding%20plans%20at%20Sheesh%20Mahal%20Resort.`, '_blank') }
       ]
     };
   }
@@ -215,12 +215,12 @@ function generateLocalKnowledgeReply(
     };
   }
 
-  // 13. Default Conversational Welcome / General Resort Inquiries
+  // 14. Default Conversational Reply (Polite, direct, no repetitive intro)
   return {
-    text: `Namaste! I am Raj, your Senior Wedding Concierge at Sheesh Mahal Resort in Patna.\n\nWhether you wish to know about our 45,000 sq. ft. wedding grounds, starlit Baraat lawns, 1,200-guest AC ballroom, in-house royal Awadhi & Bihari catering, or available 2026–2027 Lagan dates—I am here to assist. How may I help your wedding preparations?`,
+    text: "Whether you wish to know about our 45,000 sq. ft. wedding grounds, starlit Baraat lawns, 1,200-guest AC ballroom, in-house royal Awadhi & Bihari catering, or available 2026–2027 Lagan dates—I am glad to assist. How may I help your wedding preparations?",
     quickActions: [
       { label: 'Check Lagan Dates', action: () => onOpenInquiry() },
-      { label: 'WhatsApp Raj Directly', action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}`, '_blank') }
+      { label: 'Chat on WhatsApp', action: () => window.open(`https://wa.me/${RESORT_CONTACT.whatsappNumber}`, '_blank') }
     ]
   };
 }

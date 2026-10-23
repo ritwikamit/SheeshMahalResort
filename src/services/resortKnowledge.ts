@@ -107,47 +107,21 @@ ${resortKnowledge}
 `.trim();
 }
 
-/**
- * Checks if a user's prompt is completely outside the resort/wedding context.
- */
 export function isQueryOutOfContext(query: string): boolean {
   const q = query.toLowerCase().trim();
 
-  // Explicit off-topic keywords
+  // Explicit off-topic keywords (programming, general trivia, politics, crypto, etc.)
   const offTopicKeywords = [
     'write code', 'python', 'javascript', 'html code', 'css code', 'react code',
-    'function(', 'algorithm', 'debug', 'sql', 'homework', 'solve this equation',
-    'math problem', 'who is the president', 'who won the match', 'cricket score',
-    'capital of', 'translate this to', 'write an essay', 'crypto', 'bitcoin',
-    'stock market', 'weather in tokyo', 'weather in london', 'who is elon musk',
-    'taj mahal hotel', 'oberoi udaivilas', 'marriott', 'hyatt', 'radisson',
-    'tell me a general joke', 'what is the meaning of life', 'write a poem about quantum'
+    'function(', 'def ', 'algorithm', 'debug', 'sql query', 'homework',
+    'solve equation', 'math problem', 'calculus', 'who is the president',
+    'who won the match', 'cricket score', 'ipl score', 'capital of',
+    'translate this to', 'write an essay', 'crypto', 'bitcoin', 'stock market',
+    'weather in tokyo', 'weather in london', 'weather in new york', 'who is elon musk',
+    'donald trump', 'narendra modi', 'taj mahal hotel', 'oberoi udaivilas',
+    'marriott', 'hyatt', 'radisson', 'tell me a joke', 'what is the meaning of life',
+    'write a poem about quantum'
   ];
 
-  for (const kw of offTopicKeywords) {
-    if (q.includes(kw)) {
-      return true;
-    }
-  }
-
-  // Common wedding / resort queries are in-context
-  const inContextKeywords = [
-    'wedding', 'marriage', 'resort', 'sheesh', 'mahal', 'patna', 'digha', 'venue',
-    'lawn', 'banquet', 'hall', 'capacity', 'guest', 'cost', 'price', 'package',
-    'date', 'muhurat', 'lagan', 'sawa', 'book', 'cater', 'food', 'menu', 'veg',
-    'non-veg', 'biryani', 'champaran', 'litti', 'mandap', 'phere', 'baraat', 'varmala',
-    'haldi', 'sangeet', 'mehndi', 'suite', 'bridal', 'room', 'parking', 'valet',
-    'generator', 'power', 'location', 'address', 'where', 'phone', 'contact', 'whatsapp',
-    'hi', 'hello', 'hey', 'namaste', 'raj', 'help', 'details', 'info', 'walkthrough',
-    'visit', 'inspection', 'tasting', 'decor', 'stage'
-  ];
-
-  const hasInContextKeyword = inContextKeywords.some(kw => q.includes(kw));
-
-  // If the query is sufficiently long (> 20 chars) and contains zero in-context keywords, flag as out of context
-  if (q.length > 25 && !hasInContextKeyword) {
-    return true;
-  }
-
-  return false;
+  return offTopicKeywords.some(kw => q.includes(kw));
 }

@@ -40,7 +40,7 @@ export const RESORT_CONTACT = {
   secondaryPhone: "+91 73608 00001",
   whatsappNumber: "917360800001",
   hours: "Open 24 Hours for Wedding Consultations",
-  googleMapsUrl: "https://maps.google.com/?q=Sheesh+Mahal+Resort+Digha+Patna+800011",
+  googleMapsUrl: "https://maps.app.goo.gl/4cLP3LqdCvT1H9qT6",
   instagramUrl: "https://www.instagram.com/sheeshmahalresort/",
   facebookUrl: "https://www.facebook.com/61591536904994/"
 };

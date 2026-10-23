@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUp } from 'lucide-react';
 
-export const ScrollToTopProgress: React.FC = () => {
+interface ScrollToTopProgressProps {
+  className?: string;
+  isStandalone?: boolean;
+}
+
+export const ScrollToTopProgress: React.FC<ScrollToTopProgressProps> = ({
+  className = '',
+  isStandalone = true
+}) => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -37,18 +45,24 @@ export const ScrollToTopProgress: React.FC = () => {
   // Fills its border while scrolling down, and un-fills its border while scrolling up (and vice versa)
   const strokeDashoffset = circumference - (scrollProgress / 100) * circumference;
 
-  return (
-    <div
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+  const wrapperClass = isStandalone
+    ? `fixed bottom-[74px] md:bottom-6 right-3 sm:right-6 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-75 pointer-events-none'
-      }`}
-    >
+      } ${className}`
+    : `transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isVisible
+          ? 'opacity-100 scale-100 pointer-events-auto'
+          : 'opacity-0 scale-75 pointer-events-none w-0 -mr-2.5 sm:-mr-3 overflow-hidden'
+      } ${className}`;
+
+  return (
+    <div className={wrapperClass}>
       <button
         type="button"
         onClick={scrollToTop}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative w-14 h-14 rounded-full flex items-center justify-center bg-[#161726] text-[#FAFDFB] shadow-2xl hover:shadow-[0_0_20px_rgba(159,161,255,0.4)] transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer group"
+        className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#161726] text-[#FAFDFB] border border-[#9FA1FF]/30 shadow-2xl hover:shadow-[0_0_20px_rgba(159,161,255,0.4)] transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer group shrink-0"
         aria-label="Scroll back to top"
         title={`Scroll to top (${Math.round(scrollProgress)}%)`}
       >

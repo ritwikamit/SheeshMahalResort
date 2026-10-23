@@ -10,6 +10,8 @@ import { CaseStudyModal } from './components/CaseStudyModal.tsx';
 import { ConciergeInquiryModal } from './components/ConciergeInquiryModal.tsx';
 import { ServiceDetailModal } from './components/ServiceDetailModal.tsx';
 import { ScrollToTopProgress } from './components/ScrollToTopProgress.tsx';
+import { WeddingChatbot } from './components/WeddingChatbot.tsx';
+import { MobileQuickBar } from './components/MobileQuickBar.tsx';
 import { LoadingScreen } from './components/LoadingScreen.tsx';
 import { CookieConsentBanner } from './components/CookieConsentBanner.tsx';
 import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton.tsx';
@@ -181,8 +183,21 @@ export default function App() {
         onOpenCookies={() => handleNavigatePage('cookies')}
       />
 
-      {/* Hovering Scroll-to-Top Button that dynamically fills its borders on scroll up/down */}
-      <ScrollToTopProgress />
+      {/* Bottom-Right Floating Action Line: Chatbot & Scroll-to-Top in the exact same line */}
+      <aside
+        aria-label="Floating Actions"
+        className="fixed bottom-[74px] md:bottom-6 right-3 sm:right-6 z-40 flex items-center gap-2.5 sm:gap-3"
+      >
+        <WeddingChatbot onOpenInquiry={() => setIsInquiryModalOpen(true)} />
+        <ScrollToTopProgress isStandalone={false} />
+      </aside>
+
+      {/* Smartphone Bottom Quick Navigation Menu */}
+      <MobileQuickBar
+        currentPage={currentPage}
+        onNavigatePage={handleNavigatePage}
+        onOpenInquiry={() => setIsInquiryModalOpen(true)}
+      />
 
       {/* Floating 24/7 WhatsApp Wedding Desk Button */}
       <FloatingWhatsAppButton isLoading={isLoading} />

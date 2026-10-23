@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenCookies
 }) => {
   return (
-    <footer className="bg-[#FAFDFB] text-[#161726] border-t border-[#9FA1FF]/20 pt-14 sm:pt-16 pb-12">
+    <footer className="bg-[#FAFDFB] text-[#161726] border-t border-[#9FA1FF]/20 pt-14 sm:pt-16 pb-24 md:pb-12">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pb-14">

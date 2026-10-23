@@ -3,6 +3,7 @@ import { HeartHandshake, SunMedium, Flame, MapPin, Phone } from 'lucide-react';
 import { RevealUp } from './RevealUp.tsx';
 import { RESORT_CONTACT } from '../data/resortData.ts';
 import { WeddingDeskCircleBadge } from './WeddingDeskCircleBadge.tsx';
+import { WhatsAppIcon } from './WhatsAppIcon.tsx';
 
 interface PhilosophySectionProps {
   onOpenInquiry: () => void;
@@ -107,10 +108,10 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
         <RevealUp delay={250}>
           <div
             id="location"
-            className="mt-24 p-10 lg:p-14 bg-[#161726] text-[#FAFDFB] rounded-[24px] flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl border border-[#9FA1FF]/30 relative"
+            className="mt-16 sm:mt-24 p-6 sm:p-10 lg:p-14 bg-[#161726] text-[#FAFDFB] rounded-[24px] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 shadow-2xl border border-[#9FA1FF]/30 relative"
           >
             {/* Badge 4: Anchored to TOP-LEFT corner of the royal palace highlight card */}
-            <div className="absolute -top-14 -left-3 sm:-top-18 sm:-left-6 md:-left-8 z-30 pointer-events-auto">
+            <div className="absolute -top-12 left-2 sm:-top-16 sm:-left-6 md:-left-8 z-30 pointer-events-auto">
               <WeddingDeskCircleBadge
                 id="badge-section-4"
                 badgeNumber="03"
@@ -122,11 +123,11 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
               />
             </div>
 
-            <div className="max-w-2xl pt-16 sm:pt-14 lg:pt-8 lg:pl-10">
+            <div className="max-w-2xl pt-14 sm:pt-12 lg:pt-0 lg:pl-10">
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#FAEE2F] block mb-2">
                 PRIME ASHIANA–DIGHA CORRIDOR
               </span>
-              <p className="font-cursive text-3xl sm:text-4xl text-[#FAEE2F] mb-3 font-normal">
+              <p className="font-cursive text-2xl sm:text-4xl text-[#FAEE2F] mb-3 font-normal">
                 "A Royal Palace Where Sacred Marriages Blossom"
               </p>
               <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight leading-tight mb-4">
@@ -136,13 +137,13 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
                 Conveniently located opposite the main gate of St. Xavier's College, near Bharat Petrol Pump, Mica Colony, Yadav Colony, Digha, Patna, Bihar 800011. Open round the clock for in-person wedding consultations and venue walkthroughs.
               </p>
 
-              <div className="flex flex-wrap items-center gap-6 text-xs text-[#FAFDFB]/80 font-bold">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#FAFDFB]/80 font-bold">
                 <div className="flex items-center gap-2">
-                  <MapPin size={16} className="text-[#FAEE2F]" />
+                  <MapPin size={16} className="text-[#FAEE2F] shrink-0" />
                   <span>Opposite St. Xavier's College Gate</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone size={16} className="text-[#9FA1FF]" />
+                  <Phone size={16} className="text-[#9FA1FF] shrink-0" />
                   <span>+91 76319 29292 / +91 73608 00001</span>
                 </div>
               </div>
@@ -152,7 +153,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
               <button
                 type="button"
                 onClick={onOpenInquiry}
-                className="px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] hover:text-[#161726] transition-all duration-300 shadow-xl whitespace-nowrap cursor-pointer text-center"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] hover:text-[#161726] transition-all duration-300 shadow-xl whitespace-nowrap cursor-pointer text-center"
               >
                 CHECK WEDDING DATES
               </button>
@@ -161,11 +162,9 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
                 href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20would%20like%20to%20schedule%20a%20wedding%20venue%20visit.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white hover:bg-[#20ba59] transition-all duration-300 shadow-md whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 text-center"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white hover:bg-[#20ba59] transition-all duration-300 shadow-md whitespace-nowrap cursor-pointer flex items-center justify-center gap-2.5 text-center"
               >
-                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c.969.541 1.79.827 2.806.828 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.768-5.768-5.768zm3.385 8.163c-.144.405-.837.774-1.17.822-.312.043-.679.083-1.99-.461-1.637-.678-2.684-2.355-2.766-2.464-.08-.109-.652-.869-.652-1.655 0-.786.413-1.173.56-1.332.148-.16.323-.199.431-.199.108 0 .216.002.311.006.1.006.234-.038.366.279.136.327.464 1.132.505 1.215.04.083.067.18.013.287-.053.107-.08.174-.16.268-.08.093-.168.208-.24.28-.08.08-.163.167-.07.327.094.16.417.689.897 1.116.618.549 1.139.719 1.301.799.162.08.257.067.351-.04.095-.107.405-.472.513-.633.108-.16.216-.134.364-.08.149.054.945.445 1.107.526.162.08.27.12.31.187.04.067.04.388-.104.793z" />
-                </svg>
+                <WhatsAppIcon className="w-4 h-4 fill-current shrink-0" />
                 <span>CHAT ON WHATSAPP</span>
               </a>
             </div>

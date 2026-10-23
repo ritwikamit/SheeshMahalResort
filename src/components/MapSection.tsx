@@ -23,9 +23,9 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
   return (
     <section
       id="map-location"
-      className="py-20 lg:py-28 bg-[#FAFDFB] text-[#161726] border-t border-[#9FA1FF]/20 overflow-hidden relative"
+      className="py-16 sm:py-20 lg:py-28 bg-[#FAFDFB] text-[#161726] border-t border-[#9FA1FF]/20 overflow-hidden relative"
     >
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative">
         <RevealUp>
           {/* Section Header with alternating 24h Circle Badge on the RIGHT side */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-[#9FA1FF]/20">
@@ -98,7 +98,7 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
           </div>
 
           {/* Alternating Badge 5: Anchored to the top-right corner of the Map frame box */}
-          <div className="absolute -top-14 -right-3 sm:-top-18 sm:-right-5 md:-right-6 lg:-right-8 z-30 pointer-events-auto">
+          <div className="absolute -top-12 right-2 sm:-top-18 sm:-right-5 md:-right-6 lg:-right-8 z-30 pointer-events-auto">
             <WeddingDeskCircleBadge
               id="badge-section-5"
               badgeNumber="04"

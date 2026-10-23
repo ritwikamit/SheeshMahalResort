@@ -37,17 +37,17 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <div className="pt-[100px] pb-24 bg-[#FAFDFB] text-[#161726]">
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="py-12 border-b border-[#9FA1FF]/20 mb-16 text-center">
+        <div className="py-8 sm:py-12 border-b border-[#9FA1FF]/20 mb-12 sm:mb-16 text-center">
           <span className="label-utility text-[#161726]/70">
             TRANSPARENT GUIDANCE
           </span>
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
+          <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
             WEDDING FAQS & POLICIES
           </h1>
-          <p className="font-cursive text-3xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+          <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
             Everything You Need to Know for Your Special Day
           </p>
         </div>

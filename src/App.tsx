@@ -12,6 +12,7 @@ import { ServiceDetailModal } from './components/ServiceDetailModal.tsx';
 import { ScrollToTopProgress } from './components/ScrollToTopProgress.tsx';
 import { LoadingScreen } from './components/LoadingScreen.tsx';
 import { CookieConsentBanner } from './components/CookieConsentBanner.tsx';
+import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton.tsx';
 
 // Dedicated Pages
 import { VenuesPage } from './pages/VenuesPage.tsx';
@@ -182,6 +183,9 @@ export default function App() {
 
       {/* Hovering Scroll-to-Top Button that dynamically fills its borders on scroll up/down */}
       <ScrollToTopProgress />
+
+      {/* Floating 24/7 WhatsApp Wedding Desk Button */}
+      <FloatingWhatsAppButton isLoading={isLoading} />
 
       {/* Cookie Consent Box appearing for new visitors after loading screen */}
       <CookieConsentBanner

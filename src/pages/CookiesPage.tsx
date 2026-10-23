@@ -8,8 +8,8 @@ interface CookiesPageProps {
 
 export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
   return (
-    <div className="pt-[100px] pb-24 bg-[#FAFDFB] text-[#161726]">
-      <div className="max-w-[1000px] mx-auto px-6 lg:px-12">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+      <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-12">
         <button
           type="button"
           onClick={onBack}

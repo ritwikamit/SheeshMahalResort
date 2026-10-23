@@ -2,6 +2,7 @@ import React from 'react';
 import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
 import { RESORT_CONTACT } from '../data/resortData.ts';
 import { SheeshMahalLogo } from './SheeshMahalLogo.tsx';
+import { WhatsAppIcon } from './WhatsAppIcon.tsx';
 
 interface FooterProps {
   onOpenInquiry: () => void;
@@ -17,8 +18,8 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenCookies
 }) => {
   return (
-    <footer className="bg-[#FAFDFB] text-[#161726] border-t border-[#9FA1FF]/20 pt-16 pb-12">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+    <footer className="bg-[#FAFDFB] text-[#161726] border-t border-[#9FA1FF]/20 pt-14 sm:pt-16 pb-12">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pb-14">
           
@@ -216,10 +217,7 @@ export const Footer: React.FC<FooterProps> = ({
                   aria-label="Chat on WhatsApp"
                   className="w-10 h-10 rounded-xl bg-[#25D366] text-white flex items-center justify-center hover:bg-[#20ba59] transition-all duration-300 shadow-sm hover:scale-105"
                 >
-                  {/* Clean minimalistic WhatsApp SVG */}
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c.969.541 1.79.827 2.806.828 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.768-5.768-5.768zm3.385 8.163c-.144.405-.837.774-1.17.822-.312.043-.679.083-1.99-.461-1.637-.678-2.684-2.355-2.766-2.464-.08-.109-.652-.869-.652-1.655 0-.786.413-1.173.56-1.332.148-.16.323-.199.431-.199.108 0 .216.002.311.006.1.006.234-.038.366.279.136.327.464 1.132.505 1.215.04.083.067.18.013.287-.053.107-.08.174-.16.268-.08.093-.168.208-.24.28-.08.08-.163.167-.07.327.094.16.417.689.897 1.116.618.549 1.139.719 1.301.799.162.08.257.067.351-.04.095-.107.405-.472.513-.633.108-.16.216-.134.364-.08.149.054.945.445 1.107.526.162.08.27.12.31.187.04.067.04.388-.104.793z" />
-                  </svg>
+                  <WhatsAppIcon className="w-5 h-5 fill-current" />
                 </a>
 
                 {/* Instagram Icon Link */}

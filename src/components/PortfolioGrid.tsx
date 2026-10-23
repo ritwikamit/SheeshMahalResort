@@ -28,21 +28,21 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onSelectCase, onOp
       id="spaces"
       className="py-24 lg:py-36 bg-[#FAFDFB] text-[#161726] overflow-hidden relative"
     >
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Section Header */}
         <RevealUp>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 lg:mb-24 pb-8 border-b border-[#9FA1FF]/20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-24 pb-6 sm:pb-8 border-b border-[#9FA1FF]/20">
             <div>
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-3 sm:mb-4">
                 <span className="label-utility text-[#161726]/70">
                   PALATIAL WEDDING VENUES & CEREMONY ZONES
                 </span>
-                <span className="w-10 h-[1px] bg-[#9FA1FF]"></span>
+                <span className="w-8 sm:w-10 h-[1px] bg-[#9FA1FF]"></span>
               </div>
-              <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726]">
+              <h2 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726]">
                 WEDDING VENUES
               </h2>
-              <p className="font-cursive text-3xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+              <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
                 Palaces of Glass, Sacred Fire & Emerald Starlit Lawns
               </p>
 
@@ -113,7 +113,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onSelectCase, onOp
 
                     {/* Badge 3: Anchored to the top-right corner of the venue card box */}
                     {index === 1 && (
-                      <div className="absolute -top-14 -right-3 sm:-top-18 sm:-right-6 md:-right-8 z-30 pointer-events-auto">
+                      <div className="absolute -top-12 right-2 sm:-top-18 sm:-right-6 md:-right-8 z-30 pointer-events-auto">
                         <WeddingDeskCircleBadge
                           id="badge-section-3"
                           badgeNumber="02"

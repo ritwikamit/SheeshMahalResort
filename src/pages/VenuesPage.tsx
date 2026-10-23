@@ -11,17 +11,17 @@ interface VenuesPageProps {
 
 export const VenuesPage: React.FC<VenuesPageProps> = ({ onSelectSpace, onOpenInquiry }) => {
   return (
-    <div className="pt-[100px] pb-24 bg-[#FAFDFB] text-[#161726]">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Page Header */}
-        <div className="py-12 border-b border-[#9FA1FF]/20 mb-16">
+        <div className="py-8 sm:py-12 border-b border-[#9FA1FF]/20 mb-12 sm:mb-16">
           <span className="label-utility text-[#161726]/70">
             DEDICATED ARCHITECTURAL SHOWCASE
           </span>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
             ROYAL WEDDING VENUES
           </h1>
-          <p className="font-cursive text-3xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+          <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
             Breathtaking Ballrooms, Sacred Mandaps & Starlit Lawns
           </p>
           <p className="text-base sm:text-lg text-[#161726]/75 max-w-3xl mt-4 font-normal">
@@ -30,10 +30,10 @@ export const VenuesPage: React.FC<VenuesPageProps> = ({ onSelectSpace, onOpenInq
         </div>
 
         {/* Detailed Space Cards */}
-        <div className="space-y-24">
+        <div className="space-y-16 sm:space-y-24">
           {VENUE_SPACES.map((space, index) => (
             <RevealUp key={space.id} delay={index * 100}>
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center p-8 lg:p-12 bg-[#FAFDFB] rounded-[28px] border border-[#9FA1FF]/30 shadow-xl">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center p-5 sm:p-8 lg:p-12 bg-[#FAFDFB] rounded-[24px] sm:rounded-[28px] border border-[#9FA1FF]/30 shadow-xl">
                 {/* Visual */}
                 <div className={`lg:col-span-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className="rounded-[20px] overflow-hidden shadow-2xl border border-[#9FA1FF]/20 bg-[#161726] relative group cursor-pointer" onClick={() => onSelectSpace(space)}>

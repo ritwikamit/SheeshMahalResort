@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, MessageCircle } from 'lucide-react';
 import { VenueSpace, RESORT_CONTACT } from '../data/resortData.ts';
+import { WhatsAppIcon } from './WhatsAppIcon.tsx';
 
 interface ConciergeInquiryModalProps {
   isOpen: boolean;
@@ -54,17 +55,17 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top bar */}
-        <div className="flex items-center justify-between px-8 py-5 border-b border-[#9FA1FF]/20 bg-[#D9F9DF]">
+        <div className="flex items-center justify-between px-5 sm:px-8 py-4 sm:py-5 border-b border-[#9FA1FF]/20 bg-[#D9F9DF]">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#161726]">
-              SHEESH MAHAL RESORT · ROYAL WEDDING BOOKING DESK
+            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] text-[#161726]">
+              SHEESH MAHAL RESORT · WEDDING DESK
             </span>
           </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="w-10 h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X size={18} />
@@ -72,7 +73,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
         </div>
 
         {/* Modal content */}
-        <div className="p-8 lg:p-10">
+        <div className="p-5 sm:p-8 lg:p-10">
           {!isSubmitted ? (
             <form onSubmit={handleSubmit}>
               <div className="mb-6">
@@ -285,18 +286,16 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                   href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20just%20submitted%20wedding%20inquiry%20reference%20${bookingRef}%20for%20date%20${formData.eventDate}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white hover:bg-[#20ba59] transition-colors cursor-pointer inline-flex items-center gap-2 shadow-sm"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white hover:bg-[#20ba59] transition-colors cursor-pointer inline-flex items-center justify-center gap-2.5 shadow-sm"
                 >
-                  <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.696c.969.541 1.79.827 2.806.828 3.182 0 5.768-2.587 5.768-5.767 0-3.18-2.586-5.768-5.768-5.768zm3.385 8.163c-.144.405-.837.774-1.17.822-.312.043-.679.083-1.99-.461-1.637-.678-2.684-2.355-2.766-2.464-.08-.109-.652-.869-.652-1.655 0-.786.413-1.173.56-1.332.148-.16.323-.199.431-.199.108 0 .216.002.311.006.1.006.234-.038.366.279.136.327.464 1.132.505 1.215.04.083.067.18.013.287-.053.107-.08.174-.16.268-.08.093-.168.208-.24.28-.08.08-.163.167-.07.327.094.16.417.689.897 1.116.618.549 1.139.719 1.301.799.162.08.257.067.351-.04.095-.107.405-.472.513-.633.108-.16.216-.134.364-.08.149.054.945.445 1.107.526.162.08.27.12.31.187.04.067.04.388-.104.793z" />
-                  </svg>
+                  <WhatsAppIcon className="w-4 h-4 fill-current shrink-0" />
                   <span>CONFIRM ON WHATSAPP</span>
                 </a>
 
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FAEE2F] hover:bg-[#FAEE2F] hover:text-[#161726] transition-colors cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FAEE2F] hover:bg-[#FAEE2F] hover:text-[#161726] transition-colors cursor-pointer"
                 >
                   BACK TO WEDDING RESORT
                 </button>

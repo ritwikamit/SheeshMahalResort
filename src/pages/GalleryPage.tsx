@@ -56,18 +56,18 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
   });
 
   return (
-    <div className="pt-[100px] pb-24 bg-[#FAFDFB] text-[#161726]">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="py-12 border-b border-[#9FA1FF]/20 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="py-8 sm:py-12 border-b border-[#9FA1FF]/20 mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <span className="label-utility text-[#161726]/70">
               VISUAL CHRONICLES OF WEDDING GRANDEUR
             </span>
-            <h1 className="text-4xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
+            <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
               PHOTO GALLERY
             </h1>
-            <p className="font-cursive text-3xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+            <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
               A Glimpse into Royal Moments & Sacred Vows
             </p>
           </div>

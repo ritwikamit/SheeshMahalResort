@@ -59,17 +59,17 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <div className="pt-[100px] pb-24 bg-[#FAFDFB] text-[#161726]">
-      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="py-12 border-b border-[#9FA1FF]/20 mb-16">
+        <div className="py-8 sm:py-12 border-b border-[#9FA1FF]/20 mb-12 sm:mb-16">
           <span className="label-utility text-[#161726]/70">
             THE CHRONOLOGY OF ROYAL CELEBRATIONS
           </span>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
             WEDDING RITUALS
           </h1>
-          <p className="font-cursive text-3xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+          <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
             Every Sacred Rite Honored with Palatial Grandeur
           </p>
           <p className="text-base sm:text-lg text-[#161726]/75 max-w-3xl mt-4 font-normal">
@@ -78,10 +78,10 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
         </div>
 
         {/* Rituals Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {weddingRituals.map((ritual, idx) => (
             <RevealUp key={idx} delay={idx * 80}>
-              <div className="p-8 bg-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 shadow-md h-full flex flex-col justify-between group hover:border-[#FAEE2F] transition-all duration-500">
+              <div className="p-6 sm:p-8 bg-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 shadow-md h-full flex flex-col justify-between group hover:border-[#FAEE2F] transition-all duration-500">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm font-black text-[#9FA1FF] tracking-wider">

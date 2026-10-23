@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
 import { SheeshMahalLogo } from './SheeshMahalLogo.tsx';
+import { WhatsAppIcon } from './WhatsAppIcon.tsx';
+import { RESORT_CONTACT } from '../data/resortData.ts';
 
 export type PageRoute = 'home' | 'venues' | 'catering' | 'rituals' | 'gallery' | 'packages' | 'faqs' | 'terms' | 'cookies';
 
@@ -45,7 +47,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 h-[80px] px-6 lg:px-12 flex items-center justify-between border-b border-[#9FA1FF]/20 transition-all duration-300"
+      className="fixed top-0 left-0 right-0 z-50 h-[76px] sm:h-[80px] px-3.5 sm:px-6 lg:px-12 flex items-center justify-between border-b border-[#9FA1FF]/20 transition-all duration-300"
       style={{
         backgroundColor: 'rgba(250, 253, 251, 0.94)',
         backdropFilter: 'blur(16px)',
@@ -153,12 +155,12 @@ export const Navigation: React.FC<NavigationProps> = ({
         </div>
       </nav>
 
-      {/* Far Right: Clean Minimalist CTA (Call & WhatsApp icons removed) */}
-      <div className="flex items-center gap-3 shrink-0">
+      {/* Far Right: Clean Minimalist CTA */}
+      <div className="flex items-center gap-2 sm:gap-3 shrink-0">
         <button
           type="button"
           onClick={onOpenInquiry}
-          className="inline-flex items-center justify-center rounded-lg text-xs font-black tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md bg-[#FAEE2F] text-[#161726] hover:bg-[#161726] hover:text-[#FAEE2F] px-6 py-2.5"
+          className="inline-flex items-center justify-center rounded-lg text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md bg-[#FAEE2F] text-[#161726] hover:bg-[#161726] hover:text-[#FAEE2F] px-3.5 sm:px-6 py-2 sm:py-2.5"
         >
           BOOK DATES
         </button>
@@ -193,7 +195,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
-          className="absolute top-[80px] left-0 right-0 p-6 border-b border-[#9FA1FF]/20 flex flex-col gap-3 shadow-xl md:hidden"
+          className="absolute top-[76px] sm:top-[80px] left-0 right-0 p-5 sm:p-6 border-b border-[#9FA1FF]/20 flex flex-col gap-2.5 shadow-xl md:hidden max-h-[calc(100vh-80px)] overflow-y-auto"
           style={{
             backgroundColor: 'rgba(250, 253, 251, 0.98)',
             backdropFilter: 'blur(16px)'
@@ -248,6 +250,27 @@ export const Navigation: React.FC<NavigationProps> = ({
           >
             FAQS & POLICIES
           </button>
+
+          {/* Quick Direct Mobile Contact Actions */}
+          <div className="pt-3 flex flex-col gap-2.5">
+            <a
+              href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20would%20like%20to%20inquire%20about%20booking%20wedding%20dates.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white flex items-center justify-center gap-2 shadow-sm"
+            >
+              <WhatsAppIcon className="w-4 h-4 fill-current shrink-0" />
+              <span>CHAT ON WHATSAPP</span>
+            </a>
+
+            <a
+              href={`tel:${RESORT_CONTACT.primaryPhone}`}
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FAEE2F] flex items-center justify-center gap-2 shadow-sm"
+            >
+              <Phone size={14} className="shrink-0" />
+              <span>CALL 24/7 DESK</span>
+            </a>
+          </div>
         </div>
       )}
     </header>

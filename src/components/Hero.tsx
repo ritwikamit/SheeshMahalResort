@@ -13,28 +13,28 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
   return (
     <section
       id="top"
-      className="relative min-h-screen w-full pt-[80px] bg-[#FAFDFB] text-[#161726] flex flex-col justify-center overflow-hidden border-b border-[#9FA1FF]/20"
+      className="relative min-h-screen w-full pt-[76px] sm:pt-[80px] bg-[#FAFDFB] text-[#161726] flex flex-col justify-center overflow-hidden border-b border-[#9FA1FF]/20"
     >
-      <div className="max-w-[1600px] w-full mx-auto px-6 lg:px-12 py-10 lg:py-16 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-10 lg:py-16 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Massive headline, cursive flourishes, body copy, arrow CTA */}
           <div className="lg:col-span-7 flex flex-col justify-center z-10">
             {/* Utility kicker with cursive flourish */}
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="font-cursive text-2xl sm:text-3xl text-[#161726] tracking-normal font-normal">
+            <div className="mb-4 sm:mb-6 flex flex-wrap items-center gap-2 sm:gap-3">
+              <span className="font-cursive text-xl sm:text-3xl text-[#161726] tracking-normal font-normal">
                 Where Sacred Vows Meet Royal Grandeur
               </span>
-              <span className="w-8 h-[1px] bg-[#9FA1FF]"></span>
-              <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#161726] bg-[#FAEE2F] px-2.5 py-0.5 rounded-sm shadow-xs">
+              <span className="w-6 sm:w-8 h-[1px] bg-[#9FA1FF]"></span>
+              <span className="text-[9px] sm:text-[10px] font-black tracking-[0.25em] uppercase text-[#161726] bg-[#FAEE2F] px-2 sm:px-2.5 py-0.5 rounded-sm shadow-xs">
                 PATNA ROYAL WEDDINGS
               </span>
             </div>
 
             {/* Massive headline with signature cursive wedding accent */}
-            <h1 className="text-[clamp(3.8rem,14vw,11.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-[#161726] mb-8 select-none">
+            <h1 className="text-[clamp(2.6rem,11.5vw,11.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-[#161726] mb-6 sm:mb-8 select-none">
               ROYAL
-              <span className="block font-cursive text-6xl sm:text-8xl lg:text-[9.5rem] text-[#9FA1FF] capitalize tracking-normal font-normal -my-2 leading-[0.75]">
+              <span className="block font-cursive text-5xl sm:text-8xl lg:text-[9.5rem] text-[#9FA1FF] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75]">
                 weddings
               </span>
               SANCTUARY
@@ -110,7 +110,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             </div>
 
             {/* Badge 1: RIGHT side */}
-            <div className="absolute -bottom-8 -left-6 sm:-left-12 z-30">
+            <div className="absolute -bottom-6 left-2 sm:-bottom-8 sm:-left-12 z-30">
               <WeddingDeskCircleBadge
                 id="badge-section-1"
                 badgeNumber="24h"

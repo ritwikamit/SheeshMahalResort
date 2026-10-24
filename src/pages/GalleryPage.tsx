@@ -3,14 +3,7 @@ import { X, ChevronLeft, ChevronRight, Maximize2, Calendar, Sparkles } from 'luc
 import { LuxuryVisual } from '../components/LuxuryVisual.tsx';
 import { RevealUp } from '../components/RevealUp.tsx';
 
-interface GalleryItem {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  caption: string;
-  description: string;
-}
+import { ALL_GALLERY_PHOTOS, GalleryItem } from '../data/galleryData.ts';
 
 interface GalleryPageProps {
   onOpenInquiry: () => void;
@@ -20,138 +13,9 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
   const [filter, setFilter] = useState('ALL');
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
 
-  const galleryItems: GalleryItem[] = [
-    {
-      id: 1,
-      title: "The Royal Sheesh Ballroom",
-      category: "BANQUET",
-      image: "/images/gallery/resort-2.jpg",
-      caption: "Crystal Chandeliers & Varmala Dais",
-      description: "Air-conditioned 12,000 sq. ft. ballroom with glittering crystal chandeliers, royal thrones, and a 40ft pillarless royal stage."
-    },
-    {
-      id: 2,
-      title: "Shahi Utsav Evening Lawn",
-      category: "LAWN",
-      image: "/images/gallery/resort-4.jpg",
-      caption: "Starlit Fairy Light Canopies",
-      description: "Expansive 25,000 sq. ft. landscaped starlit lawn accommodating up to 2,000 guests with open-air banquet courts."
-    },
-    {
-      id: 3,
-      title: "Consecrated Vedic Mandap",
-      category: "MANDAP",
-      image: "/images/gallery/resort-10.jpg",
-      caption: "Fresh Floral Drapery & Sacred Havan",
-      description: "A sanctified pavilion draped with fragrant fresh marigold and red rose garlands, engineered for the sacred havan and Saat Phere."
-    },
-    {
-      id: 4,
-      title: "Poolside Courtyard & Cabanas",
-      category: "HALDI",
-      image: "/images/gallery/resort-14.jpg",
-      caption: "Festive Daytime Haldi & Mehndi Swings",
-      description: "Shimmering waterbody ambiance for joyful Haldi ceremonies, floral swings, live Mehndi artists, and Sangeet sundowners."
-    },
-    {
-      id: 5,
-      title: "Palace Grand Reception Corridor",
-      category: "BANQUET",
-      image: "/images/gallery/resort-3.jpg",
-      caption: "Mirror Glass Artistry & Welcoming Foyer",
-      description: "Ornate entrance corridor adorned with Sheesh mirror-work accents, welcoming Baraat families into the royal palace."
-    },
-    {
-      id: 6,
-      title: "Emerald Lawns & Baraat Avenue",
-      category: "LAWN",
-      image: "/images/gallery/resort-5.jpg",
-      caption: "Grand Pathway for Dhol & Vintage Carriages",
-      description: "Wide illuminated avenue leading into the main lawns, designed for majestic Baraat entries and Dhol procession welcomes."
-    },
-    {
-      id: 7,
-      title: "Palace Architecture at Twilight",
-      category: "FACADE",
-      image: "/images/gallery/resort-6.jpg",
-      caption: "Illuminated Resort Exterior in Patna",
-      description: "Regal exterior facade located opposite St. Xavier's College gate on Ashiana–Digha Road, lit up majestically for wedding nights."
-    },
-    {
-      id: 8,
-      title: "Varmala Revolving Dais Setup",
-      category: "MANDAP",
-      image: "/images/gallery/resort-7.jpg",
-      caption: "Cinematic Stage with Pyro & Smoke",
-      description: "Elevated rotating stage synchronised with cold-pyrotechnics and ambient spotlights for an unforgettable garland exchange."
-    },
-    {
-      id: 9,
-      title: "Royal Floral & Throne Decor",
-      category: "DECOR",
-      image: "/images/gallery/resort-8.jpg",
-      caption: "Artisanal Stage Backdrops & Velvet Seating",
-      description: "Custom stage architecture crafted by master wedding decorators with fresh blooms, brass samai lamps, and royal velvet baithaks."
-    },
-    {
-      id: 10,
-      title: "Baraat Welcome Corridor",
-      category: "LAWN",
-      image: "/images/gallery/resort-9.jpg",
-      caption: "Traditional Milni Gate & Rose Showers",
-      description: "Stately arches welcoming the groom and baraatis with traditional rose petal showers and refreshing royal welcome drinks."
-    },
-    {
-      id: 11,
-      title: "Shahi Awadhi Live Food Stations",
-      category: "CATERING",
-      image: "/images/gallery/resort-11.jpg",
-      caption: "Live Dum Biryani, Kebabs & Tandoor Courts",
-      description: "Gourmet wedding catering with live copper handi presentations, authentic Awadhi recipes, and hot Tandoori bread counters."
-    },
-    {
-      id: 12,
-      title: "Night Wedding Illumination",
-      category: "FACADE",
-      image: "/images/gallery/resort-12.jpg",
-      caption: "Fairy Lights & Starlit Palace Glow",
-      description: "Complete resort grounds bathed in warm golden fairy lights, architectural lanterns, and laser uplighting."
-    },
-    {
-      id: 13,
-      title: "Gourmet Live Mithai & Dessert Street",
-      category: "CATERING",
-      image: "/images/gallery/resort-13.jpg",
-      caption: "Hot Rabri-Jalebi, Kulfi & Artisanal Sweets",
-      description: "Interactive dessert boulevard featuring live hot Jalebis, Malpua, Shahi Tukda, and custom artisanal Indian confections."
-    },
-    {
-      id: 14,
-      title: "Starlit Evening Lawns & Dining Court",
-      category: "LAWN",
-      image: "/images/gallery/resort-15.jpg",
-      caption: "Parallel Dining Avenues Under the Stars",
-      description: "Spacious dining arrangement ensuring zero lines or crowding, with ample seating and attentive royal hospitality."
-    },
-    {
-      id: 15,
-      title: "Luxury Bridal Suite & Dressing Lounge",
-      category: "DECOR",
-      image: "/images/gallery/resort-16.jpg",
-      caption: "Private Sanctuary for the Bride",
-      description: "Air-conditioned luxury bridal sanctuary with full-length lighted mirrors, plush lounge seating, and attached private washrooms."
-    },
-    {
-      id: 16,
-      title: "Sacred Fire & Vedic Ritual Rites",
-      category: "MANDAP",
-      image: "/images/gallery/resort-18.jpg",
-      caption: "Authentic Seven Vows of Eternity",
-      description: "Close-up of the sacred havan altar and traditional brass ceremonial elements during the auspicious wedding pheras."
-    }
-  ];
+  const galleryItems = ALL_GALLERY_PHOTOS;
 
-  const categories = ['ALL', 'BANQUET', 'LAWN', 'MANDAP', 'HALDI', 'CATERING', 'FACADE', 'DECOR'];
+  const categories = ['ALL', 'BANQUET', 'LAWN', 'MANDAP', 'DECOR', 'FACADE', 'CATERING'];
 
   const filteredItems = galleryItems.filter((item) => {
     if (filter === 'ALL') return true;

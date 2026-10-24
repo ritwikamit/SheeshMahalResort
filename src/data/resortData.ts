@@ -90,7 +90,7 @@ export const VENUE_SPACES: VenueSpace[] = [
     category: "ROYAL WEDDING BALLROOM",
     title: "THE SHEESH BANQUET",
     tags: ["GRAND VARMALA", "CRYSTAL CHANDELIERS", "CENTRAL AC", "500-1200 GUESTS"],
-    image: "/images/gallery/resort-2.jpg",
+    image: "/images/gallery/smr-03.png",
     alt: "Palatial wedding banquet hall with glittering crystal chandeliers, royal tables and stage setup at Sheesh Mahal Resort",
     capacity: "500 to 1,200 Guests",
     area: "12,000 Sq. Ft. Indoor",
@@ -121,7 +121,7 @@ export const VENUE_SPACES: VenueSpace[] = [
     category: "STARLIT WEDDING GARDEN",
     title: "SHAHI UTSAV LAWN",
     tags: ["OPEN-AIR WEDDING", "STARLIT LAWN", "BARAAT AVENUE", "800-2000 GUESTS"],
-    image: "/images/gallery/resort-4.jpg",
+    image: "/images/gallery/smr-04.png",
     alt: "Sprawling illuminated open-air royal wedding garden lawn with festive fairy lights at Sheesh Mahal Resort",
     capacity: "800 to 2,000 Guests",
     area: "25,000 Sq. Ft. Landscaped",
@@ -152,7 +152,7 @@ export const VENUE_SPACES: VenueSpace[] = [
     category: "SACRED WEDDING RITES",
     title: "ROYAL MANDAP PAVILION",
     tags: ["SAAT PHERE", "HAVAN COMPLIANT", "MARIGOLD & ROSE", "300 GUESTS"],
-    image: "/images/gallery/resort-10.jpg",
+    image: "/images/gallery/smr-05.png",
     alt: "Traditional royal wedding floral mandap with intricate rose and marigold drapery for sacred pheras",
     capacity: "Up to 300 Seated Family",
     area: "4,000 Sq. Ft. Sacred Pavilion",
@@ -183,7 +183,7 @@ export const VENUE_SPACES: VenueSpace[] = [
     category: "PRE-WEDDING CARNIVAL",
     title: "COURTYARD & POOLSIDE",
     tags: ["HALDI SUNSET", "MEHNDI LOUNGE", "SANGEET SUNDOWN", "200-500 GUESTS"],
-    image: "/images/gallery/resort-14.jpg",
+    image: "/images/gallery/smr-06.png",
     alt: "Illuminated luxury resort pool and courtyard area with festive cabanas for Haldi and Mehndi ceremonies",
     capacity: "200 to 500 Guests",
     area: "8,000 Sq. Ft. Courtyard",
@@ -211,5 +211,5 @@ export const VENUE_SPACES: VenueSpace[] = [
   }
 ];
 
-export const RESORT_HERO_IMAGE = "/images/gallery/resort-6.jpg";
+export const RESORT_HERO_IMAGE = "/images/gallery/smr-02.png";
 export const RESORT_HERO_ALT = "Sheesh Mahal Resort illuminated luxury facade with palm trees and evening wedding reflection pool";

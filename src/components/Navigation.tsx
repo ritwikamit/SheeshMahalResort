@@ -147,40 +147,13 @@ export const Navigation: React.FC<NavigationProps> = ({
         WebkitBackdropFilter: 'blur(16px)'
       }}
     >
-      {/* Brand & Left Section Index Indicator */}
-      <div className="flex items-center gap-3 lg:gap-5 shrink-0">
+      {/* Brand */}
+      <div className="flex items-center shrink-0">
         <SheeshMahalLogo
           variant="header"
           onClick={() => handleNavClick('home', 'top')}
           className="cursor-pointer"
         />
-
-        {/* Live Section Indexing Badge (Reveals while scrolling) */}
-        <div
-          className={`hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#161726]/10 bg-[#FAFDFB] shadow-xs transition-all duration-500 ease-out ${
-            isScrolled ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'
-          }`}
-          title={`Currently viewing: ${activeSection.label} (${Math.round(scrollProgress)}% scrolled)`}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F] animate-pulse"></span>
-          <div className="flex items-center gap-0.5 font-mono text-[10px] font-black tracking-wider text-[#4D53A8]">
-            <span key={activeSection.index} className="inline-block animate-in fade-in zoom-in-75 duration-300">
-              {activeSection.index}
-            </span>
-            <span className="text-[#161726]/30">/</span>
-            <span className="text-[#161726]/50">{activeSection.total}</span>
-          </div>
-          <div className="h-3 w-[1px] bg-[#161726]/15"></div>
-          <span
-            key={activeSection.label}
-            className="text-[10px] font-black tracking-widest text-[#161726] uppercase animate-in fade-in slide-in-from-bottom-1 duration-300"
-          >
-            {activeSection.label}
-          </span>
-          <span className="text-[9px] font-bold text-[#4D53A8] font-mono pl-0.5">
-            {Math.round(scrollProgress)}%
-          </span>
-        </div>
       </div>
 
       {/* Simple & Minimalistic Center Menu with Dynamic Underline Indexing */}
@@ -275,21 +248,8 @@ export const Navigation: React.FC<NavigationProps> = ({
         </div>
       </nav>
 
-      {/* Far Right: Clean Minimalist CTA & Mobile Index Ticker */}
+      {/* Far Right: Clean Minimalist CTA */}
       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-        {/* Mobile Live Section Index Pill */}
-        <div
-          className={`md:hidden flex items-center gap-1 px-2 py-1 rounded-full border border-[#161726]/12 bg-[#FAFDFB] text-[9px] font-mono font-black text-[#4D53A8] transition-all duration-300 shadow-2xs ${
-            isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'
-          }`}
-          title={`${activeSection.label} (${Math.round(scrollProgress)}%)`}
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F] animate-pulse"></span>
-          <span>{activeSection.index}</span>
-          <span className="text-[#161726]/30">/</span>
-          <span className="text-[#161726]/50">{activeSection.total}</span>
-        </div>
-
         <button
           type="button"
           onClick={onOpenInquiry}

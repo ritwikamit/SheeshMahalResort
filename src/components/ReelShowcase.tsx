@@ -4,15 +4,16 @@ import {
   VolumeX,
   Play,
   Pause,
-  Heart,
-  Share2,
-  Film,
-  CheckCircle2,
+  Flame,
+  Sparkles,
+  SunMedium,
   ArrowRight,
-  Music,
   RotateCcw,
-  Calendar
+  Calendar,
+  MapPin
 } from 'lucide-react';
+import { RevealUp } from './RevealUp.tsx';
+import { WeddingDeskCircleBadge } from './WeddingDeskCircleBadge.tsx';
 
 interface ReelShowcaseProps {
   onOpenInquiry: () => void;
@@ -27,17 +28,13 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(35);
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(2480);
   const [showPlayStateFlash, setShowPlayStateFlash] = useState(false);
-  const [copyFeedback, setCopyFeedback] = useState(false);
 
-  // Bulletproof autoplay and scroll-to-play lifecycle
+  // Autoplay & viewport-triggered playback lifecycle
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Enforce HTML5/React muted attributes for browser autoplay policy
     video.defaultMuted = true;
     video.muted = true;
     video.playsInline = true;
@@ -45,18 +42,12 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     const playVideo = () => {
       video
         .play()
-        .then(() => {
-          setIsPlaying(true);
-        })
-        .catch(() => {
-          setIsPlaying(false);
-        });
+        .then(() => setIsPlaying(true))
+        .catch(() => setIsPlaying(false));
     };
 
-    // Attempt autoplay immediately
     playVideo();
 
-    // Trigger autoplay when scrolled into viewport
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -69,7 +60,6 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     );
     observer.observe(video);
 
-    // Global listener to trigger video playback on first user gesture anywhere
     const onUserGesture = () => {
       if (video.paused) {
         playVideo();
@@ -87,7 +77,6 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     };
   }, []);
 
-  // Sync state on video timeupdate
   const handleTimeUpdate = () => {
     if (!videoRef.current) return;
     const curr = videoRef.current.currentTime;
@@ -97,7 +86,6 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     setProgress((curr / dur) * 100);
   };
 
-  // Toggle Mute / Minimal Audio on-off
   const toggleAudio = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     const video = videoRef.current;
@@ -107,21 +95,17 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     video.muted = nextMuted;
     setIsMuted(nextMuted);
 
-    // If unmuting while paused, resume playback
     if (!nextMuted && video.paused) {
       video.play().then(() => setIsPlaying(true)).catch(() => {});
     }
   };
 
-  // Toggle Play / Pause
   const togglePlay = () => {
     const video = videoRef.current;
     if (!video) return;
 
     if (video.paused) {
-      video.play().then(() => {
-        setIsPlaying(true);
-      }).catch(() => {});
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
     } else {
       video.pause();
       setIsPlaying(false);
@@ -130,7 +114,6 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     setTimeout(() => setShowPlayStateFlash(false), 700);
   };
 
-  // Handle Scrubbing on Progress Bar
   const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (!progressBarRef.current || !videoRef.current) return;
@@ -142,47 +125,12 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     setProgress(ratio * 100);
   };
 
-  // Format MM:SS
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  // Toggle Like
-  const handleLike = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (liked) {
-      setLiked(false);
-      setLikeCount((prev) => prev - 1);
-    } else {
-      setLiked(true);
-      setLikeCount((prev) => prev + 1);
-    }
-  };
-
-  // Share Reel
-  const handleShare = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    const shareUrl = window.location.href.split('#')[0] + '#wedding-reel';
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: 'Sheesh Mahal Resort | Royal Wedding Reel',
-          text: 'Watch authentic royal wedding celebrations at Sheesh Mahal Resort, Patna!',
-          url: shareUrl
-        });
-      } catch {
-        // Fallback to clipboard
-      }
-    } else {
-      navigator.clipboard.writeText(shareUrl);
-      setCopyFeedback(true);
-      setTimeout(() => setCopyFeedback(false), 2200);
-    }
-  };
-
-  // Restart video
   const handleRestart = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (!videoRef.current) return;
@@ -190,385 +138,331 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
   };
 
+  const reelHighlights = [
+    {
+      title: 'STARLIT BARAAT PROCESSION',
+      icon: <Flame className="w-8 h-8 text-[#FAEE2F]" strokeWidth={1.5} />,
+      cursiveTag: 'High-Energy Grand Arrival',
+      badge: 'BARAAT LAWN',
+      description: 'Starlit driveway with traditional dhol beats, imperial welcome gates, and royal vintage carriage processions.'
+    },
+    {
+      title: 'REVOLVING VARMALA STAGE',
+      icon: <Sparkles className="w-8 h-8 text-[#9FA1FF]" strokeWidth={1.5} />,
+      cursiveTag: 'Cinematic Garland Exchange',
+      badge: 'VARMALA STAGE',
+      description: 'Dramatic revolving stage synchronised with cold pyrotechnics, starlit smoke effects, and fragrant marigold showers.'
+    },
+    {
+      title: 'SACRED VEDIC MANDAP',
+      icon: <SunMedium className="w-8 h-8 text-[#B5BAFF]" strokeWidth={1.5} />,
+      cursiveTag: 'Seven Eternal Vows',
+      badge: 'SAAT PHERE',
+      description: 'Consecrated floral mandap with authentic Vedic havan chanting, holy fire rites, and blessings under starry skies.'
+    }
+  ];
+
   return (
     <section
       id="wedding-reel"
-      className="relative w-full py-16 sm:py-24 lg:py-28 bg-[#161726] text-[#FAFDFB] overflow-hidden border-b border-[#9FA1FF]/20"
+      className="py-16 sm:py-24 lg:py-32 bg-[#D9F9DF]/40 text-[#161726] border-b border-[#9FA1FF]/20 relative overflow-hidden"
     >
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-[#9FA1FF]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-[#FAEE2F]/10 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative">
         
-        {/* Section Header */}
-        <div className="mb-12 sm:mb-16 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAEE2F]/15 border border-[#FAEE2F]/30 text-[#FAEE2F] text-[10px] sm:text-xs font-black tracking-[0.25em] uppercase mb-4 shadow-sm">
-            <Film size={13} className="text-[#FAEE2F]" />
-            <span>REAL CELEBRATIONS IN MOTION</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.95] text-white">
-            WITNESS THE ROYAL{' '}
-            <span className="font-cursive text-5xl sm:text-7xl lg:text-8xl text-[#FAEE2F] capitalize font-normal tracking-normal block sm:inline">
-              Grandeur
-            </span>
-          </h2>
-
-          <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-white/75 font-medium leading-relaxed">
-            Step inside a live wedding at Sheesh Mahal Resort. From majestic starlit Baraats to emotional Saat Phere under consecrated floral Mandaps — experience the pulse of Patna’s finest wedding sanctuary.
-          </p>
-        </div>
-
-        {/* Main Grid: Reel Player & Story Highlights */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          {/* Left Column: Instagram-style Luxury Phone Reel Player */}
-          <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
-            <div className="relative w-full max-w-[360px] sm:max-w-[380px]">
-              
-              {/* Outer decorative halo */}
-              <div className="absolute -inset-2 sm:-inset-3 rounded-[38px] bg-gradient-to-b from-[#9FA1FF]/30 via-transparent to-[#FAEE2F]/20 blur-xl opacity-75 pointer-events-none" />
-
-              {/* Reel Device / Card Container */}
-              <div className="relative rounded-[32px] overflow-hidden bg-black border-2 border-[#9FA1FF]/40 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] group select-none">
-                
-                {/* 9:16 Vertical Video Frame */}
-                <div
-                  className="relative aspect-[9/16] w-full bg-black cursor-pointer overflow-hidden"
-                  onClick={togglePlay}
-                >
-                  <video
-                    ref={videoRef}
-                    autoPlay
-                    loop
-                    muted={isMuted}
-                    playsInline
-                    preload="auto"
-                    onPlay={() => setIsPlaying(true)}
-                    onPause={() => setIsPlaying(false)}
-                    onTimeUpdate={handleTimeUpdate}
-                    className="w-full h-full object-cover"
-                  >
-                    <source src="/videos/reel.mp4" type="video/mp4" />
-                  </video>
-
-                  {/* Play Overlay when video is paused */}
-                  {!isPlaying && (
-                    <div
-                      onClick={togglePlay}
-                      className="absolute inset-0 bg-black/45 backdrop-blur-[2px] flex flex-col items-center justify-center z-30 cursor-pointer transition-all"
-                    >
-                      <div className="w-20 h-20 rounded-full bg-[#FAEE2F] text-[#161726] flex items-center justify-center shadow-2xl shadow-[#FAEE2F]/50 transform hover:scale-110 transition-transform">
-                        <Play size={36} className="ml-1 fill-[#161726]" />
-                      </div>
-                      <span className="mt-3 text-xs font-black uppercase tracking-widest text-white bg-black/70 px-4 py-1.5 rounded-full border border-white/20 shadow-lg">
-                        TAP TO PLAY REEL
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Top Header Overlay */}
-                  <div className="absolute top-0 left-0 right-0 p-4 pt-5 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-20 flex items-center justify-between pointer-events-auto">
-                    {/* Channel / Venue Avatar */}
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-9 h-9 rounded-full bg-[#FAEE2F] p-0.5 shadow-md flex items-center justify-center overflow-hidden border border-white/20">
-                        <img
-                          src="/SheeshMahalLogo.png"
-                          alt="Sheesh Mahal"
-                          className="w-full h-full object-contain"
-                          onError={(e) => {
-                            (e.target as HTMLElement).style.display = 'none';
-                          }}
-                        />
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-xs font-black tracking-tight text-white">sheeshmahalresort</span>
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F]" />
-                        </div>
-                        <span className="text-[10px] text-white/75 font-medium tracking-wide">Patna · Ashiana-Digha</span>
-                      </div>
-                    </div>
-
-                    {/* Minimal Audio On/Off Button - Top Bar */}
-                    <button
-                      type="button"
-                      onClick={toggleAudio}
-                      aria-label={isMuted ? 'Turn Audio On' : 'Turn Audio Off'}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-lg backdrop-blur-md ${
-                        isMuted
-                          ? 'bg-black/60 text-white/90 hover:bg-black/80 border border-white/25 hover:text-white'
-                          : 'bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] border border-[#FAEE2F] shadow-[#FAEE2F]/40'
-                      }`}
-                    >
-                      {isMuted ? (
-                        <>
-                          <VolumeX size={15} className="text-white/90" />
-                          <span className="text-[10px] font-bold">AUDIO OFF</span>
-                        </>
-                      ) : (
-                        <>
-                          <Volume2 size={15} className="text-[#161726] animate-pulse" />
-                          <span className="text-[10px] font-black text-[#161726]">AUDIO ON</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-
-                  {/* Play/Pause Center Flash Indicator */}
-                  {showPlayStateFlash && isPlaying && (
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 transition-opacity">
-                      <div className="w-16 h-16 rounded-full bg-black/65 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-2xl">
-                        <Play size={28} className="ml-1 text-[#FAEE2F]" />
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Right Side Social Floating Action Rail */}
-                  <div className="absolute right-3 bottom-24 z-20 flex flex-col items-center gap-4 pointer-events-auto">
-                    
-                    {/* Minimal Audio Toggle Icon Button */}
-                    <button
-                      type="button"
-                      onClick={toggleAudio}
-                      title={isMuted ? 'Turn Audio On' : 'Mute Audio'}
-                      aria-label="Toggle Reel Audio"
-                      className={`w-11 h-11 rounded-full flex flex-col items-center justify-center transition-transform active:scale-90 shadow-xl cursor-pointer backdrop-blur-md ${
-                        isMuted
-                          ? 'bg-black/65 text-white border border-white/30 hover:border-white'
-                          : 'bg-[#FAEE2F] text-[#161726] border-2 border-white ring-2 ring-[#FAEE2F]/50 animate-bounce-slow'
-                      }`}
-                    >
-                      {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} className="font-black" />}
-                    </button>
-
-                    {/* Like Button */}
-                    <button
-                      type="button"
-                      onClick={handleLike}
-                      className="group flex flex-col items-center gap-1 cursor-pointer transition-transform active:scale-90"
-                      aria-label="Like wedding reel"
-                    >
-                      <div
-                        className={`w-11 h-11 rounded-full flex items-center justify-center transition-colors shadow-lg backdrop-blur-md border ${
-                          liked
-                            ? 'bg-red-500 border-red-400 text-white'
-                            : 'bg-black/50 border-white/20 text-white hover:bg-black/70'
-                        }`}
-                      >
-                        <Heart size={20} className={liked ? 'fill-current text-white' : ''} />
-                      </div>
-                      <span className="text-[10px] font-black text-white drop-shadow">
-                        {likeCount.toLocaleString()}
-                      </span>
-                    </button>
-
-                    {/* Share Button */}
-                    <button
-                      type="button"
-                      onClick={handleShare}
-                      className="flex flex-col items-center gap-1 cursor-pointer transition-transform active:scale-90"
-                      aria-label="Share wedding reel"
-                    >
-                      <div className="w-11 h-11 rounded-full bg-black/50 border border-white/20 flex items-center justify-center text-white hover:bg-black/70 shadow-lg backdrop-blur-md">
-                        <Share2 size={18} />
-                      </div>
-                      <span className="text-[10px] font-bold text-white drop-shadow">
-                        {copyFeedback ? 'Copied!' : 'Share'}
-                      </span>
-                    </button>
-
-                    {/* Replay Button */}
-                    <button
-                      type="button"
-                      onClick={handleRestart}
-                      title="Replay from start"
-                      className="w-11 h-11 rounded-full bg-black/50 border border-white/20 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/70 shadow-lg backdrop-blur-md cursor-pointer transition-transform active:scale-90"
-                    >
-                      <RotateCcw size={16} />
-                    </button>
-                  </div>
-
-                  {/* Bottom Caption & Audio Track Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 pb-4 bg-gradient-to-t from-black/95 via-black/60 to-transparent z-20 pointer-events-auto">
-                    
-                    {/* Caption text */}
-                    <p className="text-xs sm:text-sm font-semibold text-white/95 line-clamp-2 drop-shadow mb-2">
-                      Royal Baraat Entry & Sacred Saat Phere at Sheesh Mahal Resort ✨ The palace wedding of dreams.
-                    </p>
-
-                    {/* Audio track ticker + Animated Sound waves */}
-                    <div className="flex items-center justify-between text-white/80 text-[11px] font-medium pt-1 border-t border-white/15">
-                      <div className="flex items-center gap-2 overflow-hidden">
-                        <Music size={12} className={isMuted ? 'text-white/60' : 'text-[#FAEE2F] animate-spin'} />
-                        <span className="truncate text-[10px] font-mono tracking-tight text-white/85">
-                          Sheesh Mahal Wedding Film · Original Audio
-                        </span>
-                      </div>
-
-                      {/* Sound wave animated bars */}
-                      <div className="flex items-end gap-0.5 h-3 shrink-0 ml-2">
-                        <span className={`w-0.5 bg-[#FAEE2F] rounded-full transition-all duration-300 ${!isMuted && isPlaying ? 'h-3 animate-pulse' : 'h-1'}`} />
-                        <span className={`w-0.5 bg-[#FAEE2F] rounded-full transition-all duration-300 ${!isMuted && isPlaying ? 'h-2 animate-bounce' : 'h-1'}`} />
-                        <span className={`w-0.5 bg-[#FAEE2F] rounded-full transition-all duration-300 ${!isMuted && isPlaying ? 'h-3.5 animate-pulse' : 'h-1'}`} />
-                        <span className={`w-0.5 bg-[#FAEE2F] rounded-full transition-all duration-300 ${!isMuted && isPlaying ? 'h-1.5 animate-bounce' : 'h-1'}`} />
-                      </div>
-                    </div>
-
-                    {/* Scrubbable Progress Bar */}
-                    <div
-                      ref={progressBarRef}
-                      onClick={handleProgressClick}
-                      className="mt-3 relative w-full h-1.5 bg-white/20 rounded-full cursor-pointer overflow-hidden group/bar"
-                    >
-                      <div
-                        className="h-full bg-gradient-to-r from-[#9FA1FF] via-[#FAEE2F] to-[#FAEE2F] rounded-full relative transition-[width] duration-100"
-                        style={{ width: `${progress}%` }}
-                      >
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full shadow-md opacity-0 group-hover/bar:opacity-100 transition-opacity" />
-                      </div>
-                    </div>
-
-                    {/* Time Counter */}
-                    <div className="flex items-center justify-between text-[9px] font-mono text-white/60 mt-1">
-                      <span>{formatTime(currentTime)}</span>
-                      <span>{formatTime(duration)}</span>
-                    </div>
-
-                  </div>
-                </div>
-
-                {/* Bottom Quick Control Bar */}
-                <div className="px-4 py-3 bg-[#11121d] border-t border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={togglePlay}
-                      className="text-xs font-black uppercase tracking-wider text-white hover:text-[#FAEE2F] flex items-center gap-1.5 cursor-pointer"
-                    >
-                      {isPlaying ? <Pause size={13} /> : <Play size={13} />}
-                      <span>{isPlaying ? 'PAUSE' : 'PLAY'}</span>
-                    </button>
-                    <span className="text-white/20">|</span>
-                    {/* Minimal Audio Button */}
-                    <button
-                      type="button"
-                      onClick={toggleAudio}
-                      className={`text-xs font-black uppercase tracking-wider flex items-center gap-1.5 cursor-pointer transition-colors ${
-                        isMuted ? 'text-white/70 hover:text-white' : 'text-[#FAEE2F]'
-                      }`}
-                    >
-                      {isMuted ? <VolumeX size={13} /> : <Volume2 size={13} />}
-                      <span>{isMuted ? 'AUDIO OFF' : 'AUDIO ON'}</span>
-                    </button>
-                  </div>
-
-                  <span className="text-[10px] font-mono text-[#FAEE2F] font-bold tracking-widest uppercase">
-                    4K LIVE
-                  </span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Editorial Wedding Storytelling & Highlights */}
-          <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-2">
-            
-            <div className="mb-4 flex items-center gap-3">
-              <span className="font-cursive text-2xl sm:text-3xl text-[#FAEE2F]">
-                Cinematic Wedding Moments
+        {/* Section Header - Styled consistently with ServicesGrid and PhilosophySection */}
+        <RevealUp>
+          <div className="mb-10 sm:mb-14 lg:mb-16">
+            <div className="flex items-center gap-3 mb-3 sm:mb-4">
+              <span className="label-utility text-[#161726]/70">
+                REAL CELEBRATIONS IN MOTION
               </span>
-              <span className="w-8 h-[1px] bg-[#9FA1FF]" />
+              <span className="w-8 sm:w-10 h-[1px] bg-[#9FA1FF]"></span>
             </div>
 
-            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white mb-6 leading-tight">
-              EVERY CELEBRATION DESERVES A ROYAL STAGE
-            </h3>
+            <h2 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726]">
+              WITNESS THE ROYAL GRANDEUR
+            </h2>
 
-            <p className="text-base sm:text-lg text-white/80 leading-relaxed font-normal mb-8">
-              Watch authentic wedding footage captured right here at Sheesh Mahal Resort. Our 60,000+ sq.ft royal property brings together starlit grand Baraat entries, pillarless royal ballrooms, consecrated Vedic mandaps, and curated gourmet banquets for up to 2,000 wedding guests.
+            <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+              Authentic Wedding Celebrations in Motion
             </p>
 
-            {/* 4 Feature Points */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#9FA1FF]/40 transition-colors">
-                <div className="flex items-center gap-2.5 text-[#FAEE2F] font-black text-xs uppercase tracking-wider mb-1.5">
-                  <CheckCircle2 size={16} />
-                  <span>Starlit Baraat Corridors</span>
-                </div>
-                <p className="text-xs text-white/70 leading-relaxed">
-                  Grand welcome gates, royal vintage carriages, and high-energy procession pathways.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#FAEE2F]/40 transition-colors">
-                <div className="flex items-center gap-2.5 text-[#FAEE2F] font-black text-xs uppercase tracking-wider mb-1.5">
-                  <CheckCircle2 size={16} />
-                  <span>Revolving Varmala Stage</span>
-                </div>
-                <p className="text-xs text-white/70 leading-relaxed">
-                  Cinematic revolving stages with synchronised cold pyrotechnics and floral showers.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#9FA1FF]/40 transition-colors">
-                <div className="flex items-center gap-2.5 text-[#FAEE2F] font-black text-xs uppercase tracking-wider mb-1.5">
-                  <CheckCircle2 size={16} />
-                  <span>Vedic Sacred Mandaps</span>
-                </div>
-                <p className="text-xs text-white/70 leading-relaxed">
-                  Consecrated ceremonial platforms with live havan facilities and traditional chants.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#FAEE2F]/40 transition-colors">
-                <div className="flex items-center gap-2.5 text-[#FAEE2F] font-black text-xs uppercase tracking-wider mb-1.5">
-                  <CheckCircle2 size={16} />
-                  <span>Shahi Feast Banquets</span>
-                </div>
-                <p className="text-xs text-white/70 leading-relaxed">
-                  Extravagant live culinary counters and authentic Mithila & Awadhi wedding menus.
-                </p>
-              </div>
-            </div>
-
-            {/* Verified Quote */}
-            <div className="p-5 rounded-2xl bg-gradient-to-r from-[#9FA1FF]/10 to-[#FAEE2F]/10 border-l-4 border-[#FAEE2F] mb-8">
-              <p className="font-cursive text-xl sm:text-2xl text-[#FAEE2F] mb-1">
-                "The actual wedding night looked even more magical than the reel."
-              </p>
-              <p className="text-xs font-bold uppercase tracking-wider text-white/75">
-                — Royal Wedding Host, Patna
-              </p>
-            </div>
-
-            {/* Interactive CTAs */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-              <button
-                type="button"
-                onClick={onOpenInquiry}
-                className="inline-flex items-center gap-3 px-6 py-3.5 bg-[#FAEE2F] text-[#161726] font-black text-xs sm:text-sm uppercase tracking-[0.2em] rounded-md hover:bg-[#FAFDFB] transition-colors shadow-lg shadow-[#FAEE2F]/20 cursor-pointer"
-              >
-                <Calendar size={16} />
-                <span>BOOK YOUR WEDDING DATE</span>
-                <ArrowRight size={16} />
-              </button>
-
-              <button
-                type="button"
-                onClick={toggleAudio}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-md border border-white/20 text-white hover:border-[#FAEE2F] hover:text-[#FAEE2F] transition-colors text-xs font-black uppercase tracking-wider cursor-pointer"
-              >
-                {isMuted ? <Volume2 size={16} /> : <VolumeX size={16} />}
-                <span>{isMuted ? 'ENABLE REEL AUDIO' : 'MUTE REEL AUDIO'}</span>
-              </button>
-            </div>
-
+            <p className="mt-4 text-base sm:text-xl text-[#161726]/75 max-w-3xl font-medium">
+              Step inside an authentic royal wedding celebrated at Sheesh Mahal Resort. From majestic starlit Baraats to emotional Saat Phere under consecrated floral Mandaps — experience the pulse of Patna’s finest wedding sanctuary.
+            </p>
           </div>
+        </RevealUp>
 
+        {/* Medium-Size Landscape Reel Showcase Box */}
+        <RevealUp delay={120}>
+          <div className="relative max-w-4xl mx-auto mb-14 sm:mb-20 pt-6">
+            
+            {/* Signature Circular Badge anchored to the TOP-LEFT corner of the reel container */}
+            <div className="absolute -top-7 -left-3 sm:-top-10 sm:-left-6 md:-left-8 z-30 pointer-events-auto">
+              <WeddingDeskCircleBadge
+                id="badge-section-reel"
+                badgeNumber="4K"
+                title="WEDDING REEL"
+                subtitle="Live In Motion"
+                statusText="REAL WEDDING"
+                onClick={onOpenInquiry}
+                bounceDelay="0.6s"
+              />
+            </div>
+
+            {/* The Medium-Sized Landscape Video Card */}
+            <div className="relative rounded-[24px] overflow-hidden shadow-2xl border-2 border-[#9FA1FF]/30 group bg-[#161726]">
+              
+              {/* Landscape 16:9 Aspect Ratio Frame */}
+              <div
+                className="relative aspect-video w-full bg-black cursor-pointer overflow-hidden select-none"
+                onClick={togglePlay}
+              >
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  preload="auto"
+                  onPlay={() => setIsPlaying(true)}
+                  onPause={() => setIsPlaying(false)}
+                  onTimeUpdate={handleTimeUpdate}
+                  className="w-full h-full object-cover object-center"
+                >
+                  <source src="/videos/reel.mp4" type="video/mp4" />
+                </video>
+
+                {/* Subtle top & bottom vignette gradient overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/50 pointer-events-none" />
+
+                {/* Top Bar: Channel Badge + Minimal Audio On/Off Button */}
+                <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 flex items-center justify-between z-20 pointer-events-auto">
+                  
+                  {/* Left: Sheesh Mahal Live Pill */}
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-xs font-black tracking-widest uppercase">
+                    <span className="w-2 h-2 rounded-full bg-[#FAEE2F] animate-pulse" />
+                    <span>SHEESH MAHAL WEDDING FILM</span>
+                  </div>
+
+                  {/* Right: Minimal Audio On/Off Button */}
+                  <button
+                    type="button"
+                    onClick={toggleAudio}
+                    aria-label={isMuted ? 'Turn Audio On' : 'Turn Audio Off'}
+                    className={`flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-xl backdrop-blur-md ${
+                      isMuted
+                        ? 'bg-black/70 text-white hover:bg-black/90 border border-white/30 hover:border-white'
+                        : 'bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] border border-[#FAEE2F] shadow-[#FAEE2F]/40'
+                    }`}
+                  >
+                    {isMuted ? (
+                      <>
+                        <VolumeX size={16} />
+                        <span className="text-[10px] sm:text-xs">AUDIO OFF</span>
+                      </>
+                    ) : (
+                      <>
+                        <Volume2 size={16} className="text-[#161726] animate-pulse" />
+                        <span className="text-[10px] sm:text-xs text-[#161726]">AUDIO ON</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* Play Overlay when video is paused */}
+                {!isPlaying && (
+                  <div
+                    onClick={togglePlay}
+                    className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center z-30 cursor-pointer transition-all"
+                  >
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FAEE2F] text-[#161726] flex items-center justify-center shadow-2xl shadow-[#FAEE2F]/50 transform hover:scale-110 transition-transform">
+                      <Play size={32} className="ml-1 fill-[#161726]" />
+                    </div>
+                    <span className="mt-3 text-[10px] sm:text-xs font-black uppercase tracking-widest text-white bg-black/75 px-3.5 py-1.5 rounded-full border border-white/20 shadow-lg">
+                      TAP TO PLAY
+                    </span>
+                  </div>
+                )}
+
+                {/* Play/Pause Center Flash Indicator */}
+                {showPlayStateFlash && isPlaying && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 transition-opacity">
+                    <div className="w-16 h-16 rounded-full bg-black/65 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-2xl">
+                      <Play size={28} className="ml-1 text-[#FAEE2F]" />
+                    </div>
+                  </div>
+                )}
+
+                {/* Bottom Bar: Title, Progress Scrubber, Duration & Replay */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 pointer-events-auto">
+                  
+                  {/* Video Title & Location */}
+                  <div className="flex items-center justify-between text-white drop-shadow mb-3">
+                    <div>
+                      <p className="font-cursive text-xl sm:text-2xl text-[#FAEE2F]">
+                        The Royal Nuptials
+                      </p>
+                      <p className="text-xs sm:text-sm font-bold tracking-tight uppercase">
+                        BARAAT ARRIVAL & SACRED SAAT PHERE · DIGHA, PATNA
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={handleRestart}
+                        title="Replay from start"
+                        className="p-2 rounded-full bg-black/50 border border-white/20 text-white/80 hover:text-white hover:bg-black/70 cursor-pointer transition-transform active:scale-90"
+                      >
+                        <RotateCcw size={15} />
+                      </button>
+
+                      <span className="hidden sm:inline text-[10px] font-mono tracking-widest uppercase font-bold text-white/90 bg-black/60 px-2.5 py-1 rounded-md border border-white/10">
+                        UP TO 2000 GUESTS
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Scrubbable Progress Bar */}
+                  <div
+                    ref={progressBarRef}
+                    onClick={handleProgressClick}
+                    className="relative w-full h-1.5 bg-white/25 rounded-full cursor-pointer overflow-hidden group/bar"
+                  >
+                    <div
+                      className="h-full bg-gradient-to-r from-[#9FA1FF] via-[#FAEE2F] to-[#FAEE2F] rounded-full relative transition-[width] duration-100"
+                      style={{ width: `${progress}%` }}
+                    >
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md opacity-0 group-hover/bar:opacity-100 transition-opacity" />
+                    </div>
+                  </div>
+
+                  {/* Time Counter */}
+                  <div className="flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-white/70 mt-1.5">
+                    <span>{formatTime(currentTime)}</span>
+                    <span className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={toggleAudio}
+                        className="text-[#FAEE2F] font-bold hover:underline cursor-pointer"
+                      >
+                        {isMuted ? 'UNMUTE AUDIO' : 'MUTED'}
+                      </button>
+                      <span>·</span>
+                      <span>{formatTime(duration)}</span>
+                    </span>
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Bottom Quick Control Bar */}
+              <div className="px-5 py-3 bg-[#11121d] border-t border-white/10 flex items-center justify-between text-xs font-black uppercase tracking-wider text-white">
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={togglePlay}
+                    className="flex items-center gap-1.5 text-white hover:text-[#FAEE2F] cursor-pointer"
+                  >
+                    {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+                    <span>{isPlaying ? 'PAUSE' : 'PLAY'}</span>
+                  </button>
+
+                  <span className="text-white/20">|</span>
+
+                  {/* Audio Status */}
+                  <button
+                    type="button"
+                    onClick={toggleAudio}
+                    className={`flex items-center gap-1.5 cursor-pointer transition-colors ${
+                      isMuted ? 'text-white/70 hover:text-white' : 'text-[#FAEE2F]'
+                    }`}
+                  >
+                    {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                    <span>{isMuted ? 'AUDIO OFF' : 'AUDIO ON'}</span>
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-2 text-[#9FA1FF]">
+                  <MapPin size={13} className="text-[#FAEE2F]" />
+                  <span className="text-[10px] font-mono tracking-widest uppercase">
+                    PATNA 800011
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </RevealUp>
+
+        {/* 3 Highlight Cards - Designed consistently with PhilosophySection & ServicesGrid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+          {reelHighlights.map((item, idx) => (
+            <RevealUp key={idx} delay={idx * 100}>
+              <div className="p-8 sm:p-10 bg-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 h-full flex flex-col justify-between group hover:border-[#FAEE2F] transition-all duration-700 shadow-sm hover:shadow-md">
+                <div>
+                  <div className="flex items-center justify-between mb-5 sm:mb-6">
+                    <div className="p-3 bg-[#D9F9DF] rounded-xl border border-[#9FA1FF]/20">
+                      {item.icon}
+                    </div>
+                    <span className="text-[9px] font-black tracking-widest uppercase bg-[#161726] text-[#FAEE2F] px-2.5 py-1 rounded-md">
+                      {item.badge}
+                    </span>
+                  </div>
+
+                  <p className="font-cursive text-2xl text-[#9FA1FF] mb-1 font-normal">
+                    {item.cursiveTag}
+                  </p>
+                  <h3 className="text-xl font-black uppercase tracking-tight text-[#161726] mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-[#161726]/80 leading-relaxed font-normal">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="pt-6 border-t border-[#9FA1FF]/15 mt-6 flex items-center justify-between">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#161726]/60">
+                    4K LIVE CAPTURE
+                  </span>
+                  <button
+                    type="button"
+                    onClick={onOpenInquiry}
+                    className="text-xs font-black uppercase tracking-wider text-[#9FA1FF] hover:text-[#161726] transition-colors cursor-pointer"
+                  >
+                    INQUIRE DATES →
+                  </button>
+                </div>
+              </div>
+            </RevealUp>
+          ))}
         </div>
+
+        {/* Bottom Call to Action Bar */}
+        <RevealUp delay={200}>
+          <div className="p-6 sm:p-10 rounded-[24px] bg-[#161726] text-[#FAFDFB] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-[#9FA1FF]/30">
+            <div>
+              <p className="font-cursive text-2xl sm:text-3xl text-[#FAEE2F]">
+                Plan Your Royal Wedding At Sheesh Mahal
+              </p>
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/80 mt-1">
+                Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna 800011
+              </p>
+            </div>
+
+            <button
+              type="button"
+              onClick={onOpenInquiry}
+              className="inline-flex items-center gap-3 px-6 py-3.5 bg-[#FAEE2F] text-[#161726] font-black text-xs sm:text-sm uppercase tracking-[0.2em] rounded-md hover:bg-[#FAFDFB] transition-colors shadow-lg shadow-[#FAEE2F]/20 cursor-pointer shrink-0"
+            >
+              <Calendar size={16} />
+              <span>BOOK YOUR WEDDING DATE</span>
+              <ArrowRight size={16} />
+            </button>
+          </div>
+        </RevealUp>
 
       </div>
     </section>

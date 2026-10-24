@@ -105,6 +105,7 @@ export default function App() {
           currentPage={currentPage}
           onNavigatePage={handleNavigatePage}
           onOpenInquiry={() => setIsInquiryModalOpen(true)}
+          onNavigateSection={handleNavigateSection}
         />
 
       {/* Main Content Router */}

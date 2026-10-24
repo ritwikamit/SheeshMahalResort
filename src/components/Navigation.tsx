@@ -10,16 +10,89 @@ interface NavigationProps {
   currentPage: PageRoute;
   onNavigatePage: (page: PageRoute) => void;
   onOpenInquiry: () => void;
+  onNavigateSection?: (sectionId: string) => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({
   currentPage,
   onNavigatePage,
-  onOpenInquiry
+  onOpenInquiry,
+  onNavigateSection
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [moreMenuOpen, setMoreMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState({
+    index: '01',
+    total: '06',
+    label: 'SANCTUARY',
+    id: 'top'
+  });
   const moreRef = useRef<HTMLDivElement>(null);
+
+  // Home page sections mapping
+  const homeSections = [
+    { id: 'top', label: 'SANCTUARY', index: '01', page: 'home' as PageRoute },
+    { id: 'wedding-reel', label: 'ROYAL REEL', index: '02', page: 'home' as PageRoute },
+    { id: 'amenities', label: 'SERVICES', index: '03', page: 'catering' as PageRoute },
+    { id: 'spaces', label: 'VENUES', index: '04', page: 'venues' as PageRoute },
+    { id: 'rituals', label: 'RITUALS', index: '05', page: 'rituals' as PageRoute },
+    { id: 'map-location', label: 'LOCATION', index: '06', page: 'home' as PageRoute },
+  ];
+
+  // Scroll tracking & live indexing
+  useEffect(() => {
+    const handleScroll = () => {
+      const winScroll = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = docHeight > 0 ? (winScroll / docHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, scrolled)));
+      setIsScrolled(winScroll > 20);
+
+      if (currentPage === 'home') {
+        const triggerPoint = winScroll + 220;
+        for (let i = homeSections.length - 1; i >= 0; i--) {
+          const el = document.getElementById(homeSections[i].id);
+          if (el) {
+            const top = el.offsetTop;
+            if (triggerPoint >= top) {
+              setActiveSection({
+                index: homeSections[i].index,
+                total: '06',
+                label: homeSections[i].label,
+                id: homeSections[i].id
+              });
+              break;
+            }
+          }
+        }
+      } else {
+        const pageLabels: Record<PageRoute, { label: string; index: string }> = {
+          home: { label: 'HOME', index: '01' },
+          venues: { label: 'VENUES', index: '02' },
+          catering: { label: 'CATERING', index: '03' },
+          rituals: { label: 'RITUALS', index: '04' },
+          gallery: { label: 'GALLERY', index: '05' },
+          packages: { label: 'PACKAGES', index: '06' },
+          faqs: { label: 'FAQS', index: '07' },
+          terms: { label: 'TERMS', index: '08' },
+          cookies: { label: 'COOKIES', index: '09' }
+        };
+        const currentMeta = pageLabels[currentPage] || { label: 'PALACE', index: '01' };
+        setActiveSection({
+          index: currentMeta.index,
+          total: '09',
+          label: currentMeta.label,
+          id: currentPage
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [currentPage]);
 
   // Close "More" dropdown when clicking outside
   useEffect(() => {
@@ -32,11 +105,19 @@ export const Navigation: React.FC<NavigationProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleNavClick = (page: PageRoute) => {
-    onNavigatePage(page);
+  const handleNavClick = (page: PageRoute, sectionId?: string) => {
+    if (currentPage === 'home' && sectionId && onNavigateSection) {
+      onNavigateSection(sectionId);
+    } else {
+      onNavigatePage(page);
+      if (sectionId && onNavigateSection) {
+        setTimeout(() => onNavigateSection(sectionId), 120);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
     setMobileMenuOpen(false);
     setMoreMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const moreItems: { label: string; page: PageRoute }[] = [
@@ -45,75 +126,114 @@ export const Navigation: React.FC<NavigationProps> = ({
     { label: 'WEDDING FAQS', page: 'faqs' }
   ];
 
+  // Helper to determine if link is active based on page or section in view
+  const isLinkActive = (page: PageRoute, sectionId?: string) => {
+    if (currentPage !== 'home') {
+      return currentPage === page;
+    }
+    if (sectionId) {
+      return activeSection.id === sectionId;
+    }
+    return activeSection.id === 'top' || activeSection.id === 'wedding-reel';
+  };
+
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 h-[76px] sm:h-[80px] px-3.5 sm:px-6 lg:px-12 flex items-center justify-between border-b border-[#9FA1FF]/20 transition-all duration-300"
+      className={`fixed top-0 left-0 right-0 z-50 h-[76px] sm:h-[80px] px-3.5 sm:px-6 lg:px-12 flex items-center justify-between border-b border-[#161726]/10 transition-all duration-300 ${
+        isScrolled ? 'shadow-md shadow-[#161726]/5 bg-[#FAFDFB]/95' : 'bg-[#FAFDFB]/92'
+      }`}
       style={{
-        backgroundColor: 'rgba(250, 253, 251, 0.94)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)'
       }}
     >
-      {/* Brand: SheeshMahalLogo */}
-      <div className="flex items-center shrink-0">
+      {/* Brand & Left Section Index Indicator */}
+      <div className="flex items-center gap-3 lg:gap-5 shrink-0">
         <SheeshMahalLogo
           variant="header"
-          onClick={() => handleNavClick('home')}
+          onClick={() => handleNavClick('home', 'top')}
           className="cursor-pointer"
         />
+
+        {/* Live Section Indexing Badge (Reveals while scrolling) */}
+        <div
+          className={`hidden md:inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#161726]/10 bg-[#FAFDFB] shadow-xs transition-all duration-500 ease-out ${
+            isScrolled ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'
+          }`}
+          title={`Currently viewing: ${activeSection.label} (${Math.round(scrollProgress)}% scrolled)`}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F] animate-pulse"></span>
+          <div className="flex items-center gap-0.5 font-mono text-[10px] font-black tracking-wider text-[#4D53A8]">
+            <span key={activeSection.index} className="inline-block animate-in fade-in zoom-in-75 duration-300">
+              {activeSection.index}
+            </span>
+            <span className="text-[#161726]/30">/</span>
+            <span className="text-[#161726]/50">{activeSection.total}</span>
+          </div>
+          <div className="h-3 w-[1px] bg-[#161726]/15"></div>
+          <span
+            key={activeSection.label}
+            className="text-[10px] font-black tracking-widest text-[#161726] uppercase animate-in fade-in slide-in-from-bottom-1 duration-300"
+          >
+            {activeSection.label}
+          </span>
+          <span className="text-[9px] font-bold text-[#4D53A8] font-mono pl-0.5">
+            {Math.round(scrollProgress)}%
+          </span>
+        </div>
       </div>
 
-      {/* Simple & Minimalistic Center Menu */}
+      {/* Simple & Minimalistic Center Menu with Dynamic Underline Indexing */}
       <nav className="hidden md:flex items-center gap-6 lg:gap-8">
         <button
           type="button"
-          onClick={() => handleNavClick('home')}
+          onClick={() => handleNavClick('home', 'top')}
           className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            currentPage === 'home' ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
+            isLinkActive('home') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
           }`}
         >
           HOME
-          {currentPage === 'home' && (
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#FAEE2F]"></span>
+          {isLinkActive('home') && (
+            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
         <button
           type="button"
-          onClick={() => handleNavClick('venues')}
+          onClick={() => handleNavClick('venues', 'spaces')}
           className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            currentPage === 'venues' ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
+            isLinkActive('venues', 'spaces') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
           }`}
         >
           VENUES
-          {currentPage === 'venues' && (
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#FAEE2F]"></span>
+          {isLinkActive('venues', 'spaces') && (
+            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
         <button
           type="button"
-          onClick={() => handleNavClick('catering')}
+          onClick={() => handleNavClick('catering', 'amenities')}
           className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            currentPage === 'catering' ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
+            isLinkActive('catering', 'amenities') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
           }`}
         >
           CATERING
-          {currentPage === 'catering' && (
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#FAEE2F]"></span>
+          {isLinkActive('catering', 'amenities') && (
+            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
         <button
           type="button"
-          onClick={() => handleNavClick('rituals')}
+          onClick={() => handleNavClick('rituals', 'rituals')}
           className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            currentPage === 'rituals' ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
+            isLinkActive('rituals', 'rituals') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
           }`}
         >
           RITUALS
-          {currentPage === 'rituals' && (
-            <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#FAEE2F]"></span>
+          {isLinkActive('rituals', 'rituals') && (
+            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
@@ -131,20 +251,20 @@ export const Navigation: React.FC<NavigationProps> = ({
             <span>MORE</span>
             <ChevronDown size={12} className={`transition-transform duration-200 ${moreMenuOpen ? 'rotate-180' : ''}`} />
             {['gallery', 'packages', 'faqs'].includes(currentPage) && (
-              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-[#FAEE2F]"></span>
+              <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full"></span>
             )}
           </button>
 
           {/* Minimalist Dropdown Menu */}
           {moreMenuOpen && (
-            <div className="absolute top-full left-0 mt-3 w-48 bg-[#FAFDFB] border border-[#9FA1FF]/30 rounded-xl shadow-xl py-2 z-50">
+            <div className="absolute top-full left-0 mt-3 w-48 bg-[#FAFDFB] border border-[#161726]/12 rounded-xl shadow-xl py-2 z-50">
               {moreItems.map((item) => (
                 <button
                   key={item.page}
                   type="button"
                   onClick={() => handleNavClick(item.page)}
-                  className={`w-full text-left px-4 py-2 text-[10px] font-black uppercase tracking-wider transition-colors hover:bg-[#D9F9DF] ${
-                    currentPage === item.page ? 'text-[#9FA1FF] bg-[#D9F9DF]/50' : 'text-[#161726]'
+                  className={`w-full text-left px-4 py-2 text-[10px] font-black uppercase tracking-wider transition-colors hover:bg-[#161726]/5 ${
+                    currentPage === item.page ? 'text-[#4D53A8] bg-[#161726]/5 font-black' : 'text-[#161726]'
                   }`}
                 >
                   {item.label}
@@ -155,8 +275,21 @@ export const Navigation: React.FC<NavigationProps> = ({
         </div>
       </nav>
 
-      {/* Far Right: Clean Minimalist CTA */}
+      {/* Far Right: Clean Minimalist CTA & Mobile Index Ticker */}
       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+        {/* Mobile Live Section Index Pill */}
+        <div
+          className={`md:hidden flex items-center gap-1 px-2 py-1 rounded-full border border-[#161726]/12 bg-[#FAFDFB] text-[9px] font-mono font-black text-[#4D53A8] transition-all duration-300 shadow-2xs ${
+            isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-90 pointer-events-none'
+          }`}
+          title={`${activeSection.label} (${Math.round(scrollProgress)}%)`}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F] animate-pulse"></span>
+          <span>{activeSection.index}</span>
+          <span className="text-[#161726]/30">/</span>
+          <span className="text-[#161726]/50">{activeSection.total}</span>
+        </div>
+
         <button
           type="button"
           onClick={onOpenInquiry}
@@ -273,6 +406,14 @@ export const Navigation: React.FC<NavigationProps> = ({
           </div>
         </div>
       )}
+
+      {/* Live Scroll Progress Indexing Bar along bottom border of navbar */}
+      <div className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#161726]/8 overflow-hidden pointer-events-none">
+        <div
+          className="h-full bg-gradient-to-r from-[#FAEE2F] via-[#4D53A8] to-[#FAEE2F] transition-all duration-150 ease-out shadow-[0_0_8px_rgba(250,238,47,0.7)]"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
     </header>
   );
 };

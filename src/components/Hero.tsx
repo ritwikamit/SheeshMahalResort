@@ -97,7 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center">
           
           {/* Left Column: Floating text with SANCTUARY overlapping the enlarged right video card */}
-          <div className="lg:col-span-6 flex flex-col justify-center relative z-20">
+          <div className="lg:col-span-5 flex flex-col justify-center relative z-20">
             
             {/* Utility kicker with cursive flourish */}
             <div className="mb-2 sm:mb-4 lg:mb-6 flex flex-wrap items-center gap-2 sm:gap-3">
@@ -111,12 +111,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             </div>
 
             {/* Massive headline with purple cursive 'weddings' and 'SANCTUARY' overlapping right box */}
-            <h1 className="text-[clamp(2.4rem,10.2vw,11.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-white mb-4 sm:mb-6 lg:mb-8 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+            <h1 className="text-[clamp(2.4rem,8.8vw,10.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-white mb-4 sm:mb-6 lg:mb-8 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               ROYAL
-              <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[9.5rem] text-[#9FA1FF] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+              <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[8.5rem] text-[#9FA1FF] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                 weddings
               </span>
-              <span className="block lg:relative lg:z-30 lg:w-[140%] lg:-mr-44 whitespace-nowrap pointer-events-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.95)] text-white">
+              <span className="block lg:relative lg:z-30 lg:w-[160%] lg:-mr-64 whitespace-nowrap pointer-events-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.95)] text-white">
                 SANCTUARY
               </span>
             </h1>
@@ -152,8 +152,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
 
           </div>
 
-          {/* Right Column: Hero Video Card with unzoomed 16:9 alignment & synchronized playback */}
-          <div className="lg:col-span-6 relative mt-6 lg:mt-0 lg:pl-2 z-10">
+          {/* Right Column: Hero Video Card enlarged further with unzoomed 16:9 alignment & synchronized playback */}
+          <div className="lg:col-span-7 relative mt-6 lg:mt-0 lg:pl-4 z-10">
             {/* The rounded card displaying GeminiHero.mp4 with true 16:9 alignment (no zoom) */}
             <div className="relative rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border-2 border-white/40 group bg-black/40 backdrop-blur-sm">
               <div className="relative aspect-video w-full overflow-hidden bg-black">

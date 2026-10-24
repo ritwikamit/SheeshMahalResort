@@ -30,6 +30,8 @@ import { VenueSpace, ResortService } from './data/resortData.ts';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [isLandingReady, setIsLandingReady] = useState(false);
   const [currentPage, setCurrentPage] = useState<PageRoute>('home');
   const [selectedCase, setSelectedCase] = useState<VenueSpace | null>(null);
   const [isCaseModalOpen, setIsCaseModalOpen] = useState(false);
@@ -37,12 +39,24 @@ export default function App() {
   const [selectedService, setSelectedService] = useState<ResortService | null>(null);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
 
-  // Minimal loading screen on initial site load
+  // Loading screen completes and smoothly reveals landing page
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 950);
-    return () => clearTimeout(timer);
+    const handleReady = () => {
+      setTimeout(() => {
+        setIsFadingOut(true);
+        setTimeout(() => {
+          setIsLoading(false);
+          setIsLandingReady(true);
+        }, 650);
+      }, 1000);
+    };
+
+    if (document.readyState === 'complete') {
+      handleReady();
+    } else {
+      window.addEventListener('load', handleReady);
+      return () => window.removeEventListener('load', handleReady);
+    }
   }, []);
 
   const handleOpenCase = (spaceItem: VenueSpace) => {
@@ -81,15 +95,17 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAFDFB] text-[#161726] font-['League_Spartan',sans-serif] selection:bg-[#FAEE2F] selection:text-[#161726]">
-      {/* Minimal Loading Screen: Just Logo and Loading... */}
-      {isLoading && <LoadingScreen />}
+      {/* Minimal Loading Screen: Displays completely until ready, then fades out */}
+      {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
 
-      {/* Simple, Minimalistic Navigation Bar */}
-      <Navigation
-        currentPage={currentPage}
-        onNavigatePage={handleNavigatePage}
-        onOpenInquiry={() => setIsInquiryModalOpen(true)}
-      />
+      {/* Main App Canvas - Gracefully reveals only after loading screen finishes */}
+      <div className={`transition-opacity duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isLandingReady ? 'opacity-100' : 'opacity-0'}`}>
+        {/* Simple, Minimalistic Navigation Bar */}
+        <Navigation
+          currentPage={currentPage}
+          onNavigatePage={handleNavigatePage}
+          onOpenInquiry={() => setIsInquiryModalOpen(true)}
+        />
 
       {/* Main Content Router */}
       <main>
@@ -233,6 +249,7 @@ export default function App() {
         onClose={() => setIsServiceModalOpen(false)}
         onInquire={() => setIsInquiryModalOpen(true)}
       />
+      </div>
     </div>
   );
 }

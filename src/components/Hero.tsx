@@ -11,36 +11,60 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
   const cardVideoRef = useRef<HTMLVideoElement>(null);
   const bgVideoRef = useRef<HTMLVideoElement>(null);
 
-  // Guarantee browser autoplay compliance
+  // Synchronize both hero background video and card box video to play in exact lockstep
   useEffect(() => {
-    [cardVideoRef.current, bgVideoRef.current].forEach((vid) => {
-      if (vid) {
-        vid.defaultMuted = true;
-        vid.muted = true;
-        vid.playsInline = true;
-        vid.play().catch(() => {});
-      }
-    });
+    const bg = bgVideoRef.current;
+    const card = cardVideoRef.current;
+    if (!bg || !card) return;
 
-    const handleFirstTouch = () => {
-      [cardVideoRef.current, bgVideoRef.current].forEach((vid) => {
-        if (vid && vid.paused) {
-          vid.play().catch(() => {});
-        }
-      });
-      window.removeEventListener('click', handleFirstTouch);
-      window.removeEventListener('touchstart', handleFirstTouch);
-      window.removeEventListener('scroll', handleFirstTouch);
+    // Enforce muted & inline playback for browser autoplay policies
+    bg.defaultMuted = true;
+    bg.muted = true;
+    bg.playsInline = true;
+
+    card.defaultMuted = true;
+    card.muted = true;
+    card.playsInline = true;
+
+    const playBothInSync = () => {
+      // Start both at the exact same timestamp
+      bg.currentTime = 0;
+      card.currentTime = 0;
+      Promise.all([bg.play(), card.play()]).catch(() => {});
     };
 
-    window.addEventListener('click', handleFirstTouch, { once: true });
-    window.addEventListener('touchstart', handleFirstTouch, { once: true });
-    window.addEventListener('scroll', handleFirstTouch, { once: true });
+    playBothInSync();
+
+    // Prevent drift: resync card video to background video if discrepancy exceeds 0.08s
+    const handleSync = () => {
+      if (bg && card && !bg.paused && !card.paused) {
+        const drift = Math.abs(bg.currentTime - card.currentTime);
+        if (drift > 0.08) {
+          card.currentTime = bg.currentTime;
+        }
+      }
+    };
+
+    bg.addEventListener('timeupdate', handleSync);
+
+    const onUserTouch = () => {
+      if (bg.paused || card.paused) {
+        bg.currentTime = 0;
+        card.currentTime = 0;
+        bg.play().catch(() => {});
+        card.play().catch(() => {});
+      }
+    };
+
+    window.addEventListener('click', onUserTouch, { once: true });
+    window.addEventListener('touchstart', onUserTouch, { once: true });
+    window.addEventListener('scroll', onUserTouch, { once: true });
 
     return () => {
-      window.removeEventListener('click', handleFirstTouch);
-      window.removeEventListener('touchstart', handleFirstTouch);
-      window.removeEventListener('scroll', handleFirstTouch);
+      bg.removeEventListener('timeupdate', handleSync);
+      window.removeEventListener('click', onUserTouch);
+      window.removeEventListener('touchstart', onUserTouch);
+      window.removeEventListener('scroll', onUserTouch);
     };
   }, []);
 
@@ -70,9 +94,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
       </div>
 
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-8 lg:py-16 relative z-10 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center">
           
-          {/* Left Column: Completely transparent, floating text with high-contrast drop-shadows */}
+          {/* Left Column: Floating text with SANCTUARY overlapping the right video card */}
           <div className="lg:col-span-7 flex flex-col justify-center z-10">
             
             {/* Utility kicker with cursive flourish */}
@@ -86,13 +110,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               </span>
             </div>
 
-            {/* Massive headline with signature purple cursive wedding accent */}
-            <h1 className="text-[clamp(2.4rem,10.5vw,11.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-white mb-4 sm:mb-6 lg:mb-8 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+            {/* Massive headline with purple cursive 'weddings' and 'SANCTUARY' overlapping right box */}
+            <h1 className="text-[clamp(2.4rem,10.2vw,11.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-white mb-4 sm:mb-6 lg:mb-8 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               ROYAL
               <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[9.5rem] text-[#9FA1FF] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                 weddings
               </span>
-              SANCTUARY
+              <span className="block lg:relative lg:z-30 lg:w-[130%] lg:-mr-36 pointer-events-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.95)] text-white">
+                SANCTUARY
+              </span>
             </h1>
 
             {/* Below headline: 2xl body text floating transparently */}
@@ -126,11 +152,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
 
           </div>
 
-          {/* Right Column: Hero Video Card with GeminiHero.mp4 & 24h Circle Badge */}
+          {/* Right Column: Hero Video Card with unzoomed 16:9 alignment & synchronized playback */}
           <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-            {/* The rounded card displaying GeminiHero.mp4 on loop without audio (no overlay badges) */}
+            {/* The rounded card displaying GeminiHero.mp4 with true 16:9 alignment (no zoom) */}
             <div className="relative rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border-2 border-white/40 group bg-black/40 backdrop-blur-sm">
-              <div className="relative aspect-[16/10] sm:aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden bg-black">
+              <div className="relative aspect-video w-full overflow-hidden bg-black">
                 <video
                   ref={cardVideoRef}
                   autoPlay
@@ -138,12 +164,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                   muted
                   playsInline
                   preload="auto"
-                  className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center scale-100"
                 >
                   <source src="/videos/GeminiHero.mp4" type="video/mp4" />
                 </video>
 
-                {/* Ambient vignette gradient overlay */}
+                {/* Subtle vignette gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
 
                 {/* Discreet caption tag inside bottom */}
@@ -165,7 +191,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               </div>
             </div>
 
-            {/* Badge 1: RIGHT side */}
+            {/* Badge 1: Anchored to corner */}
             <div className="absolute -bottom-5 left-3 sm:-bottom-8 sm:-left-8 lg:-left-12 z-30">
               <WeddingDeskCircleBadge
                 id="badge-section-1"
@@ -183,25 +209,28 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
         </div>
       </div>
 
-      {/* Editorial horizontal ticker strip with verified wedding amenities */}
-      <div className="w-full border-t border-white/15 bg-black/50 backdrop-blur-md py-3 sm:py-4 px-4 sm:px-6 lg:px-12 relative z-10 text-white mt-auto">
-        <div className="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-3 sm:gap-4 text-[10px] sm:text-xs font-black tracking-widest uppercase text-white/90">
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <span className="w-2 h-2 bg-[#FAEE2F] border border-[#161726]"></span>
-            <span>SHAHI WEDDING CATERING</span>
-          </div>
-          <div className="hidden sm:flex items-center gap-6 lg:gap-8">
+      {/* Editorial horizontal amenities strip with Shahi Catering and Digha removed, properly centered */}
+      <div className="w-full border-t border-white/15 bg-black/50 backdrop-blur-md py-3.5 sm:py-4 px-4 sm:px-6 lg:px-12 relative z-10 text-white mt-auto">
+        <div className="max-w-[1600px] mx-auto flex items-center justify-center flex-wrap gap-4 sm:gap-8 lg:gap-12 text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase text-white/90">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F]"></span>
             <span>CUSTOM MANDAP DECOR</span>
-            <span>·</span>
+          </div>
+          <span className="text-white/30 hidden sm:inline">·</span>
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F]"></span>
             <span>BARAAT WELCOME CORRIDOR</span>
-            <span>·</span>
+          </div>
+          <span className="text-white/30 hidden sm:inline">·</span>
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F]"></span>
             <span>100% POWER BACKUP</span>
-            <span>·</span>
+          </div>
+          <span className="text-white/30 hidden sm:inline">·</span>
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FAEE2F]"></span>
             <span>LUXURY BRIDAL SUITES</span>
           </div>
-          <span className="font-bold text-[10px] sm:text-[11px] tracking-wider text-white/80">
-            DIGHA, PATNA · BIHAR 800011
-          </span>
         </div>
       </div>
     </section>

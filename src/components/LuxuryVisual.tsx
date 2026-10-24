@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface LuxuryVisualProps {
   src: string;
@@ -7,6 +7,7 @@ interface LuxuryVisualProps {
   className?: string;
   title?: string;
   category?: string;
+  priority?: boolean;
 }
 
 export const LuxuryVisual: React.FC<LuxuryVisualProps> = ({
@@ -15,66 +16,77 @@ export const LuxuryVisual: React.FC<LuxuryVisualProps> = ({
   aspectRatioClass = 'aspect-[3/4]',
   className = '',
   title = 'Sanctuary',
-  category = 'Resort'
+  category = 'Resort',
+  priority = false
 }) => {
   const [hasError, setHasError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Check if image is already cached/complete on mount or when src changes
+  useEffect(() => {
+    setHasError(false);
+    if (imgRef.current) {
+      if (imgRef.current.complete && imgRef.current.naturalWidth > 0) {
+        setIsLoaded(true);
+      } else {
+        setIsLoaded(false);
+      }
+    }
+  }, [src]);
 
   return (
     <div
       className={`relative overflow-hidden bg-[#161726] ${aspectRatioClass} ${className} group`}
     >
-      {/* Fallback & Loading state: Royal Sheesh Architectural Motif with the custom color palette */}
-      <div
-        className={`absolute inset-0 flex flex-col justify-between p-8 bg-[#161726] text-[#FAFDFB] transition-opacity duration-700 ${
-          isLoaded && !hasError ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        {/* Geometric palace lines */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="sheesh-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#9FA1FF" strokeWidth="0.75" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#sheesh-grid)" />
-            <circle cx="50%" cy="50%" r="35%" fill="none" stroke="#FAEE2F" strokeWidth="1" />
-            <polygon points="50,10 90,90 10,90" fill="none" stroke="#B5BAFF" strokeWidth="0.5" transform="scale(3) translate(10,10)" />
-          </svg>
+      {/* Sleek luxury shimmer loading state while image downloads */}
+      {!isLoaded && !hasError && (
+        <div className="absolute inset-0 bg-[#161726] flex items-center justify-center z-[1] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#9FA1FF]/10 to-transparent animate-pulse" />
+          <div className="flex flex-col items-center gap-2 text-center p-4">
+            <div className="w-6 h-6 border-2 border-[#FAEE2F]/30 border-t-[#FAEE2F] rounded-full animate-spin" />
+            <span className="text-[9px] font-black uppercase tracking-widest text-[#9FA1FF]/80">
+              {title}
+            </span>
+          </div>
         </div>
+      )}
 
-        {/* Content in fallback */}
-        <div className="relative z-10 flex items-center justify-between">
-          <span className="text-[10px] font-black tracking-[0.4em] uppercase text-[#FAEE2F]">
-            {category}
-          </span>
-          <span className="text-[10px] tracking-widest text-[#B5BAFF] uppercase font-semibold">
-            PATNA · 800011
-          </span>
+      {/* Fallback state ONLY if the image actually fails */}
+      {hasError && (
+        <div className="absolute inset-0 flex flex-col justify-between p-6 bg-[#161726] text-[#FAFDFB]">
+          <div className="flex items-center justify-between">
+            <span className="text-[9px] font-black tracking-widest uppercase text-[#FAEE2F]">
+              {category}
+            </span>
+            <span className="text-[9px] tracking-widest text-[#B5BAFF] uppercase">
+              PATNA · 800011
+            </span>
+          </div>
+
+          <div>
+            <div className="w-8 h-0.5 bg-[#FAEE2F] mb-3" />
+            <p className="text-base font-black tracking-tight text-[#FAFDFB] uppercase leading-tight">
+              {title}
+            </p>
+            <p className="text-[10px] text-[#D9F9DF] mt-1 font-medium">
+              Sheesh Mahal Resort & Banquets
+            </p>
+          </div>
         </div>
+      )}
 
-        <div className="relative z-10">
-          <div className="w-12 h-1 bg-[#FAEE2F] mb-4"></div>
-          <p className="text-xl font-black tracking-tight text-[#FAFDFB] uppercase leading-tight">
-            {title}
-          </p>
-          <p className="text-xs text-[#D9F9DF] tracking-wider mt-2 font-medium">
-            Sheesh Mahal Resort & Banquets
-          </p>
-        </div>
-      </div>
-
-      {/* Main Photographic Image with strict grayscale -> color + scale 1.08 transition */}
+      {/* Main Photographic Image */}
       {!hasError && (
         <img
+          ref={imgRef}
           src={src}
           alt={alt}
-          referrerPolicy="no-referrer"
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
           onLoad={() => setIsLoaded(true)}
           onError={() => setHasError(true)}
-          className={`w-full h-full object-cover img-luxury-hover select-none transition-opacity duration-700 ${
+          className={`w-full h-full object-cover img-luxury-hover select-none transition-opacity duration-500 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
         />

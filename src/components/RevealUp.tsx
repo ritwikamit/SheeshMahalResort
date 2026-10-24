@@ -19,13 +19,7 @@ export const RevealUp: React.FC<RevealUpProps> = ({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (delay > 0) {
-              setTimeout(() => {
-                setIsVisible(true);
-              }, delay);
-            } else {
-              setIsVisible(true);
-            }
+            setIsVisible(true);
             if (domRef.current) {
               observer.unobserve(domRef.current);
             }

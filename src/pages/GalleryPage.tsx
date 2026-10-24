@@ -106,7 +106,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {filteredItems.map((item, idx) => (
-            <RevealUp key={item.id} delay={idx * 60}>
+            <RevealUp key={item.id} delay={(idx % 4) * 35}>
               <div
                 onClick={() => openLightbox(idx)}
                 className="group rounded-[20px] overflow-hidden bg-[#FAFDFB] border border-[#9FA1FF]/25 shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col h-full transform hover:-translate-y-1"
@@ -119,6 +119,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
                     aspectRatioClass="aspect-[4/3]"
                     title={item.title}
                     category={item.category}
+                    priority={idx < 8}
                   />
 
                   {/* Hover Overlay with Tap to Enlarge */}
@@ -252,6 +253,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
 
             {/* Main Preview Image */}
             <img
+              key={filteredItems[activeLightboxIndex].id}
               src={filteredItems[activeLightboxIndex].image}
               alt={filteredItems[activeLightboxIndex].title}
               className="max-h-[75vh] max-w-[92vw] object-contain rounded-xl sm:rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-white/20 select-none animate-in zoom-in-95 duration-200"

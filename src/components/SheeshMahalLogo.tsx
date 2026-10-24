@@ -79,10 +79,10 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
       >
         {!imgError ? (
           <img
-            src={footerLogoSrc}
+            src={headerLogoSrc}
             alt="Sheesh Mahal Resort Palace Logo"
             onError={() => setImgError(true)}
-            className="h-24 sm:h-32 lg:h-36 w-auto max-w-[340px] sm:max-w-[440px] lg:max-w-[500px] object-contain object-left drop-shadow-2xl group-hover:scale-[1.02] transition-transform duration-300"
+            className="h-24 sm:h-32 lg:h-36 w-auto max-w-[340px] sm:max-w-[440px] lg:max-w-[500px] object-contain object-left drop-shadow-sm group-hover:scale-[1.02] transition-transform duration-300"
           />
         ) : (
           renderFallback()

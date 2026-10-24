@@ -19,28 +19,28 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-10 bg-[#161726]/80 backdrop-blur-md overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-[#161726]/80 backdrop-blur-md overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-xl bg-[#FAFDFB] text-[#161726] rounded-[24px] shadow-2xl border border-[#9FA1FF]/30 overflow-hidden my-auto"
+        className="relative w-full max-w-xl max-h-[92dvh] flex flex-col bg-[#FAFDFB] text-[#161726] rounded-[20px] sm:rounded-[24px] shadow-2xl border border-[#9FA1FF]/30 overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-8 py-5 border-b border-[#9FA1FF]/20 bg-[#D9F9DF]">
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#161726]">
+        <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#9FA1FF]/20 bg-[#D9F9DF] shrink-0">
+          <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#161726]">
             SHEESH MAHAL RESORT // WEDDING AMENITY {service.number}
           </span>
           <button
             type="button"
             onClick={onClose}
-            className="w-10 h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors cursor-pointer"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
-            <X size={18} />
+            <X size={16} className="sm:w-[18px] sm:h-[18px]" />
           </button>
         </div>
 
-        <div className="p-8">
+        <div className="p-5 sm:p-8 overflow-y-auto flex-1">
           <span className="text-4xl font-black italic text-[#9FA1FF] mb-2 block">
             {service.number}
           </span>

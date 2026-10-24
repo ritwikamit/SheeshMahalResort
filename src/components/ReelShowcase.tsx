@@ -198,7 +198,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
           <div className="relative max-w-4xl mx-auto mb-14 sm:mb-20 pt-6">
             
             {/* Signature Circular Badge anchored to the TOP-LEFT corner of the reel container */}
-            <div className="absolute -top-7 -left-3 sm:-top-10 sm:-left-6 md:-left-8 z-30 pointer-events-auto">
+            <div className="absolute -top-6 -left-1 sm:-top-10 sm:-left-6 md:-left-8 z-30 pointer-events-auto">
               <WeddingDeskCircleBadge
                 id="badge-section-reel"
                 badgeNumber="4K"
@@ -211,7 +211,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
             </div>
 
             {/* The Medium-Sized Landscape Video Card */}
-            <div className="relative rounded-[24px] overflow-hidden shadow-2xl border-2 border-[#9FA1FF]/30 group bg-[#161726]">
+            <div className="relative rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-2xl border sm:border-2 border-[#9FA1FF]/30 group bg-[#161726]">
               
               {/* Landscape 16:9 Aspect Ratio Frame */}
               <div
@@ -237,12 +237,12 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/50 pointer-events-none" />
 
                 {/* Top Bar: Channel Badge + Minimal Audio On/Off Button */}
-                <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 flex items-center justify-between z-20 pointer-events-auto">
+                <div className="absolute top-0 left-0 right-0 p-3 sm:p-6 flex items-center justify-between gap-2 z-20 pointer-events-auto">
                   
                   {/* Left: Sheesh Mahal Live Pill */}
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-xs font-black tracking-widest uppercase">
-                    <span className="w-2 h-2 rounded-full bg-[#FAEE2F] animate-pulse" />
-                    <span>SHEESH MAHAL WEDDING FILM</span>
+                  <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase truncate max-w-[55%] sm:max-w-none">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#FAEE2F] animate-pulse shrink-0" />
+                    <span className="truncate">SHEESH MAHAL FILM</span>
                   </div>
 
                   {/* Right: Minimal Audio On/Off Button */}
@@ -250,7 +250,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                     type="button"
                     onClick={toggleAudio}
                     aria-label={isMuted ? 'Turn Audio On' : 'Turn Audio Off'}
-                    className={`flex items-center gap-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-xl backdrop-blur-md ${
+                    className={`flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-xl backdrop-blur-md shrink-0 ${
                       isMuted
                         ? 'bg-black/70 text-white hover:bg-black/90 border border-white/30 hover:border-white'
                         : 'bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] border border-[#FAEE2F] shadow-[#FAEE2F]/40'
@@ -258,13 +258,13 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                   >
                     {isMuted ? (
                       <>
-                        <VolumeX size={16} />
-                        <span className="text-[10px] sm:text-xs">AUDIO OFF</span>
+                        <VolumeX size={14} className="sm:w-4 sm:h-4" />
+                        <span>AUDIO OFF</span>
                       </>
                     ) : (
                       <>
-                        <Volume2 size={16} className="text-[#161726] animate-pulse" />
-                        <span className="text-[10px] sm:text-xs text-[#161726]">AUDIO ON</span>
+                        <Volume2 size={14} className="sm:w-4 sm:h-4 text-[#161726] animate-pulse" />
+                        <span className="text-[#161726]">AUDIO ON</span>
                       </>
                     )}
                   </button>
@@ -276,10 +276,10 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                     onClick={togglePlay}
                     className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center z-30 cursor-pointer transition-all"
                   >
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#FAEE2F] text-[#161726] flex items-center justify-center shadow-2xl shadow-[#FAEE2F]/50 transform hover:scale-110 transition-transform">
-                      <Play size={32} className="ml-1 fill-[#161726]" />
+                    <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-[#FAEE2F] text-[#161726] flex items-center justify-center shadow-2xl shadow-[#FAEE2F]/50 transform hover:scale-110 transition-transform">
+                      <Play size={26} className="ml-1 fill-[#161726] sm:w-8 sm:h-8" />
                     </div>
-                    <span className="mt-3 text-[10px] sm:text-xs font-black uppercase tracking-widest text-white bg-black/75 px-3.5 py-1.5 rounded-full border border-white/20 shadow-lg">
+                    <span className="mt-2.5 sm:mt-3 text-[9px] sm:text-xs font-black uppercase tracking-widest text-white bg-black/75 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-white/20 shadow-lg">
                       TAP TO PLAY
                     </span>
                   </div>
@@ -288,34 +288,34 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                 {/* Play/Pause Center Flash Indicator */}
                 {showPlayStateFlash && isPlaying && (
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 transition-opacity">
-                    <div className="w-16 h-16 rounded-full bg-black/65 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-2xl">
-                      <Play size={28} className="ml-1 text-[#FAEE2F]" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/65 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-2xl">
+                      <Play size={24} className="ml-1 text-[#FAEE2F] sm:w-7 sm:h-7" />
                     </div>
                   </div>
                 )}
 
                 {/* Bottom Bar: Title, Progress Scrubber, Duration & Replay */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 z-20 pointer-events-auto">
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6 z-20 pointer-events-auto">
                   
                   {/* Video Title & Location */}
-                  <div className="flex items-center justify-between text-white drop-shadow mb-3">
+                  <div className="flex items-center justify-between text-white drop-shadow mb-2 sm:mb-3">
                     <div>
-                      <p className="font-cursive text-xl sm:text-2xl text-[#FAEE2F]">
+                      <p className="font-cursive text-base sm:text-2xl text-[#FAEE2F]">
                         The Royal Nuptials
                       </p>
-                      <p className="text-xs sm:text-sm font-bold tracking-tight uppercase">
-                        BARAAT ARRIVAL & SACRED SAAT PHERE · DIGHA, PATNA
+                      <p className="text-[10px] sm:text-sm font-bold tracking-tight uppercase">
+                        BARAAT ARRIVAL & SACRED SAAT PHERE
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
                       <button
                         type="button"
                         onClick={handleRestart}
                         title="Replay from start"
-                        className="p-2 rounded-full bg-black/50 border border-white/20 text-white/80 hover:text-white hover:bg-black/70 cursor-pointer transition-transform active:scale-90"
+                        className="p-1.5 sm:p-2 rounded-full bg-black/50 border border-white/20 text-white/80 hover:text-white hover:bg-black/70 cursor-pointer transition-transform active:scale-90"
                       >
-                        <RotateCcw size={15} />
+                        <RotateCcw size={13} className="sm:w-4 sm:h-4" />
                       </button>
 
                       <span className="hidden sm:inline text-[10px] font-mono tracking-widest uppercase font-bold text-white/90 bg-black/60 px-2.5 py-1 rounded-md border border-white/10">

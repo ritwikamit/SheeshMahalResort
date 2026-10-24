@@ -20,24 +20,24 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-10 bg-[#161726]/80 backdrop-blur-md overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-[#161726]/80 backdrop-blur-md overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-5xl bg-[#FAFDFB] text-[#161726] rounded-[24px] shadow-2xl border border-[#9FA1FF]/30 overflow-hidden my-auto"
+        className="relative w-full max-w-5xl max-h-[92dvh] flex flex-col bg-[#FAFDFB] text-[#161726] rounded-[20px] sm:rounded-[24px] shadow-2xl border border-[#9FA1FF]/30 overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
         style={{
           transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
         }}
       >
         {/* Top bar with close button */}
-        <div className="flex items-center justify-between px-8 py-5 border-b border-[#9FA1FF]/20 bg-[#D9F9DF]">
-          <div className="flex items-center gap-3">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#161726]">
+        <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#9FA1FF]/20 bg-[#D9F9DF] shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#161726]">
               SHEESH MAHAL RESORT // {caseItem.id.toUpperCase()}
             </span>
-            <span className="text-xs text-[#161726]/30">•</span>
-            <span className="text-xs font-bold tracking-wider text-[#9FA1FF] bg-[#161726] px-2 py-0.5 rounded-sm">
+            <span className="text-xs text-[#161726]/30 hidden xs:inline">•</span>
+            <span className="hidden xs:inline text-[10px] sm:text-xs font-bold tracking-wider text-[#9FA1FF] bg-[#161726] px-2 py-0.5 rounded-sm">
               OPEN 24 HOURS
             </span>
           </div>
@@ -45,15 +45,15 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-10 h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors cursor-pointer"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
-            <X size={18} />
+            <X size={16} className="sm:w-[18px] sm:h-[18px]" />
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-8 lg:p-12 max-h-[80vh] overflow-y-auto">
+        <div className="p-5 sm:p-8 lg:p-12 overflow-y-auto flex-1">
           {/* Header section with cursive flourish */}
           <div className="mb-8">
             <span className="text-[10px] font-black text-[#9FA1FF] tracking-[0.3em] uppercase block mb-1">

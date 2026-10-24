@@ -42,9 +42,9 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
     <div
       role="region"
       aria-label="Cookie consent banner"
-      className="fixed bottom-5 left-5 right-5 sm:left-8 sm:right-auto sm:max-w-md z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] animate-in fade-in slide-in-from-bottom-6"
+      className="fixed bottom-[76px] sm:bottom-6 left-3 right-3 sm:left-8 sm:right-auto sm:max-w-md z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] animate-in fade-in slide-in-from-bottom-6"
     >
-      <div className="bg-[#161726] text-[#FAFDFB] p-6 rounded-2xl border border-[#9FA1FF]/30 shadow-2xl relative">
+      <div className="bg-[#161726] text-[#FAFDFB] p-4 sm:p-6 rounded-2xl border border-[#9FA1FF]/30 shadow-2xl relative">
         {/* Close without accepting (essential default) */}
         <button
           type="button"

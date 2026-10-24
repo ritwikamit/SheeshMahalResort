@@ -39,24 +39,29 @@ export default function App() {
   const [selectedService, setSelectedService] = useState<ResortService | null>(null);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
 
-  // Loading screen completes and smoothly reveals landing page
+  // Loading screen completes and smoothly reveals landing page fast even on slow networks
   useEffect(() => {
-    const handleReady = () => {
+    let dismissed = false;
+    const triggerFadeOut = () => {
+      if (dismissed) return;
+      dismissed = true;
+      setIsFadingOut(true);
       setTimeout(() => {
-        setIsFadingOut(true);
-        setTimeout(() => {
-          setIsLoading(false);
-          setIsLandingReady(true);
-        }, 650);
-      }, 1000);
+        setIsLoading(false);
+        setIsLandingReady(true);
+      }, 500);
     };
 
+    // Fast reveal after 650ms max, ensuring zero lag even on slow internet
+    const fallbackTimer = setTimeout(triggerFadeOut, 650);
+
     if (document.readyState === 'complete') {
-      handleReady();
+      setTimeout(triggerFadeOut, 350);
     } else {
-      window.addEventListener('load', handleReady);
-      return () => window.removeEventListener('load', handleReady);
+      window.addEventListener('load', () => setTimeout(triggerFadeOut, 200), { once: true });
     }
+
+    return () => clearTimeout(fallbackTimer);
   }, []);
 
   const handleOpenCase = (spaceItem: VenueSpace) => {

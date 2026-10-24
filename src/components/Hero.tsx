@@ -8,13 +8,16 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => {
+  const heroSectionRef = useRef<HTMLElement>(null);
   const cardVideoRef = useRef<HTMLVideoElement>(null);
   const bgVideoRef = useRef<HTMLVideoElement>(null);
 
   // Synchronize both hero background video and card box video to play in exact lockstep
+  // and pause automatically when scrolled out of view to ensure 60fps smooth scrolling
   useEffect(() => {
     const bg = bgVideoRef.current;
     const card = cardVideoRef.current;
+    const section = heroSectionRef.current;
     if (!bg || !card) return;
 
     // Enforce muted & inline playback for browser autoplay policies
@@ -27,49 +30,66 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
     card.playsInline = true;
 
     const playBothInSync = () => {
-      // Start both at the exact same timestamp
-      bg.currentTime = 0;
-      card.currentTime = 0;
       Promise.all([bg.play(), card.play()]).catch(() => {});
+    };
+
+    const pauseBoth = () => {
+      bg.pause();
+      card.pause();
     };
 
     playBothInSync();
 
-    // Prevent drift: resync card video to background video if discrepancy exceeds 0.08s
+    // Pause when hero is scrolled out of viewport
+    let observer: IntersectionObserver | null = null;
+    if (section && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              playBothInSync();
+            } else {
+              pauseBoth();
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(section);
+    }
+
+    // Prevent drift: resync card video to background video if discrepancy exceeds 0.12s
     const handleSync = () => {
       if (bg && card && !bg.paused && !card.paused) {
         const drift = Math.abs(bg.currentTime - card.currentTime);
-        if (drift > 0.08) {
+        if (drift > 0.12) {
           card.currentTime = bg.currentTime;
         }
       }
     };
 
-    bg.addEventListener('timeupdate', handleSync);
+    bg.addEventListener('timeupdate', handleSync, { passive: true });
 
     const onUserTouch = () => {
       if (bg.paused || card.paused) {
-        bg.currentTime = 0;
-        card.currentTime = 0;
-        bg.play().catch(() => {});
-        card.play().catch(() => {});
+        playBothInSync();
       }
     };
 
     window.addEventListener('click', onUserTouch, { once: true });
     window.addEventListener('touchstart', onUserTouch, { once: true });
-    window.addEventListener('scroll', onUserTouch, { once: true });
 
     return () => {
+      if (observer) observer.disconnect();
       bg.removeEventListener('timeupdate', handleSync);
       window.removeEventListener('click', onUserTouch);
       window.removeEventListener('touchstart', onUserTouch);
-      window.removeEventListener('scroll', onUserTouch);
     };
   }, []);
 
   return (
     <section
+      ref={heroSectionRef}
       id="top"
       className="relative min-h-[100dvh] w-full pt-[82px] sm:pt-[90px] pb-6 sm:pb-10 bg-transparent text-white flex flex-col justify-center overflow-hidden border-b border-[#9FA1FF]/20"
     >
@@ -81,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           className="w-full h-full object-cover object-center scale-100"
         >
           <source src="/videos/GeminiHero.mp4" type="video/mp4" />
@@ -163,7 +183,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                   loop
                   muted
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className="w-full h-full object-cover object-center scale-100"
                 >
                   <source src="/videos/GeminiHero.mp4" type="video/mp4" />

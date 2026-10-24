@@ -18,14 +18,15 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
 }) => {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
 
-  const categories = ['ALL', 'BANQUET', 'LAWN', 'MANDAP', 'POOLSIDE'];
+  const categories = ['ALL', 'BANQUET', 'LAWN', 'BARAAT', 'MANDAP', 'PRE-WEDDING'];
 
   const filteredSpaces = VENUE_SPACES.filter((item) => {
     if (activeCategory === 'ALL') return true;
     if (activeCategory === 'BANQUET') return item.category.includes('BANQUET') || item.category.includes('BALLROOM');
-    if (activeCategory === 'LAWN') return item.category.includes('LAWN') || item.category.includes('GARDEN');
+    if (activeCategory === 'LAWN') return item.category.includes('LAWN');
+    if (activeCategory === 'BARAAT') return item.category.includes('BARAAT') || item.category.includes('RUNWAY');
     if (activeCategory === 'MANDAP') return item.category.includes('MANDAP') || item.category.includes('SACRED');
-    if (activeCategory === 'POOLSIDE') return item.category.includes('POOLSIDE') || item.category.includes('PRE-WEDDING');
+    if (activeCategory === 'PRE-WEDDING') return item.category.includes('PRE-WEDDING') || item.category.includes('SANGEET') || item.category.includes('HALDI') || item.category.includes('CELEBRATION');
     return true;
   });
 

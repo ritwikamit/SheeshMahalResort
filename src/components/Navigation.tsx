@@ -105,17 +105,9 @@ export const Navigation: React.FC<NavigationProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleNavClick = (page: PageRoute, sectionId?: string) => {
-    if (currentPage === 'home' && sectionId && onNavigateSection) {
-      onNavigateSection(sectionId);
-    } else {
-      onNavigatePage(page);
-      if (sectionId && onNavigateSection) {
-        setTimeout(() => onNavigateSection(sectionId), 120);
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
+  const handleNavClick = (page: PageRoute) => {
+    onNavigatePage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     setMobileMenuOpen(false);
     setMoreMenuOpen(false);
   };
@@ -126,15 +118,9 @@ export const Navigation: React.FC<NavigationProps> = ({
     { label: 'WEDDING FAQS', page: 'faqs' }
   ];
 
-  // Helper to determine if link is active based on page or section in view
-  const isLinkActive = (page: PageRoute, sectionId?: string) => {
-    if (currentPage !== 'home') {
-      return currentPage === page;
-    }
-    if (sectionId) {
-      return activeSection.id === sectionId;
-    }
-    return activeSection.id === 'top' || activeSection.id === 'wedding-reel';
+  // Helper to determine if link is active
+  const isLinkActive = (page: PageRoute) => {
+    return currentPage === page;
   };
 
   return (
@@ -151,16 +137,16 @@ export const Navigation: React.FC<NavigationProps> = ({
       <div className="flex items-center shrink-0">
         <SheeshMahalLogo
           variant="header"
-          onClick={() => handleNavClick('home', 'top')}
+          onClick={() => handleNavClick('home')}
           className="cursor-pointer"
         />
       </div>
 
-      {/* Simple & Minimalistic Center Menu with Dynamic Underline Indexing */}
+      {/* Simple & Minimalistic Center Menu with Direct Dedicated Page Navigation */}
       <nav className="hidden md:flex items-center gap-6 lg:gap-8">
         <button
           type="button"
-          onClick={() => handleNavClick('home', 'top')}
+          onClick={() => handleNavClick('home')}
           className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
             isLinkActive('home') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
           }`}
@@ -173,39 +159,39 @@ export const Navigation: React.FC<NavigationProps> = ({
 
         <button
           type="button"
-          onClick={() => handleNavClick('venues', 'spaces')}
+          onClick={() => handleNavClick('venues')}
           className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            isLinkActive('venues', 'spaces') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
+            isLinkActive('venues') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
           }`}
         >
           VENUES
-          {isLinkActive('venues', 'spaces') && (
+          {isLinkActive('venues') && (
             <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
         <button
           type="button"
-          onClick={() => handleNavClick('catering', 'amenities')}
+          onClick={() => handleNavClick('catering')}
           className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            isLinkActive('catering', 'amenities') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
+            isLinkActive('catering') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
           }`}
         >
           CATERING
-          {isLinkActive('catering', 'amenities') && (
+          {isLinkActive('catering') && (
             <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
         <button
           type="button"
-          onClick={() => handleNavClick('rituals', 'rituals')}
+          onClick={() => handleNavClick('rituals')}
           className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            isLinkActive('rituals', 'rituals') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
+            isLinkActive('rituals') ? 'text-[#161726]' : 'text-[#161726]/70 hover:text-[#161726]'
           }`}
         >
           RITUALS
-          {isLinkActive('rituals', 'rituals') && (
+          {isLinkActive('rituals') && (
             <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
@@ -367,13 +353,6 @@ export const Navigation: React.FC<NavigationProps> = ({
         </div>
       )}
 
-      {/* Live Scroll Progress Indexing Bar along bottom border of navbar */}
-      <div className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#161726]/8 overflow-hidden pointer-events-none">
-        <div
-          className="h-full bg-gradient-to-r from-[#FAEE2F] via-[#4D53A8] to-[#FAEE2F] transition-all duration-150 ease-out shadow-[0_0_8px_rgba(250,238,47,0.7)]"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
     </header>
   );
 };

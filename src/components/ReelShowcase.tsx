@@ -46,34 +46,41 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
         .catch(() => setIsPlaying(false));
     };
 
-    playVideo();
+    const pauseVideo = () => {
+      video.pause();
+      setIsPlaying(false);
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             playVideo();
+          } else {
+            pauseVideo();
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     observer.observe(video);
 
     const onUserGesture = () => {
-      if (video.paused) {
-        playVideo();
+      if (video.paused && observer) {
+        // Only if intersecting
+        const rect = video.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          playVideo();
+        }
       }
     };
     window.addEventListener('click', onUserGesture, { once: true });
     window.addEventListener('touchstart', onUserGesture, { once: true });
-    window.addEventListener('scroll', onUserGesture, { once: true });
 
     return () => {
       observer.disconnect();
       window.removeEventListener('click', onUserGesture);
       window.removeEventListener('touchstart', onUserGesture);
-      window.removeEventListener('scroll', onUserGesture);
     };
   }, []);
 
@@ -224,7 +231,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                   loop
                   muted={isMuted}
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   onPlay={() => setIsPlaying(true)}
                   onPause={() => setIsPlaying(false)}
                   onTimeUpdate={handleTimeUpdate}

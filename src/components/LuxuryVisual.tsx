@@ -35,6 +35,10 @@ export const LuxuryVisual: React.FC<LuxuryVisualProps> = ({
     }
   }, [src]);
 
+  const webpSrc = src.match(/\.(png|jpg|jpeg)$/i)
+    ? src.replace(/\.(png|jpg|jpeg)$/i, '.webp')
+    : null;
+
   return (
     <div
       className={`relative overflow-hidden bg-[#161726] ${aspectRatioClass} ${className} group`}
@@ -76,20 +80,23 @@ export const LuxuryVisual: React.FC<LuxuryVisualProps> = ({
         </div>
       )}
 
-      {/* Main Photographic Image */}
+      {/* Main Photographic Image with instant WebP source */}
       {!hasError && (
-        <img
-          ref={imgRef}
-          src={src}
-          alt={alt}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-          onLoad={() => setIsLoaded(true)}
-          onError={() => setHasError(true)}
-          className={`w-full h-full object-cover img-luxury-hover select-none transition-opacity duration-500 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-        />
+        <picture className="w-full h-full block">
+          {webpSrc && <source srcSet={webpSrc} type="image/webp" />}
+          <img
+            ref={imgRef}
+            src={src}
+            alt={alt}
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            onLoad={() => setIsLoaded(true)}
+            onError={() => setHasError(true)}
+            className={`w-full h-full object-cover img-luxury-hover select-none transition-opacity duration-300 ${
+              isLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        </picture>
       )}
     </div>
   );

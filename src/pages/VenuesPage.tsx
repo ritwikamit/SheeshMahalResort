@@ -36,11 +36,11 @@ export const VenuesPage: React.FC<VenuesPageProps> = ({ onSelectSpace, onOpenInq
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center p-5 sm:p-8 lg:p-12 bg-[#FAFDFB] rounded-[24px] sm:rounded-[28px] border border-[#9FA1FF]/30 shadow-xl">
                 {/* Visual */}
                 <div className={`lg:col-span-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="rounded-[20px] overflow-hidden shadow-2xl border border-[#9FA1FF]/20 bg-[#161726] relative group cursor-pointer" onClick={() => onSelectSpace(space)}>
+                  <div className="rounded-[20px] overflow-hidden shadow-2xl border border-[#9FA1FF]/20 bg-[#161726] relative group cursor-pointer max-w-lg mx-auto" onClick={() => onSelectSpace(space)}>
                     <LuxuryVisual
                       src={space.image}
                       alt={space.alt}
-                      aspectRatioClass="aspect-[4/3]"
+                      aspectRatioClass="aspect-[3/4]"
                       className="rounded-[20px]"
                       title={space.title}
                       category={space.category}

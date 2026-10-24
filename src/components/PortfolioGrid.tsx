@@ -18,15 +18,14 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
 }) => {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
 
-  const categories = ['ALL', 'BANQUET', 'LAWN', 'BARAAT', 'MANDAP', 'PRE-WEDDING'];
+  const categories = ['ALL', 'BANQUET', 'BARAAT', 'SANGEET', 'HALDI'];
 
   const filteredSpaces = VENUE_SPACES.filter((item) => {
     if (activeCategory === 'ALL') return true;
     if (activeCategory === 'BANQUET') return item.category.includes('BANQUET') || item.category.includes('BALLROOM');
-    if (activeCategory === 'LAWN') return item.category.includes('LAWN');
     if (activeCategory === 'BARAAT') return item.category.includes('BARAAT') || item.category.includes('RUNWAY');
-    if (activeCategory === 'MANDAP') return item.category.includes('MANDAP') || item.category.includes('SACRED');
-    if (activeCategory === 'PRE-WEDDING') return item.category.includes('PRE-WEDDING') || item.category.includes('SANGEET') || item.category.includes('HALDI') || item.category.includes('CELEBRATION');
+    if (activeCategory === 'SANGEET') return item.category.includes('SANGEET') || item.category.includes('MEHNDI');
+    if (activeCategory === 'HALDI') return item.category.includes('HALDI') || item.category.includes('GARDEN');
     return true;
   });
 
@@ -87,108 +86,69 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           </div>
         </RevealUp>
 
-        {/* Two-column staggered grid where even item (right column) is offset downwards by 100px */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-start">
+        {/* 4-Column Compact Grid: Prevents excessive zooming and preserves ultra-sharp portrait quality */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-start">
           {filteredSpaces.map((item, index) => {
-            const isRightColumn = index % 2 === 1;
-
             return (
               <div
                 key={item.id}
-                className={`relative group cursor-pointer ${
-                  isRightColumn ? 'md:mt-[100px]' : ''
-                }`}
+                className="relative group cursor-pointer flex flex-col h-full bg-[#FAFDFB] rounded-[20px] p-3 sm:p-4 border border-[#9FA1FF]/20 hover:border-[#4D53A8]/40 hover:shadow-xl transition-all duration-300"
                 onClick={() => onSelectCase(item)}
               >
-                <RevealUp delay={index * 120}>
-                  {/* Image container: 3:4 aspect-ratio with 16px border-radius and realistic wedding resort imagery */}
-                  <div className="relative">
-                    <div className="relative aspect-[3/4] rounded-[16px] overflow-hidden bg-[#161726] shadow-xl border border-[#9FA1FF]/20">
-                      <LuxuryVisual
-                        src={item.image}
-                        alt={item.alt}
-                        aspectRatioClass="aspect-[3/4]"
-                        className="rounded-[16px]"
-                        title={item.title}
-                        category={item.category}
-                      />
+                <RevealUp delay={index * 80}>
+                  {/* Image container: compact 3:4 portrait aspect-ratio ensuring zero pixelation or zoom */}
+                  <div className="relative aspect-[3/4] rounded-[14px] overflow-hidden bg-[#161726] shadow-md border border-[#9FA1FF]/15">
+                    <LuxuryVisual
+                      src={item.image}
+                      alt={item.alt}
+                      aspectRatioClass="aspect-[3/4]"
+                      className="rounded-[14px]"
+                      title={item.title}
+                      category={item.category}
+                    />
 
-                      {/* Centered 96px black circle with white 'View Space' text in 10px font on hover */}
-                      <div
-                        className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 transition-all duration-500"
-                        aria-hidden="true"
-                      >
-                        <div className="w-[96px] h-[96px] rounded-full bg-[#161726] text-[#FAEE2F] border border-[#9FA1FF]/40 flex items-center justify-center text-[10px] font-black tracking-widest uppercase text-center px-2 shadow-2xl opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                          VIEW VENUE
-                        </div>
-                      </div>
-
-                      {/* Capacity tag: clean minimal rectangular badge without cylinder pill or typewriter font */}
-                      <div className={`absolute top-6 ${isRightColumn ? 'left-6' : 'right-6'} z-20 pointer-events-none`}>
-                        <span className="text-[10px] font-bold tracking-widest text-[#161726] bg-[#FAEE2F] px-3 py-1.5 rounded-md border border-[#161726]/10 uppercase shadow-sm">
-                          {item.capacity}
-                        </span>
+                    {/* Centered hover action badge */}
+                    <div
+                      className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 transition-all duration-300"
+                      aria-hidden="true"
+                    >
+                      <div className="w-[84px] h-[84px] rounded-full bg-[#161726]/90 text-[#FAEE2F] border border-[#FAEE2F]/40 flex items-center justify-center text-[9px] font-black tracking-widest uppercase text-center px-2 shadow-2xl opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300">
+                        VIEW VENUE
                       </div>
                     </div>
 
-                    {/* Badge 3: Anchored to the top-right corner of the venue card box */}
-                    {index === 1 && (
-                      <div className="absolute -top-12 right-2 sm:-top-18 sm:-right-6 md:-right-8 z-30 pointer-events-auto">
-                        <WeddingDeskCircleBadge
-                          id="badge-section-3"
-                          badgeNumber="02"
-                          title="ROYAL VENUES"
-                          subtitle="Up to 2,000+"
-                          statusText="BALLROOM & LAWN"
-                          onClick={onOpenInquiry || (() => onSelectCase(VENUE_SPACES[0]))}
-                          bounceDelay="1.6s"
-                        />
-                      </div>
-                    )}
+                    {/* Capacity tag: minimal compact badge */}
+                    <div className="absolute top-3 right-3 z-20 pointer-events-none">
+                      <span className="text-[9px] font-black tracking-wider text-[#161726] bg-[#FAEE2F] px-2.5 py-1 rounded-md border border-[#161726]/10 uppercase shadow-sm">
+                        {item.capacity}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Below images: category, title, area, relevant description, tag metadata, and link */}
-                  <div className="mt-8">
-                    {/* Category label */}
-                    <span className="text-[10px] font-black text-[#9FA1FF] tracking-[0.25em] uppercase block mb-1">
+                  {/* Below image: category, title, area, description, and action link */}
+                  <div className="mt-4 flex flex-col flex-grow">
+                    <span className="text-[9px] font-black text-[#9FA1FF] tracking-[0.25em] uppercase block mb-1">
                       {item.category}
                     </span>
 
-                    {/* 3xl title */}
-                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#161726] mb-1 group-hover:text-[#9FA1FF] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-black uppercase tracking-tight text-[#161726] mb-1 group-hover:text-[#4D53A8] transition-colors leading-tight">
                       {item.title}
                     </h3>
 
-                    {/* Area & Purpose */}
-                    <p className="font-cursive text-xl sm:text-2xl text-[#9FA1FF] mb-2 font-normal">
-                      {item.area} · {item.idealFor}
+                    <p className="font-cursive text-base sm:text-lg text-[#9FA1FF] mb-2 font-normal">
+                      {item.area}
                     </p>
 
-                    {/* Relevant Space Description */}
-                    <p className="text-xs sm:text-sm text-[#161726]/80 leading-relaxed mb-4 font-normal">
+                    <p className="text-xs text-[#161726]/75 leading-relaxed mb-3 font-normal line-clamp-3">
                       {item.description}
                     </p>
 
-                    {/* Tag metadata separated by bullet points */}
-                    <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-semibold text-[#161726]/75 uppercase tracking-wider mb-4">
-                      {item.tags.map((tag, tIndex) => (
-                        <React.Fragment key={tIndex}>
-                          <span>{tag}</span>
-                          {tIndex < item.tags.length - 1 && (
-                            <span className="text-[#FAEE2F] font-black text-sm" aria-hidden="true">
-                              •
-                            </span>
-                          )}
-                        </React.Fragment>
-                      ))}
-                    </div>
-
-                    <div className="pt-3 border-t border-[#9FA1FF]/20 flex items-center justify-between text-xs font-bold text-[#161726]/70">
-                      <span className="text-[#9FA1FF] font-black tracking-wider uppercase text-[10px]">
-                        CAPACITY: {item.capacity}
+                    <div className="pt-2.5 mt-auto border-t border-[#9FA1FF]/20 flex items-center justify-between text-xs font-bold text-[#161726]/70">
+                      <span className="text-[#9FA1FF] font-black tracking-wider uppercase text-[9px]">
+                        {item.idealFor.split('&')[0]}
                       </span>
-                      <span className="text-[#161726] group-hover:text-[#9FA1FF] flex items-center gap-1 text-[11px] font-black uppercase tracking-wider transition-colors">
-                        VIEW VENUE DETAILS →
+                      <span className="text-[#161726] group-hover:text-[#4D53A8] flex items-center gap-1 text-[10px] font-black uppercase tracking-wider transition-colors">
+                        DETAILS →
                       </span>
                     </div>
                   </div>

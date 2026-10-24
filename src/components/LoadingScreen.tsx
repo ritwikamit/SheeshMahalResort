@@ -21,9 +21,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ isFadingOut = fals
         {/* Minimal loading indicator */}
         <div className="flex items-center gap-2 mt-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#FAEE2F] animate-bounce"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-[#9FA1FF] animate-bounce [animation-delay:0.2s]"></span>
-          <span className="w-2.5 h-2.5 rounded-full bg-[#B5BAFF] animate-bounce [animation-delay:0.4s]"></span>
-          <span className="text-xs font-black uppercase tracking-[0.3em] text-[#161726]/70 ml-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#4D53A8] animate-bounce [animation-delay:0.2s]"></span>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#161726] animate-bounce [animation-delay:0.4s]"></span>
+          <span className="text-xs font-black uppercase tracking-[0.3em] text-[#161726]/85 ml-2 font-sans">
             Loading...
           </span>
         </div>

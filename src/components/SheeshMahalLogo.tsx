@@ -34,10 +34,10 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
         SM
       </div>
       <div className="flex flex-col text-left">
-        <span className="text-lg font-black tracking-tighter text-[#FAFDFB] uppercase">
+        <span className="text-lg font-black tracking-tighter text-[#161726] uppercase">
           SHEESH MAHAL
         </span>
-        <span className="text-[10px] font-black tracking-[0.2em] text-[#9FA1FF] uppercase -mt-0.5">
+        <span className="text-[10px] font-black tracking-[0.2em] text-[#4D53A8] uppercase -mt-0.5">
           RESORT • PATNA
         </span>
       </div>
@@ -51,16 +51,16 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
         className={`flex flex-col items-center text-center select-none ${className}`}
         onClick={onClick}
       >
-        <div className="relative flex items-center justify-center p-2">
-          {/* Subtle golden ambient aura */}
-          <div className="absolute -inset-4 rounded-3xl bg-radial from-[#FAEE2F]/30 via-[#9FA1FF]/15 to-transparent blur-xl pointer-events-none"></div>
+        <div className="relative flex items-center justify-center p-4">
+          {/* Subtle golden & lavender ambient aura */}
+          <div className="absolute -inset-6 rounded-3xl bg-radial from-[#FAEE2F]/20 via-[#4D53A8]/10 to-transparent blur-2xl pointer-events-none"></div>
 
           {!imgError ? (
             <img
-              src={footerLogoSrc}
+              src={headerLogoSrc}
               alt="Sheesh Mahal Resort Palace Logo"
               onError={() => setImgError(true)}
-              className="relative z-10 w-[280px] sm:w-[380px] md:w-[460px] max-w-[85vw] h-auto object-contain drop-shadow-xl transition-transform duration-700 hover:scale-105"
+              className="relative z-10 w-[300px] sm:w-[420px] md:w-[500px] max-w-[88vw] h-auto object-contain drop-shadow-md transition-transform duration-700 hover:scale-105"
             />
           ) : (
             renderFallback()

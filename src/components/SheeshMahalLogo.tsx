@@ -23,8 +23,9 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
 }) => {
   const [imgError, setImgError] = useState(false);
 
-  // Path to user-uploaded Palace logo
-  const logoSrc = '/images/logo.png';
+  // Path to tailored logo assets
+  const footerLogoSrc = '/images/logo-footer.png';
+  const headerLogoSrc = '/images/logo-header.png';
 
   // Fallback in the rare event the image cannot be displayed
   const renderFallback = () => (
@@ -56,7 +57,7 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
 
           {!imgError ? (
             <img
-              src={logoSrc}
+              src={footerLogoSrc}
               alt="Sheesh Mahal Resort Palace Logo"
               onError={() => setImgError(true)}
               className="relative z-10 w-[280px] sm:w-[380px] md:w-[460px] max-w-[85vw] h-auto object-contain drop-shadow-xl transition-transform duration-700 hover:scale-105"
@@ -69,19 +70,19 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
     );
   }
 
-  // Variant: Footer (High-impact large brand showcase)
+  // Variant: Footer (High-impact large brand showcase, left-aligned)
   if (variant === 'footer') {
     return (
       <div
         onClick={onClick}
-        className={`inline-flex items-center select-none group ${onClick ? 'cursor-pointer' : ''} ${className}`}
+        className={`flex items-start justify-start select-none group text-left ${onClick ? 'cursor-pointer' : ''} ${className}`}
       >
         {!imgError ? (
           <img
-            src={logoSrc}
+            src={footerLogoSrc}
             alt="Sheesh Mahal Resort Palace Logo"
             onError={() => setImgError(true)}
-            className="h-28 sm:h-36 lg:h-44 w-auto max-w-[380px] sm:max-w-[480px] lg:max-w-[560px] object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
+            className="h-24 sm:h-32 lg:h-36 w-auto max-w-[340px] sm:max-w-[440px] lg:max-w-[500px] object-contain object-left drop-shadow-2xl group-hover:scale-[1.02] transition-transform duration-300"
           />
         ) : (
           renderFallback()
@@ -106,7 +107,7 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
       >
         {!imgError ? (
           <img
-            src={logoSrc}
+            src={headerLogoSrc}
             alt="Sheesh Mahal Resort"
             onError={() => setImgError(true)}
             className={`${heightClass} w-auto object-contain transition-transform duration-300 group-hover:scale-105`}
@@ -133,10 +134,10 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
     >
       {!imgError ? (
         <img
-          src={logoSrc}
+          src={headerLogoSrc}
           alt="Sheesh Mahal Resort"
           onError={() => setImgError(true)}
-          className={`${headerHeightClass} w-auto max-w-[240px] sm:max-w-[320px] lg:max-w-[380px] object-contain transition-transform duration-300 group-hover:scale-102`}
+          className={`${headerHeightClass} w-auto max-w-[240px] sm:max-w-[320px] lg:max-w-[380px] object-contain object-left transition-transform duration-300 group-hover:scale-102`}
         />
       ) : (
         renderFallback()

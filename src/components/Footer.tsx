@@ -25,8 +25,8 @@ export const Footer: React.FC<FooterProps> = ({
           
           {/* Left 5 columns: Brand & Mission with LARGE Logo */}
           <div className="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <div className="mb-6">
+            <div className="flex flex-col items-start text-left">
+              <div className="mb-6 w-full flex justify-start items-center">
                 <SheeshMahalLogo
                   variant="footer"
                   onClick={() => onNavigateSection('top')}

@@ -96,8 +96,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-8 lg:py-16 relative z-10 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center">
           
-          {/* Left Column: Floating text with SANCTUARY overlapping the right video card */}
-          <div className="lg:col-span-7 flex flex-col justify-center z-10">
+          {/* Left Column: Floating text with SANCTUARY overlapping the enlarged right video card */}
+          <div className="lg:col-span-6 flex flex-col justify-center relative z-20">
             
             {/* Utility kicker with cursive flourish */}
             <div className="mb-2 sm:mb-4 lg:mb-6 flex flex-wrap items-center gap-2 sm:gap-3">
@@ -116,7 +116,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[9.5rem] text-[#9FA1FF] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                 weddings
               </span>
-              <span className="block lg:relative lg:z-30 lg:w-[130%] lg:-mr-36 pointer-events-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.95)] text-white">
+              <span className="block lg:relative lg:z-30 lg:w-[140%] lg:-mr-44 whitespace-nowrap pointer-events-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.95)] text-white">
                 SANCTUARY
               </span>
             </h1>
@@ -153,7 +153,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
           </div>
 
           {/* Right Column: Hero Video Card with unzoomed 16:9 alignment & synchronized playback */}
-          <div className="lg:col-span-5 relative mt-6 lg:mt-0">
+          <div className="lg:col-span-6 relative mt-6 lg:mt-0 lg:pl-2 z-10">
             {/* The rounded card displaying GeminiHero.mp4 with true 16:9 alignment (no zoom) */}
             <div className="relative rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border-2 border-white/40 group bg-black/40 backdrop-blur-sm">
               <div className="relative aspect-video w-full overflow-hidden bg-black">

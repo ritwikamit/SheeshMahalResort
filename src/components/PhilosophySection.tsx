@@ -5,6 +5,8 @@ import { RESORT_CONTACT } from '../data/resortData.ts';
 import { WeddingDeskCircleBadge } from './WeddingDeskCircleBadge.tsx';
 import { WhatsAppIcon } from './WhatsAppIcon.tsx';
 
+import { LuxuryVisual } from './LuxuryVisual.tsx';
+
 interface PhilosophySectionProps {
   onOpenInquiry: () => void;
 }
@@ -13,22 +15,25 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
   const rituals = [
     {
       title: "HALDI & MEHNDI CARNIVALS",
-      icon: <SunMedium className="w-8 h-8 text-[#FAEE2F]" strokeWidth={1.5} />,
-      description: "Sunlit pool and courtyard festivities with organic turmeric and marigold petal showers, bespoke henna artists, lively folk dhol, and interactive street food chaats.",
+      image: "/images/gallery/smr-48.jpg",
+      icon: <SunMedium className="w-6 h-6 text-[#FAEE2F]" strokeWidth={1.5} />,
+      description: "Sunlit open courtyard celebrations decorated in fresh yellow marigolds, brass urlis, and festive canopies. Featuring organic herbal turmeric paste, live folk dhol beats, master bridal henna artists, and interactive street chaat counters.",
       badge: "PRE-WEDDING",
       cursiveTag: "Joyous Rites & Sangeet Sundowners"
     },
     {
       title: "BARAAT, VARMALA & SAAT PHERE",
-      icon: <Flame className="w-8 h-8 text-[#9FA1FF]" strokeWidth={1.5} />,
-      description: "Regal Baraat avenue with traditional dhol welcome, cinematic cold-pyro Varmala stage garland exchange, followed by sacred Vedic Saat Phere around the consecrated holy havan.",
+      image: "/images/gallery/smr-57.jpg",
+      icon: <Flame className="w-6 h-6 text-[#9FA1FF]" strokeWidth={1.5} />,
+      description: "Regal Baraat avenue welcoming with dhol and nagada, followed by a cinematic revolving Varmala stage garland exchange with cold-pyro fireworks. Completed with sacred Vedic Saat Phere around the sanctified holy havan.",
       badge: "SACRED NUPTIALS",
       cursiveTag: "Seven Sacred Vows of Eternity"
     },
     {
       title: "ROYAL WEDDING RECEPTION",
-      icon: <HeartHandshake className="w-8 h-8 text-[#B5BAFF]" strokeWidth={1.5} />,
-      description: "Imperial evening banqueting celebrating the newly married couple. 60+ dish royal Awadhi and Bihari delicacies, live instrumental music, and aristocratic photo moments.",
+      image: "/images/gallery/smr-60.jpg",
+      icon: <HeartHandshake className="w-6 h-6 text-[#B5BAFF]" strokeWidth={1.5} />,
+      description: "Imperial evening banqueting celebrating the newly married couple. 60+ dish royal Awadhi and Bihari delicacies, live instrumental music, mirror-work crystal chandelier hall, and dedicated photography stages.",
       badge: "SHAHI DAWAT",
       cursiveTag: "Imperial Banqueting & Feasts"
     }
@@ -65,21 +70,34 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {rituals.map((ritual, idx) => (
             <RevealUp key={idx} delay={idx * 120}>
-              <div className="p-10 bg-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 h-full flex flex-col justify-between group hover:border-[#FAEE2F] transition-all duration-700 shadow-sm hover:shadow-md">
+              <div className="p-6 sm:p-8 bg-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 h-full flex flex-col justify-between group hover:border-[#FAEE2F] transition-all duration-700 shadow-md hover:shadow-2xl">
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 bg-[#D9F9DF] rounded-xl border border-[#9FA1FF]/20">
-                      {ritual.icon}
+                  {/* Photo Visual */}
+                  <div className="relative aspect-[16/10] rounded-[18px] overflow-hidden mb-6 bg-[#161726] shadow-sm">
+                    <LuxuryVisual
+                      src={ritual.image}
+                      alt={ritual.title}
+                      aspectRatioClass="aspect-[16/10]"
+                      title={ritual.title}
+                      category={ritual.badge}
+                    />
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="text-[9px] font-black tracking-widest uppercase bg-[#161726]/90 backdrop-blur-md text-[#FAEE2F] px-2.5 py-1 rounded-md shadow">
+                        {ritual.badge}
+                      </span>
                     </div>
-                    <span className="text-[9px] font-black tracking-widest uppercase bg-[#161726] text-[#FAEE2F] px-2.5 py-1 rounded-md">
-                      {ritual.badge}
-                    </span>
                   </div>
 
-                  <p className="font-cursive text-2xl text-[#9FA1FF] mb-1 font-normal">
-                    {ritual.cursiveTag}
-                  </p>
-                  <h3 className="text-xl font-black uppercase tracking-tight text-[#161726] mb-4">
+                  <div className="flex items-center gap-2 mb-3 text-[#9FA1FF]">
+                    <div className="p-2 bg-[#D9F9DF] rounded-lg border border-[#9FA1FF]/20">
+                      {ritual.icon}
+                    </div>
+                    <p className="font-cursive text-xl text-[#9FA1FF] font-normal">
+                      {ritual.cursiveTag}
+                    </p>
+                  </div>
+
+                  <h3 className="text-xl font-black uppercase tracking-tight text-[#161726] mb-3">
                     {ritual.title}
                   </h3>
                   <p className="text-sm text-[#161726]/80 leading-relaxed font-normal">
@@ -87,7 +105,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
                   </p>
                 </div>
 
-                <div className="pt-8 border-t border-[#9FA1FF]/15 mt-8 flex items-center justify-between">
+                <div className="pt-6 border-t border-[#9FA1FF]/15 mt-6 flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-widest text-[#161726]/60">
                     OPEN 24 HOURS
                   </span>

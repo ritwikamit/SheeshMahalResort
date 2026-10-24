@@ -2,6 +2,8 @@ import React from 'react';
 import { Heart, Flame, Users, Calendar, ArrowRight, Sun, Music } from 'lucide-react';
 import { RevealUp } from '../components/RevealUp.tsx';
 
+import { LuxuryVisual } from '../components/LuxuryVisual.tsx';
+
 interface RitualsPageProps {
   onOpenInquiry: () => void;
 }
@@ -13,6 +15,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "HALDI CEREMONY",
       timing: "Morning 10:00 AM",
       venue: "Poolside & Courtyard",
+      image: "/images/gallery/smr-48.jpg",
       description: "Sunlit yellow cabana setups with fresh marigold floral decor, brass urlis, organic yellow turmeric paste, and lively Punjabi & Bihari dhol folk songs.",
       curatedBy: "Courtyard & Waterbody Pavilion"
     },
@@ -21,6 +24,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "MEHNDI SOIRÉE",
       timing: "Afternoon 02:00 PM",
       venue: "Shaded Garden Canopies",
+      image: "/images/gallery/smr-76.jpg",
       description: "Master bridal henna artists, custom bangle bazaars, live street chaat stalls, and relaxed lounge seating for both families to celebrate together.",
       curatedBy: "Garden Canopy Terraces"
     },
@@ -29,6 +33,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "SANGEET MUSICAL EXTRAVAGANZA",
       timing: "Evening 07:00 PM",
       venue: "The Sheesh Ballroom / Shahi Lawn",
+      image: "/images/gallery/smr-13.jpg",
       description: "Full stage truss lighting, acoustic concert sound system, professional DJ consoles, and elevated dance stages for family choreographed dances.",
       curatedBy: "Central Climate-Controlled Ballroom"
     },
@@ -37,6 +42,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "THE GRAND BARAAT",
       timing: "Night 08:00 PM",
       venue: "Royal Reception Avenue",
+      image: "/images/gallery/smr-08.jpg",
       description: "Wide illuminated corridor allowing horse carriages, vintage cars, and brass band processions, followed by traditional rosewater Milni welcoming.",
       curatedBy: "Dedicated Entry Corridor"
     },
@@ -45,6 +51,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "CINEMATIC VARMALA",
       timing: "Night 09:30 PM",
       venue: "Elevated Royal Stage",
+      image: "/images/gallery/smr-57.jpg",
       description: "Hydraulic revolving stage with cold-pyro fireworks, low-lying fog, shower of fresh rose petals, and synchronized thematic lighting.",
       curatedBy: "40ft Pillarless Royal Stage"
     },
@@ -53,6 +60,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "SACRED SAAT PHERE",
       timing: "Midnight 12:30 AM",
       venue: "Royal Mandap Pavilion",
+      image: "/images/gallery/smr-54.jpg",
       description: "Consecrated Vedic havan kund with specialized smoke extraction, tiered family baithak seating, and sacred Sanskrit chanting for the seven eternal vows.",
       curatedBy: "Consecrated Fire Altar Pavilion"
     }
@@ -80,36 +88,49 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
         {/* Rituals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {weddingRituals.map((ritual, idx) => (
-            <RevealUp key={idx} delay={idx * 80}>
-              <div className="p-6 sm:p-8 bg-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 shadow-md h-full flex flex-col justify-between group hover:border-[#FAEE2F] transition-all duration-500">
+            <RevealUp key={idx} delay={idx * 50}>
+              <div className="p-5 sm:p-7 bg-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 shadow-md h-full flex flex-col justify-between group hover:border-[#FAEE2F] transition-all duration-500 hover:shadow-xl">
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-black text-[#9FA1FF] tracking-wider">
+                  {/* Photo Visual */}
+                  <div className="relative aspect-[16/10] rounded-[16px] overflow-hidden mb-5 bg-[#161726]">
+                    <LuxuryVisual
+                      src={ritual.image}
+                      alt={ritual.name}
+                      aspectRatioClass="aspect-[16/10]"
+                      title={ritual.name}
+                      category={`RITUAL ${ritual.number}`}
+                    />
+                    <div className="absolute top-3 right-3 z-10">
+                      <span className="text-[9px] font-black uppercase tracking-wider bg-[#FAEE2F] text-[#161726] px-2.5 py-1 rounded-md shadow">
+                        {ritual.timing}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-black text-[#9FA1FF] tracking-wider">
                       RITUAL {ritual.number}
                     </span>
-                    <span className="text-[10px] font-black uppercase tracking-wider bg-[#FAEE2F] text-[#161726] px-2.5 py-1 rounded-md">
-                      {ritual.timing}
+                    <span className="text-xs font-semibold text-[#161726]/60">
+                      {ritual.venue}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-black uppercase tracking-tight text-[#161726] mb-1">
+                  <h3 className="text-xl font-black uppercase tracking-tight text-[#161726] mb-2">
                     {ritual.name}
                   </h3>
-                  <p className="font-cursive text-xl text-[#9FA1FF] mb-3 font-normal">
-                    {ritual.venue}
-                  </p>
 
-                  <p className="text-xs text-[#161726]/80 leading-relaxed font-normal mb-6">
+                  <p className="text-xs text-[#161726]/80 leading-relaxed font-normal mb-5">
                     {ritual.description}
                   </p>
                 </div>
 
                 <div className="pt-4 border-t border-[#9FA1FF]/20 flex items-center justify-between text-[11px] font-bold text-[#161726]/70">
-                  <span>{ritual.curatedBy}</span>
+                  <span className="uppercase tracking-wider text-[10px] text-[#9FA1FF]">{ritual.curatedBy}</span>
                   <button
                     type="button"
                     onClick={onOpenInquiry}
-                    className="text-xs font-black uppercase tracking-wider text-[#9FA1FF] hover:text-[#161726]"
+                    className="text-xs font-black uppercase tracking-wider text-[#161726] hover:text-[#9FA1FF] cursor-pointer"
                   >
                     PLAN →
                   </button>

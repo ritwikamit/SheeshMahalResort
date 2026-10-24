@@ -146,20 +146,30 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
                     )}
                   </div>
 
-                  {/* Below images: category label in 10px bold tracking-widest, followed by 3xl title and tag metadata separated by bullet points */}
+                  {/* Below images: category, title, area, relevant description, tag metadata, and link */}
                   <div className="mt-8">
-                    {/* Category label in 10px palette bold tracking-widest */}
+                    {/* Category label */}
                     <span className="text-[10px] font-black text-[#9FA1FF] tracking-[0.25em] uppercase block mb-1">
                       {item.category}
                     </span>
 
                     {/* 3xl title */}
-                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#161726] mb-3 group-hover:text-[#9FA1FF] transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#161726] mb-1 group-hover:text-[#9FA1FF] transition-colors">
                       {item.title}
                     </h3>
 
+                    {/* Area & Purpose */}
+                    <p className="font-cursive text-xl sm:text-2xl text-[#9FA1FF] mb-2 font-normal">
+                      {item.area} · {item.idealFor}
+                    </p>
+
+                    {/* Relevant Space Description */}
+                    <p className="text-xs sm:text-sm text-[#161726]/80 leading-relaxed mb-4 font-normal">
+                      {item.description}
+                    </p>
+
                     {/* Tag metadata separated by bullet points */}
-                    <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-[#161726]/75 uppercase tracking-wider">
+                    <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs font-semibold text-[#161726]/75 uppercase tracking-wider mb-4">
                       {item.tags.map((tag, tIndex) => (
                         <React.Fragment key={tIndex}>
                           <span>{tag}</span>
@@ -170,6 +180,15 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
                           )}
                         </React.Fragment>
                       ))}
+                    </div>
+
+                    <div className="pt-3 border-t border-[#9FA1FF]/20 flex items-center justify-between text-xs font-bold text-[#161726]/70">
+                      <span className="text-[#9FA1FF] font-black tracking-wider uppercase text-[10px]">
+                        CAPACITY: {item.capacity}
+                      </span>
+                      <span className="text-[#161726] group-hover:text-[#9FA1FF] flex items-center gap-1 text-[11px] font-black uppercase tracking-wider transition-colors">
+                        VIEW VENUE DETAILS →
+                      </span>
                     </div>
                   </div>
                 </RevealUp>

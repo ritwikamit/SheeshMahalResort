@@ -6,7 +6,6 @@ import {
   Pause,
   Heart,
   Share2,
-  Sparkles,
   Film,
   CheckCircle2,
   ArrowRight,
@@ -14,7 +13,6 @@ import {
   RotateCcw,
   Calendar
 } from 'lucide-react';
-import { WeddingDeskCircleBadge } from './WeddingDeskCircleBadge.tsx';
 
 interface ReelShowcaseProps {
   onOpenInquiry: () => void;
@@ -25,7 +23,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
   const progressBarRef = useRef<HTMLDivElement>(null);
 
   const [isMuted, setIsMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(35);
@@ -33,6 +31,61 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
   const [likeCount, setLikeCount] = useState(2480);
   const [showPlayStateFlash, setShowPlayStateFlash] = useState(false);
   const [copyFeedback, setCopyFeedback] = useState(false);
+
+  // Bulletproof autoplay and scroll-to-play lifecycle
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Enforce HTML5/React muted attributes for browser autoplay policy
+    video.defaultMuted = true;
+    video.muted = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+      video
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch(() => {
+          setIsPlaying(false);
+        });
+    };
+
+    // Attempt autoplay immediately
+    playVideo();
+
+    // Trigger autoplay when scrolled into viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            playVideo();
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(video);
+
+    // Global listener to trigger video playback on first user gesture anywhere
+    const onUserGesture = () => {
+      if (video.paused) {
+        playVideo();
+      }
+    };
+    window.addEventListener('click', onUserGesture, { once: true });
+    window.addEventListener('touchstart', onUserGesture, { once: true });
+    window.addEventListener('scroll', onUserGesture, { once: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('click', onUserGesture);
+      window.removeEventListener('touchstart', onUserGesture);
+      window.removeEventListener('scroll', onUserGesture);
+    };
+  }, []);
 
   // Sync state on video timeupdate
   const handleTimeUpdate = () => {
@@ -47,27 +100,30 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
   // Toggle Mute / Minimal Audio on-off
   const toggleAudio = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!videoRef.current) return;
+    const video = videoRef.current;
+    if (!video) return;
 
     const nextMuted = !isMuted;
-    videoRef.current.muted = nextMuted;
+    video.muted = nextMuted;
     setIsMuted(nextMuted);
 
-    // If unmuting and video was paused, resume playback
-    if (!nextMuted && videoRef.current.paused) {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
+    // If unmuting while paused, resume playback
+    if (!nextMuted && video.paused) {
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
     }
   };
 
   // Toggle Play / Pause
   const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (videoRef.current.paused) {
-      videoRef.current.play().catch(() => {});
-      setIsPlaying(true);
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      video.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {});
     } else {
-      videoRef.current.pause();
+      video.pause();
       setIsPlaying(false);
     }
     setShowPlayStateFlash(true);
@@ -131,8 +187,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     e.stopPropagation();
     if (!videoRef.current) return;
     videoRef.current.currentTime = 0;
-    videoRef.current.play().catch(() => {});
-    setIsPlaying(true);
+    videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
   };
 
   return (
@@ -185,14 +240,33 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                 >
                   <video
                     ref={videoRef}
-                    src="/videos/reel.mp4"
                     autoPlay
                     loop
                     muted={isMuted}
                     playsInline
+                    preload="auto"
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
                     onTimeUpdate={handleTimeUpdate}
                     className="w-full h-full object-cover"
-                  />
+                  >
+                    <source src="/videos/reel.mp4" type="video/mp4" />
+                  </video>
+
+                  {/* Play Overlay when video is paused */}
+                  {!isPlaying && (
+                    <div
+                      onClick={togglePlay}
+                      className="absolute inset-0 bg-black/45 backdrop-blur-[2px] flex flex-col items-center justify-center z-30 cursor-pointer transition-all"
+                    >
+                      <div className="w-20 h-20 rounded-full bg-[#FAEE2F] text-[#161726] flex items-center justify-center shadow-2xl shadow-[#FAEE2F]/50 transform hover:scale-110 transition-transform">
+                        <Play size={36} className="ml-1 fill-[#161726]" />
+                      </div>
+                      <span className="mt-3 text-xs font-black uppercase tracking-widest text-white bg-black/70 px-4 py-1.5 rounded-full border border-white/20 shadow-lg">
+                        TAP TO PLAY REEL
+                      </span>
+                    </div>
+                  )}
 
                   {/* Top Header Overlay */}
                   <div className="absolute top-0 left-0 right-0 p-4 pt-5 bg-gradient-to-b from-black/80 via-black/40 to-transparent z-20 flex items-center justify-between pointer-events-auto">
@@ -222,31 +296,31 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                       type="button"
                       onClick={toggleAudio}
                       aria-label={isMuted ? 'Turn Audio On' : 'Turn Audio Off'}
-                      className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-lg backdrop-blur-md ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-lg backdrop-blur-md ${
                         isMuted
-                          ? 'bg-black/60 text-white/80 hover:bg-black/80 border border-white/20 hover:text-white'
-                          : 'bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] border border-[#FAEE2F] shadow-[#FAEE2F]/30'
+                          ? 'bg-black/60 text-white/90 hover:bg-black/80 border border-white/25 hover:text-white'
+                          : 'bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] border border-[#FAEE2F] shadow-[#FAEE2F]/40'
                       }`}
                     >
                       {isMuted ? (
                         <>
-                          <VolumeX size={14} className="text-white/80" />
-                          <span className="text-[10px]">SOUND OFF</span>
+                          <VolumeX size={15} className="text-white/90" />
+                          <span className="text-[10px] font-bold">AUDIO OFF</span>
                         </>
                       ) : (
                         <>
-                          <Volume2 size={14} className="text-[#161726] animate-pulse" />
-                          <span className="text-[10px] text-[#161726]">SOUND ON</span>
+                          <Volume2 size={15} className="text-[#161726] animate-pulse" />
+                          <span className="text-[10px] font-black text-[#161726]">AUDIO ON</span>
                         </>
                       )}
                     </button>
                   </div>
 
                   {/* Play/Pause Center Flash Indicator */}
-                  {showPlayStateFlash && (
+                  {showPlayStateFlash && isPlaying && (
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 transition-opacity">
-                      <div className="w-16 h-16 rounded-full bg-black/65 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-2xl animate-scale-in">
-                        {isPlaying ? <Play size={28} className="ml-1 text-[#FAEE2F]" /> : <Pause size={28} className="text-white" />}
+                      <div className="w-16 h-16 rounded-full bg-black/65 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-2xl">
+                        <Play size={28} className="ml-1 text-[#FAEE2F]" />
                       </div>
                     </div>
                   )}
@@ -254,15 +328,15 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                   {/* Right Side Social Floating Action Rail */}
                   <div className="absolute right-3 bottom-24 z-20 flex flex-col items-center gap-4 pointer-events-auto">
                     
-                    {/* Minimal Audio Toggle Icon Button with Tooltip */}
+                    {/* Minimal Audio Toggle Icon Button */}
                     <button
                       type="button"
                       onClick={toggleAudio}
-                      title={isMuted ? 'Click for Sound' : 'Mute Audio'}
+                      title={isMuted ? 'Turn Audio On' : 'Mute Audio'}
                       aria-label="Toggle Reel Audio"
                       className={`w-11 h-11 rounded-full flex flex-col items-center justify-center transition-transform active:scale-90 shadow-xl cursor-pointer backdrop-blur-md ${
                         isMuted
-                          ? 'bg-black/60 text-white border border-white/30 hover:border-white'
+                          ? 'bg-black/65 text-white border border-white/30 hover:border-white'
                           : 'bg-[#FAEE2F] text-[#161726] border-2 border-white ring-2 ring-[#FAEE2F]/50 animate-bounce-slow'
                       }`}
                     >
@@ -329,7 +403,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                       <div className="flex items-center gap-2 overflow-hidden">
                         <Music size={12} className={isMuted ? 'text-white/60' : 'text-[#FAEE2F] animate-spin'} />
                         <span className="truncate text-[10px] font-mono tracking-tight text-white/85">
-                          Sheesh Mahal Wedding Film · Original Sound
+                          Sheesh Mahal Wedding Film · Original Audio
                         </span>
                       </div>
 

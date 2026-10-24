@@ -1,7 +1,5 @@
-import React from 'react';
-import { ArrowRight, MapPin } from 'lucide-react';
-import { RESORT_CONTACT, RESORT_HERO_IMAGE, RESORT_HERO_ALT } from '../data/resortData.ts';
-import { LuxuryVisual } from './LuxuryVisual.tsx';
+import React, { useRef, useEffect } from 'react';
+import { ArrowRight, MapPin, Play, Pause } from 'lucide-react';
 import { WeddingDeskCircleBadge } from './WeddingDeskCircleBadge.tsx';
 
 interface HeroProps {
@@ -10,24 +8,62 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => {
+  const cardVideoRef = useRef<HTMLVideoElement>(null);
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Guarantee browser autoplay compliance
+  useEffect(() => {
+    [cardVideoRef.current, bgVideoRef.current].forEach((vid) => {
+      if (vid) {
+        vid.defaultMuted = true;
+        vid.muted = true;
+        vid.playsInline = true;
+        vid.play().catch(() => {});
+      }
+    });
+
+    const handleFirstTouch = () => {
+      [cardVideoRef.current, bgVideoRef.current].forEach((vid) => {
+        if (vid && vid.paused) {
+          vid.play().catch(() => {});
+        }
+      });
+      window.removeEventListener('click', handleFirstTouch);
+      window.removeEventListener('touchstart', handleFirstTouch);
+      window.removeEventListener('scroll', handleFirstTouch);
+    };
+
+    window.addEventListener('click', handleFirstTouch, { once: true });
+    window.addEventListener('touchstart', handleFirstTouch, { once: true });
+    window.addEventListener('scroll', handleFirstTouch, { once: true });
+
+    return () => {
+      window.removeEventListener('click', handleFirstTouch);
+      window.removeEventListener('touchstart', handleFirstTouch);
+      window.removeEventListener('scroll', handleFirstTouch);
+    };
+  }, []);
+
   return (
     <section
       id="top"
       className="relative min-h-screen w-full pt-[76px] sm:pt-[80px] bg-[#FAFDFB] text-[#161726] flex flex-col justify-center overflow-hidden border-b border-[#9FA1FF]/20"
     >
-      {/* Background Video (GeminiHero.mp4 without audio on loop) */}
+      {/* Background Ambient Video (GeminiHero.mp4 without audio on loop) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
+          ref={bgVideoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-center scale-105"
+          preload="auto"
+          className="w-full h-full object-cover object-center scale-105 opacity-40"
         >
           <source src="/videos/GeminiHero.mp4" type="video/mp4" />
         </video>
-        {/* Soft royal gradient overlays ensuring pristine typographic clarity and luxury ambience */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAFDFB]/95 via-[#FAFDFB]/88 to-[#FAFDFB]/60 sm:to-[#FAFDFB]/40" />
+        {/* Soft royal gradient overlays for typographic clarity and aesthetic luxury */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAFDFB]/95 via-[#FAFDFB]/85 to-[#FAFDFB]/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#FAFDFB] via-transparent to-[#FAFDFB]/30 opacity-90" />
       </div>
 
@@ -95,33 +131,52 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             </div>
           </div>
 
-          {/* Right Column: Large card & 24h Circle Badge on RIGHT side */}
+          {/* Right Column: Hero Video Card with GeminiHero.mp4 & 24h Circle Badge */}
           <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-            {/* The 24px rounded card */}
-            <div className="relative rounded-[24px] overflow-hidden shadow-2xl border border-[#9FA1FF]/30 group bg-[#161726]">
-              <LuxuryVisual
-                src={RESORT_HERO_IMAGE}
-                alt={RESORT_HERO_ALT}
-                aspectRatioClass="aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/5]"
-                className="rounded-[24px]"
-                title="Sheesh Mahal Wedding Resort"
-                category="Patna Royal Venue"
-              />
+            {/* The 24px rounded card displaying GeminiHero.mp4 on loop without audio */}
+            <div className="relative rounded-[24px] overflow-hidden shadow-2xl border-2 border-[#9FA1FF]/40 group bg-[#161726]">
+              <div className="relative aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden bg-[#161726]">
+                <video
+                  ref={cardVideoRef}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
+                >
+                  <source src="/videos/GeminiHero.mp4" type="video/mp4" />
+                </video>
 
-              {/* Discreet caption tag inside bottom */}
-              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white/95 z-20 pointer-events-none drop-shadow-md">
-                <div>
-                  <p className="font-cursive text-xl text-[#FAEE2F] tracking-wide">
-                    The Wedding Palace
-                  </p>
-                  <p className="text-sm font-bold tracking-tight uppercase">
-                    BARAAT LAWN & SHEESH BALLROOM
-                  </p>
+                {/* Ambient vignette gradient overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35 pointer-events-none" />
+
+                {/* Top Live Badge */}
+                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-black tracking-widest uppercase">
+                  <span className="w-2 h-2 rounded-full bg-[#FAEE2F] animate-pulse" />
+                  <span>ROYAL PALACE LIVE</span>
                 </div>
-                <div className="text-right">
-                  <span className="text-[10px] tracking-widest uppercase font-bold text-white/90 bg-black/60 px-2.5 py-1 rounded-md">
-                    UP TO 2000 WEDDING GUESTS
-                  </span>
+
+                {/* Top Right Muted Indicator */}
+                <div className="absolute top-4 right-4 z-20 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/15 text-white/80 text-[9px] font-mono tracking-widest uppercase">
+                  LOOP · MUTED
+                </div>
+
+                {/* Discreet caption tag inside bottom */}
+                <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white/95 z-20 pointer-events-none drop-shadow-md">
+                  <div>
+                    <p className="font-cursive text-2xl text-[#FAEE2F] tracking-wide">
+                      The Wedding Palace
+                    </p>
+                    <p className="text-xs sm:text-sm font-bold tracking-tight uppercase">
+                      BARAAT LAWN & SHEESH BALLROOM
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[10px] tracking-widest uppercase font-bold text-white/95 bg-black/75 px-2.5 py-1 rounded-md border border-white/10">
+                      UP TO 2000 GUESTS
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

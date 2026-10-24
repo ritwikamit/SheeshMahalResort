@@ -23,8 +23,8 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
 }) => {
   const [imgError, setImgError] = useState(false);
 
-  // Path to user-uploaded logo
-  const logoSrc = '/SheeshMahalLogo.png';
+  // Path to user-uploaded Palace logo
+  const logoSrc = '/images/logo.png';
 
   // Fallback in the rare event the image cannot be displayed
   const renderFallback = () => (
@@ -33,7 +33,7 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
         SM
       </div>
       <div className="flex flex-col text-left">
-        <span className="text-lg font-black tracking-tighter text-[#161726] uppercase">
+        <span className="text-lg font-black tracking-tighter text-[#FAFDFB] uppercase">
           SHEESH MAHAL
         </span>
         <span className="text-[10px] font-black tracking-[0.2em] text-[#9FA1FF] uppercase -mt-0.5">
@@ -57,9 +57,9 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
           {!imgError ? (
             <img
               src={logoSrc}
-              alt="Sheesh Mahal Resort"
+              alt="Sheesh Mahal Resort Palace Logo"
               onError={() => setImgError(true)}
-              className="relative z-10 w-[260px] sm:w-[360px] md:w-[420px] max-w-[85vw] h-auto object-contain drop-shadow-md transition-transform duration-700 hover:scale-105"
+              className="relative z-10 w-[280px] sm:w-[380px] md:w-[460px] max-w-[85vw] h-auto object-contain drop-shadow-xl transition-transform duration-700 hover:scale-105"
             />
           ) : (
             renderFallback()
@@ -69,7 +69,7 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
     );
   }
 
-  // Variant: Footer (High-impact brand lockup)
+  // Variant: Footer (High-impact large brand showcase)
   if (variant === 'footer') {
     return (
       <div
@@ -79,9 +79,9 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
         {!imgError ? (
           <img
             src={logoSrc}
-            alt="Sheesh Mahal Resort Patna"
+            alt="Sheesh Mahal Resort Palace Logo"
             onError={() => setImgError(true)}
-            className="h-16 sm:h-20 lg:h-22 w-auto max-w-[320px] sm:max-w-[400px] object-contain drop-shadow-sm group-hover:scale-102 transition-transform duration-300"
+            className="h-28 sm:h-36 lg:h-44 w-auto max-w-[380px] sm:max-w-[480px] lg:max-w-[560px] object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
           renderFallback()

@@ -1,6 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { X, ChevronLeft, ChevronRight, Maximize2, Calendar, Sparkles } from 'lucide-react';
 import { LuxuryVisual } from '../components/LuxuryVisual.tsx';
 import { RevealUp } from '../components/RevealUp.tsx';
+
+interface GalleryItem {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  caption: string;
+  description: string;
+}
 
 interface GalleryPageProps {
   onOpenInquiry: () => void;
@@ -8,81 +18,219 @@ interface GalleryPageProps {
 
 export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
   const [filter, setFilter] = useState('ALL');
+  const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
 
-  const galleryItems = [
+  const galleryItems: GalleryItem[] = [
     {
+      id: 1,
       title: "The Royal Sheesh Ballroom",
       category: "BANQUET",
-      image: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=85",
-      caption: "Crystal Chandeliers & Varmala Dais"
+      image: "/images/gallery/resort-2.jpg",
+      caption: "Crystal Chandeliers & Varmala Dais",
+      description: "Air-conditioned 12,000 sq. ft. ballroom with glittering crystal chandeliers, royal thrones, and a 40ft pillarless royal stage."
     },
     {
+      id: 2,
       title: "Shahi Utsav Evening Lawn",
       category: "LAWN",
-      image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1200&q=85",
-      caption: "Starlit Fairy Light Canopies"
+      image: "/images/gallery/resort-4.jpg",
+      caption: "Starlit Fairy Light Canopies",
+      description: "Expansive 25,000 sq. ft. landscaped starlit lawn accommodating up to 2,000 guests with open-air banquet courts."
     },
     {
-      title: "Vedic Mandap Pavilion",
+      id: 3,
+      title: "Consecrated Vedic Mandap",
       category: "MANDAP",
-      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
-      caption: "Fresh Floral Drapery & Sacred Havan"
+      image: "/images/gallery/resort-10.jpg",
+      caption: "Fresh Floral Drapery & Sacred Havan",
+      description: "A sanctified pavilion draped with fragrant fresh marigold and red rose garlands, engineered for the sacred havan and Saat Phere."
     },
     {
-      title: "Poolside Haldi & Mehndi Cabanas",
+      id: 4,
+      title: "Poolside Courtyard & Cabanas",
       category: "HALDI",
-      image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85",
-      caption: "Festive Daytime Floral Swings"
+      image: "/images/gallery/resort-14.jpg",
+      caption: "Festive Daytime Haldi & Mehndi Swings",
+      description: "Shimmering waterbody ambiance for joyful Haldi ceremonies, floral swings, live Mehndi artists, and Sangeet sundowners."
     },
     {
-      title: "Grand Resort Facade at Twilight",
-      category: "RESORT",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=85",
-      caption: "Illuminated Palace Entrance & Palms"
+      id: 5,
+      title: "Palace Grand Reception Corridor",
+      category: "BANQUET",
+      image: "/images/gallery/resort-3.jpg",
+      caption: "Mirror Glass Artistry & Welcoming Foyer",
+      description: "Ornate entrance corridor adorned with Sheesh mirror-work accents, welcoming Baraat families into the royal palace."
     },
     {
-      title: "Shahi Awadhi Live Banquet Buffet",
+      id: 6,
+      title: "Emerald Lawns & Baraat Avenue",
+      category: "LAWN",
+      image: "/images/gallery/resort-5.jpg",
+      caption: "Grand Pathway for Dhol & Vintage Carriages",
+      description: "Wide illuminated avenue leading into the main lawns, designed for majestic Baraat entries and Dhol procession welcomes."
+    },
+    {
+      id: 7,
+      title: "Palace Architecture at Twilight",
+      category: "FACADE",
+      image: "/images/gallery/resort-6.jpg",
+      caption: "Illuminated Resort Exterior in Patna",
+      description: "Regal exterior facade located opposite St. Xavier's College gate on Ashiana–Digha Road, lit up majestically for wedding nights."
+    },
+    {
+      id: 8,
+      title: "Varmala Revolving Dais Setup",
+      category: "MANDAP",
+      image: "/images/gallery/resort-7.jpg",
+      caption: "Cinematic Stage with Pyro & Smoke",
+      description: "Elevated rotating stage synchronised with cold-pyrotechnics and ambient spotlights for an unforgettable garland exchange."
+    },
+    {
+      id: 9,
+      title: "Royal Floral & Throne Decor",
+      category: "DECOR",
+      image: "/images/gallery/resort-8.jpg",
+      caption: "Artisanal Stage Backdrops & Velvet Seating",
+      description: "Custom stage architecture crafted by master wedding decorators with fresh blooms, brass samai lamps, and royal velvet baithaks."
+    },
+    {
+      id: 10,
+      title: "Baraat Welcome Corridor",
+      category: "LAWN",
+      image: "/images/gallery/resort-9.jpg",
+      caption: "Traditional Milni Gate & Rose Showers",
+      description: "Stately arches welcoming the groom and baraatis with traditional rose petal showers and refreshing royal welcome drinks."
+    },
+    {
+      id: 11,
+      title: "Shahi Awadhi Live Food Stations",
       category: "CATERING",
-      image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=85",
-      caption: "Artisanal Royal Wedding Feasts"
+      image: "/images/gallery/resort-11.jpg",
+      caption: "Live Dum Biryani, Kebabs & Tandoor Courts",
+      description: "Gourmet wedding catering with live copper handi presentations, authentic Awadhi recipes, and hot Tandoori bread counters."
+    },
+    {
+      id: 12,
+      title: "Night Wedding Illumination",
+      category: "FACADE",
+      image: "/images/gallery/resort-12.jpg",
+      caption: "Fairy Lights & Starlit Palace Glow",
+      description: "Complete resort grounds bathed in warm golden fairy lights, architectural lanterns, and laser uplighting."
+    },
+    {
+      id: 13,
+      title: "Gourmet Live Mithai & Dessert Street",
+      category: "CATERING",
+      image: "/images/gallery/resort-13.jpg",
+      caption: "Hot Rabri-Jalebi, Kulfi & Artisanal Sweets",
+      description: "Interactive dessert boulevard featuring live hot Jalebis, Malpua, Shahi Tukda, and custom artisanal Indian confections."
+    },
+    {
+      id: 14,
+      title: "Starlit Evening Lawns & Dining Court",
+      category: "LAWN",
+      image: "/images/gallery/resort-15.jpg",
+      caption: "Parallel Dining Avenues Under the Stars",
+      description: "Spacious dining arrangement ensuring zero lines or crowding, with ample seating and attentive royal hospitality."
+    },
+    {
+      id: 15,
+      title: "Luxury Bridal Suite & Dressing Lounge",
+      category: "DECOR",
+      image: "/images/gallery/resort-16.jpg",
+      caption: "Private Sanctuary for the Bride",
+      description: "Air-conditioned luxury bridal sanctuary with full-length lighted mirrors, plush lounge seating, and attached private washrooms."
+    },
+    {
+      id: 16,
+      title: "Sacred Fire & Vedic Ritual Rites",
+      category: "MANDAP",
+      image: "/images/gallery/resort-18.jpg",
+      caption: "Authentic Seven Vows of Eternity",
+      description: "Close-up of the sacred havan altar and traditional brass ceremonial elements during the auspicious wedding pheras."
     }
   ];
 
-  const categories = ['ALL', 'BANQUET', 'LAWN', 'MANDAP', 'HALDI', 'CATERING'];
+  const categories = ['ALL', 'BANQUET', 'LAWN', 'MANDAP', 'HALDI', 'CATERING', 'FACADE', 'DECOR'];
 
   const filteredItems = galleryItems.filter((item) => {
     if (filter === 'ALL') return true;
     return item.category === filter;
   });
 
+  // Lightbox navigation
+  const openLightbox = (index: number) => {
+    setActiveLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setActiveLightboxIndex(null);
+  };
+
+  const nextImage = () => {
+    if (activeLightboxIndex !== null) {
+      setActiveLightboxIndex((activeLightboxIndex + 1) % filteredItems.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (activeLightboxIndex !== null) {
+      setActiveLightboxIndex((activeLightboxIndex - 1 + filteredItems.length) % filteredItems.length);
+    }
+  };
+
+  // Keyboard navigation for Lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (activeLightboxIndex === null) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeLightboxIndex, filteredItems.length]);
+
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+    <div className="pt-[88px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Header */}
+        
+        {/* Page Header */}
         <div className="py-8 sm:py-12 border-b border-[#9FA1FF]/20 mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <span className="label-utility text-[#161726]/70">
-              VISUAL CHRONICLES OF WEDDING GRANDEUR
-            </span>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="label-utility text-[#161726]/70">
+                OFFICIAL RESORT PHOTO ARCHIVE
+              </span>
+              <span className="w-8 h-[1px] bg-[#9FA1FF]"></span>
+              <span className="text-[9px] font-black tracking-widest text-[#161726] bg-[#FAEE2F] px-2 py-0.5 rounded-sm uppercase">
+                {filteredItems.length} REAL PHOTOS
+              </span>
+            </div>
+            
             <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
               PHOTO GALLERY
             </h1>
+            
             <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
-              A Glimpse into Royal Moments & Sacred Vows
+              Authentic Glimpse into Royal Ceremonies & Palatial Grounds
+            </p>
+            <p className="text-xs sm:text-sm text-[#161726]/75 mt-3 max-w-2xl font-normal">
+              Every photograph below captures real celebrations, grand ballrooms, starlit lawns, and sacred mandaps at Sheesh Mahal Resort, Ashiana–Digha Road, Patna.
             </p>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2 text-[10px] font-black uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[9px] sm:text-[10px] font-black uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
                   filter === cat
-                    ? 'bg-[#161726] text-[#FAEE2F]'
-                    : 'bg-[#D9F9DF] text-[#161726]/70 hover:text-[#161726]'
+                    ? 'bg-[#161726] text-[#FAEE2F] shadow-sm'
+                    : 'bg-[#D9F9DF] text-[#161726]/70 hover:text-[#161726] hover:bg-[#FAEE2F]/40'
                 }`}
               >
                 {cat}
@@ -92,33 +240,195 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {filteredItems.map((item, idx) => (
-            <RevealUp key={idx} delay={idx * 80}>
-              <div className="group rounded-[20px] overflow-hidden bg-[#161726] border border-[#9FA1FF]/25 shadow-lg relative">
-                <LuxuryVisual
-                  src={item.image}
-                  alt={item.title}
-                  aspectRatioClass="aspect-[4/3]"
-                  title={item.title}
-                  category={item.category}
-                />
-                <div className="p-5 bg-[#FAFDFB] border-t border-[#9FA1FF]/20">
-                  <span className="text-[9px] font-black tracking-widest uppercase text-[#9FA1FF] block mb-1">
-                    {item.category}
-                  </span>
-                  <h3 className="text-lg font-black uppercase text-[#161726]">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-[#161726]/70 mt-1 font-medium">
-                    {item.caption}
-                  </p>
+            <RevealUp key={item.id} delay={idx * 60}>
+              <div
+                onClick={() => openLightbox(idx)}
+                className="group rounded-[20px] overflow-hidden bg-[#FAFDFB] border border-[#9FA1FF]/25 shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col h-full transform hover:-translate-y-1"
+              >
+                {/* Visual */}
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#161726]">
+                  <LuxuryVisual
+                    src={item.image}
+                    alt={item.title}
+                    aspectRatioClass="aspect-[4/3]"
+                    title={item.title}
+                    category={item.category}
+                  />
+
+                  {/* Hover Overlay with Tap to Enlarge */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="w-11 h-11 rounded-full bg-[#FAEE2F] text-[#161726] flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <Maximize2 size={18} />
+                    </div>
+                  </div>
+
+                  {/* Corner Category Tag */}
+                  <div className="absolute top-3 left-3 z-10 pointer-events-none">
+                    <span className="text-[8.5px] font-black uppercase tracking-wider text-[#161726] bg-[#FAEE2F] px-2 py-0.5 rounded-sm shadow-sm">
+                      {item.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between border-t border-[#9FA1FF]/15">
+                  <div>
+                    <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-[#161726] group-hover:text-[#9FA1FF] transition-colors leading-snug">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-[#9FA1FF] font-cursive mt-0.5">
+                      {item.caption}
+                    </p>
+                    <p className="text-[11px] sm:text-xs text-[#161726]/75 mt-2 leading-relaxed font-normal">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 mt-3 border-t border-[#9FA1FF]/10 flex items-center justify-between text-[9px] font-bold tracking-wider uppercase text-[#161726]/60">
+                    <span>SHEESH MAHAL PATNA</span>
+                    <span className="text-[#9FA1FF] group-hover:translate-x-1 transition-transform">
+                      VIEW FULL →
+                    </span>
+                  </div>
                 </div>
               </div>
             </RevealUp>
           ))}
         </div>
+
+        {/* Bottom Booking Invitation */}
+        <RevealUp delay={150}>
+          <div className="p-8 sm:p-12 bg-[#161726] text-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+            <div className="max-w-2xl text-center md:text-left">
+              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#FAEE2F] block mb-2">
+                RESERVE YOUR WEDDING DATES
+              </span>
+              <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight leading-tight">
+                VISIT SHEESH MAHAL RESORT IN PERSON
+              </h3>
+              <p className="font-cursive text-xl sm:text-3xl text-[#9FA1FF] mt-1 mb-3">
+                "Where Sacred Vows Meet Royal Grandeur"
+              </p>
+              <p className="text-xs sm:text-sm text-[#D9F9DF] leading-relaxed">
+                Experience our palatial banquet ballrooms, consecrated Mandaps, and starlit lawns live. Open 24 hours daily opposite St. Xavier's College gate, Ashiana–Digha Road, Patna.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+              <button
+                type="button"
+                onClick={onOpenInquiry}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] transition-all duration-300 shadow-xl cursor-pointer hover:scale-105 active:scale-95 text-center"
+              >
+                <Calendar size={15} />
+                <span>CHECK WEDDING DATES</span>
+              </button>
+            </div>
+          </div>
+        </RevealUp>
+
       </div>
+
+      {/* Full-Screen Interactive Lightbox Modal */}
+      {activeLightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col justify-between p-3 sm:p-6 animate-in fade-in duration-300"
+          onClick={closeLightbox}
+        >
+          {/* Top Bar with Title & Close */}
+          <div
+            className="flex items-center justify-between z-20 shrink-0 pb-3 border-b border-white/15 text-white"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-[#161726] bg-[#FAEE2F] px-2.5 py-1 rounded-sm">
+                {filteredItems[activeLightboxIndex].category}
+              </span>
+              <div>
+                <h4 className="text-sm sm:text-lg font-black uppercase tracking-tight text-white">
+                  {filteredItems[activeLightboxIndex].title}
+                </h4>
+                <p className="font-cursive text-xs sm:text-sm text-[#9FA1FF]">
+                  {filteredItems[activeLightboxIndex].caption}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono text-white/60 mr-2 hidden sm:inline">
+                {activeLightboxIndex + 1} / {filteredItems.length}
+              </span>
+              <button
+                type="button"
+                onClick={closeLightbox}
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Close fullscreen preview"
+              >
+                <X size={20} />
+              </button>
+            </div>
+          </div>
+
+          {/* Central Image with Prev / Next Arrow Controls */}
+          <div
+            className="relative flex-1 flex items-center justify-center my-3 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Previous Button */}
+            <button
+              type="button"
+              onClick={prevImage}
+              className="absolute left-2 sm:left-4 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/60 hover:bg-[#FAEE2F] hover:text-[#161726] text-white border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-2xl"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            {/* Main Preview Image */}
+            <img
+              src={filteredItems[activeLightboxIndex].image}
+              alt={filteredItems[activeLightboxIndex].title}
+              className="max-h-[75vh] max-w-[92vw] object-contain rounded-xl sm:rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-white/20 select-none animate-in zoom-in-95 duration-200"
+            />
+
+            {/* Next Button */}
+            <button
+              type="button"
+              onClick={nextImage}
+              className="absolute right-2 sm:right-4 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/60 hover:bg-[#FAEE2F] hover:text-[#161726] text-white border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-2xl"
+              aria-label="Next photo"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+
+          {/* Bottom Bar: Description & Book Dates CTA */}
+          <div
+            className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-white/15 text-white z-20 shrink-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-xs sm:text-sm text-white/80 max-w-2xl text-center sm:text-left font-normal">
+              {filteredItems[activeLightboxIndex].description}
+            </p>
+
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  closeLightbox();
+                  onOpenInquiry();
+                }}
+                className="px-6 py-2.5 rounded-lg text-xs font-black tracking-widest uppercase bg-[#FAEE2F] text-[#161726] hover:bg-white transition-colors cursor-pointer shadow-md"
+              >
+                BOOK THIS VENUE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

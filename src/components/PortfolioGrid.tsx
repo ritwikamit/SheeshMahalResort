@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 import { VENUE_SPACES, VenueSpace } from '../data/resortData.ts';
 import { LuxuryVisual } from './LuxuryVisual.tsx';
 import { RevealUp } from './RevealUp.tsx';
@@ -7,9 +8,14 @@ import { WeddingDeskCircleBadge } from './WeddingDeskCircleBadge.tsx';
 interface PortfolioGridProps {
   onSelectCase: (venue: VenueSpace) => void;
   onOpenInquiry?: () => void;
+  onOpenGallery?: () => void;
 }
 
-export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onSelectCase, onOpenInquiry }) => {
+export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
+  onSelectCase,
+  onOpenInquiry,
+  onOpenGallery
+}) => {
   const [activeCategory, setActiveCategory] = useState<string>('ALL');
 
   const categories = ['ALL', 'BANQUET', 'LAWN', 'MANDAP', 'POOLSIDE'];
@@ -32,7 +38,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onSelectCase, onOp
         {/* Section Header */}
         <RevealUp>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-24 pb-6 sm:pb-8 border-b border-[#9FA1FF]/20">
-            <div>
+            <div className="w-full">
               <div className="flex items-center gap-3 mb-3 sm:mb-4">
                 <span className="label-utility text-[#161726]/70">
                   PALATIAL WEDDING VENUES & CEREMONY ZONES
@@ -46,22 +52,35 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onSelectCase, onOp
                 Palaces of Glass, Sacred Fire & Emerald Starlit Lawns
               </p>
 
-              {/* Filter controls with clean rounded-lg tabs */}
-              <div className="flex flex-wrap items-center gap-2 mt-6">
-                {categories.map((cat) => (
+              {/* Filter controls and See All Photos Button */}
+              <div className="flex flex-wrap items-center justify-between gap-3 mt-6">
+                <div className="flex flex-wrap items-center gap-2">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setActiveCategory(cat)}
+                      className={`px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] rounded-lg transition-all duration-300 cursor-pointer ${
+                        activeCategory === cat
+                          ? 'bg-[#161726] text-[#FAEE2F]'
+                          : 'bg-[#D9F9DF]/60 text-[#161726]/70 hover:text-[#161726] hover:bg-[#B5BAFF]/30'
+                      }`}
+                    >
+                      {cat === 'ALL' ? 'ALL WEDDING SPACES' : cat}
+                    </button>
+                  ))}
+                </div>
+
+                {onOpenGallery && (
                   <button
-                    key={cat}
                     type="button"
-                    onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] rounded-lg transition-all duration-300 cursor-pointer ${
-                      activeCategory === cat
-                        ? 'bg-[#161726] text-[#FAEE2F]'
-                        : 'bg-[#D9F9DF]/60 text-[#161726]/70 hover:text-[#161726] hover:bg-[#B5BAFF]/30'
-                    }`}
+                    onClick={onOpenGallery}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[10px] sm:text-xs font-black tracking-widest uppercase bg-[#FAEE2F] text-[#161726] hover:bg-[#161726] hover:text-[#FAEE2F] transition-all duration-300 cursor-pointer shadow-md hover:scale-105 active:scale-95 shrink-0"
                   >
-                    {cat === 'ALL' ? 'ALL WEDDING SPACES' : cat}
+                    <span>SEE ALL PHOTOS</span>
+                    <ArrowRight size={13} />
                   </button>
-                ))}
+                )}
               </div>
             </div>
           </div>
@@ -159,9 +178,34 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onSelectCase, onOp
           })}
         </div>
 
+        {/* Dedicated SEE ALL PHOTOS Action Bar */}
+        {onOpenGallery && (
+          <RevealUp delay={150}>
+            <div className="mt-16 sm:mt-20 text-center flex flex-col items-center justify-center p-8 sm:p-10 rounded-[24px] bg-[#FAFDFB] border border-[#9FA1FF]/25 shadow-lg">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#9FA1FF] block mb-2">
+                COMPLETE VISUAL ARCHIVES
+              </span>
+              <h3 className="text-2xl sm:text-4xl font-black uppercase text-[#161726] tracking-tight mb-2">
+                WITNESS OUR AUTHENTIC WEDDING SPACES
+              </h3>
+              <p className="font-cursive text-xl sm:text-3xl text-[#9FA1FF] mb-6 font-normal max-w-xl">
+                Explore real wedding photographs of our starlit lawns, crystal ballrooms & Vedic mandaps
+              </p>
+              <button
+                type="button"
+                onClick={onOpenGallery}
+                className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-xl text-xs sm:text-sm font-black tracking-[0.2em] uppercase bg-[#161726] text-[#FAEE2F] hover:bg-[#FAEE2F] hover:text-[#161726] transition-all duration-300 cursor-pointer shadow-xl hover:scale-105 active:scale-95 group"
+              >
+                <span>SEE ALL PHOTOS IN GALLERY</span>
+                <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1.5" />
+              </button>
+            </div>
+          </RevealUp>
+        )}
+
         {/* Bottom invitation banner with cursive touch */}
         <RevealUp delay={200}>
-          <div className="mt-28 p-10 bg-[#D9F9DF] rounded-[20px] border border-[#9FA1FF]/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+          <div className="mt-20 sm:mt-24 p-10 bg-[#D9F9DF] rounded-[20px] border border-[#9FA1FF]/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
             <div>
               <p className="text-[10px] font-black tracking-[0.3em] uppercase text-[#161726]/60 mb-1">
                 COMPLETE WEDDING RESIDENCY

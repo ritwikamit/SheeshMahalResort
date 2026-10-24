@@ -127,6 +127,7 @@ export default function App() {
             <PortfolioGrid
               onSelectCase={handleOpenCase}
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
+              onOpenGallery={() => handleNavigatePage('gallery')}
             />
 
             {/* Section 4: Live Wedding Reel Showcase with Minimal Audio On/Off Button */}

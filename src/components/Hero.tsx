@@ -15,7 +15,23 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
       id="top"
       className="relative min-h-screen w-full pt-[76px] sm:pt-[80px] bg-[#FAFDFB] text-[#161726] flex flex-col justify-center overflow-hidden border-b border-[#9FA1FF]/20"
     >
-      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-10 lg:py-16 relative">
+      {/* Background Video (GeminiHero.mp4 without audio on loop) */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-center scale-105"
+        >
+          <source src="/videos/GeminiHero.mp4" type="video/mp4" />
+        </video>
+        {/* Soft royal gradient overlays ensuring pristine typographic clarity and luxury ambience */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAFDFB]/95 via-[#FAFDFB]/88 to-[#FAFDFB]/60 sm:to-[#FAFDFB]/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAFDFB] via-transparent to-[#FAFDFB]/30 opacity-90" />
+      </div>
+
+      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-10 lg:py-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Massive headline, cursive flourishes, body copy, arrow CTA */}
@@ -54,7 +70,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               <span>Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna 800011</span>
             </div>
 
-            {/* Arrow-CTA with border-bottom-2px #FAEE2F */}
+            {/* Arrow-CTA with border-bottom-2px #FAEE2F & Reel link */}
             <div className="flex flex-wrap items-center gap-6 sm:gap-8">
               <button
                 type="button"
@@ -67,6 +83,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                   className="transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:translate-x-2 text-[#161726]"
                 />
               </button>
+
+              {/* Direct link to Wedding Reel */}
+              <a
+                href="#wedding-reel"
+                className="inline-flex items-center gap-2 text-xs font-black tracking-[0.2em] uppercase text-[#161726] hover:text-[#9FA1FF] transition-colors py-2 px-4 rounded-full border border-[#9FA1FF]/40 bg-white/70 backdrop-blur-md shadow-xs cursor-pointer"
+              >
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <span>WATCH WEDDING REEL</span>
+              </a>
             </div>
           </div>
 

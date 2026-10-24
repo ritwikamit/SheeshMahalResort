@@ -4,6 +4,7 @@ import { Hero } from './components/Hero.tsx';
 import { ServicesGrid } from './components/ServicesGrid.tsx';
 import { PortfolioGrid } from './components/PortfolioGrid.tsx';
 import { PhilosophySection } from './components/PhilosophySection.tsx';
+import { ReelShowcase } from './components/ReelShowcase.tsx';
 import { MapSection } from './components/MapSection.tsx';
 import { Footer } from './components/Footer.tsx';
 import { CaseStudyModal } from './components/CaseStudyModal.tsx';
@@ -112,7 +113,12 @@ export default function App() {
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
             />
 
-            {/* Section 4: Sacred Wedding Rituals & Location Highlights (Badge covering corner on LEFT) */}
+            {/* Section 4: Live Wedding Reel Showcase with Minimal Audio On/Off Button */}
+            <ReelShowcase
+              onOpenInquiry={() => setIsInquiryModalOpen(true)}
+            />
+
+            {/* Section 5: Sacred Wedding Rituals & Location Highlights (Badge covering corner on LEFT) */}
             <PhilosophySection
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
             />

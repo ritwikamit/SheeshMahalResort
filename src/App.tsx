@@ -117,22 +117,22 @@ export default function App() {
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
             />
 
-            {/* Section 2: 3-Column Wedding Services Grid (Badge covering corner on LEFT) */}
+            {/* Section 2: Witness the Royal Grandeur (Live Wedding Reel Showcase) */}
+            <ReelShowcase
+              onOpenInquiry={() => setIsInquiryModalOpen(true)}
+            />
+
+            {/* Section 3: 3-Column Wedding Services Grid (Badge covering corner on LEFT) */}
             <ServicesGrid
               onSelectService={handleSelectService}
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
             />
 
-            {/* Section 3: Staggered 2-Column Wedding Venues Grid (Badge covering corner on RIGHT) */}
+            {/* Section 4: Staggered 2-Column Wedding Venues Grid (Badge covering corner on RIGHT) */}
             <PortfolioGrid
               onSelectCase={handleOpenCase}
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
               onOpenGallery={() => handleNavigatePage('gallery')}
-            />
-
-            {/* Section 4: Live Wedding Reel Showcase with Minimal Audio On/Off Button */}
-            <ReelShowcase
-              onOpenInquiry={() => setIsInquiryModalOpen(true)}
             />
 
             {/* Section 5: Sacred Wedding Rituals & Location Highlights (Badge covering corner on LEFT) */}

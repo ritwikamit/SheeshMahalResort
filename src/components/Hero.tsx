@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { ArrowRight, MapPin, Sparkles } from 'lucide-react';
+import { ArrowRight, MapPin } from 'lucide-react';
 import { WeddingDeskCircleBadge } from './WeddingDeskCircleBadge.tsx';
 
 interface HeroProps {
@@ -47,9 +47,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
   return (
     <section
       id="top"
-      className="relative min-h-screen w-full pt-[76px] sm:pt-[80px] bg-[#FAFDFB] text-[#161726] flex flex-col justify-center overflow-hidden border-b border-[#9FA1FF]/20"
+      className="relative min-h-screen w-full pt-[76px] sm:pt-[80px] bg-transparent text-white flex flex-col justify-center overflow-hidden border-b border-[#9FA1FF]/20"
     >
-      {/* Background Ambient Video (GeminiHero.mp4 clearly visible without audio on loop) */}
+      {/* Background Full-Bleed Video (GeminiHero.mp4 without audio on loop) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
           ref={bgVideoRef}
@@ -58,82 +58,79 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
           muted
           playsInline
           preload="auto"
-          className="w-full h-full object-cover object-center scale-100 opacity-90 sm:opacity-95"
+          className="w-full h-full object-cover object-center scale-100"
         >
           <source src="/videos/GeminiHero.mp4" type="video/mp4" />
         </video>
 
-        {/* Minimal atmospheric tint - lets the video show through vibrantly while maintaining crisp contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAFDFB]/80 via-[#FAFDFB]/45 to-black/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAFDFB] via-transparent to-black/20" />
+        {/* Transparent atmospheric dark veil for high-contrast cinematic elegance */}
+        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/30 pointer-events-none" />
       </div>
 
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 py-8 sm:py-10 lg:py-16 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Left Column: Headline, cursive flourishes, body copy, arrow CTA with subtle frosted backing */}
+          {/* Left Column: Completely transparent, floating text with high-contrast drop-shadows */}
           <div className="lg:col-span-7 flex flex-col justify-center z-10">
             
-            <div className="p-2 sm:p-4 -ml-2 sm:-ml-4 rounded-3xl bg-[#FAFDFB]/70 sm:bg-[#FAFDFB]/50 backdrop-blur-md border border-white/60 shadow-lg shadow-black/5">
-              
-              {/* Utility kicker with cursive flourish */}
-              <div className="mb-3 sm:mb-5 flex flex-wrap items-center gap-2 sm:gap-3">
-                <span className="font-cursive text-xl sm:text-3xl text-[#161726] tracking-normal font-normal">
-                  Where Sacred Vows Meet Royal Grandeur
-                </span>
-                <span className="w-6 sm:w-8 h-[1px] bg-[#9FA1FF]"></span>
-                <span className="text-[9px] sm:text-[10px] font-black tracking-[0.25em] uppercase text-[#161726] bg-[#FAEE2F] px-2 sm:px-2.5 py-0.5 rounded-sm shadow-xs">
-                  PATNA ROYAL WEDDINGS
-                </span>
-              </div>
+            {/* Utility kicker with cursive flourish */}
+            <div className="mb-4 sm:mb-6 flex flex-wrap items-center gap-2 sm:gap-3">
+              <span className="font-cursive text-2xl sm:text-3xl text-white font-normal drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+                Where Sacred Vows Meet Royal Grandeur
+              </span>
+              <span className="w-6 sm:w-8 h-[1px] bg-[#FAEE2F]"></span>
+              <span className="text-[9px] sm:text-[10px] font-black tracking-[0.25em] uppercase text-[#161726] bg-[#FAEE2F] px-2 sm:px-2.5 py-0.5 rounded-sm shadow-md">
+                PATNA ROYAL WEDDINGS
+              </span>
+            </div>
 
-              {/* Massive headline with signature cursive wedding accent */}
-              <h1 className="text-[clamp(2.6rem,11.5vw,11.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-[#161726] mb-4 sm:mb-6 select-none drop-shadow-sm">
-                ROYAL
-                <span className="block font-cursive text-5xl sm:text-8xl lg:text-[9.5rem] text-[#9FA1FF] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75]">
-                  weddings
-                </span>
-                SANCTUARY
-              </h1>
+            {/* Massive headline with signature cursive wedding accent */}
+            <h1 className="text-[clamp(2.6rem,11.5vw,11.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-white mb-6 sm:mb-8 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+              ROYAL
+              <span className="block font-cursive text-5xl sm:text-8xl lg:text-[9.5rem] text-[#FAEE2F] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]">
+                weddings
+              </span>
+              SANCTUARY
+            </h1>
 
-              {/* Body text in high-contrast #161726 with wedding quote */}
-              <p className="text-xl sm:text-2xl text-[#161726] font-medium leading-relaxed max-w-xl mb-3">
-                Orchestrate your dream royal wedding at Sheesh Mahal Resort. Grand air-conditioned ballrooms for majestic Varmalas, sprawling starlit lawns for grand Baraats, consecrated Vedic Mandaps for Saat Phere, and masterfully curated wedding feasts.
-              </p>
-              <p className="font-cursive text-2xl sm:text-3xl text-[#9FA1FF] mb-5">
-                "Crafting timeless wedding moments opposite St. Xavier's, Patna"
-              </p>
+            {/* Below headline: 2xl body text floating transparently */}
+            <p className="text-xl sm:text-2xl text-white/95 font-medium leading-relaxed max-w-xl mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              Orchestrate your dream royal wedding at Sheesh Mahal Resort. Grand air-conditioned ballrooms for majestic Varmalas, sprawling starlit lawns for grand Baraats, consecrated Vedic Mandaps for Saat Phere, and masterfully curated wedding feasts.
+            </p>
+            <p className="font-cursive text-2xl sm:text-3xl text-[#FAEE2F] mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              "Crafting timeless wedding moments opposite St. Xavier's, Patna"
+            </p>
 
-              {/* Location verified marker */}
-              <div className="flex items-center gap-2 text-xs font-bold text-[#161726] mb-6 max-w-lg">
-                <MapPin size={16} className="text-[#9FA1FF] shrink-0" />
-                <span>Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna 800011</span>
-              </div>
+            {/* Location verified marker */}
+            <div className="flex items-center gap-2 text-xs font-bold text-white/90 mb-8 max-w-lg drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+              <MapPin size={16} className="text-[#FAEE2F] shrink-0" />
+              <span>Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna 800011</span>
+            </div>
 
-              {/* Arrow-CTA with border-bottom-2px #FAEE2F & Reel link */}
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-1">
-                <button
-                  type="button"
-                  onClick={onExploreClick}
-                  className="group inline-flex items-center gap-3 pb-2 border-b-2 border-[#FAEE2F] text-sm lg:text-base font-black tracking-[0.25em] uppercase text-[#161726] hover:text-[#9FA1FF] transition-colors cursor-pointer"
-                >
-                  <span>EXPLORE WEDDING VENUES</span>
-                  <ArrowRight
-                    size={18}
-                    className="transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:translate-x-2 text-[#161726]"
-                  />
-                </button>
+            {/* Arrow-CTA with border-bottom-2px #FAEE2F & Reel link */}
+            <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+              <button
+                type="button"
+                onClick={onExploreClick}
+                className="group inline-flex items-center gap-4 pb-2 border-b-2 border-[#FAEE2F] text-sm lg:text-base font-black tracking-[0.25em] uppercase text-white hover:text-[#FAEE2F] transition-colors cursor-pointer drop-shadow-md"
+              >
+                <span>EXPLORE WEDDING VENUES</span>
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:translate-x-2 text-[#FAEE2F]"
+                />
+              </button>
 
-                {/* Direct link to Wedding Reel */}
-                <a
-                  href="#wedding-reel"
-                  className="inline-flex items-center gap-2 text-xs font-black tracking-[0.2em] uppercase text-[#161726] hover:text-[#9FA1FF] transition-colors py-2 px-4 rounded-full border border-[#9FA1FF]/50 bg-white/85 backdrop-blur-md shadow-sm hover:shadow-md cursor-pointer"
-                >
-                  <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                  <span>WATCH WEDDING REEL</span>
-                </a>
-              </div>
-
+              {/* Direct link to Wedding Reel */}
+              <a
+                href="#wedding-reel"
+                className="inline-flex items-center gap-2 text-xs font-black tracking-[0.2em] uppercase text-white hover:text-[#FAEE2F] transition-colors py-2 px-4 rounded-full border border-white/30 bg-black/45 backdrop-blur-md shadow-lg hover:bg-black/65 cursor-pointer"
+              >
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <span>WATCH WEDDING REEL</span>
+              </a>
             </div>
 
           </div>
@@ -141,8 +138,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
           {/* Right Column: Hero Video Card with GeminiHero.mp4 & 24h Circle Badge */}
           <div className="lg:col-span-5 relative mt-6 lg:mt-0">
             {/* The 24px rounded card displaying GeminiHero.mp4 on loop without audio */}
-            <div className="relative rounded-[28px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] border-2 border-white/70 group bg-[#161726]">
-              <div className="relative aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden bg-[#161726]">
+            <div className="relative rounded-[28px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border-2 border-white/40 group bg-black/40 backdrop-blur-sm">
+              <div className="relative aspect-[4/3] sm:aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden bg-black">
                 <video
                   ref={cardVideoRef}
                   autoPlay
@@ -207,8 +204,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
       </div>
 
       {/* Editorial horizontal ticker strip with verified wedding amenities */}
-      <div className="w-full border-t border-[#9FA1FF]/20 bg-[#D9F9DF]/80 backdrop-blur-md py-4 px-6 lg:px-12 relative z-10">
-        <div className="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-black tracking-widest uppercase text-[#161726]">
+      <div className="w-full border-t border-white/15 bg-black/50 backdrop-blur-md py-4 px-6 lg:px-12 relative z-10 text-white">
+        <div className="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-black tracking-widest uppercase text-white/90">
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 bg-[#FAEE2F] border border-[#161726]"></span>
             <span>SHAHI WEDDING CATERING</span>
@@ -222,7 +219,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             <span>·</span>
             <span>LUXURY BRIDAL SUITES</span>
           </div>
-          <span className="font-bold text-[11px] tracking-wider text-[#161726]/80">
+          <span className="font-bold text-[11px] tracking-wider text-white/80">
             DIGHA, PATNA · BIHAR 800011
           </span>
         </div>

@@ -5,6 +5,7 @@ import { ServicesGrid } from './components/ServicesGrid.tsx';
 import { PortfolioGrid } from './components/PortfolioGrid.tsx';
 import { PhilosophySection } from './components/PhilosophySection.tsx';
 import { ReelShowcase } from './components/ReelShowcase.tsx';
+import { InstagramReelsSection } from './components/InstagramReelsSection.tsx';
 import { MapSection } from './components/MapSection.tsx';
 import { Footer } from './components/Footer.tsx';
 import { CaseStudyModal } from './components/CaseStudyModal.tsx';
@@ -140,6 +141,9 @@ export default function App() {
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
               onOpenGallery={() => handleNavigatePage('gallery')}
             />
+
+            {/* Section: Live Instagram Reels Showcase (Landscape & Portrait) */}
+            <InstagramReelsSection />
 
             {/* Section 5: Sacred Wedding Rituals & Location Highlights (Badge covering corner on LEFT) */}
             <PhilosophySection

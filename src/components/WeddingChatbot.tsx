@@ -93,9 +93,9 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
         title="Chat with Raj"
       >
         {isOpen ? (
-          <X size={20} className="relative z-10 text-[#E88A1A] transition-transform duration-200" strokeWidth={2} />
+          <X size={20} className="relative z-10 text-[#E88A1A] group-hover:!text-white transition-all duration-200" strokeWidth={2.2} />
         ) : (
-          <MessageSquare size={20} className="relative z-10 text-[#E88A1A] transition-transform duration-200 group-hover:scale-110" strokeWidth={2} />
+          <MessageSquare size={20} className="relative z-10 text-[#E88A1A] group-hover:!text-white transition-all duration-200 group-hover:scale-110" strokeWidth={2.2} />
         )}
       </button>
 

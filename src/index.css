@@ -257,6 +257,11 @@
     inset -2px -2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.clay-btn-dark:hover svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
 .clay-btn-emerald {
   background: #26532B !important;
   color: #FFFFFF !important;

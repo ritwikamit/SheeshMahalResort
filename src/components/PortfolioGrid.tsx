@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { VENUE_SPACES, VenueSpace } from '../data/resortData.ts';
 import { LuxuryVisual } from './LuxuryVisual.tsx';
@@ -16,19 +16,6 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
   onOpenInquiry,
   onOpenGallery
 }) => {
-  const [activeCategory, setActiveCategory] = useState<string>('ALL');
-
-  const categories = ['ALL', 'BANQUET', 'BARAAT', 'SANGEET', 'HALDI'];
-
-  const filteredSpaces = VENUE_SPACES.filter((item) => {
-    if (activeCategory === 'ALL') return true;
-    if (activeCategory === 'BANQUET') return item.category.includes('BANQUET') || item.category.includes('BALLROOM');
-    if (activeCategory === 'BARAAT') return item.category.includes('BARAAT') || item.category.includes('RUNWAY');
-    if (activeCategory === 'SANGEET') return item.category.includes('SANGEET') || item.category.includes('MEHNDI');
-    if (activeCategory === 'HALDI') return item.category.includes('HALDI') || item.category.includes('GARDEN');
-    return true;
-  });
-
   return (
     <section
       id="spaces"
@@ -37,7 +24,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Section Header */}
         <RevealUp>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-16 lg:mb-24 pb-6 sm:pb-8 border-b border-[#26532B]/20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-10 sm:mb-12 lg:mb-16 pb-6 sm:pb-8 border-b border-[#26532B]/20">
             <div className="w-full">
               <div className="flex items-center gap-3 mb-3 sm:mb-4">
                 <span className="label-utility text-[#1D261E]/70">
@@ -51,44 +38,13 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
               <p className="font-cursive text-2xl sm:text-4xl text-[#26532B] mt-2 font-normal">
                 Palaces of Glass, Sacred Fire & Emerald Starlit Lawns
               </p>
-
-              {/* Filter controls and See All Photos Button */}
-              <div className="flex flex-wrap items-center justify-between gap-3 mt-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat}
-                      type="button"
-                      onClick={() => setActiveCategory(cat)}
-                      className={`px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] rounded-lg transition-all duration-300 cursor-pointer ${
-                        activeCategory === cat
-                          ? 'clay-btn-gold text-white shadow-xs'
-                          : 'clay-pill text-[#1D261E] hover:text-[#E88A1A]'
-                      }`}
-                    >
-                      {cat === 'ALL' ? 'ALL WEDDING SPACES' : cat}
-                    </button>
-                  ))}
-                </div>
-
-                {onOpenGallery && (
-                  <button
-                    type="button"
-                    onClick={onOpenGallery}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[10px] sm:text-xs font-black tracking-widest uppercase clay-btn-gold text-white hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-md shrink-0"
-                  >
-                    <span>SEE ALL PHOTOS</span>
-                    <ArrowRight size={13} />
-                  </button>
-                )}
-              </div>
             </div>
           </div>
         </RevealUp>
 
         {/* 4-Column Compact Grid: Prevents excessive zooming and preserves ultra-sharp portrait quality */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-start">
-          {filteredSpaces.map((item, index) => {
+          {VENUE_SPACES.map((item, index) => {
             return (
               <div
                 key={item.id}

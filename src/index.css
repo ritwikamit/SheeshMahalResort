@@ -412,3 +412,57 @@
   border-radius: 9999px;
   color: #FFFFFF;
 }
+
+
+/* Dedicated Claymorphic Chatbot Styles */
+.clay-chatbox {
+  background: #FAF6EE;
+  border-radius: 28px;
+  box-shadow: 
+    16px 24px 50px rgba(29, 38, 30, 0.22),
+    -8px -8px 24px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.95),
+    inset -2px -2px 5px rgba(29, 38, 30, 0.04);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+}
+
+.clay-chat-header {
+  background: #1D261E;
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(232, 138, 26, 0.3);
+}
+
+.clay-chat-bubble-bot {
+  background: #FFFFFF;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 
+    4px 6px 16px rgba(29, 38, 30, 0.06),
+    -2px -2px 8px rgba(255, 255, 255, 0.9),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.95),
+    inset -1px -1px 3px rgba(29, 38, 30, 0.03);
+  border: 1px solid rgba(38, 83, 43, 0.12);
+}
+
+.clay-chat-bubble-user {
+  background: #1D261E;
+  color: #FAF6EE;
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 
+    4px 6px 16px rgba(0, 0, 0, 0.2),
+    -2px -2px 8px rgba(255, 255, 255, 0.25),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.2),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(232, 138, 26, 0.3);
+}
+
+.clay-chat-input {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 
+    inset 2px 3px 6px rgba(29, 38, 30, 0.07),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(38, 83, 43, 0.2);
+}

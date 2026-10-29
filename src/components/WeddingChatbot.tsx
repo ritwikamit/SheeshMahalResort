@@ -104,10 +104,10 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
         <div
           role="dialog"
           aria-label="Wedding Concierge Chatbot"
-          className="fixed top-[88px] sm:top-auto bottom-[76px] sm:bottom-24 right-3 sm:right-6 w-[calc(100vw-24px)] sm:w-[380px] max-w-[420px] max-h-[calc(100dvh-174px)] sm:max-h-[min(520px,calc(100vh-190px))] clay-card text-[#1D261E] flex flex-col overflow-hidden z-[70] animate-in fade-in slide-in-from-bottom-5 duration-300"
+          className="fixed top-[88px] sm:top-auto bottom-[76px] sm:bottom-24 right-3 sm:right-6 w-[calc(100vw-24px)] sm:w-[380px] max-w-[420px] max-h-[calc(100dvh-174px)] sm:max-h-[min(530px,calc(100vh-180px))] clay-chatbox text-[#1D261E] flex flex-col overflow-hidden z-[70] animate-in fade-in slide-in-from-bottom-5 duration-300"
         >
           {/* Header */}
-          <div className="px-5 py-3.5 bg-[#1D261E] text-[#FAF6EE] border-b border-[#26532B]/20 flex items-center justify-between shrink-0 sticky top-0 z-20">
+          <div className="px-5 py-3.5 clay-chat-header text-[#FAF6EE] flex items-center justify-between shrink-0 sticky top-0 z-20">
             <div className="flex items-center gap-3">
               <div className="relative shrink-0">
                 <img
@@ -131,7 +131,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+              className="w-8 h-8 rounded-full bg-white/10 hover:bg-[#E88A1A] hover:text-[#1D261E] text-white/90 border border-white/20 transition-all flex items-center justify-center cursor-pointer shadow-xs hover:scale-105 active:scale-95"
               aria-label="Close Chat"
             >
               <X size={15} />
@@ -139,13 +139,13 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
           </div>
 
           {/* Quick Prompts Bar */}
-          <div className="px-4 py-2 bg-[#26532B]/60 border-b border-[#26532B]/20 flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
+          <div className="px-4 py-2.5 bg-[#FAF6EE]/90 backdrop-blur-xs border-b border-[#26532B]/15 flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
             {quickPrompts.map((prompt, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => handleSend(prompt)}
-                className="whitespace-nowrap px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-[#FAF6EE] hover:bg-[#E88A1A] text-[#1D261E] border border-[#26532B]/30 rounded-lg transition-colors cursor-pointer shadow-2xs"
+                className="whitespace-nowrap px-3 py-1.5 text-[10px] font-black uppercase tracking-wider clay-pill text-[#1D261E] hover:text-white hover:bg-[#E88A1A] transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
               >
                 {prompt}
               </button>
@@ -168,10 +168,10 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
                 )}
 
                 <div
-                  className={`max-w-[82%] p-3.5 rounded-2xl whitespace-pre-line leading-relaxed shadow-xs ${
+                  className={`max-w-[84%] p-3.5 whitespace-pre-line leading-relaxed ${
                     msg.sender === 'user'
-                      ? 'bg-[#1D261E] text-[#FAF6EE] rounded-br-xs font-medium'
-                      : 'bg-[#26532B]/40 text-[#1D261E] border border-[#26532B]/25 rounded-bl-xs font-normal'
+                      ? 'clay-chat-bubble-user font-medium'
+                      : 'clay-chat-bubble-bot font-normal text-[#1D261E]'
                   }`}
                 >
                   <p>{msg.text}</p>
@@ -184,7 +184,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
                           key={i}
                           type="button"
                           onClick={qa.action}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-[#E88A1A] text-[#1D261E] rounded-md hover:bg-[#1D261E] hover:text-[#E88A1A] transition-colors cursor-pointer shadow-2xs"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-black uppercase tracking-wider clay-btn-gold text-white hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-xs"
                         >
                           <span>{qa.label}</span>
                           <ArrowRight size={10} />
@@ -213,19 +213,19 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-[#FAF6EE] border-t border-[#26532B]/20 flex items-center gap-2 shrink-0"
+            className="p-3 bg-[#FAF6EE] border-t border-[#26532B]/15 flex items-center gap-2 shrink-0"
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about dates, lawns, catering..."
-              className="flex-1 bg-white border border-[#26532B]/30 rounded-xl px-3.5 py-2.5 text-xs text-[#1D261E] placeholder-[#1D261E]/50 focus:outline-none focus:border-[#1D261E] transition-colors"
+              className="flex-1 clay-chat-input px-4 py-2.5 text-xs text-[#1D261E] placeholder-[#1D261E]/50 focus:outline-none focus:border-[#E88A1A] transition-colors"
             />
             <button
               type="submit"
               disabled={!input.trim()}
-              className="w-10 h-10 rounded-xl clay-btn-orange disabled:opacity-40 flex items-center justify-center cursor-pointer shrink-0"
+              className="w-10 h-10 rounded-xl clay-btn-gold disabled:opacity-40 flex items-center justify-center cursor-pointer shrink-0 shadow-md hover:scale-105 active:scale-95 transition-all text-white"
               aria-label="Send message"
             >
               <Send size={15} />

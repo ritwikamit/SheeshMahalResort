@@ -27,13 +27,13 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#26532B]/20 bg-[#26532B] shrink-0">
-          <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#1D261E]">
+          <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white">
             SHEESH MAHAL RESORT // WEDDING AMENITY {service.number}
           </span>
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#1D261E]/20 flex items-center justify-center hover:bg-[#1D261E] hover:text-[#FAF6EE] transition-colors cursor-pointer"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-[#26532B] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -61,9 +61,9 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
             {service.capabilities.map((cap, i) => (
               <div
                 key={i}
-                className="p-4 bg-[#26532B]/40 border border-[#26532B]/25 rounded-xl flex items-start gap-3"
+                className="p-4 clay-card rounded-xl flex items-start gap-3"
               >
-                <CheckCircle2 size={16} className="text-[#26532B] shrink-0 mt-0.5" />
+                <CheckCircle2 size={16} className="text-[#E88A1A] shrink-0 mt-0.5" />
                 <span className="text-xs font-bold text-[#1D261E]">{cap}</span>
               </div>
             ))}
@@ -71,7 +71,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#26532B]/20">
             <span className="text-xs text-[#1D261E]/70 font-semibold">
-              Wedding Desk 24/7: {RESORT_CONTACT.primaryPhone}
+              Wedding Desk 24/7: Concierge Active
             </span>
             <button
               type="button"

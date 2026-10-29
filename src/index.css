@@ -344,3 +344,44 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #E88A1A;
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.clay-btn-whatsapp {
+  background: #25D366 !important;
+  color: #FFFFFF !important;
+  border-radius: 9999px;
+  box-shadow: 
+    6px 10px 22px rgba(37, 211, 102, 0.42),
+    -4px -4px 12px rgba(255, 255, 255, 0.8),
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clay-btn-whatsapp:hover {
+  transform: translateY(-2px) scale(1.08);
+  box-shadow: 
+    8px 14px 28px rgba(37, 211, 102, 0.52),
+    -5px -5px 14px rgba(255, 255, 255, 0.9),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.7),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.22);
+}

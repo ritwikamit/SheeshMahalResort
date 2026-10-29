@@ -94,7 +94,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
                 className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[9px] sm:text-[10px] font-black uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
                   filter === cat
                     ? 'bg-[#1D261E] text-[#E88A1A] shadow-sm'
-                    : 'bg-[#26532B] text-[#1D261E]/70 hover:text-[#1D261E] hover:bg-[#E88A1A]/40'
+                    : 'clay-pill text-[#1D261E] hover:text-[#E88A1A]'
                 }`}
               >
                 {cat}

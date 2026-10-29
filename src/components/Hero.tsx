@@ -133,7 +133,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             {/* Massive headline with purple cursive 'weddings' and 'SANCTUARY' overlapping right box */}
             <h1 className="text-[clamp(2.4rem,8.8vw,10.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-white mb-3 sm:mb-6 lg:mb-8 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               ROYAL
-              <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[8.5rem] text-[#26532B] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+              <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[8.5rem] text-[#E88A1A] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                 weddings
               </span>
               <span className="block lg:relative lg:z-30 lg:w-[160%] lg:-mr-64 whitespace-nowrap pointer-events-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.95)] text-white">
@@ -145,13 +145,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             <p className="text-xs sm:text-base lg:text-xl text-white/95 font-medium leading-relaxed max-w-xl mb-2 sm:mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               Orchestrate your dream royal wedding at Sheesh Mahal Resort. Grand air-conditioned ballrooms for majestic Varmalas, sprawling starlit lawns for grand Baraats, consecrated Vedic Mandaps for Saat Phere, and masterfully curated wedding feasts.
             </p>
-            <p className="font-cursive text-base sm:text-xl lg:text-2xl text-[#26532B] mb-3 sm:mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <p className="font-cursive text-base sm:text-xl lg:text-2xl text-[#E88A1A] mb-3 sm:mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               "Crafting timeless wedding moments opposite St. Xavier's, Patna"
             </p>
 
             {/* Location verified marker */}
             <div className="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-white/90 mb-5 sm:mb-8 max-w-lg drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
-              <MapPin size={14} className="text-[#26532B] shrink-0" />
+              <MapPin size={14} className="text-[#E88A1A] shrink-0" />
               <span>Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna 800011</span>
             </div>
 
@@ -229,27 +229,39 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
         </div>
       </div>
 
-      {/* Editorial horizontal amenities strip with Shahi Catering and Digha removed, properly centered & mobile responsive */}
-      <div className="w-full border-t border-white/15 bg-black/55 backdrop-blur-md py-3 sm:py-4 px-3 sm:px-6 lg:px-12 relative z-10 text-white mt-auto">
-        <div className="max-w-[1600px] mx-auto flex items-center justify-center flex-wrap gap-2.5 sm:gap-6 lg:gap-12 text-[8px] sm:text-xs font-black tracking-[0.14em] sm:tracking-[0.2em] uppercase text-white/90">
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
-            <span>CUSTOM MANDAP DECOR</span>
+      {/* Moving Marquee Ticker at the bottom edge of Hero (Redesigned as requested) */}
+      <div className="w-full border-t border-white/20 bg-black/65 backdrop-blur-md py-3 sm:py-3.5 relative z-10 text-white mt-auto overflow-hidden select-none">
+        <div className="animate-marquee flex items-center gap-8 sm:gap-12 whitespace-nowrap text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase text-white/95">
+          {/* Continuous Loop Set 1 */}
+          <div className="flex items-center gap-8 sm:gap-12 shrink-0">
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse"></span>CUSTOM MANDAP DECOR</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>BARAAT WELCOME CORRIDOR</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>100% POWER BACKUP</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>LUXURY BRIDAL SUITES</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>AIR-CONDITIONED BANQUET</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>SPRAWLING STARLIT LAWNS</span>
+            <span className="text-[#E88A1A]">✦</span>
           </div>
-          <span className="text-white/30 hidden xs:inline sm:inline">·</span>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
-            <span>BARAAT WELCOME CORRIDOR</span>
-          </div>
-          <span className="text-white/30 hidden sm:inline">·</span>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
-            <span>100% POWER BACKUP</span>
-          </div>
-          <span className="text-white/30 hidden sm:inline">·</span>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
-            <span>LUXURY BRIDAL SUITES</span>
+
+          {/* Continuous Loop Set 2 (Seamless Infinite Duplicate) */}
+          <div className="flex items-center gap-8 sm:gap-12 shrink-0" aria-hidden="true">
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse"></span>CUSTOM MANDAP DECOR</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>BARAAT WELCOME CORRIDOR</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>100% POWER BACKUP</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>LUXURY BRIDAL SUITES</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>AIR-CONDITIONED BANQUET</span>
+            <span className="text-[#E88A1A]">✦</span>
+            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>SPRAWLING STARLIT LAWNS</span>
+            <span className="text-[#E88A1A]">✦</span>
           </div>
         </div>
       </div>

@@ -33,7 +33,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
         {/* Top bar with close button */}
         <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#26532B]/20 bg-[#26532B] shrink-0">
           <div className="flex items-center gap-2 sm:gap-3">
-            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#1D261E]">
+            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white">
               SHEESH MAHAL RESORT // {caseItem.id.toUpperCase()}
             </span>
             <span className="text-xs text-[#1D261E]/30 hidden xs:inline">•</span>
@@ -45,7 +45,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#1D261E]/20 flex items-center justify-center hover:bg-[#1D261E] hover:text-[#FAF6EE] transition-colors cursor-pointer"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/30 text-white flex items-center justify-center hover:bg-white hover:text-[#26532B] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -71,9 +71,9 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
           </div>
 
           {/* Quick Stats Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 bg-[#26532B]/50 rounded-[16px] border border-[#26532B]/20 mb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 clay-inset p-5 mb-10">
             <div className="flex items-start gap-3">
-              <Users size={18} className="text-[#26532B] shrink-0 mt-0.5" />
+              <Users size={18} className="text-[#E88A1A] shrink-0 mt-0.5" />
               <div>
                 <p className="text-[9px] font-black uppercase tracking-widest text-[#1D261E]/60">CAPACITY</p>
                 <p className="text-xs font-bold text-[#1D261E]">{caseItem.capacity}</p>
@@ -87,7 +87,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <MapPin size={18} className="text-[#26532B] shrink-0 mt-0.5" />
+              <MapPin size={18} className="text-[#E88A1A] shrink-0 mt-0.5" />
               <div>
                 <p className="text-[9px] font-black uppercase tracking-widest text-[#1D261E]/60">LOCATION</p>
                 <p className="text-xs font-bold text-[#1D261E]">Ashiana-Digha Rd, Patna</p>
@@ -145,7 +145,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {caseItem.specs.map((spec, i) => (
-                <div key={i} className="p-4 bg-[#26532B]/40 border border-[#26532B]/20 rounded-[14px]">
+                <div key={i} className="p-4 clay-card rounded-[14px]">
                   <p className="text-[9px] font-black uppercase tracking-widest text-[#1D261E]/60 mb-1">
                     {spec.label}
                   </p>

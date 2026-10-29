@@ -120,7 +120,7 @@ export const CateringPage: React.FC<CateringPageProps> = ({ onOpenInquiry }) => 
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {cat.items.map((item, idx) => (
-                        <span key={idx} className="text-xs font-bold bg-[#26532B] text-[#1D261E] px-3 py-1 rounded-md border border-[#26532B]/20">
+                        <span key={idx} className="text-xs font-bold bg-[#26532B] text-white px-3 py-1 rounded-md shadow-2xs border border-[#26532B]/20">
                           {item}
                         </span>
                       ))}

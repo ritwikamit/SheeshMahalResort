@@ -52,13 +52,13 @@ export default function App() {
       }, 500);
     };
 
-    // Fast reveal after 650ms max, ensuring zero lag even on slow internet
-    const fallbackTimer = setTimeout(triggerFadeOut, 650);
+    // Instant reveal: fallback at 350ms max, instant on DOM ready
+    const fallbackTimer = setTimeout(triggerFadeOut, 350);
 
     if (document.readyState === 'complete') {
-      setTimeout(triggerFadeOut, 350);
+      setTimeout(triggerFadeOut, 150);
     } else {
-      window.addEventListener('load', () => setTimeout(triggerFadeOut, 200), { once: true });
+      window.addEventListener('load', () => setTimeout(triggerFadeOut, 100), { once: true });
     }
 
     return () => clearTimeout(fallbackTimer);

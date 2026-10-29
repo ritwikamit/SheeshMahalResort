@@ -71,7 +71,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
                 </h2>
                 <p className="text-xs text-[#1D261E]/70 mt-0.5">
                   Current Setting:{' '}
-                  <span className="font-bold uppercase text-[#1D261E] bg-[#26532B] px-2 py-0.5 rounded">
+                  <span className="font-bold uppercase text-white bg-[#26532B] px-2 py-0.5 rounded shadow-2xs">
                     {currentConsent === 'accepted_all'
                       ? 'All Cookies Accepted'
                       : currentConsent === 'essential_only'

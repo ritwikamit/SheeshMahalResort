@@ -96,7 +96,7 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
                   )}
 
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-black tracking-widest uppercase bg-[#26532B] text-[#1D261E] px-3 py-1 rounded-md">
+                    <span className="text-[10px] font-black tracking-widest uppercase bg-[#26532B] text-white px-3 py-1 rounded-md shadow-2xs">
                       {pkg.badge}
                     </span>
                     <span className="text-xs font-bold tracking-wider text-[#26532B]">
@@ -112,7 +112,7 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
                   </p>
 
                   <div className="p-3 bg-[#26532B]/50 rounded-xl border border-[#26532B]/20 mb-6">
-                    <p className="text-[10px] font-black uppercase tracking-wider text-[#26532B]">
+                    <p className="text-[10px] font-black uppercase tracking-wider text-[#E88A1A]">
                       INCLUDED VENUES
                     </p>
                     <p className="text-xs font-bold text-[#1D261E]">
@@ -137,7 +137,7 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
                     className={`w-full py-3.5 rounded-xl text-xs font-black tracking-widest uppercase transition-colors cursor-pointer shadow-md ${
                       pkg.popular
                         ? 'bg-[#E88A1A] text-[#1D261E] hover:bg-[#1D261E] hover:text-[#FAF6EE]'
-                        : 'bg-[#1D261E] text-[#E88A1A] hover:bg-[#26532B] hover:text-[#1D261E]'
+                        : 'bg-[#1D261E] text-[#E88A1A] hover:bg-[#26532B] hover:text-white'
                     }`}
                   >
                     INQUIRE FOR THIS PACKAGE

@@ -69,7 +69,7 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
                   <span className="text-base sm:text-lg font-black uppercase tracking-tight text-[#1D261E]">
                     {faq.q}
                   </span>
-                  <div className={`p-1.5 rounded-lg bg-[#26532B] text-[#1D261E] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 bg-[#E88A1A]' : ''}`}>
+                  <div className={`p-1.5 rounded-lg bg-[#26532B] text-white transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 bg-[#E88A1A]' : ''}`}>
                     <ChevronDown size={18} />
                   </div>
                 </button>
@@ -84,26 +84,26 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
         </div>
 
         {/* Contact Banner */}
-        <div className="p-8 sm:p-10 bg-[#26532B] rounded-[24px] border border-[#26532B]/30 text-center">
-          <h3 className="text-2xl font-black uppercase text-[#1D261E] mb-2">
+        <div className="p-8 sm:p-10 bg-[#26532B] rounded-[24px] border border-white/20 text-center text-white">
+          <h3 className="text-2xl font-black uppercase text-white mb-2">
             HAVE SPECIFIC CUSTOM QUESTIONS?
           </h3>
-          <p className="text-sm text-[#1D261E]/80 mb-6 font-medium">
+          <p className="text-sm text-white/90 mb-6 font-medium">
             Our wedding desk is available 24 hours daily. Connect with our senior wedding manager directly.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               type="button"
               onClick={onOpenInquiry}
-              className="px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#1D261E] text-[#E88A1A] hover:bg-[#E88A1A] hover:text-[#1D261E] transition-colors cursor-pointer shadow-md"
+              className="px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase clay-btn-gold text-white transition-all cursor-pointer shadow-md"
             >
               BOOK CONSULTATION
             </button>
             <a
-              href={`tel:${RESORT_CONTACT.primaryPhone}`}
+              href={`tel:${RESORT_CONTACT.rawPhone}`}
               className="px-6 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FAF6EE] text-[#1D261E] border border-[#26532B]/30 hover:bg-[#E88A1A] transition-colors"
             >
-              Call: {RESORT_CONTACT.primaryPhone}
+              CALL 24/7 DESK
             </a>
           </div>
         </div>

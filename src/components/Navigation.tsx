@@ -140,33 +140,31 @@ export const Navigation: React.FC<NavigationProps> = ({
             <ChevronDown size={12} className={`transition-transform duration-200 ${moreMenuOpen ? 'rotate-180' : ''}`} />
           </button>
 
-          {/* 3D Clay Dropdown Menu */}
+          {/* Minimal Clay Dropdown Menu (No icons as requested) */}
           {moreMenuOpen && (
-            <div className="absolute top-full right-0 mt-3 w-72 clay-card-white p-2.5 z-50 rounded-2xl border border-white shadow-[12px_18px_32px_rgba(29,38,30,0.1),-6px_-6px_16px_rgba(255,255,255,0.95)] animate-in fade-in slide-in-from-top-2 duration-200">
-              <div className="text-[9px] font-black uppercase tracking-[0.2em] text-[#26532B] px-3 pt-2 pb-1.5">
-                ✦ EXPLORE DESTINATION
-              </div>
-              <div className="space-y-1">
-                {moreItems.map((item) => (
-                  <button
-                    key={item.page}
-                    type="button"
-                    onClick={() => handleNavClick(item.page)}
-                    className="w-full text-left p-2.5 rounded-xl transition-all duration-200 hover:bg-[#FAF6EE] flex items-start gap-3 group cursor-pointer"
-                  >
-                    <div className="p-2 rounded-lg bg-white border border-[#26532B]/10 group-hover:border-[#E88A1A]/30 transition-colors shadow-2xs shrink-0 mt-0.5">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <div className="text-xs font-black uppercase tracking-wider text-[#1D261E] group-hover:text-[#E88A1A] transition-colors">
-                        {item.label}
-                      </div>
-                      <div className="text-[10px] text-[#1D261E]/65 leading-tight mt-0.5">
-                        {item.desc}
-                      </div>
-                    </div>
-                  </button>
-                ))}
+            <div className="absolute top-full right-0 mt-2.5 w-44 clay-card-white p-1.5 z-50 rounded-xl border border-white shadow-[8px_14px_28px_rgba(29,38,30,0.08),-4px_-4px_12px_rgba(255,255,255,0.95)] animate-in fade-in slide-in-from-top-2 duration-150">
+              <div className="flex flex-col space-y-0.5">
+                <button
+                  type="button"
+                  onClick={() => handleNavClick('gallery')}
+                  className="w-full text-left px-3 py-2 rounded-lg text-[11px] font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] hover:bg-[#FAF6EE] transition-colors cursor-pointer"
+                >
+                  PHOTO GALLERY
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleNavClick('packages')}
+                  className="w-full text-left px-3 py-2 rounded-lg text-[11px] font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] hover:bg-[#FAF6EE] transition-colors cursor-pointer"
+                >
+                  ROYAL PACKAGES
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleNavClick('faqs')}
+                  className="w-full text-left px-3 py-2 rounded-lg text-[11px] font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] hover:bg-[#FAF6EE] transition-colors cursor-pointer"
+                >
+                  WEDDING FAQS
+                </button>
               </div>
             </div>
           )}
@@ -175,23 +173,22 @@ export const Navigation: React.FC<NavigationProps> = ({
 
       {/* Right Side: Quick Dial + Tactile Clay CTA Button */}
       <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
-        {/* Quick Phone Call Pill (Visible on md+) */}
+        {/* Direct Call Icon Button (No exposed number string as requested) */}
         <a
-          href={`tel:${RESORT_CONTACT.primaryPhone}`}
-          className="hidden md:inline-flex items-center gap-2 clay-pill px-3.5 py-2 text-xs font-black tracking-wider text-[#26532B] hover:text-[#E88A1A] transition-colors cursor-pointer group"
-          title="Direct line to 24/7 Wedding Concierge"
+          href={`tel:${RESORT_CONTACT.rawPhone}`}
+          aria-label="Call 24/7 Wedding Concierge"
+          className="w-10 h-10 rounded-full clay-pill flex items-center justify-center text-[#26532B] hover:text-[#E88A1A] transition-all cursor-pointer group shadow-xs"
+          title="Call 24/7 Wedding Concierge"
         >
-          <Phone size={13} className="text-[#E88A1A] group-hover:rotate-12 transition-transform" />
-          <span className="hidden lg:inline">{RESORT_CONTACT.primaryPhone}</span>
+          <Phone size={16} className="text-[#E88A1A] group-hover:rotate-12 transition-transform" />
         </a>
 
-        {/* Primary Booking CTA in Royal Saffron Gold Clay */}
+        {/* Primary Booking CTA in Royal Saffron Gold Clay (Icon removed as requested) */}
         <button
           type="button"
           onClick={onOpenInquiry}
-          className="clay-btn-gold px-4 sm:px-6 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-md flex items-center gap-1.5"
+          className="clay-btn-gold px-4 sm:px-6 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-md"
         >
-          <Sparkles size={13} className="text-white/90" />
           <span>BOOK DATES</span>
         </button>
 
@@ -276,7 +273,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             </a>
 
             <a
-              href={`tel:${RESORT_CONTACT.primaryPhone}`}
+              href={`tel:${RESORT_CONTACT.rawPhone}`}
               className="flex-1 py-3 px-4 rounded-xl text-xs font-black tracking-widest uppercase clay-btn-emerald flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               <Phone size={14} className="shrink-0" />

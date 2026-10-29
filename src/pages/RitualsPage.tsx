@@ -143,23 +143,23 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
         {/* Full Wedding Residency CTA */}
         <div className="p-10 lg:p-14 bg-[#26532B] rounded-[28px] border border-[#26532B]/30 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
           <div>
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#1D261E]/70 block mb-1">
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#E88A1A] block mb-1">
               3-DAY WEDDING RESIDENCY
             </span>
-            <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#1D261E]">
+            <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white">
               BOOK THE ENTIRE RESORT FOR YOUR WEDDING
             </h3>
-            <p className="font-cursive text-2xl text-[#26532B] mt-1 mb-2 font-normal">
+            <p className="font-cursive text-2xl text-amber-200 mt-1 mb-2 font-normal">
               Exclusive Access to Both Lawns, Ballrooms & Bridal Suites
             </p>
-            <p className="text-xs sm:text-sm text-[#1D261E]/80 max-w-2xl font-normal">
+            <p className="text-xs sm:text-sm text-white/90 max-w-2xl font-normal">
               Ensure unmatched privacy and ease for your entire extended family by reserving all venues exclusively for your wedding dates.
             </p>
           </div>
           <button
             type="button"
             onClick={onOpenInquiry}
-            className="px-8 py-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#1D261E] text-[#E88A1A] hover:bg-[#E88A1A] hover:text-[#1D261E] transition-colors cursor-pointer shadow-lg whitespace-nowrap"
+            className="px-8 py-4 rounded-xl text-xs font-black tracking-widest uppercase clay-btn-gold text-white transition-all cursor-pointer shadow-lg whitespace-nowrap"
           >
             CHECK AUSPICIOUS DATES
           </button>

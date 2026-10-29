@@ -36,7 +36,8 @@ export const RESORT_CONTACT = {
   subtitle: "Patna's Premier Royal Wedding Resort & Banquets",
   address: "Opposite Gate of St. Xavier's College, near Bharat Petrol Pump, Mica Colony, Yadav Colony, Digha, Patna, Bihar 800011",
   landmark: "Opposite St. Xavier's College Gate, Ashiana–Digha Road",
-  primaryPhone: "+91 76319 29292",
+  primaryPhone: "+91 73608 00001",
+  rawPhone: "7360800001",
   secondaryPhone: "+91 73608 00001",
   whatsappNumber: "917360800001",
   hours: "Open 24 Hours for Wedding Consultations",
@@ -48,128 +49,128 @@ export const RESORT_CONTACT = {
 export const RESORT_SERVICES: ResortService[] = [
   {
     number: "01",
-    title: "SHAHI WEDDING CATERING",
-    icon: "utensils",
-    description: "Royal culinary feasts crafted for Indian weddings. Awadhi Dum Biryanis, rich Mughlai gravies, traditional Bihari Shahi delicacies, and lavish live Chaat & dessert streets.",
+    title: "ROYAL WEDDING SANCTUARY",
+    icon: "Crown",
+    description: "Patna's dedicated destination for eternal vows, royal Baraat arrivals, Vedic Saat Phere, and majestic wedding celebrations.",
     capabilities: [
-      "Royal Awadhi, Mughlai & traditional Bihari wedding banquets",
-      "Interactive live Chaat, Golgappa, Dosa & Tandoori bread stations",
-      "Artisanal Mithai & hot live Rabri-Jalebi counters",
-      "Dedicated pure vegetarian & gourmet Halal kitchens"
+      "Traditional Shehnai Welcome & Grand Dhol Tasha Procession",
+      "Consecrated Vedic Mandap with Holy Havankund Setup",
+      "Grand Revolving Varmala Stage with Cold-Pyro Sparklers",
+      "Regal Sheesh Mahal Glass Runway for Royal Baraat Entry"
     ]
   },
   {
     number: "02",
-    title: "THEMATIC WEDDING DECOR & MANDAPS",
-    icon: "palette",
-    description: "Breath-taking wedding architecture: mirror-work Sheesh chandeliers, royal floral entry corridors, custom Varmala stage thrones, and sacred Vedic Vedic Mandap pavilions.",
+    title: "SHAHI CATERING & BANQUETS",
+    icon: "UtensilsCrossed",
+    description: "Master chefs crafting regal Awadhi, Mughlai, Maithil, Bhojpuri, Punjabi, and Continental wedding banquets.",
     capabilities: [
-      "Signature Sheesh glass and crystal mirror-work stages",
-      "Fresh imported roses, orchids & marigold floral installations",
-      "Cinematic Varmala smoke, cold-pyro & hydraulic stages",
-      "Vibrant yellow Haldi themes & pastel floral swings"
+      "Dedicated Satvik & Pure Vegetarian Kitchen Available",
+      "Authentic Bihari Delicacies: Litti Chokha & Champaran Ahuna",
+      "Live Halwai Counter: Hot Jalebi, Imarti, Rabdi & Malpua",
+      "Artisanal Wedding Sweet Counters & Welcome Thandai Bar"
     ]
   },
   {
     number: "03",
-    title: "BARAAT VALET & BRIDAL SUITES",
-    icon: "shield",
-    description: "Flawless wedding logistics: grand entry corridor for royal Baraats with dhol, 100% heavy-duty generator power backup, ample guest valet parking, and luxury AC bridal suites.",
+    title: "END-TO-END WEDDING DESK",
+    icon: "Sparkles",
+    description: "Complete concierge support for dates blocking, guest logistics, valet parking, bridal suites, and sound setup.",
     capabilities: [
-      "Dedicated grand avenue for Baraat processions & Dhol welcoming",
-      "100% continuous heavy-duty generator backup for wedding sound & lights",
-      "Air-conditioned luxury bridal & groom dressing suites",
-      "Ample on-site secure parking with courteous valet attendants"
+      "100% Uninterrupted Power Backup with Dual Heavy Generators",
+      "Complimentary Palatial AC Bridal & Groom Green Rooms",
+      "Valet Parking for 100+ Cars opposite St. Xavier's College",
+      "Dedicated On-Ground Wedding Coordinator Available 24/7"
     ]
   }
 ];
 
 export const VENUE_SPACES: VenueSpace[] = [
   {
-    id: "space-grand-hall",
-    category: "ROYAL INDOOR BALLROOM",
-    title: "THE SHEESH BANQUET",
-    tags: ["GRAND VARMALA", "FLORAL CANOPY", "CRYSTAL CHANDELIERS", "500-1200 GUESTS"],
-    image: "/images/gallery/smr-28.jpg",
+    id: "sheesh-banquet",
+    category: "INDOOR PALACE BALLROOM",
+    title: "Grand Sheesh Ballroom",
+    tags: ["ROYAL VARMALA", "AC BALLROOM", "CRYSTAL CHANDELIERS", "1500 GUESTS"],
+    image: "/images/gallery/smr-28.webp",
     alt: "Grand Sheesh Banquet Hall with cascading white wisteria floral ceiling, crystal chandeliers, golden arcades and royal Varmala stage",
-    capacity: "500 to 1,200 Guests",
-    area: "12,000 Sq. Ft. Indoor AC",
-    idealFor: "Grand Varmala Ceremony, Royal Receptions & Mega Sangeet",
-    priceNote: "Custom Wedding Packages on Request",
-    headline: "Palatial Air-Conditioned Ballroom with Hanging Wisteria & Golden Dais",
-    description: "The crown jewel indoor ballroom of Sheesh Mahal Resort, adorned with a magnificent cascading white wisteria floral ceiling, sparkling crystal chandeliers, and a gilded royal stage backdrop for an unforgettable Varmala garland exchange.",
+    capacity: "800 - 1500 Guests",
+    area: "14,000 Sq. Ft.",
+    idealFor: "Royal Varmala, Grand Reception & Shahi Wedding Feasts",
+    priceNote: "Custom All-Inclusive Wedding Package Available",
+    headline: "Opulent Pillarless Air-Conditioned Glass Palace for Patna's Most Distinguished Marriages",
+    description: "The Grand Sheesh Ballroom is the crowning jewel of wedding celebrations in Patna. Featuring soaring arched ceilings adorned with cascading white floral wisteria, imported crystal chandeliers, and ambient warm golden illumination. Designed exclusively for royal Varmala ceremonies with a dedicated hydraulic revolving stage, majestic royal sofas, and acoustics calibrated for live Shehnai and brass bands.",
     features: [
-      "High-tonnage central air-conditioning with multi-zone climate control",
-      "Cascading white wisteria floral ceiling with hanging crystal chandeliers",
-      "Elevated 40ft pillarless royal stage for cinematic wedding photography",
-      "Attached VIP bridal suite with full-length mirror vanity salon"
+      "Pillarless ballroom with unobstructed 360-degree view for all guests",
+      "Hydraulic revolving Varmala stage with cold-pyrotechnics sparkle safety systems",
+      "Climate-controlled central air-conditioning with multi-tier air filtration",
+      "Adjoining palatial bridal suite with dedicated salon mirrors and en-suite rest rooms"
     ],
     specs: [
-      { label: "WEDDING CAPACITY", value: "500 - 1,200 Guests" },
-      { label: "CLIMATE CONTROL", value: "High-Capacity Central AC" },
-      { label: "STAGE SYSTEM", value: "40ft x 20ft Gilded Floral Dais" },
-      { label: "ACOUSTICS", value: "JBL Pro Audio for Shehnai & Sangeet" }
+      { label: "CAPACITY", value: "800 - 1500 Guests" },
+      { label: "CEILING HEIGHT", value: "22 Ft. Grand Arches" },
+      { label: "AIR CONDITIONING", value: "Centralized Multi-Zone" },
+      { label: "STAGE SIZE", value: "48 ft × 24 ft Royal Stage" }
     ],
     itinerary: [
-      { step: "Morning 09:00", title: "Wedding Stage & Floral Adornment", details: "Decorators finalize custom floral arches, royal throne baithaks, and ambient crystal chandeliers." },
-      { step: "Evening 18:30", title: "Grand Baraat Reception & Milni Rites", details: "Traditional Dhol greetings, rose petal showers, and royal mocktails as families exchange Milni garlands." },
-      { step: "Night 20:30", title: "Cinematic Varmala with Rose Showers", details: "The bride and groom exchange wedding garlands under the illuminated floral canopy, followed by a royal feast." }
+      { step: "Morning 09:00", title: "Floral & Stage Personalization", details: "Florists install fresh white wisteria, red roses, and crystal accents tailored to your family's theme." },
+      { step: "Evening 18:30", title: "Royal Guest Reception", details: "Welcome Shehnai players and rosewater sprinkle as guests enter through illuminated golden arches." },
+      { step: "Night 21:00", title: "Grand Varmala Ceremony", details: "Bride and Groom exchange garlands on the elevated rotating stage amidst cascading dry-ice fog and sparklers." }
     ]
   },
   {
-    id: "space-baraat-walkway",
-    category: "ROYAL BARAAT & ENTRY RUNWAY",
-    title: "ILLUMINATED BARAAT RUNWAY",
-    tags: ["GLASS RUNWAY", "BRIDAL PROCESSION", "COLD PYROS", "VIP GALLERIES"],
-    image: "/images/gallery/smr-14.jpg",
+    id: "starlit-lawn",
+    category: "OUTDOOR ROYAL LAWN",
+    title: "Starlit Baraat Lawn & Glass Runway",
+    tags: ["GRAND BARAAT", "ILLUMINATED RUNWAY", "FIREWORKS", "2000 GUESTS"],
+    image: "/images/gallery/smr-14.webp",
     alt: "Grand illuminated wedding entry runway with cold-pyro sparklers and floral arch for royal Baraat and bridal walk",
-    capacity: "Up to 1,500 Spectators",
-    area: "120-Foot Raised Reflective Runway",
-    idealFor: "Regal Groom Baraat Entry, Phoolon Ki Chaadar Bridal Walk & Grand Milni",
-    priceNote: "Signature Architectural Feature",
-    headline: "Elevated Golden-Lit Glass Runway Flanked by Floral Pedestals for Grand Entries",
-    description: "A monumental 120-foot raised glass runway engineered with internal amber underlighting and continuous fresh rose flower pedestals. Gives both families unobstructed elevated vantage points for the groom’s royal Baraat arrival and the bride’s emotional walk under the Phoolon Ki Chaadar.",
+    capacity: "1000 - 2000 Guests",
+    area: "22,000 Sq. Ft.",
+    idealFor: "Royal Baraat Arrival, Ghodi Entry & Open-Air Wedding Banquets",
+    priceNote: "Customized for Combined Lawn + Ballroom Bookings",
+    headline: "Patna's Grandest Open-Air Lawn with an Illuminated Glass Runway for Royal Baraats",
+    description: "Celebrate grand Baraat processions under the open Patna sky. Our manicured lush green lawn features a permanent illuminated glass runway engineered for the Groom's royal vintage car or adorned Mare (Ghodi) arrival. Framed by majestic golden entry arches, towering palm trees with fairy-light wraps, and ample space for grand fireworks, live Dhol Tasha, and extensive outdoor live buffet counters.",
     features: [
-      "Reinforced mirror-finish tempered glass walkway with safety grip coating",
-      "Internal warm-gold LED ribbon glow synchronized with royal entry music",
-      "Continuous fresh red and pastel rose flower pedestals along the entire aisle",
-      "Flanking gallery seating for elderly relatives and VIP wedding guests"
+      "Raised 120-foot glass runway with under-floor LED matrix for bridal entry walks",
+      "Dedicated wide corridor for Baraat dancing with high-output sound setup",
+      "Wide open lawn accommodating up to 2000 guests comfortably without crowding",
+      "Seamless covered transition connecting the lawn directly into the Grand Sheesh Ballroom"
     ],
     specs: [
-      { label: "RUNWAY LENGTH", value: "120 Feet Raised Glass Aisle" },
-      { label: "UNDERLIGHTING", value: "Concealed DMX Amber Glow" },
-      { label: "ENTRY CAPACITY", value: "Up to 1,500 Spectators" },
-      { label: "AISLE WIDTH", value: "12 Feet Wide Processional Corridor" }
+      { label: "CAPACITY", value: "1000 - 2000 Guests" },
+      { label: "RUNWAY LENGTH", value: "120 Feet Illuminated" },
+      { label: "POWER", value: "100% Dual Generator Backup" },
+      { label: "BUFFET CAPACITY", value: "32+ Live Food Stalls" }
     ],
     itinerary: [
-      { step: "Evening 18:30", title: "Groom Royal Baraat Arrival", details: "The groom arrives with Dhol beats along the illuminated glass runway greeted by rose petal showers." },
-      { step: "Night 20:00", title: "Bridal Entry under Phoolon Ki Chaadar", details: "The bride makes her grand entrance along the glowing glass aisle surrounded by brothers and cousins." },
-      { step: "Night 20:30", title: "Varmala Aisle Walk to Main Stage", details: "Both families line the glass runway to shower the couple with flowers as they ascend to the dais." }
+      { step: "Evening 19:00", title: "Grand Baraat Assembly", details: "Groom's Baraat convenes at the grand outer entrance opposite St. Xavier's College with live Dhol beats." },
+      { step: "Evening 20:15", title: "Toran & Milni Ceremony", details: "Both families exchange garlands and warm hugs along the decorated floral welcome passage." },
+      { step: "Night 21:45", title: "Open-Air Shahi Wedding Feast", details: "Guests enjoy live barbecue, kebabs, tandoor breads, chaat counters, and winter delicacies under the stars." }
     ]
   },
   {
-    id: "space-courtyard-sangeet",
-    category: "PRE-WEDDING & SANGEET LOUNGE",
-    title: "MEHNDI & SANGEET COURTYARD",
-    tags: ["MEHNDI LOUNGE", "EMERALD SOFAS", "ROSE ARCH", "250-600 GUESTS"],
-    image: "/images/gallery/smr-46.jpg",
+    id: "vedic-mandap",
+    category: "SACRED WEDDING PAVILION",
+    title: "Royal Vedic Mandap Courtyard",
+    tags: ["SAAT PHERE", "HAVANKUND", "VEDIC CHANTING", "SACRED RITUALS"],
+    image: "/images/gallery/smr-46.webp",
     alt: "Vibrant royal courtyard with emerald velvet sofas, circular red rose arches and Moroccan carpets for Mehndi and Sangeet",
-    capacity: "250 to 600 Guests",
-    area: "8,500 Sq. Ft. Courtyard",
-    idealFor: "Mehndi Carnivals, High-Energy Sangeet Nights & Pre-Wedding Cocktails",
-    priceNote: "Custom Pre-Wedding Packages",
-    headline: "Emerald Velvet Lounges, Circular Rose Arches & Moroccan Carpets",
-    description: "An intimate, vibrantly styled courtyard featuring luxurious emerald velvet diwans, circular rose floral arches, and festive ambient festoon lights. Created for joyful pre-wedding celebrations where ladies sing traditional wedding folk songs, mehndi artists create intricate henna designs, and cousins dance the night away.",
+    capacity: "300 - 600 Seated Guests",
+    area: "6,500 Sq. Ft.",
+    idealFor: "Sacred Saat Phere, Kanyadaan, Sindoor Daan & Vivah Sanskar",
+    priceNote: "Included with Full-Day Royal Wedding Package",
+    headline: "Consecrated Traditional Mandap Designed with Vastu Alignment for Auspicious Vivah Sanskar",
+    description: "Designed in accordance with ancient Vedic traditions, the Royal Mandap Pavilion is positioned on the auspicious North-East axis. Featuring carved wooden and brass pillars wrapped in fresh fragrant marigold and jasmine garlands, a dedicated brass Havankund with smoke-exhaust ventilation, and tiered amphitheater-style seating ensuring parents and elders witness every sacred vow of the Saat Phere in total comfort.",
     features: [
-      "Opulent emerald velvet seating arrangements and low Moroccan baithaks",
-      "Multiple dedicated Instagram photo backdrops with circular floral arches",
-      "Private Mehndi artist stations with specialized soft illumination",
-      "Integrated DJ dance floor with warm twilight festoon canopy"
+      "Vedic Vastu-compliant square Mandap layout with traditional four-pillar architecture",
+      "Integrated Havankund smoke-evacuation system keeping the pavilion serene and fresh",
+      "Special comfortable Diwan seating and Velvet Gaddi arrangements for close family members",
+      "Dedicated audio setup for crystal-clear Sanskrit Shloka recitation by revered Pandits"
     ],
     specs: [
-      { label: "GUEST CAPACITY", value: "250 - 600 Guests" },
-      { label: "ATMOSPHERE", value: "Royal Bohemian Velvet & Florals" },
-      { label: "PHOTO CORNERS", value: "8 Custom Bridal Photo Backdrops" },
+      { label: "SEATING", value: "300 - 600 Seated Guests" },
+      { label: "ORIENTATION", value: "Vedic North-East Vastu" },
+      { label: "HAVAN VENTILATION", value: "Integrated Smoke Exhaust" },
       { label: "SOUND SETUP", value: "Wireless Microphones & Sangeet Audio" }
     ],
     itinerary: [
@@ -179,37 +180,36 @@ export const VENUE_SPACES: VenueSpace[] = [
     ]
   },
   {
-    id: "space-haldi-garden",
-    category: "SUNLIT CELEBRATION GARDEN",
-    title: "SUNLIT HALDI GARDEN",
-    tags: ["MARIGOLD ARCH", "BRASS URLI BATH", "SUNLIT LAWN", "FLOWER SHOWER"],
-    image: "/images/gallery/smr-48.jpg",
+    id: "haldi-courtyard",
+    category: "DAYLIGHT FESTIVE GARDEN",
+    title: "Haldi & Sangeet Utsav Garden",
+    tags: ["HALDI CEREMONY", "FLOWER SHOWER", "SANGEET DANCE", "MEHNDI"],
+    image: "/images/gallery/smr-48.webp",
     alt: "Sunlit celebration garden with cascading yellow marigold circular arch and brass lotus Urli for Haldi flower bath",
-    capacity: "150 to 450 Guests",
-    area: "6,000 Sq. Ft. Open-Sky Garden",
-    idealFor: "Morning Haldi Flower Showers, Chuda Ceremony & Daytime Carnivals",
-    priceNote: "Custom Daytime Ceremony Packages",
-    headline: "Sunlit Morning Garden with Marigold Cascades and Brass Lotus Urli",
-    description: "A sun-drenched outdoor garden drenched in auspicious golden marigolds, yellow drapes, and traditional brass lotus Urli vessels. Perfect for lively morning Haldi ceremonies, fragrant rose water and flower petal showers, and daytime culinary spreads.",
+    capacity: "250 - 500 Guests",
+    area: "8,000 Sq. Ft.",
+    idealFor: "Haldi Flower Showers, Colorful Mehndi Baithak & Sangeet Soirées",
+    priceNote: "Available for Day Booking or Pre-Wedding Celebrations",
+    headline: "Sunlit Courtyard with Festive Yellow Drapes and Brass Urli for Joyous Haldi Ceremonies",
+    description: "A cheerful, sun-drenched courtyard bathed in bright yellow and orange marigold canopies, Rajasthani umbrellas, and carved wooden jhoolas (swings). The centerpiece is a handcrafted brass lotus Urli for the bride and groom's ceremonial turmeric bath and rose petal shower, accompanied by energetic folk singing and dholak rhythms.",
     features: [
-      "Traditional handcrafted brass lotus Urli throne for the Haldi petal bath",
-      "Auspicious yellow and orange marigold floral curtains and hanging umbrella motifs",
-      "Open-air lawn layout ideal for daytime natural sunlight photography",
-      "Dedicated live street chaat, tender coconut water, and sugarcane juice bars"
+      "Centerpiece royal brass Urli for authentic Haldi and Phoolon Ki Holi rituals",
+      "Vibrant yellow and orange festive silk canopies with floral tassels",
+      "Dedicated live Chaat and Thandai refreshment stalls for daytime celebrations",
+      "Weather-safe covered cabanas ensuring celebrations continue smoothly in all seasons"
     ],
     specs: [
-      { label: "CEREMONY CAPACITY", value: "150 - 450 Guests" },
-      { label: "COLOR PALETTE", value: "Auspicious Marigold Yellow & Orange" },
-      { label: "CEREMONIAL THRONE", value: "Handcrafted Brass Urli Setup" },
-      { label: "REFRESHMENTS", value: "Fresh Fruit, Coconut & Chaat Counters" }
+      { label: "CAPACITY", value: "250 - 500 Guests" },
+      { label: "SETUP STYLE", value: "Traditional Baithak & Cabanas" },
+      { label: "HALDI URLI", value: "Handcrafted Pure Brass Lotus" },
+      { label: "DJ & SOUND", value: "Full Acoustic License for Sangeet" }
     ],
     itinerary: [
-      { step: "Morning 09:30", title: "Auspicious Haldi Paste Application", details: "Close family members apply fresh organic turmeric paste to the couple amidst festive Dhol beats." },
-      { step: "Morning 11:00", title: "Floral Rose Petal Shower & Urli Bath", details: "Thousands of fresh yellow and red rose petals showered upon the couple seated in the royal brass Urli." },
-      { step: "Noon 12:30", title: "Daytime Carnival Lunch", details: "Traditional satvik Bihari and North Indian lunch feast with fresh Poori-Sabzi, Jalebi, and buttermilk." }
+      { step: "Morning 10:30", title: "Haldi Ubtan & Flower Shower", details: "Family members apply sacred turmeric paste to bride & groom followed by a joyful 100 kg rose-petal shower." },
+      { step: "Afternoon 12:30", title: "Traditional Halwai Lunch Feast", details: "Fresh steaming puris, kachoris, chole, paneer, and hot jalebis served straight from the live kadhais." },
+      { step: "Afternoon 15:00", title: "Sangeet Rehearsals & Photography", details: "Candid daylight photo sessions with family against yellow marigold arches and floral swings." }
     ]
   }
 ];
 
-export const RESORT_HERO_IMAGE = "/images/gallery/smr-02.png";
-export const RESORT_HERO_ALT = "Sheesh Mahal Resort illuminated luxury facade with palm trees and evening wedding reflection pool";
+export const RESORT_HERO_IMAGE = "/images/gallery/smr-02.webp";

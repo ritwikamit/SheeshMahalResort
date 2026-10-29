@@ -62,8 +62,8 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
                       onClick={() => setActiveCategory(cat)}
                       className={`px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] rounded-lg transition-all duration-300 cursor-pointer ${
                         activeCategory === cat
-                          ? 'bg-[#1D261E] text-[#E88A1A]'
-                          : 'bg-[#26532B]/60 text-[#1D261E]/70 hover:text-[#1D261E] hover:bg-[#26532B]/30'
+                          ? 'clay-btn-gold text-white shadow-xs'
+                          : 'clay-pill text-[#1D261E] hover:text-[#E88A1A]'
                       }`}
                     >
                       {cat === 'ALL' ? 'ALL WEDDING SPACES' : cat}
@@ -75,7 +75,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
                   <button
                     type="button"
                     onClick={onOpenGallery}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[10px] sm:text-xs font-black tracking-widest uppercase bg-[#E88A1A] text-[#1D261E] hover:bg-[#1D261E] hover:text-[#E88A1A] transition-all duration-300 cursor-pointer shadow-md hover:scale-105 active:scale-95 shrink-0"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-[10px] sm:text-xs font-black tracking-widest uppercase clay-btn-gold text-white hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-md shrink-0"
                   >
                     <span>SEE ALL PHOTOS</span>
                     <ArrowRight size={13} />

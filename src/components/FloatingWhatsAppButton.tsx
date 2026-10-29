@@ -24,7 +24,7 @@ export const FloatingWhatsAppButton: React.FC<FloatingWhatsAppButtonProps> = ({ 
         rel="noopener noreferrer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-2xl transition-transform duration-300 hover:scale-110 active:scale-95 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
+        className="relative group w-12 h-12 sm:w-14 sm:h-14 rounded-full clay-btn-whatsapp text-white flex items-center justify-center cursor-pointer focus:outline-none"
         title="Direct WhatsApp Chat with Wedding Desk"
         aria-label="Chat on WhatsApp with Sheesh Mahal Resort Wedding Desk"
       >
@@ -36,7 +36,7 @@ export const FloatingWhatsAppButton: React.FC<FloatingWhatsAppButtonProps> = ({ 
 
         {/* Floating Tooltip Label */}
         <div
-          className={`hidden sm:block absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#1D261E] text-[#FAF6EE] text-[11px] font-black tracking-widest uppercase shadow-xl border border-[#26532B]/30 whitespace-nowrap pointer-events-none transition-all duration-200 ${
+          className={`hidden sm:block absolute left-full ml-3 px-3.5 py-2 rounded-xl clay-card-dark text-[#FAF6EE] text-[11px] font-black tracking-widest uppercase shadow-xl whitespace-nowrap pointer-events-none transition-all duration-200 ${
             isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
           }`}
         >

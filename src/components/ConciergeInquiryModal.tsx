@@ -54,10 +54,10 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
         className="relative w-full max-w-2xl max-h-[92dvh] flex flex-col bg-[#FAF6EE] text-[#1D261E] rounded-[20px] sm:rounded-[24px] shadow-2xl border border-[#26532B]/30 overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top bar */}
-        <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#26532B]/20 bg-[#26532B] shrink-0">
+        {/* Top bar (High-contrast text and icons on green background) */}
+        <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-white/20 bg-[#26532B] shrink-0 text-white">
           <div className="flex items-center gap-2">
-            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#1D261E]">
+            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-white">
               SHEESH MAHAL RESORT · WEDDING DESK
             </span>
           </div>
@@ -65,10 +65,10 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#1D261E]/20 flex items-center justify-center hover:bg-[#1D261E] hover:text-[#FAF6EE] transition-colors cursor-pointer"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white/40 text-white flex items-center justify-center hover:bg-white hover:text-[#26532B] transition-colors cursor-pointer shadow-xs"
             aria-label="Close modal"
           >
-            <X size={16} className="sm:w-[18px] sm:h-[18px]" />
+            <X size={16} />
           </button>
         </div>
 
@@ -114,7 +114,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98765 43210"
+                      placeholder="7360800001"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 clay-inset px-4 py-3 text-sm text-[#1D261E] focus:outline-none focus:border-[#E88A1A] transition-colors"
@@ -190,14 +190,14 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                   </div>
                 </div>
 
-                {/* Wedding Logistics Toggles */}
-                <div className="p-4 bg-[#26532B]/60 rounded-xl border border-[#26532B]/20 flex flex-wrap items-center justify-between gap-4">
+                {/* Wedding Logistics Toggles with Clay-inset & High-Contrast Labels */}
+                <div className="p-4 clay-inset flex flex-wrap items-center justify-between gap-4">
                   <label className="flex items-center gap-2 cursor-pointer text-xs font-bold uppercase tracking-wider text-[#1D261E]">
                     <input
                       type="checkbox"
                       checked={formData.cateringRequired}
                       onChange={(e) => setFormData({ ...formData, cateringRequired: e.target.checked })}
-                      className="accent-[#1D261E] w-4 h-4 cursor-pointer"
+                      className="accent-[#E88A1A] w-4 h-4 cursor-pointer"
                     />
                     <span>Shahi Wedding Catering</span>
                   </label>
@@ -207,7 +207,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                       type="checkbox"
                       checked={formData.customDecor}
                       onChange={(e) => setFormData({ ...formData, customDecor: e.target.checked })}
-                      className="accent-[#1D261E] w-4 h-4 cursor-pointer"
+                      className="accent-[#E88A1A] w-4 h-4 cursor-pointer"
                     />
                     <span>Custom Mandap & Floral Decor</span>
                   </label>
@@ -217,7 +217,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                       type="checkbox"
                       checked={formData.powerBackup}
                       onChange={(e) => setFormData({ ...formData, powerBackup: e.target.checked })}
-                      className="accent-[#1D261E] w-4 h-4 cursor-pointer"
+                      className="accent-[#E88A1A] w-4 h-4 cursor-pointer"
                     />
                     <span>100% Baraat Power Backup</span>
                   </label>
@@ -271,12 +271,12 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                 Thank you, {formData.name}. Our master wedding coordinator at Sheesh Mahal Resort has received your details for {formData.eventType} on {formData.eventDate}. We will connect with you within 30 minutes.
               </p>
 
-              {/* Reference ID badge without typewriter font */}
-              <div className="p-4 bg-[#26532B] border border-[#26532B]/30 rounded-xl inline-block mb-8">
-                <p className="text-[9px] font-black uppercase tracking-widest text-[#1D261E]/60 mb-1">
+              {/* Reference ID badge with crystal clear contrast */}
+              <div className="p-4 bg-[#26532B] text-white border border-white/20 rounded-2xl inline-block mb-8 shadow-md">
+                <p className="text-[9px] font-black uppercase tracking-widest text-[#E88A1A] mb-1">
                   PATNA WEDDING REFERENCE
                 </p>
-                <p className="text-base font-black tracking-wider text-[#1D261E]">
+                <p className="text-lg font-black tracking-wider text-white">
                   {bookingRef}
                 </p>
               </div>
@@ -286,7 +286,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                   href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20just%20submitted%20wedding%20inquiry%20reference%20${bookingRef}%20for%20date%20${formData.eventDate}.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white hover:bg-[#20ba59] transition-colors cursor-pointer inline-flex items-center justify-center gap-2.5 shadow-sm"
+                  className="w-full sm:w-auto px-6 py-3 rounded-full text-xs font-black tracking-widest uppercase clay-btn-whatsapp inline-flex items-center justify-center gap-2.5 shadow-md cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4 fill-current shrink-0" />
                   <span>CONFIRM ON WHATSAPP</span>

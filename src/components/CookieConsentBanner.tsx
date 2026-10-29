@@ -44,7 +44,7 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
       aria-label="Cookie consent banner"
       className="fixed bottom-[76px] sm:bottom-6 left-3 right-3 sm:left-8 sm:right-auto sm:max-w-md z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] animate-in fade-in slide-in-from-bottom-6"
     >
-      <div className="bg-[#1D261E] text-[#FAF6EE] p-4 sm:p-6 rounded-2xl border border-[#26532B]/30 shadow-2xl relative">
+      <div className="clay-card-dark text-[#FAF6EE] p-5 sm:p-6 rounded-2xl border border-white/10 shadow-[8px_16px_36px_rgba(0,0,0,0.35)] relative">
         {/* Close without accepting (essential default) */}
         <button
           type="button"
@@ -72,7 +72,7 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
               <button
                 type="button"
                 onClick={onOpenCookiesPolicy}
-                className="text-[11px] font-bold text-[#26532B] hover:text-[#E88A1A] underline transition-colors cursor-pointer"
+                className="text-[11px] font-bold text-[#E88A1A] hover:text-white underline transition-colors cursor-pointer"
               >
                 Read our Cookies Policy →
               </button>
@@ -85,14 +85,14 @@ export const CookieConsentBanner: React.FC<CookieConsentBannerProps> = ({
           <button
             type="button"
             onClick={handleEssentialOnly}
-            className="px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-wider text-[#FAF6EE]/80 hover:text-[#FAF6EE] hover:bg-[#FAF6EE]/10 transition-colors cursor-pointer"
+            className="clay-pill px-4 py-2 text-[10px] font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] transition-colors cursor-pointer"
           >
             ESSENTIAL ONLY
           </button>
           <button
             type="button"
             onClick={handleAcceptAll}
-            className="px-5 py-2.5 rounded-lg text-[10px] font-black uppercase tracking-wider bg-[#E88A1A] text-[#1D261E] hover:bg-[#26532B] transition-colors cursor-pointer shadow-sm"
+            className="clay-btn-gold px-5 py-2.5 text-[10px] font-black uppercase tracking-wider text-white transition-all cursor-pointer shadow-md"
           >
             ACCEPT COOKIES
           </button>

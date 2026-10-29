@@ -151,7 +151,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
               <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight leading-tight mb-4">
                 VISIT SHEESH MAHAL RESORT
               </h3>
-              <p className="text-sm sm:text-base text-[#26532B] leading-relaxed mb-6 font-normal">
+              <p className="text-sm sm:text-base text-white/90 leading-relaxed mb-6 font-normal">
                 Conveniently located opposite the main gate of St. Xavier's College, near Bharat Petrol Pump, Mica Colony, Yadav Colony, Digha, Patna, Bihar 800011. Open round the clock for in-person wedding consultations and venue walkthroughs.
               </p>
 
@@ -161,8 +161,8 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
                   <span>Opposite St. Xavier's College Gate</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone size={16} className="text-[#26532B] shrink-0" />
-                  <span>+91 76319 29292 / +91 73608 00001</span>
+                  <Phone size={16} className="text-[#E88A1A] shrink-0" />
+                  <a href={`tel:${RESORT_CONTACT.rawPhone}`} className="hover:text-[#E88A1A] transition-colors">24/7 Concierge Call Desk</a>
                 </div>
               </div>
             </div>
@@ -171,7 +171,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
               <button
                 type="button"
                 onClick={onOpenInquiry}
-                className="w-full sm:w-auto px-8 py-3.5 clay-btn-orange text-xs font-black tracking-widest uppercase whitespace-nowrap cursor-pointer text-center"
+                className="w-full sm:w-auto px-8 py-3.5 clay-btn-gold text-white text-xs font-black tracking-widest uppercase whitespace-nowrap cursor-pointer text-center shadow-md"
               >
                 CHECK WEDDING DATES
               </button>

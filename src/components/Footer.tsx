@@ -50,7 +50,8 @@ export const Footer: React.FC<FooterProps> = ({
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
+            {/* Desktop View: Royal Booking CTA positioned at bottom of brand column */}
+            <div className="hidden lg:flex items-center gap-4 relative z-20">
               <button
                 type="button"
                 onClick={onOpenInquiry}
@@ -277,8 +278,19 @@ export const Footer: React.FC<FooterProps> = ({
 
 
 
+        {/* Mobile View: Royal Booking CTA positioned above bottom bar so it overlaps the carved watermark */}
+        <div className="lg:hidden flex justify-center pb-8 pt-2 relative z-20">
+          <button
+            type="button"
+            onClick={onOpenInquiry}
+            className="w-full max-w-xs py-3.5 clay-btn-dark text-xs font-black tracking-widest uppercase cursor-pointer text-center"
+          >
+            BOOK WEDDING DATES
+          </button>
+        </div>
+
         {/* Centered Footer Bottom Bar */}
-        <div className="pt-8 border-t border-[#1D261E]/10 flex flex-col items-center justify-center text-center gap-3">
+        <div className="pt-8 border-t border-[#1D261E]/10 flex flex-col items-center justify-center text-center gap-3 relative z-10">
           {/* Centered All Rights Reserved */}
           <p
             className="font-bold tracking-widest uppercase text-center text-[#1D261E]/80 text-[11px]"
@@ -314,30 +326,30 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
       </div>
-      {/* Stretched Edge-to-Edge Claymorphically Carved Watermark (Full-screen width, smartphone-optimized) */}
+      {/* Stretched Edge-to-Edge & Vertically Carved Watermark (Reaches up to Book Wedding Dates button, overlapped by content) */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-1.5 sm:bottom-3 w-full flex items-center justify-center pointer-events-none select-none z-0 px-1 sm:px-4 overflow-hidden"
+        className="absolute inset-x-0 bottom-0 w-full flex items-end justify-center pointer-events-none select-none z-0 px-0.5 sm:px-2 overflow-hidden h-[260px] sm:h-[290px] md:h-[320px] lg:h-[360px] xl:h-[390px]"
       >
         <svg
-          viewBox="0 0 1000 115"
-          className="w-full max-w-full h-auto select-none pointer-events-none opacity-80"
+          viewBox="0 0 1000 170"
+          className="w-full h-full select-none pointer-events-none opacity-85"
           preserveAspectRatio="none"
         >
           <defs>
             <filter id="clay-carve" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="-2" dy="-2" stdDeviation="1.5" floodColor="rgba(29, 38, 30, 0.18)" />
+              <feDropShadow dx="-2" dy="-2" stdDeviation="1.5" floodColor="rgba(29, 38, 30, 0.22)" />
               <feDropShadow dx="2" dy="2" stdDeviation="2" floodColor="rgba(255, 255, 255, 0.95)" />
             </filter>
           </defs>
           <text
             x="500"
-            y="65"
+            y="90"
             textAnchor="middle"
             dominantBaseline="middle"
             textLength="980"
             lengthAdjust="spacingAndGlyphs"
-            fontSize="106"
+            fontSize="150"
             fontWeight="900"
             fill="#EEE6D8"
             filter="url(#clay-carve)"

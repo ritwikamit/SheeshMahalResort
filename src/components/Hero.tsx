@@ -102,7 +102,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
           muted
           playsInline
           preload="metadata"
-          className="w-full h-full object-cover object-center scale-100"
+          className="w-full h-full object-cover object-center scale-105 filter blur-[5px] sm:blur-[6px] transition-all"
         >
           <source src="/videos/GeminiHero.mp4" type="video/mp4" />
         </video>

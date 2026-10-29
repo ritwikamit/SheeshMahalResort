@@ -27,9 +27,9 @@ export const WeddingDeskCircleBadge: React.FC<WeddingDeskCircleBadgeProps> = ({
       data-badge-circle="true"
       onClick={onClick}
       style={{
-        backgroundColor: '#FF5722',
-        boxShadow: '8px 14px 28px rgba(255, 87, 34, 0.42), -6px -6px 18px rgba(255, 255, 255, 0.8), inset 3px 3px 5px rgba(255, 255, 255, 0.5), inset -3px -3px 6px rgba(0, 0, 0, 0.22)',
-        color: '#303841',
+        backgroundColor: '#E88A1A',
+        boxShadow: '8px 14px 28px rgba(232, 138, 26, 0.42), -6px -6px 18px rgba(255, 255, 255, 0.8), inset 3px 3px 5px rgba(255, 255, 255, 0.5), inset -3px -3px 6px rgba(0, 0, 0, 0.22)',
+        color: '#1D261E',
         animationDelay: bounceDelay
       }}
       className={`relative z-30 w-[115px] h-[115px] sm:w-[150px] sm:h-[150px] lg:w-[160px] lg:h-[160px] rounded-full flex flex-col items-center justify-center text-white border-2 border-white/40 animate-bounce-slow cursor-pointer select-none transition-transform duration-300 hover:scale-105 active:scale-95 group shrink-0 ${className}`}
@@ -54,7 +54,7 @@ export const WeddingDeskCircleBadge: React.FC<WeddingDeskCircleBadgeProps> = ({
       </span>
 
       {/* Status label at bottom */}
-      <span className="text-[6.5px] sm:text-[8px] font-bold tracking-wider uppercase text-[#303841] bg-white/90 font-black px-1.5 sm:px-2 py-0.5 rounded-sm mt-0.5 sm:mt-1">
+      <span className="text-[6.5px] sm:text-[8px] font-bold tracking-wider uppercase text-[#1D261E] bg-white/90 font-black px-1.5 sm:px-2 py-0.5 rounded-sm mt-0.5 sm:mt-1">
         {statusText}
       </span>
     </div>

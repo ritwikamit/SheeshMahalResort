@@ -8,35 +8,35 @@ interface TermsPageProps {
 
 export const TermsPage: React.FC<TermsPageProps> = ({ onBack }) => {
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#F5F5F5] text-[#303841]">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-12">
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#76ABAE] hover:text-[#303841] mb-8 cursor-pointer"
+          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#26532B] hover:text-[#1D261E] mb-8 cursor-pointer"
         >
           <ArrowLeft size={16} />
           <span>RETURN TO RESORT</span>
         </button>
 
-        <div className="border-b border-[#76ABAE]/20 pb-8 mb-10">
-          <span className="label-utility text-[#303841]/70">
+        <div className="border-b border-[#26532B]/20 pb-8 mb-10">
+          <span className="label-utility text-[#1D261E]/70">
             OFFICIAL POLICY & PROTOCOLS
           </span>
-          <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#303841] mt-2">
+          <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#1D261E] mt-2">
             TERMS & CONDITIONS
           </h1>
-          <p className="font-cursive text-2xl text-[#76ABAE] mt-1 font-normal">
+          <p className="font-cursive text-2xl text-[#26532B] mt-1 font-normal">
             Sheesh Mahal Resort, Ashiana–Digha Road, Patna
           </p>
-          <p className="text-xs text-[#303841]/60 mt-2 font-bold tracking-wider">
+          <p className="text-xs text-[#1D261E]/60 mt-2 font-bold tracking-wider">
             LAST REVISED: OCTOBER 2026 · APPLICABLE TO ALL WEDDING & EVENT BOOKINGS
           </p>
         </div>
 
-        <div className="space-y-8 text-sm text-[#303841]/85 leading-relaxed font-normal">
-          <section className="p-6 bg-[#76ABAE]/30 rounded-2xl border border-[#76ABAE]/20">
-            <h2 className="text-base font-black uppercase tracking-wide text-[#303841] mb-3">
+        <div className="space-y-8 text-sm text-[#1D261E]/85 leading-relaxed font-normal">
+          <section className="p-6 bg-[#26532B]/30 rounded-2xl border border-[#26532B]/20">
+            <h2 className="text-base font-black uppercase tracking-wide text-[#1D261E] mb-3">
               1. RESERVATION & AUSPICIOUS DATE BLOCKING
             </h2>
             <p>
@@ -44,8 +44,8 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onBack }) => {
             </p>
           </section>
 
-          <section className="p-6 bg-[#76ABAE]/30 rounded-2xl border border-[#76ABAE]/20">
-            <h2 className="text-base font-black uppercase tracking-wide text-[#303841] mb-3">
+          <section className="p-6 bg-[#26532B]/30 rounded-2xl border border-[#26532B]/20">
+            <h2 className="text-base font-black uppercase tracking-wide text-[#1D261E] mb-3">
               2. IN-HOUSE ROYAL CATERING POLICIES
             </h2>
             <p>
@@ -53,8 +53,8 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onBack }) => {
             </p>
           </section>
 
-          <section className="p-6 bg-[#76ABAE]/30 rounded-2xl border border-[#76ABAE]/20">
-            <h2 className="text-base font-black uppercase tracking-wide text-[#303841] mb-3">
+          <section className="p-6 bg-[#26532B]/30 rounded-2xl border border-[#26532B]/20">
+            <h2 className="text-base font-black uppercase tracking-wide text-[#1D261E] mb-3">
               3. WEDDING DECOR, MANDAP & STAGE SETUP
             </h2>
             <p>
@@ -62,8 +62,8 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onBack }) => {
             </p>
           </section>
 
-          <section className="p-6 bg-[#76ABAE]/30 rounded-2xl border border-[#76ABAE]/20">
-            <h2 className="text-base font-black uppercase tracking-wide text-[#303841] mb-3">
+          <section className="p-6 bg-[#26532B]/30 rounded-2xl border border-[#26532B]/20">
+            <h2 className="text-base font-black uppercase tracking-wide text-[#1D261E] mb-3">
               4. POWER BACKUP & VALET PARKING
             </h2>
             <p>
@@ -71,8 +71,8 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onBack }) => {
             </p>
           </section>
 
-          <section className="p-6 bg-[#76ABAE]/30 rounded-2xl border border-[#76ABAE]/20">
-            <h2 className="text-base font-black uppercase tracking-wide text-[#303841] mb-3">
+          <section className="p-6 bg-[#26532B]/30 rounded-2xl border border-[#26532B]/20">
+            <h2 className="text-base font-black uppercase tracking-wide text-[#1D261E] mb-3">
               5. JURISDICTION & INQUIRIES
             </h2>
             <p>

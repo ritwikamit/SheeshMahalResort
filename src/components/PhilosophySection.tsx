@@ -16,7 +16,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
     {
       title: "HALDI & MEHNDI CARNIVALS",
       image: "/images/gallery/smr-48.jpg",
-      icon: <SunMedium className="w-6 h-6 text-[#FF5722]" strokeWidth={1.5} />,
+      icon: <SunMedium className="w-6 h-6 text-[#E88A1A]" strokeWidth={1.5} />,
       description: "Sunlit open courtyard celebrations decorated in fresh yellow marigolds, brass urlis, and festive canopies. Featuring organic herbal turmeric paste, live folk dhol beats, master bridal henna artists, and interactive street chaat counters.",
       badge: "PRE-WEDDING",
       cursiveTag: "Joyous Rites & Sangeet Sundowners"
@@ -24,7 +24,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
     {
       title: "BARAAT, VARMALA & SAAT PHERE",
       image: "/images/gallery/smr-57.jpg",
-      icon: <Flame className="w-6 h-6 text-[#76ABAE]" strokeWidth={1.5} />,
+      icon: <Flame className="w-6 h-6 text-[#26532B]" strokeWidth={1.5} />,
       description: "Regal Baraat avenue welcoming with dhol and nagada, followed by a cinematic revolving Varmala stage garland exchange with cold-pyro fireworks. Completed with sacred Vedic Saat Phere around the sanctified holy havan.",
       badge: "SACRED NUPTIALS",
       cursiveTag: "Seven Sacred Vows of Eternity"
@@ -32,7 +32,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
     {
       title: "ROYAL WEDDING RECEPTION",
       image: "/images/gallery/smr-60.jpg",
-      icon: <HeartHandshake className="w-6 h-6 text-[#76ABAE]" strokeWidth={1.5} />,
+      icon: <HeartHandshake className="w-6 h-6 text-[#26532B]" strokeWidth={1.5} />,
       description: "Imperial evening banqueting celebrating the newly married couple. 60+ dish royal Awadhi and Bihari delicacies, live instrumental music, mirror-work crystal chandelier hall, and dedicated photography stages.",
       badge: "SHAHI DAWAT",
       cursiveTag: "Imperial Banqueting & Feasts"
@@ -42,25 +42,25 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
   return (
     <section
       id="rituals"
-      className="py-24 lg:py-32 bg-[#76ABAE]/40 text-[#303841] border-b border-[#76ABAE]/20 relative overflow-hidden"
+      className="py-24 lg:py-32 bg-[#26532B]/40 text-[#1D261E] border-b border-[#26532B]/20 relative overflow-hidden"
     >
       <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative">
         <RevealUp>
           {/* Section Header */}
           <div className="mb-16 lg:mb-20">
             <div className="flex items-center gap-3 mb-4">
-              <span className="label-utility text-[#303841]/70">
+              <span className="label-utility text-[#1D261E]/70">
                 SACRED WEDDING RITUALS & MILESTONES
               </span>
-              <span className="w-10 h-[1px] bg-[#76ABAE]"></span>
+              <span className="w-10 h-[1px] bg-[#26532B]"></span>
             </div>
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#303841]">
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#1D261E]">
               WEDDING RITUALS
             </h2>
-            <p className="font-cursive text-3xl sm:text-4xl text-[#76ABAE] mt-2 font-normal">
+            <p className="font-cursive text-3xl sm:text-4xl text-[#26532B] mt-2 font-normal">
               From Sacred Vedic Vows to Starlit Wedding Banquets
             </p>
-            <p className="mt-4 text-lg sm:text-xl text-[#303841]/75 max-w-2xl font-medium">
+            <p className="mt-4 text-lg sm:text-xl text-[#1D261E]/75 max-w-2xl font-medium">
               Every ceremonial rite is honored with authentic traditions, bespoke stage architecture, flawless catering, and dedicated wedding coordinators on call 24 hours.
             </p>
           </div>
@@ -70,10 +70,10 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {rituals.map((ritual, idx) => (
             <RevealUp key={idx} delay={idx * 120}>
-              <div className="p-6 sm:p-8 clay-card h-full flex flex-col justify-between group hover:border-[#FF5722]/50 transition-all duration-500">
+              <div className="p-6 sm:p-8 clay-card h-full flex flex-col justify-between group hover:border-[#E88A1A]/50 transition-all duration-500">
                 <div>
                   {/* Photo Visual */}
-                  <div className="relative aspect-[16/10] rounded-[18px] overflow-hidden mb-6 bg-[#303841] shadow-sm">
+                  <div className="relative aspect-[16/10] rounded-[18px] overflow-hidden mb-6 bg-[#1D261E] shadow-sm">
                     <LuxuryVisual
                       src={ritual.image}
                       alt={ritual.title}
@@ -82,37 +82,37 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
                       category={ritual.badge}
                     />
                     <div className="absolute top-3 left-3 z-10">
-                      <span className="text-[9px] font-black tracking-widest uppercase bg-[#303841]/90 backdrop-blur-md text-[#FF5722] px-2.5 py-1 rounded-md shadow">
+                      <span className="text-[9px] font-black tracking-widest uppercase bg-[#1D261E]/90 backdrop-blur-md text-[#E88A1A] px-2.5 py-1 rounded-md shadow">
                         {ritual.badge}
                       </span>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 mb-3 text-[#76ABAE]">
-                    <div className="p-2 bg-[#76ABAE] rounded-lg border border-[#76ABAE]/20">
+                  <div className="flex items-center gap-2 mb-3 text-[#26532B]">
+                    <div className="p-2 bg-[#26532B] rounded-lg border border-[#26532B]/20">
                       {ritual.icon}
                     </div>
-                    <p className="font-cursive text-xl text-[#76ABAE] font-normal">
+                    <p className="font-cursive text-xl text-[#26532B] font-normal">
                       {ritual.cursiveTag}
                     </p>
                   </div>
 
-                  <h3 className="text-xl font-black uppercase tracking-tight text-[#303841] mb-3">
+                  <h3 className="text-xl font-black uppercase tracking-tight text-[#1D261E] mb-3">
                     {ritual.title}
                   </h3>
-                  <p className="text-sm text-[#303841]/80 leading-relaxed font-normal">
+                  <p className="text-sm text-[#1D261E]/80 leading-relaxed font-normal">
                     {ritual.description}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-[#76ABAE]/15 mt-6 flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-[#303841]/60">
+                <div className="pt-6 border-t border-[#26532B]/15 mt-6 flex items-center justify-between">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#1D261E]/60">
                     OPEN 24 HOURS
                   </span>
                   <button
                     type="button"
                     onClick={onOpenInquiry}
-                    className="text-xs font-black uppercase tracking-wider text-[#76ABAE] hover:text-[#303841] transition-colors cursor-pointer"
+                    className="text-xs font-black uppercase tracking-wider text-[#26532B] hover:text-[#1D261E] transition-colors cursor-pointer"
                   >
                     PLAN RITUAL →
                   </button>
@@ -126,7 +126,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
         <RevealUp delay={250}>
           <div
             id="location"
-            className="mt-16 sm:mt-24 p-6 sm:p-10 lg:p-14 clay-card-dark text-[#F5F5F5] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 relative"
+            className="mt-16 sm:mt-24 p-6 sm:p-10 lg:p-14 clay-card-dark text-[#FAF6EE] flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 relative"
           >
             {/* Badge 4: Anchored to TOP-LEFT corner of the royal palace highlight card */}
             <div className="absolute -top-12 left-2 sm:-top-16 sm:-left-6 md:-left-8 z-30 pointer-events-auto">
@@ -142,26 +142,26 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
             </div>
 
             <div className="max-w-2xl pt-14 sm:pt-12 lg:pt-0 lg:pl-10">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#FF5722] block mb-2">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#E88A1A] block mb-2">
                 PRIME ASHIANA–DIGHA CORRIDOR
               </span>
-              <p className="font-cursive text-2xl sm:text-4xl text-[#FF5722] mb-3 font-normal">
+              <p className="font-cursive text-2xl sm:text-4xl text-[#E88A1A] mb-3 font-normal">
                 "A Royal Palace Where Sacred Marriages Blossom"
               </p>
               <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight leading-tight mb-4">
                 VISIT SHEESH MAHAL RESORT
               </h3>
-              <p className="text-sm sm:text-base text-[#76ABAE] leading-relaxed mb-6 font-normal">
+              <p className="text-sm sm:text-base text-[#26532B] leading-relaxed mb-6 font-normal">
                 Conveniently located opposite the main gate of St. Xavier's College, near Bharat Petrol Pump, Mica Colony, Yadav Colony, Digha, Patna, Bihar 800011. Open round the clock for in-person wedding consultations and venue walkthroughs.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#F5F5F5]/80 font-bold">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-[#FAF6EE]/80 font-bold">
                 <div className="flex items-center gap-2">
-                  <MapPin size={16} className="text-[#FF5722] shrink-0" />
+                  <MapPin size={16} className="text-[#E88A1A] shrink-0" />
                   <span>Opposite St. Xavier's College Gate</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone size={16} className="text-[#76ABAE] shrink-0" />
+                  <Phone size={16} className="text-[#26532B] shrink-0" />
                   <span>+91 76319 29292 / +91 73608 00001</span>
                 </div>
               </div>

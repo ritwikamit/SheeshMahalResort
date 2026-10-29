@@ -1,5 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown, Phone } from 'lucide-react';
+import { 
+  ChevronDown, 
+  Phone, 
+  Sparkles, 
+  MapPin, 
+  Utensils, 
+  Camera, 
+  Crown, 
+  HelpCircle, 
+  Heart,
+  Home as HomeIcon,
+  X,
+  Menu
+} from 'lucide-react';
 import { SheeshMahalLogo } from './SheeshMahalLogo.tsx';
 import { WhatsAppIcon } from './WhatsAppIcon.tsx';
 import { RESORT_CONTACT } from '../data/resortData.ts';
@@ -21,78 +34,19 @@ export const Navigation: React.FC<NavigationProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [moreMenuOpen, setMoreMenuOpen] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState({
-    index: '01',
-    total: '06',
-    label: 'SANCTUARY',
-    id: 'top'
-  });
   const moreRef = useRef<HTMLDivElement>(null);
 
-  // Home page sections mapping
-  const homeSections = [
-    { id: 'top', label: 'SANCTUARY', index: '01', page: 'home' as PageRoute },
-    { id: 'wedding-reel', label: 'ROYAL REEL', index: '02', page: 'home' as PageRoute },
-    { id: 'amenities', label: 'SERVICES', index: '03', page: 'catering' as PageRoute },
-    { id: 'spaces', label: 'VENUES', index: '04', page: 'venues' as PageRoute },
-    { id: 'rituals', label: 'RITUALS', index: '05', page: 'rituals' as PageRoute },
-    { id: 'map-location', label: 'LOCATION', index: '06', page: 'home' as PageRoute },
-  ];
-
-  // Scroll tracking & live indexing
+  // Scroll detection for enhanced clay styling
   useEffect(() => {
     const handleScroll = () => {
-      const winScroll = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrolled = docHeight > 0 ? (winScroll / docHeight) * 100 : 0;
-      setScrollProgress(Math.min(100, Math.max(0, scrolled)));
-      setIsScrolled(winScroll > 20);
-
-      if (currentPage === 'home') {
-        const triggerPoint = winScroll + 220;
-        for (let i = homeSections.length - 1; i >= 0; i--) {
-          const el = document.getElementById(homeSections[i].id);
-          if (el) {
-            const top = el.offsetTop;
-            if (triggerPoint >= top) {
-              setActiveSection({
-                index: homeSections[i].index,
-                total: '06',
-                label: homeSections[i].label,
-                id: homeSections[i].id
-              });
-              break;
-            }
-          }
-        }
-      } else {
-        const pageLabels: Record<PageRoute, { label: string; index: string }> = {
-          home: { label: 'HOME', index: '01' },
-          venues: { label: 'VENUES', index: '02' },
-          catering: { label: 'CATERING', index: '03' },
-          rituals: { label: 'RITUALS', index: '04' },
-          gallery: { label: 'GALLERY', index: '05' },
-          packages: { label: 'PACKAGES', index: '06' },
-          faqs: { label: 'FAQS', index: '07' },
-          terms: { label: 'TERMS', index: '08' },
-          cookies: { label: 'COOKIES', index: '09' }
-        };
-        const currentMeta = pageLabels[currentPage] || { label: 'PALACE', index: '01' };
-        setActiveSection({
-          index: currentMeta.index,
-          total: '09',
-          label: currentMeta.label,
-          id: currentPage
-        });
-      }
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentPage]);
+  }, []);
 
   // Close "More" dropdown when clicking outside
   useEffect(() => {
@@ -112,239 +66,218 @@ export const Navigation: React.FC<NavigationProps> = ({
     setMoreMenuOpen(false);
   };
 
-  const moreItems: { label: string; page: PageRoute }[] = [
-    { label: 'PHOTO GALLERY', page: 'gallery' },
-    { label: 'WEDDING PACKAGES', page: 'packages' },
-    { label: 'WEDDING FAQS', page: 'faqs' }
+  const isLinkActive = (page: PageRoute) => currentPage === page;
+
+  // Primary navigation items
+  const mainNavItems: { label: string; page: PageRoute; icon: React.ReactNode }[] = [
+    { label: 'HOME', page: 'home', icon: <HomeIcon size={13} /> },
+    { label: 'VENUES', page: 'venues', icon: <MapPin size={13} /> },
+    { label: 'CATERING', page: 'catering', icon: <Utensils size={13} /> },
+    { label: 'RITUALS', page: 'rituals', icon: <Heart size={13} /> },
+    { label: 'GALLERY', page: 'gallery', icon: <Camera size={13} /> },
+    { label: 'PACKAGES', page: 'packages', icon: <Crown size={13} /> },
   ];
 
-  // Helper to determine if link is active
-  const isLinkActive = (page: PageRoute) => {
-    return currentPage === page;
-  };
+  // Secondary "More" items with rich subtitles
+  const moreItems: { label: string; page: PageRoute; desc: string; icon: React.ReactNode }[] = [
+    { label: 'WEDDING FAQS', page: 'faqs', desc: 'Policies, timings & catering guidelines', icon: <HelpCircle size={16} className="text-[#E88A1A]" /> },
+    { label: 'ROYAL PACKAGES', page: 'packages', desc: 'All-inclusive weddings & suites', icon: <Crown size={16} className="text-[#26532B]" /> },
+    { label: 'PHOTO GALLERY', page: 'gallery', desc: 'Real Baraats, Mandaps & Stage decor', icon: <Camera size={16} className="text-[#E88A1A]" /> },
+  ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-[76px] sm:h-[80px] px-3.5 sm:px-6 lg:px-12 flex items-center justify-between border-b border-[#303841]/10 transition-all duration-300 ${
-        isScrolled ? 'clay-nav shadow-lg' : 'bg-[#F5F5F5]/90 backdrop-blur-md border-b border-[#76ABAE]/20'
+      className={`fixed top-0 left-0 right-0 z-50 h-[78px] sm:h-[84px] px-3.5 sm:px-6 lg:px-10 flex items-center justify-between transition-all duration-300 ${
+        isScrolled
+          ? 'clay-nav shadow-[0_12px_28px_rgba(29,38,30,0.06)]'
+          : 'bg-[#FAF6EE]/92 backdrop-blur-md border-b border-[#26532B]/10'
       }`}
       style={{
-        backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)'
       }}
     >
-      {/* Brand */}
+      {/* Brand Logo */}
       <div className="flex items-center shrink-0">
         <SheeshMahalLogo
           variant="header"
           onClick={() => handleNavClick('home')}
-          className="cursor-pointer"
+          className="cursor-pointer transition-transform duration-300 hover:scale-[1.02]"
         />
       </div>
 
-      {/* Simple & Minimalistic Center Menu with Direct Dedicated Page Navigation */}
-      <nav className="hidden md:flex items-center gap-6 lg:gap-8">
-        <button
-          type="button"
-          onClick={() => handleNavClick('home')}
-          className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            isLinkActive('home') ? 'text-[#303841]' : 'text-[#303841]/70 hover:text-[#303841]'
-          }`}
-        >
-          HOME
-          {isLinkActive('home') && (
-            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF5722] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
-          )}
-        </button>
+      {/* Redesigned Desktop Menu: Floating Tactile Clay Pill Island */}
+      <nav className="hidden xl:flex items-center clay-pill px-2 py-1.5 bg-[#FAF6EE]/90 border border-white/90 shadow-[6px_8px_18px_rgba(29,38,30,0.05),-4px_-4px_12px_rgba(255,255,255,0.95)]">
+        {mainNavItems.map((item) => {
+          const active = isLinkActive(item.page);
+          return (
+            <button
+              key={item.page}
+              type="button"
+              onClick={() => handleNavClick(item.page)}
+              className={`relative px-3.5 py-1.5 text-[10.5px] font-black uppercase tracking-[0.16em] transition-all duration-250 cursor-pointer flex items-center gap-1.5 rounded-full ${
+                active
+                  ? 'bg-[#E88A1A] text-white shadow-[0_4px_14px_rgba(232,138,26,0.35),inset_1px_1px_2px_rgba(255,255,255,0.4)] scale-[1.02]'
+                  : 'text-[#1D261E]/75 hover:text-[#1D261E] hover:bg-white/80'
+              }`}
+            >
+              <span>{item.label}</span>
+            </button>
+          );
+        })}
 
-        <button
-          type="button"
-          onClick={() => handleNavClick('venues')}
-          className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            isLinkActive('venues') ? 'text-[#303841]' : 'text-[#303841]/70 hover:text-[#303841]'
-          }`}
-        >
-          VENUES
-          {isLinkActive('venues') && (
-            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF5722] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
-          )}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => handleNavClick('catering')}
-          className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            isLinkActive('catering') ? 'text-[#303841]' : 'text-[#303841]/70 hover:text-[#303841]'
-          }`}
-        >
-          CATERING
-          {isLinkActive('catering') && (
-            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF5722] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
-          )}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => handleNavClick('rituals')}
-          className={`text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-            isLinkActive('rituals') ? 'text-[#303841]' : 'text-[#303841]/70 hover:text-[#303841]'
-          }`}
-        >
-          RITUALS
-          {isLinkActive('rituals') && (
-            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF5722] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
-          )}
-        </button>
-
-        {/* Minimalist "More" Menu Dropdown */}
+        {/* More Dropdown */}
         <div className="relative" ref={moreRef}>
           <button
             type="button"
             onClick={() => setMoreMenuOpen(!moreMenuOpen)}
-            className={`inline-flex items-center gap-1 text-[10px] font-black uppercase tracking-[0.2em] transition-colors relative py-1 cursor-pointer ${
-              ['gallery', 'packages', 'faqs'].includes(currentPage)
-                ? 'text-[#303841]'
-                : 'text-[#303841]/70 hover:text-[#303841]'
+            className={`px-3 py-1.5 text-[10.5px] font-black uppercase tracking-[0.16em] transition-all duration-200 cursor-pointer flex items-center gap-1 rounded-full ${
+              ['faqs', 'terms', 'cookies'].includes(currentPage)
+                ? 'bg-[#26532B] text-white shadow-sm'
+                : 'text-[#1D261E]/75 hover:text-[#1D261E] hover:bg-white/80'
             }`}
           >
             <span>MORE</span>
             <ChevronDown size={12} className={`transition-transform duration-200 ${moreMenuOpen ? 'rotate-180' : ''}`} />
-            {['gallery', 'packages', 'faqs'].includes(currentPage) && (
-              <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF5722] rounded-full"></span>
-            )}
           </button>
 
-          {/* Minimalist Dropdown Menu */}
+          {/* 3D Clay Dropdown Menu */}
           {moreMenuOpen && (
-            <div className="absolute top-full left-0 mt-3 w-48 clay-card py-2 z-50">
-              {moreItems.map((item) => (
-                <button
-                  key={item.page}
-                  type="button"
-                  onClick={() => handleNavClick(item.page)}
-                  className={`w-full text-left px-4 py-2 text-[10px] font-black uppercase tracking-wider transition-colors hover:bg-[#303841]/5 ${
-                    currentPage === item.page ? 'text-[#FF5722] bg-[#303841]/5 font-black' : 'text-[#303841]'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+            <div className="absolute top-full right-0 mt-3 w-72 clay-card-white p-2.5 z-50 rounded-2xl border border-white shadow-[12px_18px_32px_rgba(29,38,30,0.1),-6px_-6px_16px_rgba(255,255,255,0.95)] animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="text-[9px] font-black uppercase tracking-[0.2em] text-[#26532B] px-3 pt-2 pb-1.5">
+                ✦ EXPLORE DESTINATION
+              </div>
+              <div className="space-y-1">
+                {moreItems.map((item) => (
+                  <button
+                    key={item.page}
+                    type="button"
+                    onClick={() => handleNavClick(item.page)}
+                    className="w-full text-left p-2.5 rounded-xl transition-all duration-200 hover:bg-[#FAF6EE] flex items-start gap-3 group cursor-pointer"
+                  >
+                    <div className="p-2 rounded-lg bg-white border border-[#26532B]/10 group-hover:border-[#E88A1A]/30 transition-colors shadow-2xs shrink-0 mt-0.5">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <div className="text-xs font-black uppercase tracking-wider text-[#1D261E] group-hover:text-[#E88A1A] transition-colors">
+                        {item.label}
+                      </div>
+                      <div className="text-[10px] text-[#1D261E]/65 leading-tight mt-0.5">
+                        {item.desc}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>
       </nav>
 
-      {/* Far Right: Clean Minimalist CTA */}
-      <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+      {/* Right Side: Quick Dial + Tactile Clay CTA Button */}
+      <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
+        {/* Quick Phone Call Pill (Visible on md+) */}
+        <a
+          href={`tel:${RESORT_CONTACT.primaryPhone}`}
+          className="hidden md:inline-flex items-center gap-2 clay-pill px-3.5 py-2 text-xs font-black tracking-wider text-[#26532B] hover:text-[#E88A1A] transition-colors cursor-pointer group"
+          title="Direct line to 24/7 Wedding Concierge"
+        >
+          <Phone size={13} className="text-[#E88A1A] group-hover:rotate-12 transition-transform" />
+          <span className="hidden lg:inline">{RESORT_CONTACT.primaryPhone}</span>
+        </a>
+
+        {/* Primary Booking CTA in Royal Saffron Gold Clay */}
         <button
           type="button"
           onClick={onOpenInquiry}
-          className="inline-flex items-center justify-center rounded-lg text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md clay-btn-orange text-white px-4 sm:px-6 py-2 sm:py-2.5 shadow-md"
+          className="clay-btn-gold px-4 sm:px-6 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-md flex items-center gap-1.5"
         >
-          BOOK DATES
+          <Sparkles size={13} className="text-white/90" />
+          <span>BOOK DATES</span>
         </button>
 
-        {/* Mobile menu toggle */}
+        {/* Tactile Mobile Menu Toggle */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#303841] focus:outline-none cursor-pointer"
+          className="xl:hidden w-10 h-10 rounded-xl clay-pill flex items-center justify-center text-[#1D261E] hover:text-[#E88A1A] transition-colors cursor-pointer border border-white/80"
           aria-label="Toggle navigation menu"
         >
-          <div className="w-6 h-4 flex flex-col justify-between">
-            <span
-              className={`h-[2px] w-full bg-[#303841] transition-transform duration-300 ${
-                mobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''
-              }`}
-            />
-            <span
-              className={`h-[2px] w-full bg-[#303841] transition-opacity duration-300 ${
-                mobileMenuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`h-[2px] w-full bg-[#303841] transition-transform duration-300 ${
-                mobileMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''
-              }`}
-            />
-          </div>
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Redesigned Mobile Clay Drawer Menu */}
       {mobileMenuOpen && (
         <div
-          className="absolute top-[76px] sm:top-[80px] left-0 right-0 p-5 sm:p-6 border-b border-[#76ABAE]/20 flex flex-col gap-2.5 shadow-xl md:hidden max-h-[calc(100vh-80px)] overflow-y-auto"
-          style={{
-            backgroundColor: 'rgba(250, 253, 251, 0.98)',
-            backdropFilter: 'blur(16px)'
-          }}
+          className="absolute top-[78px] sm:top-[84px] left-0 right-0 p-4 sm:p-6 bg-[#FAF6EE] border-b border-[#26532B]/15 shadow-2xl xl:hidden max-h-[calc(100vh-84px)] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-4 duration-300"
         >
-          <button
-            type="button"
-            onClick={() => handleNavClick('home')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#303841] py-2 border-b border-[#76ABAE]/10"
-          >
-            HOME
-          </button>
-          <button
-            type="button"
-            onClick={() => handleNavClick('venues')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#303841] py-2 border-b border-[#76ABAE]/10"
-          >
-            WEDDING VENUES
-          </button>
-          <button
-            type="button"
-            onClick={() => handleNavClick('catering')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#303841] py-2 border-b border-[#76ABAE]/10"
-          >
-            ROYAL CATERING
-          </button>
-          <button
-            type="button"
-            onClick={() => handleNavClick('rituals')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#303841] py-2 border-b border-[#76ABAE]/10"
-          >
-            WEDDING RITUALS
-          </button>
-          <button
-            type="button"
-            onClick={() => handleNavClick('gallery')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#303841] py-2 border-b border-[#76ABAE]/10"
-          >
-            PHOTO GALLERY
-          </button>
-          <button
-            type="button"
-            onClick={() => handleNavClick('packages')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#303841] py-2 border-b border-[#76ABAE]/10"
-          >
-            WEDDING PACKAGES
-          </button>
+          {/* Header pill inside drawer */}
+          <div className="mb-4 p-2.5 rounded-xl clay-pill flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-[#26532B] px-4">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse"></span>
+              PATNA ROYAL WEDDINGS
+            </span>
+            <span className="text-[#1D261E]/70 font-bold">OPEN 24 HOURS</span>
+          </div>
+
+          {/* 6 Tactile Clay Menu Tiles (2 Columns Grid) */}
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-4">
+            {mainNavItems.map((item) => {
+              const active = isLinkActive(item.page);
+              return (
+                <button
+                  key={item.page}
+                  type="button"
+                  onClick={() => handleNavClick(item.page)}
+                  className={`p-3.5 rounded-2xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[82px] ${
+                    active
+                      ? 'clay-btn-gold text-white scale-[1.01]'
+                      : 'clay-card hover:bg-white text-[#1D261E]'
+                  }`}
+                >
+                  <div className={`p-1.5 rounded-lg w-fit ${active ? 'bg-white/20 text-white' : 'bg-white text-[#E88A1A] shadow-2xs'}`}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div className="text-xs font-black uppercase tracking-wider mt-2">
+                      {item.label}
+                    </div>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Extra explore link: FAQs & Policies */}
           <button
             type="button"
             onClick={() => handleNavClick('faqs')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#303841] py-2 border-b border-[#76ABAE]/10"
+            className="w-full mb-4 p-3 rounded-xl clay-pill flex items-center justify-between text-xs font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] transition-colors"
           >
-            FAQS & POLICIES
+            <span className="flex items-center gap-2">
+              <HelpCircle size={15} className="text-[#E88A1A]" />
+              WEDDING FAQS & POLICIES
+            </span>
+            <span className="text-[10px] font-bold text-[#26532B] bg-[#26532B]/10 px-2 py-0.5 rounded-full">
+              READ
+            </span>
           </button>
 
           {/* Quick Direct Mobile Contact Actions */}
-          <div className="pt-3 flex flex-col gap-2.5">
+          <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
             <a
               href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20would%20like%20to%20inquire%20about%20booking%20wedding%20dates.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white flex items-center justify-center gap-2 shadow-sm"
+              className="flex-1 py-3 px-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               <WhatsAppIcon className="w-4 h-4 fill-current shrink-0" />
-              <span>CHAT ON WHATSAPP</span>
+              <span>WHATSAPP CONCIERGE</span>
             </a>
 
             <a
               href={`tel:${RESORT_CONTACT.primaryPhone}`}
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#303841] text-[#FF5722] flex items-center justify-center gap-2 shadow-sm"
+              className="flex-1 py-3 px-4 rounded-xl text-xs font-black tracking-widest uppercase clay-btn-emerald flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
             >
               <Phone size={14} className="shrink-0" />
               <span>CALL 24/7 DESK</span>
@@ -352,7 +285,6 @@ export const Navigation: React.FC<NavigationProps> = ({
           </div>
         </div>
       )}
-
     </header>
   );
 };

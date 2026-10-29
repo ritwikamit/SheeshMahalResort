@@ -41,15 +41,15 @@ export const LuxuryVisual: React.FC<LuxuryVisualProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden bg-[#303841] ${aspectRatioClass} ${className} group`}
+      className={`relative overflow-hidden bg-[#1D261E] ${aspectRatioClass} ${className} group`}
     >
       {/* Sleek luxury shimmer loading state while image downloads */}
       {!isLoaded && !hasError && (
-        <div className="absolute inset-0 bg-[#303841] flex items-center justify-center z-[1] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#76ABAE]/10 to-transparent animate-pulse" />
+        <div className="absolute inset-0 bg-[#1D261E] flex items-center justify-center z-[1] overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#26532B]/10 to-transparent animate-pulse" />
           <div className="flex flex-col items-center gap-2 text-center p-4">
-            <div className="w-6 h-6 border-2 border-[#FF5722]/30 border-t-[#FF5722] rounded-full animate-spin" />
-            <span className="text-[9px] font-black uppercase tracking-widest text-[#76ABAE]/80">
+            <div className="w-6 h-6 border-2 border-[#E88A1A]/30 border-t-[#E88A1A] rounded-full animate-spin" />
+            <span className="text-[9px] font-black uppercase tracking-widest text-[#26532B]/80">
               {title}
             </span>
           </div>
@@ -58,22 +58,22 @@ export const LuxuryVisual: React.FC<LuxuryVisualProps> = ({
 
       {/* Fallback state ONLY if the image actually fails */}
       {hasError && (
-        <div className="absolute inset-0 flex flex-col justify-between p-6 bg-[#303841] text-[#F5F5F5]">
+        <div className="absolute inset-0 flex flex-col justify-between p-6 bg-[#1D261E] text-[#FAF6EE]">
           <div className="flex items-center justify-between">
-            <span className="text-[9px] font-black tracking-widest uppercase text-[#FF5722]">
+            <span className="text-[9px] font-black tracking-widest uppercase text-[#E88A1A]">
               {category}
             </span>
-            <span className="text-[9px] tracking-widest text-[#76ABAE] uppercase">
+            <span className="text-[9px] tracking-widest text-[#26532B] uppercase">
               PATNA · 800011
             </span>
           </div>
 
           <div>
-            <div className="w-8 h-0.5 bg-[#FF5722] mb-3" />
-            <p className="text-base font-black tracking-tight text-[#F5F5F5] uppercase leading-tight">
+            <div className="w-8 h-0.5 bg-[#E88A1A] mb-3" />
+            <p className="text-base font-black tracking-tight text-[#FAF6EE] uppercase leading-tight">
               {title}
             </p>
-            <p className="text-[10px] text-[#76ABAE] mt-1 font-medium">
+            <p className="text-[10px] text-[#26532B] mt-1 font-medium">
               Sheesh Mahal Resort & Banquets
             </p>
           </div>

@@ -91,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
     <section
       ref={heroSectionRef}
       id="top"
-      className="relative min-h-[100dvh] w-full pt-[82px] sm:pt-[90px] pb-6 sm:pb-10 bg-transparent text-white flex flex-col justify-center overflow-hidden border-b border-[#76ABAE]/20"
+      className="relative min-h-[100dvh] w-full pt-[82px] sm:pt-[90px] pb-6 sm:pb-10 bg-transparent text-white flex flex-col justify-center overflow-hidden border-b border-[#26532B]/20"
     >
       {/* Background Full-Bleed Video (GeminiHero.mp4 without audio on loop) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -124,8 +124,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               <span className="font-cursive text-lg sm:text-2xl lg:text-3xl text-white font-normal drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
                 Where Sacred Vows Meet Royal Grandeur
               </span>
-              <span className="w-5 sm:w-8 h-[1px] bg-[#76ABAE]"></span>
-              <span className="text-[8px] sm:text-[10px] font-black tracking-[0.25em] uppercase text-[#303841] bg-[#FF5722] px-2 sm:px-2.5 py-0.5 rounded-sm shadow-md">
+              <span className="w-5 sm:w-8 h-[1px] bg-[#26532B]"></span>
+              <span className="text-[8px] sm:text-[10px] font-black tracking-[0.25em] uppercase text-[#1D261E] bg-[#E88A1A] px-2 sm:px-2.5 py-0.5 rounded-sm shadow-md">
                 PATNA ROYAL WEDDINGS
               </span>
             </div>
@@ -133,7 +133,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             {/* Massive headline with purple cursive 'weddings' and 'SANCTUARY' overlapping right box */}
             <h1 className="text-[clamp(2.4rem,8.8vw,10.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-white mb-3 sm:mb-6 lg:mb-8 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               ROYAL
-              <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[8.5rem] text-[#76ABAE] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+              <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[8.5rem] text-[#26532B] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                 weddings
               </span>
               <span className="block lg:relative lg:z-30 lg:w-[160%] lg:-mr-64 whitespace-nowrap pointer-events-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.95)] text-white">
@@ -145,27 +145,27 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             <p className="text-xs sm:text-base lg:text-xl text-white/95 font-medium leading-relaxed max-w-xl mb-2 sm:mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               Orchestrate your dream royal wedding at Sheesh Mahal Resort. Grand air-conditioned ballrooms for majestic Varmalas, sprawling starlit lawns for grand Baraats, consecrated Vedic Mandaps for Saat Phere, and masterfully curated wedding feasts.
             </p>
-            <p className="font-cursive text-base sm:text-xl lg:text-2xl text-[#76ABAE] mb-3 sm:mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <p className="font-cursive text-base sm:text-xl lg:text-2xl text-[#26532B] mb-3 sm:mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               "Crafting timeless wedding moments opposite St. Xavier's, Patna"
             </p>
 
             {/* Location verified marker */}
             <div className="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-white/90 mb-5 sm:mb-8 max-w-lg drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
-              <MapPin size={14} className="text-[#76ABAE] shrink-0" />
+              <MapPin size={14} className="text-[#26532B] shrink-0" />
               <span>Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna 800011</span>
             </div>
 
-            {/* Arrow-CTA with border-bottom-2px #FF5722 */}
+            {/* Arrow-CTA with border-bottom-2px #E88A1A */}
             <div className="flex flex-wrap items-center gap-6 sm:gap-8">
               <button
                 type="button"
                 onClick={onExploreClick}
-                className="group inline-flex items-center gap-2.5 sm:gap-4 pb-1.5 sm:pb-2 border-b-2 border-[#FF5722] text-[11px] sm:text-sm lg:text-base font-black tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white hover:text-[#76ABAE] transition-colors cursor-pointer drop-shadow-md"
+                className="group inline-flex items-center gap-2.5 sm:gap-4 pb-1.5 sm:pb-2 border-b-2 border-[#E88A1A] text-[11px] sm:text-sm lg:text-base font-black tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white hover:text-[#26532B] transition-colors cursor-pointer drop-shadow-md"
               >
                 <span>EXPLORE WEDDING VENUES</span>
                 <ArrowRight
                   size={15}
-                  className="transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:translate-x-2 text-[#FF5722]"
+                  className="transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:translate-x-2 text-[#E88A1A]"
                 />
               </button>
             </div>
@@ -195,7 +195,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                 {/* Discreet caption tag inside bottom */}
                 <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 flex items-center justify-between text-white/95 z-20 pointer-events-none drop-shadow-md">
                   <div>
-                    <p className="font-cursive text-base sm:text-2xl text-[#FF5722] tracking-wide">
+                    <p className="font-cursive text-base sm:text-2xl text-[#E88A1A] tracking-wide">
                       The Wedding Palace
                     </p>
                     <p className="text-[9px] sm:text-sm font-bold tracking-tight uppercase">
@@ -233,22 +233,22 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
       <div className="w-full border-t border-white/15 bg-black/55 backdrop-blur-md py-3 sm:py-4 px-3 sm:px-6 lg:px-12 relative z-10 text-white mt-auto">
         <div className="max-w-[1600px] mx-auto flex items-center justify-center flex-wrap gap-2.5 sm:gap-6 lg:gap-12 text-[8px] sm:text-xs font-black tracking-[0.14em] sm:tracking-[0.2em] uppercase text-white/90">
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722]"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
             <span>CUSTOM MANDAP DECOR</span>
           </div>
           <span className="text-white/30 hidden xs:inline sm:inline">·</span>
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722]"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
             <span>BARAAT WELCOME CORRIDOR</span>
           </div>
           <span className="text-white/30 hidden sm:inline">·</span>
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722]"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
             <span>100% POWER BACKUP</span>
           </div>
           <span className="text-white/30 hidden sm:inline">·</span>
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722]"></span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
             <span>LUXURY BRIDAL SUITES</span>
           </div>
         </div>

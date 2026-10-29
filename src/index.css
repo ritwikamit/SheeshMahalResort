@@ -336,20 +336,39 @@
   border-bottom: 1px solid rgba(38, 83, 43, 0.12);
 }
 
-/* Custom scrollbar matching extracted logo palette */
+/* Completely remove scrolling bar and scrolling track across all browsers and devices */
+html, body {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE and Edge */
+}
+
 ::-webkit-scrollbar {
-  width: 9px;
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
 }
+
 ::-webkit-scrollbar-track {
-  background: #FAF6EE;
+  display: none !important;
+  background: transparent !important;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #26532B;
-  border-radius: 9999px;
-  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.6);
+  display: none !important;
+  background: transparent !important;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #E88A1A;
+
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
 }
 
 @keyframes marquee {

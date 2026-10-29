@@ -314,14 +314,38 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
       </div>
-      {/* Background Claymorphically Carved Watermark (Overlapped by footer text, fits viewport without cut-off) */}
+      {/* Stretched Edge-to-Edge Claymorphically Carved Watermark (Full-screen width, smartphone-optimized) */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-3 sm:bottom-6 flex items-center justify-center pointer-events-none select-none z-0 px-4 overflow-hidden"
+        className="absolute inset-x-0 bottom-1.5 sm:bottom-3 w-full flex items-center justify-center pointer-events-none select-none z-0 px-1 sm:px-4 overflow-hidden"
       >
-        <span className="clay-carved-watermark text-[clamp(2rem,6.8vw,7.8rem)] font-black uppercase tracking-[0.05em] sm:tracking-[0.08em] leading-none whitespace-nowrap text-center opacity-70 max-w-full">
-          SHEESH MAHAL
-        </span>
+        <svg
+          viewBox="0 0 1000 115"
+          className="w-full max-w-full h-auto select-none pointer-events-none opacity-80"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <filter id="clay-carve" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="-2" dy="-2" stdDeviation="1.5" floodColor="rgba(29, 38, 30, 0.18)" />
+              <feDropShadow dx="2" dy="2" stdDeviation="2" floodColor="rgba(255, 255, 255, 0.95)" />
+            </filter>
+          </defs>
+          <text
+            x="500"
+            y="65"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            textLength="980"
+            lengthAdjust="spacingAndGlyphs"
+            fontSize="106"
+            fontWeight="900"
+            fill="#EEE6D8"
+            filter="url(#clay-carve)"
+            style={{ fontFamily: "'League Spartan', sans-serif" }}
+          >
+            SHEESH MAHAL
+          </text>
+        </svg>
       </div>
     </footer>
   );

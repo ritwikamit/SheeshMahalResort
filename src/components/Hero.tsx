@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
   const cardVideoRef = useRef<HTMLVideoElement>(null);
   const bgVideoRef = useRef<HTMLVideoElement>(null);
 
-  // Robust, foolproof autoplay engine for both background and foreground hero videos
+  // Ultra-fast synchronized autoplay engine for both background and foreground hero videos
   useEffect(() => {
     const bg = bgVideoRef.current;
     const card = cardVideoRef.current;
@@ -22,11 +22,13 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
       vid.defaultMuted = true;
       vid.muted = true;
       vid.playsInline = true;
-      const playPromise = vid.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Autoplay blocked: will auto-resume on first interaction
-        });
+      if (vid.paused) {
+        const playPromise = vid.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Handled silently: will play immediately on first user touch/click/scroll
+          });
+        }
       }
     };
 
@@ -38,20 +40,19 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
     // Immediate start attempt
     playAll();
 
-    // Secondary start when metadata is ready
-    const handleBgMeta = () => startVideo(bg);
-    const handleCardMeta = () => startVideo(card);
+    // Fast response on ready events
+    const handleReady = () => playAll();
 
-    if (bg) {
-      bg.addEventListener('loadedmetadata', handleBgMeta);
-      bg.addEventListener('canplay', handleBgMeta);
-    }
-    if (card) {
-      card.addEventListener('loadedmetadata', handleCardMeta);
-      card.addEventListener('canplay', handleCardMeta);
-    }
+    [bg, card].forEach((vid) => {
+      if (vid) {
+        vid.addEventListener('loadedmetadata', handleReady);
+        vid.addEventListener('loadeddata', handleReady);
+        vid.addEventListener('canplay', handleReady);
+        vid.addEventListener('canplaythrough', handleReady);
+      }
+    });
 
-    // Browser interaction unlock: instantly plays videos on first touch, click, scroll or mousemove
+    // Browser interaction unlock: instantly starts videos on first gesture
     const handleInteraction = () => {
       playAll();
     };
@@ -61,14 +62,14 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
     });
 
     return () => {
-      if (bg) {
-        bg.removeEventListener('loadedmetadata', handleBgMeta);
-        bg.removeEventListener('canplay', handleBgMeta);
-      }
-      if (card) {
-        card.removeEventListener('loadedmetadata', handleCardMeta);
-        card.removeEventListener('canplay', handleCardMeta);
-      }
+      [bg, card].forEach((vid) => {
+        if (vid) {
+          vid.removeEventListener('loadedmetadata', handleReady);
+          vid.removeEventListener('loadeddata', handleReady);
+          vid.removeEventListener('canplay', handleReady);
+          vid.removeEventListener('canplaythrough', handleReady);
+        }
+      });
       ['touchstart', 'click', 'scroll', 'pointerdown', 'keydown'].forEach((evt) => {
         window.removeEventListener(evt, handleInteraction);
       });
@@ -90,6 +91,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
           muted
           playsInline
           preload="auto"
+          poster="/images/hero-poster.webp"
+          onCanPlay={(e) => { e.currentTarget.muted = true; e.currentTarget.play().catch(() => {}); }}
           onLoadedData={(e) => { e.currentTarget.muted = true; e.currentTarget.play().catch(() => {}); }}
           className="w-full h-full object-cover object-center scale-105 filter blur-[5px] sm:blur-[6px] transition-all"
         >
@@ -169,6 +172,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                   muted
                   playsInline
                   preload="auto"
+                  poster="/images/hero-poster.webp"
+                  onCanPlay={(e) => { e.currentTarget.muted = true; e.currentTarget.play().catch(() => {}); }}
                   onLoadedData={(e) => { e.currentTarget.muted = true; e.currentTarget.play().catch(() => {}); }}
                   className="w-full h-full object-cover object-center scale-100"
                 >

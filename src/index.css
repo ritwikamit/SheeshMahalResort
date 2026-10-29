@@ -387,3 +387,23 @@
     inset 2px 2px 4px rgba(255, 255, 255, 0.7),
     inset -2px -2px 4px rgba(0, 0, 0, 0.22);
 }
+
+.clay-ticker-orange {
+  background: linear-gradient(135deg, #FF9E2C 0%, #E88A1A 50%, #D4750B 100%) !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 -8px 24px rgba(232, 138, 26, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.clay-pill-ticker {
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 
+    inset 1px 1px 2px rgba(255, 255, 255, 0.5),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+  color: #FFFFFF;
+}

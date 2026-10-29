@@ -75,18 +75,20 @@
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Grayscale to color image hover with hardware acceleration */
+/* Vibrant full color luxury imagery (No grayscale filter) */
 .img-luxury-hover {
-  filter: grayscale(100%);
+  filter: none !important;
+  -webkit-filter: none !important;
   transform: translateZ(0) scale(1);
   backface-visibility: hidden;
-  transition: filter 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .group:hover .img-luxury-hover,
 .img-luxury-hover:hover {
-  filter: grayscale(0%);
-  transform: translateZ(0) scale(1.06);
+  filter: none !important;
+  -webkit-filter: none !important;
+  transform: translateZ(0) scale(1.05);
 }
 
 /* Reveal-up entrance animation */

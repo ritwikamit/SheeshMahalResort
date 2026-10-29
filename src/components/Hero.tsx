@@ -107,10 +107,9 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
           <source src="/videos/GeminiHero.mp4" type="video/mp4" />
         </video>
 
-        {/* Transparent atmospheric dark veil for high-contrast cinematic elegance */}
-        <div className="absolute inset-0 bg-black/40 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/35 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/35 pointer-events-none" />
+        {/* Warm luxury palace ambient veil preserving full video colors */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1D261E]/70 via-transparent to-black/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1D261E]/50 via-transparent to-transparent pointer-events-none" />
       </div>
 
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 pt-24 sm:pt-28 lg:pt-24 pb-8 sm:pb-12 lg:pb-16 relative z-10 my-auto">
@@ -142,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             </h1>
 
             {/* Below headline: body text floating transparently */}
-            <p className="text-xs sm:text-base lg:text-xl text-white/95 font-medium leading-relaxed max-w-xl mb-2 sm:mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <p className="text-xs sm:text-base lg:text-xl text-[#1D261E] font-medium leading-relaxed max-w-xl mb-2 sm:mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               Orchestrate your dream royal wedding at Sheesh Mahal Resort. Grand air-conditioned ballrooms for majestic Varmalas, sprawling starlit lawns for grand Baraats, consecrated Vedic Mandaps for Saat Phere, and masterfully curated wedding feasts.
             </p>
             <p className="font-cursive text-base sm:text-xl lg:text-2xl text-[#E88A1A] mb-3 sm:mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
@@ -155,18 +154,15 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               <span>Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna 800011</span>
             </div>
 
-            {/* Arrow-CTA with border-bottom-2px #E88A1A */}
-            <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+            {/* Primary Clay CTA with Royal Gold Vibrancy */}
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
               <button
                 type="button"
                 onClick={onExploreClick}
-                className="group inline-flex items-center gap-2.5 sm:gap-4 pb-1.5 sm:pb-2 border-b-2 border-[#E88A1A] text-[11px] sm:text-sm lg:text-base font-black tracking-[0.2em] sm:tracking-[0.25em] uppercase text-white hover:text-[#26532B] transition-colors cursor-pointer drop-shadow-md"
+                className="clay-btn-gold px-6 py-3 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-black tracking-widest uppercase text-white transition-all cursor-pointer shadow-lg flex items-center gap-3"
               >
                 <span>EXPLORE WEDDING VENUES</span>
-                <ArrowRight
-                  size={15}
-                  className="transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) group-hover:translate-x-2 text-[#E88A1A]"
-                />
+                <ArrowRight size={16} className="text-white" />
               </button>
             </div>
 
@@ -193,7 +189,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
 
                 {/* Discreet caption tag inside bottom */}
-                <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 flex items-center justify-between text-white/95 z-20 pointer-events-none drop-shadow-md">
+                <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 flex items-center justify-between text-[#1D261E] z-20 pointer-events-none drop-shadow-md">
                   <div>
                     <p className="font-cursive text-base sm:text-2xl text-[#E88A1A] tracking-wide">
                       The Wedding Palace
@@ -203,7 +199,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-[8px] sm:text-[10px] tracking-wider sm:tracking-widest uppercase font-bold text-white/95 bg-black/75 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border border-white/10">
+                    <span className="text-[8px] sm:text-[10px] tracking-wider sm:tracking-widest uppercase font-bold text-[#1D261E] bg-black/75 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border border-white/10">
                       UP TO 2000 GUESTS
                     </span>
                   </div>
@@ -230,8 +226,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
       </div>
 
       {/* Moving Marquee Ticker at the bottom edge of Hero (Redesigned as requested) */}
-      <div className="w-full border-t border-white/20 bg-black/65 backdrop-blur-md py-3 sm:py-3.5 relative z-10 text-white mt-auto overflow-hidden select-none">
-        <div className="animate-marquee flex items-center gap-8 sm:gap-12 whitespace-nowrap text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase text-white/95">
+      <div className="w-full border-t border-[#26532B]/15 bg-[#FAF6EE]/95 backdrop-blur-md py-3 sm:py-3.5 relative z-10 text-[#1D261E] mt-auto overflow-hidden select-none shadow-[0_-4px_20px_rgba(29,38,30,0.06)]">
+        <div className="animate-marquee flex items-center gap-8 sm:gap-12 whitespace-nowrap text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase text-[#1D261E]">
           {/* Continuous Loop Set 1 */}
           <div className="flex items-center gap-8 sm:gap-12 shrink-0">
             <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse"></span>CUSTOM MANDAP DECOR</span>

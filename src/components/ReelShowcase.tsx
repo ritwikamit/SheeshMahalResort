@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import { RevealUp } from './RevealUp.tsx';
 import { WeddingDeskCircleBadge } from './WeddingDeskCircleBadge.tsx';
+import { WhatsAppIcon } from './WhatsAppIcon.tsx';
+import { RESORT_CONTACT } from '../data/resortData.ts';
 
 interface ReelShowcaseProps {
   onOpenInquiry: () => void;

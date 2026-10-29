@@ -67,17 +67,17 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FFF9D8] text-[#161726]">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#9FA1FF]/20 mb-12 sm:mb-16">
+        <div className="py-8 sm:py-12 border-b border-[#1DCED8]/20 mb-12 sm:mb-16">
           <span className="label-utility text-[#161726]/70">
             THE CHRONOLOGY OF ROYAL CELEBRATIONS
           </span>
           <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
             WEDDING RITUALS
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+          <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
             Every Sacred Rite Honored with Palatial Grandeur
           </p>
           <p className="text-base sm:text-lg text-[#161726]/75 max-w-3xl mt-4 font-normal">
@@ -89,7 +89,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {weddingRituals.map((ritual, idx) => (
             <RevealUp key={idx} delay={idx * 50}>
-              <div className="p-5 sm:p-7 bg-[#FAFDFB] rounded-[24px] border border-[#9FA1FF]/30 shadow-md h-full flex flex-col justify-between group hover:border-[#FAEE2F] transition-all duration-500 hover:shadow-xl">
+              <div className="p-5 sm:p-7 bg-[#FFF9D8] rounded-[24px] border border-[#1DCED8]/30 shadow-md h-full flex flex-col justify-between group hover:border-[#FF9D50] transition-all duration-500 hover:shadow-xl">
                 <div>
                   {/* Photo Visual */}
                   <div className="relative aspect-[16/10] rounded-[16px] overflow-hidden mb-5 bg-[#161726]">
@@ -101,14 +101,14 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
                       category={`RITUAL ${ritual.number}`}
                     />
                     <div className="absolute top-3 right-3 z-10">
-                      <span className="text-[9px] font-black uppercase tracking-wider bg-[#FAEE2F] text-[#161726] px-2.5 py-1 rounded-md shadow">
+                      <span className="text-[9px] font-black uppercase tracking-wider bg-[#FF9D50] text-[#161726] px-2.5 py-1 rounded-md shadow">
                         {ritual.timing}
                       </span>
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-black text-[#9FA1FF] tracking-wider">
+                    <span className="text-xs font-black text-[#1DCED8] tracking-wider">
                       RITUAL {ritual.number}
                     </span>
                     <span className="text-xs font-semibold text-[#161726]/60">
@@ -125,12 +125,12 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#9FA1FF]/20 flex items-center justify-between text-[11px] font-bold text-[#161726]/70">
-                  <span className="uppercase tracking-wider text-[10px] text-[#9FA1FF]">{ritual.curatedBy}</span>
+                <div className="pt-4 border-t border-[#1DCED8]/20 flex items-center justify-between text-[11px] font-bold text-[#161726]/70">
+                  <span className="uppercase tracking-wider text-[10px] text-[#1DCED8]">{ritual.curatedBy}</span>
                   <button
                     type="button"
                     onClick={onOpenInquiry}
-                    className="text-xs font-black uppercase tracking-wider text-[#161726] hover:text-[#9FA1FF] cursor-pointer"
+                    className="text-xs font-black uppercase tracking-wider text-[#161726] hover:text-[#1DCED8] cursor-pointer"
                   >
                     PLAN →
                   </button>
@@ -141,7 +141,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
         </div>
 
         {/* Full Wedding Residency CTA */}
-        <div className="p-10 lg:p-14 bg-[#D9F9DF] rounded-[28px] border border-[#9FA1FF]/30 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
+        <div className="p-10 lg:p-14 bg-[#55E07E] rounded-[28px] border border-[#1DCED8]/30 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm">
           <div>
             <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#161726]/70 block mb-1">
               3-DAY WEDDING RESIDENCY
@@ -149,7 +149,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
             <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[#161726]">
               BOOK THE ENTIRE RESORT FOR YOUR WEDDING
             </h3>
-            <p className="font-cursive text-2xl text-[#9FA1FF] mt-1 mb-2 font-normal">
+            <p className="font-cursive text-2xl text-[#1DCED8] mt-1 mb-2 font-normal">
               Exclusive Access to Both Lawns, Ballrooms & Bridal Suites
             </p>
             <p className="text-xs sm:text-sm text-[#161726]/80 max-w-2xl font-normal">
@@ -159,7 +159,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
           <button
             type="button"
             onClick={onOpenInquiry}
-            className="px-8 py-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FAEE2F] hover:bg-[#FAEE2F] hover:text-[#161726] transition-colors cursor-pointer shadow-lg whitespace-nowrap"
+            className="px-8 py-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FF9D50] hover:bg-[#FF9D50] hover:text-[#161726] transition-colors cursor-pointer shadow-lg whitespace-nowrap"
           >
             CHECK AUSPICIOUS DATES
           </button>

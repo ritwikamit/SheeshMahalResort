@@ -32,25 +32,25 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
   };
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FFF9D8] text-[#161726]">
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-12">
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#9FA1FF] hover:text-[#161726] mb-8 cursor-pointer transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#1DCED8] hover:text-[#161726] mb-8 cursor-pointer transition-colors"
         >
           <ArrowLeft size={16} />
           <span>RETURN TO RESORT</span>
         </button>
 
-        <div className="border-b border-[#9FA1FF]/20 pb-8 mb-10">
+        <div className="border-b border-[#1DCED8]/20 pb-8 mb-10">
           <span className="label-utility text-[#161726]/70">
             DIGITAL PRIVACY PROTOCOL
           </span>
           <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#161726] mt-2">
             COOKIES POLICY
           </h1>
-          <p className="font-cursive text-2xl text-[#9FA1FF] mt-1 font-normal">
+          <p className="font-cursive text-2xl text-[#1DCED8] mt-1 font-normal">
             Privacy & Performance Standards for Our Wedding Guests
           </p>
           <p className="text-xs text-[#161726]/60 mt-2 font-bold tracking-wider">
@@ -59,10 +59,10 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
         </div>
 
         {/* Interactive Cookie Preference Manager Box */}
-        <div className="p-6 sm:p-8 bg-white rounded-2xl border-2 border-[#9FA1FF]/30 shadow-lg mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#9FA1FF]/20">
+        <div className="p-6 sm:p-8 bg-white rounded-2xl border-2 border-[#1DCED8]/30 shadow-lg mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#1DCED8]/20">
             <div className="flex items-center gap-3">
-              <div className="p-3 rounded-xl bg-[#FAEE2F] text-[#161726]">
+              <div className="p-3 rounded-xl bg-[#FF9D50] text-[#161726]">
                 <ShieldCheck size={24} />
               </div>
               <div>
@@ -71,7 +71,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
                 </h2>
                 <p className="text-xs text-[#161726]/70 mt-0.5">
                   Current Setting:{' '}
-                  <span className="font-bold uppercase text-[#161726] bg-[#D9F9DF] px-2 py-0.5 rounded">
+                  <span className="font-bold uppercase text-[#161726] bg-[#55E07E] px-2 py-0.5 rounded">
                     {currentConsent === 'accepted_all'
                       ? 'All Cookies Accepted'
                       : currentConsent === 'essential_only'
@@ -96,8 +96,8 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
               onClick={() => handleUpdateConsent('accepted_all')}
               className={`px-5 py-2.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all cursor-pointer shadow-sm ${
                 currentConsent === 'accepted_all'
-                  ? 'bg-[#161726] text-[#FAEE2F]'
-                  : 'bg-[#FAEE2F] text-[#161726] hover:bg-[#FAFDFB] border border-[#FAEE2F]'
+                  ? 'bg-[#161726] text-[#FF9D50]'
+                  : 'bg-[#FF9D50] text-[#161726] hover:bg-[#FFF9D8] border border-[#FF9D50]'
               }`}
             >
               ACCEPT ALL COOKIES
@@ -109,7 +109,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
               className={`px-5 py-2.5 rounded-lg text-xs font-black uppercase tracking-wider transition-all cursor-pointer border ${
                 currentConsent === 'essential_only'
                   ? 'bg-[#161726] text-white border-[#161726]'
-                  : 'bg-white text-[#161726] border-[#9FA1FF]/40 hover:border-[#161726]'
+                  : 'bg-white text-[#161726] border-[#1DCED8]/40 hover:border-[#161726]'
               }`}
             >
               ESSENTIAL ONLY
@@ -127,7 +127,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
         </div>
 
         <div className="space-y-8 text-sm text-[#161726]/85 leading-relaxed font-normal">
-          <section className="p-6 bg-[#D9F9DF]/30 rounded-2xl border border-[#9FA1FF]/20">
+          <section className="p-6 bg-[#55E07E]/30 rounded-2xl border border-[#1DCED8]/20">
             <h2 className="text-base font-black uppercase tracking-wide text-[#161726] mb-3">
               1. WHAT COOKIES WE USE
             </h2>
@@ -136,7 +136,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
             </p>
           </section>
 
-          <section className="p-6 bg-[#D9F9DF]/30 rounded-2xl border border-[#9FA1FF]/20">
+          <section className="p-6 bg-[#55E07E]/30 rounded-2xl border border-[#1DCED8]/20">
             <h2 className="text-base font-black uppercase tracking-wide text-[#161726] mb-3">
               2. ESSENTIAL FUNCTIONAL COOKIES
             </h2>
@@ -145,7 +145,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
             </p>
           </section>
 
-          <section className="p-6 bg-[#D9F9DF]/30 rounded-2xl border border-[#9FA1FF]/20">
+          <section className="p-6 bg-[#55E07E]/30 rounded-2xl border border-[#1DCED8]/20">
             <h2 className="text-base font-black uppercase tracking-wide text-[#161726] mb-3">
               3. NO THIRD-PARTY AD TRACKING
             </h2>
@@ -154,7 +154,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
             </p>
           </section>
 
-          <section className="p-6 bg-[#D9F9DF]/30 rounded-2xl border border-[#9FA1FF]/20">
+          <section className="p-6 bg-[#55E07E]/30 rounded-2xl border border-[#1DCED8]/20">
             <h2 className="text-base font-black uppercase tracking-wide text-[#161726] mb-3">
               4. MANAGING COOKIES
             </h2>

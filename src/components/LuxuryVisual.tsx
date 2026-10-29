@@ -46,10 +46,10 @@ export const LuxuryVisual: React.FC<LuxuryVisualProps> = ({
       {/* Sleek luxury shimmer loading state while image downloads */}
       {!isLoaded && !hasError && (
         <div className="absolute inset-0 bg-[#161726] flex items-center justify-center z-[1] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#9FA1FF]/10 to-transparent animate-pulse" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1DCED8]/10 to-transparent animate-pulse" />
           <div className="flex flex-col items-center gap-2 text-center p-4">
-            <div className="w-6 h-6 border-2 border-[#FAEE2F]/30 border-t-[#FAEE2F] rounded-full animate-spin" />
-            <span className="text-[9px] font-black uppercase tracking-widest text-[#9FA1FF]/80">
+            <div className="w-6 h-6 border-2 border-[#FF9D50]/30 border-t-[#FF9D50] rounded-full animate-spin" />
+            <span className="text-[9px] font-black uppercase tracking-widest text-[#1DCED8]/80">
               {title}
             </span>
           </div>
@@ -58,22 +58,22 @@ export const LuxuryVisual: React.FC<LuxuryVisualProps> = ({
 
       {/* Fallback state ONLY if the image actually fails */}
       {hasError && (
-        <div className="absolute inset-0 flex flex-col justify-between p-6 bg-[#161726] text-[#FAFDFB]">
+        <div className="absolute inset-0 flex flex-col justify-between p-6 bg-[#161726] text-[#FFF9D8]">
           <div className="flex items-center justify-between">
-            <span className="text-[9px] font-black tracking-widest uppercase text-[#FAEE2F]">
+            <span className="text-[9px] font-black tracking-widest uppercase text-[#FF9D50]">
               {category}
             </span>
-            <span className="text-[9px] tracking-widest text-[#B5BAFF] uppercase">
+            <span className="text-[9px] tracking-widest text-[#55E07E] uppercase">
               PATNA · 800011
             </span>
           </div>
 
           <div>
-            <div className="w-8 h-0.5 bg-[#FAEE2F] mb-3" />
-            <p className="text-base font-black tracking-tight text-[#FAFDFB] uppercase leading-tight">
+            <div className="w-8 h-0.5 bg-[#FF9D50] mb-3" />
+            <p className="text-base font-black tracking-tight text-[#FFF9D8] uppercase leading-tight">
               {title}
             </p>
-            <p className="text-[10px] text-[#D9F9DF] mt-1 font-medium">
+            <p className="text-[10px] text-[#55E07E] mt-1 font-medium">
               Sheesh Mahal Resort & Banquets
             </p>
           </div>

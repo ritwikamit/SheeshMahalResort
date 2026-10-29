@@ -62,7 +62,7 @@ export const ScrollToTopProgress: React.FC<ScrollToTopProgressProps> = ({
         onClick={scrollToTop}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#161726] text-[#FAFDFB] border border-[#9FA1FF]/30 shadow-2xl hover:shadow-[0_0_20px_rgba(159,161,255,0.4)] transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer group shrink-0"
+        className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#161726] text-[#FFF9D8] border border-[#1DCED8]/30 shadow-2xl hover:shadow-[0_0_20px_rgba(29,206,216,0.4)] transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer group shrink-0"
         aria-label="Scroll back to top"
         title={`Scroll to top (${Math.round(scrollProgress)}%)`}
       >
@@ -77,7 +77,7 @@ export const ScrollToTopProgress: React.FC<ScrollToTopProgressProps> = ({
             cy="28"
             r={radius}
             fill="none"
-            stroke="#B5BAFF"
+            stroke="#55E07E"
             strokeWidth="3.5"
             strokeOpacity="0.25"
           />
@@ -87,7 +87,7 @@ export const ScrollToTopProgress: React.FC<ScrollToTopProgressProps> = ({
             cy="28"
             r={radius}
             fill="none"
-            stroke="#FAEE2F"
+            stroke="#FF9D50"
             strokeWidth="3.5"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
@@ -100,11 +100,11 @@ export const ScrollToTopProgress: React.FC<ScrollToTopProgressProps> = ({
         <div className="relative z-10 flex flex-col items-center justify-center">
           <ArrowUp
             size={18}
-            className="text-[#FAFDFB] group-hover:text-[#FAEE2F] transition-transform duration-300 group-hover:-translate-y-0.5"
+            className="text-[#FFF9D8] group-hover:text-[#FF9D50] transition-transform duration-300 group-hover:-translate-y-0.5"
             strokeWidth={2.5}
           />
           {isHovered && (
-            <span className="absolute -top-7 px-2 py-0.5 text-[9px] font-black tracking-wider bg-[#161726] text-[#FAEE2F] border border-[#9FA1FF]/30 rounded-md whitespace-nowrap shadow-lg">
+            <span className="absolute -top-7 px-2 py-0.5 text-[9px] font-black tracking-wider bg-[#161726] text-[#FF9D50] border border-[#1DCED8]/30 rounded-md whitespace-nowrap shadow-lg">
               {Math.round(scrollProgress)}%
             </span>
           )}

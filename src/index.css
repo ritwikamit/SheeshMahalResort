@@ -7,15 +7,15 @@
     --font-script: 'Pinyon Script', 'Great Vibes', cursive;
     --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
     
-    /* Specified Palette: https://colorhunt.co/palette/9fa1ffb5baffaee2ffd9f9df */
-    --color-periwinkle: #9FA1FF;
-    --color-lavender: #B5BAFF;
-    --color-festive-gold: #FAEE2F;
-    --color-mint-canvas: #D9F9DF;
+    /* Specified Palette: https://colorhunt.co/palette/ff9d50fff9d81dced855e07e */
+    --color-orange: #FF9D50;
+    --color-cream: #FFF9D8;
+    --color-turquoise: #1DCED8;
+    --color-mint: #55E07E;
     
     /* High contrast text & structural anchors */
     --color-text-dark: #161726;
-    --color-bg-base: #FAFDFB;
+    --color-bg-base: #FFF9D8;
   }
 
   * {
@@ -24,12 +24,12 @@
 
   html {
     scroll-behavior: smooth;
-    background-color: #FAFDFB;
+    background-color: #FFF9D8;
     color: #161726;
   }
 
   body {
-    background-color: #FAFDFB;
+    background-color: #FFF9D8;
     color: #161726;
     overflow-x: hidden;
   }
@@ -132,12 +132,12 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #D9F9DF;
+  background: #55E07E;
 }
 ::-webkit-scrollbar-thumb {
-  background: #9FA1FF;
+  background: #1DCED8;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FAEE2F;
+  background: #FF9D50;
 }

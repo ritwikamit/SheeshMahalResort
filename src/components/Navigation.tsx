@@ -126,7 +126,7 @@ export const Navigation: React.FC<NavigationProps> = ({
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 h-[76px] sm:h-[80px] px-3.5 sm:px-6 lg:px-12 flex items-center justify-between border-b border-[#161726]/10 transition-all duration-300 ${
-        isScrolled ? 'shadow-md shadow-[#161726]/5 bg-[#FAFDFB]/95' : 'bg-[#FAFDFB]/92'
+        isScrolled ? 'shadow-md shadow-[#161726]/5 bg-[#FFF9D8]/95' : 'bg-[#FFF9D8]/92'
       }`}
       style={{
         backdropFilter: 'blur(16px)',
@@ -153,7 +153,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         >
           HOME
           {isLinkActive('home') && (
-            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
+            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF9D50] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
@@ -166,7 +166,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         >
           VENUES
           {isLinkActive('venues') && (
-            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
+            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF9D50] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
@@ -179,7 +179,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         >
           CATERING
           {isLinkActive('catering') && (
-            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
+            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF9D50] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
@@ -192,7 +192,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         >
           RITUALS
           {isLinkActive('rituals') && (
-            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
+            <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF9D50] rounded-full transition-all duration-300 animate-in fade-in zoom-in-90"></span>
           )}
         </button>
 
@@ -210,20 +210,20 @@ export const Navigation: React.FC<NavigationProps> = ({
             <span>MORE</span>
             <ChevronDown size={12} className={`transition-transform duration-200 ${moreMenuOpen ? 'rotate-180' : ''}`} />
             {['gallery', 'packages', 'faqs'].includes(currentPage) && (
-              <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FAEE2F] rounded-full"></span>
+              <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#FF9D50] rounded-full"></span>
             )}
           </button>
 
           {/* Minimalist Dropdown Menu */}
           {moreMenuOpen && (
-            <div className="absolute top-full left-0 mt-3 w-48 bg-[#FAFDFB] border border-[#161726]/12 rounded-xl shadow-xl py-2 z-50">
+            <div className="absolute top-full left-0 mt-3 w-48 bg-[#FFF9D8] border border-[#161726]/12 rounded-xl shadow-xl py-2 z-50">
               {moreItems.map((item) => (
                 <button
                   key={item.page}
                   type="button"
                   onClick={() => handleNavClick(item.page)}
                   className={`w-full text-left px-4 py-2 text-[10px] font-black uppercase tracking-wider transition-colors hover:bg-[#161726]/5 ${
-                    currentPage === item.page ? 'text-[#4D53A8] bg-[#161726]/5 font-black' : 'text-[#161726]'
+                    currentPage === item.page ? 'text-[#FF9D50] bg-[#161726]/5 font-black' : 'text-[#161726]'
                   }`}
                 >
                   {item.label}
@@ -239,7 +239,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         <button
           type="button"
           onClick={onOpenInquiry}
-          className="inline-flex items-center justify-center rounded-lg text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md bg-[#FAEE2F] text-[#161726] hover:bg-[#161726] hover:text-[#FAEE2F] px-3.5 sm:px-6 py-2 sm:py-2.5"
+          className="inline-flex items-center justify-center rounded-lg text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm hover:shadow-md bg-[#FF9D50] text-[#161726] hover:bg-[#161726] hover:text-[#FF9D50] px-3.5 sm:px-6 py-2 sm:py-2.5"
         >
           BOOK DATES
         </button>
@@ -274,7 +274,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
-          className="absolute top-[76px] sm:top-[80px] left-0 right-0 p-5 sm:p-6 border-b border-[#9FA1FF]/20 flex flex-col gap-2.5 shadow-xl md:hidden max-h-[calc(100vh-80px)] overflow-y-auto"
+          className="absolute top-[76px] sm:top-[80px] left-0 right-0 p-5 sm:p-6 border-b border-[#1DCED8]/20 flex flex-col gap-2.5 shadow-xl md:hidden max-h-[calc(100vh-80px)] overflow-y-auto"
           style={{
             backgroundColor: 'rgba(250, 253, 251, 0.98)',
             backdropFilter: 'blur(16px)'
@@ -283,49 +283,49 @@ export const Navigation: React.FC<NavigationProps> = ({
           <button
             type="button"
             onClick={() => handleNavClick('home')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#9FA1FF]/10"
+            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#1DCED8]/10"
           >
             HOME
           </button>
           <button
             type="button"
             onClick={() => handleNavClick('venues')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#9FA1FF]/10"
+            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#1DCED8]/10"
           >
             WEDDING VENUES
           </button>
           <button
             type="button"
             onClick={() => handleNavClick('catering')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#9FA1FF]/10"
+            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#1DCED8]/10"
           >
             ROYAL CATERING
           </button>
           <button
             type="button"
             onClick={() => handleNavClick('rituals')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#9FA1FF]/10"
+            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#1DCED8]/10"
           >
             WEDDING RITUALS
           </button>
           <button
             type="button"
             onClick={() => handleNavClick('gallery')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#9FA1FF]/10"
+            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#1DCED8]/10"
           >
             PHOTO GALLERY
           </button>
           <button
             type="button"
             onClick={() => handleNavClick('packages')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#9FA1FF]/10"
+            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#1DCED8]/10"
           >
             WEDDING PACKAGES
           </button>
           <button
             type="button"
             onClick={() => handleNavClick('faqs')}
-            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#9FA1FF]/10"
+            className="text-left text-xs font-black uppercase tracking-[0.2em] text-[#161726] py-2 border-b border-[#1DCED8]/10"
           >
             FAQS & POLICIES
           </button>
@@ -344,7 +344,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 
             <a
               href={`tel:${RESORT_CONTACT.primaryPhone}`}
-              className="w-full py-2.5 px-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FAEE2F] flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FF9D50] flex items-center justify-center gap-2 shadow-sm"
             >
               <Phone size={14} className="shrink-0" />
               <span>CALL 24/7 DESK</span>

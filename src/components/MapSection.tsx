@@ -23,23 +23,23 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
   return (
     <section
       id="map-location"
-      className="py-16 sm:py-20 lg:py-28 bg-[#FAFDFB] text-[#161726] border-t border-[#9FA1FF]/20 overflow-hidden relative"
+      className="py-16 sm:py-20 lg:py-28 bg-[#FFF9D8] text-[#161726] border-t border-[#1DCED8]/20 overflow-hidden relative"
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative">
         <RevealUp>
           {/* Section Header with alternating 24h Circle Badge on the RIGHT side */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-[#9FA1FF]/20">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-[#1DCED8]/20">
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <span className="label-utility text-[#161726]/70">
                   MAP & CONNECTIVITY
                 </span>
-                <span className="w-10 h-[1px] bg-[#9FA1FF]"></span>
+                <span className="w-10 h-[1px] bg-[#1DCED8]"></span>
               </div>
               <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726]">
                 HOW TO REACH
               </h2>
-              <p className="font-cursive text-2xl sm:text-3xl text-[#9FA1FF] mt-2 font-normal">
+              <p className="font-cursive text-2xl sm:text-3xl text-[#1DCED8] mt-2 font-normal">
                 Conveniently Situated on Ashiana–Digha Road
               </p>
             </div>
@@ -49,7 +49,7 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
                 href={RESORT_CONTACT.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FAEE2F] text-[#161726] hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FF9D50] text-[#161726] hover:bg-[#161726] hover:text-[#FFF9D8] transition-colors shadow-sm cursor-pointer whitespace-nowrap"
               >
                 <NavIcon size={14} />
                 <span>GET DIRECTIONS</span>
@@ -62,7 +62,7 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Left Column: Interactive Map Iframe with styled container, visible pointer pin, and overlapping badge */}
           <div className="lg:col-span-8 relative">
-            <div className="rounded-[20px] sm:rounded-[24px] overflow-hidden border border-[#9FA1FF]/30 shadow-xl bg-[#161726] min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] relative h-full">
+            <div className="rounded-[20px] sm:rounded-[24px] overflow-hidden border border-[#1DCED8]/30 shadow-xl bg-[#161726] min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] relative h-full">
               <iframe
                 title="Sheesh Mahal Resort Location Map"
                 src={mapEmbedUrl}
@@ -83,18 +83,18 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
                 <div className="relative flex items-center justify-center">
                   {/* Outer pulsating radar rings */}
                   <span className="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#E53E3E]/40 animate-ping"></span>
-                  <span className="absolute w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FAEE2F]/50 animate-pulse"></span>
+                  <span className="absolute w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FF9D50]/50 animate-pulse"></span>
                   {/* High contrast Pointer Pin Badge */}
-                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#161726] border-2 border-[#FAEE2F] text-[#FAEE2F] flex items-center justify-center shadow-2xl group-hover:bg-[#E53E3E] group-hover:border-[#FAFDFB] group-hover:text-white transition-all">
-                    <MapPin size={20} className="fill-[#FAEE2F] group-hover:fill-white text-transparent transition-colors sm:w-[22px] sm:h-[22px]" />
+                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#161726] border-2 border-[#FF9D50] text-[#FF9D50] flex items-center justify-center shadow-2xl group-hover:bg-[#E53E3E] group-hover:border-[#FFF9D8] group-hover:text-white transition-all">
+                    <MapPin size={20} className="fill-[#FF9D50] group-hover:fill-white text-transparent transition-colors sm:w-[22px] sm:h-[22px]" />
                   </div>
                 </div>
 
                 {/* Pointer Label Pill */}
-                <div className="mt-1.5 sm:mt-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#161726]/95 border border-[#FAEE2F]/80 text-[#FAFDFB] text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-2xl flex items-center gap-1.5 whitespace-nowrap backdrop-blur-md group-hover:bg-[#E53E3E] transition-colors">
-                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#FAEE2F] animate-pulse"></span>
+                <div className="mt-1.5 sm:mt-2 px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#161726]/95 border border-[#FF9D50]/80 text-[#FFF9D8] text-[10px] sm:text-[11px] font-black uppercase tracking-wider shadow-2xl flex items-center gap-1.5 whitespace-nowrap backdrop-blur-md group-hover:bg-[#E53E3E] transition-colors">
+                  <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#FF9D50] animate-pulse"></span>
                   <span>Sheesh Mahal Resort</span>
-                  <ExternalLink size={10} className="text-[#FAEE2F] group-hover:text-white sm:w-[11px] sm:h-[11px]" />
+                  <ExternalLink size={10} className="text-[#FF9D50] group-hover:text-white sm:w-[11px] sm:h-[11px]" />
                 </div>
                 <span className="text-[8px] sm:text-[9px] font-bold text-white/90 bg-[#161726]/80 px-2 py-0.5 rounded-full mt-1 border border-white/20 backdrop-blur-sm shadow-xs">
                   Tap to Navigate in Google Maps
@@ -102,9 +102,9 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
               </a>
 
               {/* Floating location details card positioned neatly at bottom without obscuring the pointer */}
-              <div className="absolute bottom-2 left-2 right-2 sm:right-auto sm:bottom-4 sm:left-4 sm:max-w-sm bg-[#FAFDFB]/95 backdrop-blur-md p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-[#9FA1FF]/30 shadow-2xl z-20">
+              <div className="absolute bottom-2 left-2 right-2 sm:right-auto sm:bottom-4 sm:left-4 sm:max-w-sm bg-[#FFF9D8]/95 backdrop-blur-md p-3.5 sm:p-4 rounded-xl sm:rounded-2xl border border-[#1DCED8]/30 shadow-2xl z-20">
                 <div className="flex items-start gap-2.5 sm:gap-3">
-                  <div className="p-1.5 sm:p-2 rounded-xl bg-[#FAEE2F] text-[#161726] shrink-0 mt-0.5">
+                  <div className="p-1.5 sm:p-2 rounded-xl bg-[#FF9D50] text-[#161726] shrink-0 mt-0.5">
                     <MapPin size={16} className="sm:w-[18px] sm:h-[18px]" />
                   </div>
                   <div>
@@ -114,9 +114,9 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
                     <p className="text-[10px] sm:text-xs text-[#161726]/80 leading-snug font-medium mt-0.5">
                       Opposite Gate of St. Xavier's College, near Bharat Petrol Pump, Ashiana-Digha Road, Patna 800011
                     </p>
-                    <div className="flex items-center gap-2 mt-1.5 sm:mt-2 pt-1.5 sm:pt-2 border-t border-[#9FA1FF]/20 text-[8.5px] sm:text-[10px] font-black uppercase tracking-wider text-[#9FA1FF]">
+                    <div className="flex items-center gap-2 mt-1.5 sm:mt-2 pt-1.5 sm:pt-2 border-t border-[#1DCED8]/20 text-[8.5px] sm:text-[10px] font-black uppercase tracking-wider text-[#1DCED8]">
                       <span className="flex items-center gap-1 text-[#161726]">
-                        <Clock size={10} className="text-[#9FA1FF] sm:w-[11px] sm:h-[11px]" />
+                        <Clock size={10} className="text-[#1DCED8] sm:w-[11px] sm:h-[11px]" />
                         <span>Open 24 Hours</span>
                       </span>
                       <span>·</span>
@@ -143,9 +143,9 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
 
         {/* Right Column: Transit Times & Landmarks */}
         <div className="lg:col-span-4 flex flex-col justify-between gap-6">
-            <div className="p-6 lg:p-8 bg-[#D9F9DF]/50 rounded-[24px] border border-[#9FA1FF]/25 shadow-sm h-full flex flex-col justify-between">
+            <div className="p-6 lg:p-8 bg-[#55E07E]/50 rounded-[24px] border border-[#1DCED8]/25 shadow-sm h-full flex flex-col justify-between">
               <div>
-                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#9FA1FF] block mb-2">
+                <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#1DCED8] block mb-2">
                   KEY TRANSIT LANDMARKS
                 </span>
                 <h3 className="text-xl font-black uppercase tracking-tight text-[#161726] mb-4">
@@ -159,13 +159,13 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
                   {landmarks.map((item, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 bg-[#FAFDFB] rounded-xl border border-[#9FA1FF]/20 flex items-center justify-between"
+                      className="p-3.5 bg-[#FFF9D8] rounded-xl border border-[#1DCED8]/20 flex items-center justify-between"
                     >
                       <div>
                         <p className="text-xs font-bold text-[#161726]">{item.name}</p>
                         <p className="text-[10px] text-[#161726]/60 font-semibold tracking-wider mt-0.5">{item.distance}</p>
                       </div>
-                      <span className="text-[10px] font-black uppercase tracking-wider bg-[#FAEE2F] text-[#161726] px-2.5 py-1 rounded-md shrink-0">
+                      <span className="text-[10px] font-black uppercase tracking-wider bg-[#FF9D50] text-[#161726] px-2.5 py-1 rounded-md shrink-0">
                         {item.time}
                       </span>
                     </div>
@@ -173,13 +173,13 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-[#9FA1FF]/20 mt-6 flex items-center justify-between">
+              <div className="pt-6 border-t border-[#1DCED8]/20 mt-6 flex items-center justify-between">
                 <span className="text-[11px] font-bold text-[#161726]/70">
                   Easy Bus & Auto Transit
                 </span>
                 <a
                   href={`tel:${RESORT_CONTACT.primaryPhone}`}
-                  className="text-xs font-black uppercase tracking-wider text-[#9FA1FF] hover:underline"
+                  className="text-xs font-black uppercase tracking-wider text-[#1DCED8] hover:underline"
                 >
                   Call for Guidance →
                 </a>

@@ -88,14 +88,14 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#161726] text-[#FAEE2F] border-2 border-[#FAEE2F] shadow-2xl transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer group focus:outline-none focus:ring-4 focus:ring-[#FAEE2F]/40 shrink-0"
+        className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#161726] text-[#FF9D50] border-2 border-[#FF9D50] shadow-2xl transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer group focus:outline-none focus:ring-4 focus:ring-[#FF9D50]/40 shrink-0"
         aria-label="Chat with Raj - Wedding Concierge"
         title="Chat with Raj"
       >
         {isOpen ? (
-          <X size={20} className="relative z-10 text-[#FAEE2F] transition-transform duration-200" strokeWidth={2} />
+          <X size={20} className="relative z-10 text-[#FF9D50] transition-transform duration-200" strokeWidth={2} />
         ) : (
-          <MessageSquare size={20} className="relative z-10 text-[#FAEE2F] transition-transform duration-200 group-hover:scale-110" strokeWidth={2} />
+          <MessageSquare size={20} className="relative z-10 text-[#FF9D50] transition-transform duration-200 group-hover:scale-110" strokeWidth={2} />
         )}
       </button>
 
@@ -104,25 +104,25 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
         <div
           role="dialog"
           aria-label="Wedding Concierge Chatbot"
-          className="fixed top-[88px] sm:top-auto bottom-[76px] sm:bottom-24 right-3 sm:right-6 w-[calc(100vw-24px)] sm:w-[380px] max-w-[420px] max-h-[calc(100dvh-174px)] sm:max-h-[min(520px,calc(100vh-190px))] bg-[#FAFDFB] text-[#161726] rounded-[24px] shadow-2xl border border-[#9FA1FF]/30 flex flex-col overflow-hidden z-[70] animate-in fade-in slide-in-from-bottom-5 duration-300"
+          className="fixed top-[88px] sm:top-auto bottom-[76px] sm:bottom-24 right-3 sm:right-6 w-[calc(100vw-24px)] sm:w-[380px] max-w-[420px] max-h-[calc(100dvh-174px)] sm:max-h-[min(520px,calc(100vh-190px))] bg-[#FFF9D8] text-[#161726] rounded-[24px] shadow-2xl border border-[#1DCED8]/30 flex flex-col overflow-hidden z-[70] animate-in fade-in slide-in-from-bottom-5 duration-300"
         >
           {/* Header */}
-          <div className="px-5 py-3.5 bg-[#161726] text-[#FAFDFB] border-b border-[#9FA1FF]/20 flex items-center justify-between shrink-0 sticky top-0 z-20">
+          <div className="px-5 py-3.5 bg-[#161726] text-[#FFF9D8] border-b border-[#1DCED8]/20 flex items-center justify-between shrink-0 sticky top-0 z-20">
             <div className="flex items-center gap-3">
               <div className="relative shrink-0">
                 <img
                   src="/images/raj-concierge.jpg"
                   alt="Raj - Sheesh Mahal Wedding Concierge"
-                  className="w-10 h-10 rounded-full object-cover border-2 border-[#FAEE2F] shadow-sm"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-[#FF9D50] shadow-sm"
                 />
                 <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#25D366] border-2 border-[#161726]"></span>
               </div>
               <div>
-                <h4 className="text-xs font-black uppercase tracking-wider text-[#FAFDFB] flex items-center gap-1.5">
+                <h4 className="text-xs font-black uppercase tracking-wider text-[#FFF9D8] flex items-center gap-1.5">
                   <span>RAJ</span>
-                  <span className="text-[10px] text-[#FAEE2F] font-semibold tracking-normal normal-case">· Wedding Concierge</span>
+                  <span className="text-[10px] text-[#FF9D50] font-semibold tracking-normal normal-case">· Wedding Concierge</span>
                 </h4>
-                <p className="text-[10px] text-[#FAEE2F] font-cursive tracking-wide">
+                <p className="text-[10px] text-[#FF9D50] font-cursive tracking-wide">
                   Sheesh Mahal Resort · 24/7 Royal Desk
                 </p>
               </div>
@@ -139,13 +139,13 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
           </div>
 
           {/* Quick Prompts Bar */}
-          <div className="px-4 py-2 bg-[#D9F9DF]/60 border-b border-[#9FA1FF]/20 flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
+          <div className="px-4 py-2 bg-[#55E07E]/60 border-b border-[#1DCED8]/20 flex items-center gap-2 overflow-x-auto no-scrollbar shrink-0">
             {quickPrompts.map((prompt, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => handleSend(prompt)}
-                className="whitespace-nowrap px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-[#FAFDFB] hover:bg-[#FAEE2F] text-[#161726] border border-[#9FA1FF]/30 rounded-lg transition-colors cursor-pointer shadow-2xs"
+                className="whitespace-nowrap px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-[#FFF9D8] hover:bg-[#FF9D50] text-[#161726] border border-[#1DCED8]/30 rounded-lg transition-colors cursor-pointer shadow-2xs"
               >
                 {prompt}
               </button>
@@ -163,15 +163,15 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
                   <img
                     src="/images/raj-concierge.jpg"
                     alt="Raj"
-                    className="w-7 h-7 rounded-full object-cover border border-[#FAEE2F]/70 shrink-0 mt-0.5 shadow-xs"
+                    className="w-7 h-7 rounded-full object-cover border border-[#FF9D50]/70 shrink-0 mt-0.5 shadow-xs"
                   />
                 )}
 
                 <div
                   className={`max-w-[82%] p-3.5 rounded-2xl whitespace-pre-line leading-relaxed shadow-xs ${
                     msg.sender === 'user'
-                      ? 'bg-[#161726] text-[#FAFDFB] rounded-br-xs font-medium'
-                      : 'bg-[#D9F9DF]/40 text-[#161726] border border-[#9FA1FF]/25 rounded-bl-xs font-normal'
+                      ? 'bg-[#161726] text-[#FFF9D8] rounded-br-xs font-medium'
+                      : 'bg-[#55E07E]/40 text-[#161726] border border-[#1DCED8]/25 rounded-bl-xs font-normal'
                   }`}
                 >
                   <p>{msg.text}</p>
@@ -184,7 +184,7 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
                           key={i}
                           type="button"
                           onClick={qa.action}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-[#FAEE2F] text-[#161726] rounded-md hover:bg-[#161726] hover:text-[#FAEE2F] transition-colors cursor-pointer shadow-2xs"
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-[#FF9D50] text-[#161726] rounded-md hover:bg-[#161726] hover:text-[#FF9D50] transition-colors cursor-pointer shadow-2xs"
                         >
                           <span>{qa.label}</span>
                           <ArrowRight size={10} />
@@ -198,9 +198,9 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
 
             {isTyping && (
               <div className="flex gap-2 items-center text-xs text-[#161726]/60 italic pl-9">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#9FA1FF] animate-bounce"></span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#9FA1FF] animate-bounce [animation-delay:0.2s]"></span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#9FA1FF] animate-bounce [animation-delay:0.4s]"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1DCED8] animate-bounce"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1DCED8] animate-bounce [animation-delay:0.2s]"></span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1DCED8] animate-bounce [animation-delay:0.4s]"></span>
                 <span className="text-[11px] font-medium ml-1">Raj is typing...</span>
               </div>
             )}
@@ -213,19 +213,19 @@ export const WeddingChatbot: React.FC<WeddingChatbotProps> = ({ onOpenInquiry })
               e.preventDefault();
               handleSend();
             }}
-            className="p-3 bg-[#FAFDFB] border-t border-[#9FA1FF]/20 flex items-center gap-2 shrink-0"
+            className="p-3 bg-[#FFF9D8] border-t border-[#1DCED8]/20 flex items-center gap-2 shrink-0"
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about dates, lawns, catering..."
-              className="flex-1 bg-white border border-[#9FA1FF]/30 rounded-xl px-3.5 py-2.5 text-xs text-[#161726] placeholder-[#161726]/50 focus:outline-none focus:border-[#161726] transition-colors"
+              className="flex-1 bg-white border border-[#1DCED8]/30 rounded-xl px-3.5 py-2.5 text-xs text-[#161726] placeholder-[#161726]/50 focus:outline-none focus:border-[#161726] transition-colors"
             />
             <button
               type="submit"
               disabled={!input.trim()}
-              className="w-10 h-10 rounded-xl bg-[#FAEE2F] text-[#161726] disabled:opacity-40 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAEE2F] transition-colors cursor-pointer shrink-0 shadow-sm"
+              className="w-10 h-10 rounded-xl bg-[#FF9D50] text-[#161726] disabled:opacity-40 flex items-center justify-center hover:bg-[#161726] hover:text-[#FF9D50] transition-colors cursor-pointer shrink-0 shadow-sm"
               aria-label="Send message"
             >
               <Send size={15} />

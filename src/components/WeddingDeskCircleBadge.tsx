@@ -27,7 +27,7 @@ export const WeddingDeskCircleBadge: React.FC<WeddingDeskCircleBadgeProps> = ({
       data-badge-circle="true"
       onClick={onClick}
       style={{
-        backgroundColor: '#FAEE2F',
+        backgroundColor: '#FF9D50',
         color: '#161726',
         animationDelay: bounceDelay
       }}

@@ -26,7 +26,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
   return (
     <section
       id="amenities"
-      className="py-16 sm:py-24 lg:py-32 bg-[#D9F9DF]/40 text-[#161726] border-b border-[#9FA1FF]/20 relative"
+      className="py-16 sm:py-24 lg:py-32 bg-[#55E07E]/40 text-[#161726] border-b border-[#1DCED8]/20 relative"
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Section Header */}
@@ -36,14 +36,14 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
               <span className="label-utility text-[#161726]/70">
                 ROYAL WEDDING EXCELLENCE
               </span>
-              <span className="w-8 sm:w-10 h-[1px] bg-[#9FA1FF]"></span>
+              <span className="w-8 sm:w-10 h-[1px] bg-[#1DCED8]"></span>
             </div>
 
             {/* Headline: 8xl font-size with cursive flourish */}
             <h2 className="text-3xl sm:text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726]">
               WEDDING SERVICES
             </h2>
-            <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+            <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
               Royal Wedding Hospitality & Flawless Execution
             </p>
             <p className="mt-4 text-base sm:text-xl text-[#161726]/75 max-w-2xl font-medium">
@@ -68,12 +68,12 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 border border-[#9FA1FF]/30 bg-[#FAFDFB] divide-y md:divide-y-0 md:divide-x divide-[#9FA1FF]/30 rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 border border-[#1DCED8]/30 bg-[#FFF9D8] divide-y md:divide-y-0 md:divide-x divide-[#1DCED8]/30 rounded-2xl overflow-hidden shadow-xl">
               {RESORT_SERVICES.map((service) => (
                 <div
                   key={service.number}
                   onClick={() => onSelectService(service)}
-                  className="group relative flex flex-col justify-between pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 px-6 sm:px-10 bg-[#FAFDFB] hover:bg-[#FAEE2F] cursor-pointer transition-colors duration-1000"
+                  className="group relative flex flex-col justify-between pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 px-6 sm:px-10 bg-[#FFF9D8] hover:bg-[#FF9D50] cursor-pointer transition-colors duration-1000"
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
@@ -92,9 +92,9 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
                       </div>
                     </div>
 
-                    {/* Icon: 4xl size, transitioning from #9FA1FF to #161726 on hover */}
+                    {/* Icon: 4xl size, transitioning from #1DCED8 to #161726 on hover */}
                     <div
-                      className="mb-8 text-[#9FA1FF] group-hover:text-[#161726] transition-colors duration-1000"
+                      className="mb-8 text-[#1DCED8] group-hover:text-[#161726] transition-colors duration-1000"
                       style={{
                         transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
                       }}
@@ -121,7 +121,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
                           key={i}
                           className="text-xs font-bold tracking-wide text-[#161726]/80 group-hover:text-[#161726] flex items-center gap-2 transition-colors duration-700"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#9FA1FF] group-hover:bg-[#161726] shrink-0"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#1DCED8] group-hover:bg-[#161726] shrink-0"></span>
                           <span>{cap}</span>
                         </li>
                       ))}

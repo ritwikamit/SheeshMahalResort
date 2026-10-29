@@ -22,7 +22,7 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({
   return (
     <aside
       aria-label="Mobile Quick Navigation Menu"
-      className="fixed bottom-0 left-0 right-0 z-40 block md:hidden border-t border-[#9FA1FF]/25 shadow-[0_-6px_25px_rgba(22,23,38,0.12)] transition-all duration-300"
+      className="fixed bottom-0 left-0 right-0 z-40 block md:hidden border-t border-[#1DCED8]/25 shadow-[0_-6px_25px_rgba(22,23,38,0.12)] transition-all duration-300"
       style={{
         backgroundColor: 'rgba(250, 253, 251, 0.96)',
         backdropFilter: 'blur(16px)',
@@ -77,7 +77,7 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({
           className="flex flex-col items-center justify-center -mt-3 group cursor-pointer"
           aria-label="Check Muhurat Wedding Dates and Inquire"
         >
-          <div className="w-12 h-12 rounded-full bg-[#FAEE2F] text-[#161726] border-2 border-[#161726] flex items-center justify-center shadow-lg transition-transform duration-200 group-hover:scale-105 group-active:scale-95">
+          <div className="w-12 h-12 rounded-full bg-[#FF9D50] text-[#161726] border-2 border-[#161726] flex items-center justify-center shadow-lg transition-transform duration-200 group-hover:scale-105 group-active:scale-95">
             <Calendar size={20} strokeWidth={2.5} />
           </div>
           <span className="text-[9px] font-black uppercase tracking-wider text-[#161726] mt-0.5">

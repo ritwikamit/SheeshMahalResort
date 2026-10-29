@@ -23,17 +23,17 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-xl max-h-[92dvh] flex flex-col bg-[#FAFDFB] text-[#161726] rounded-[20px] sm:rounded-[24px] shadow-2xl border border-[#9FA1FF]/30 overflow-hidden my-auto"
+        className="relative w-full max-w-xl max-h-[92dvh] flex flex-col bg-[#FFF9D8] text-[#161726] rounded-[20px] sm:rounded-[24px] shadow-2xl border border-[#1DCED8]/30 overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#9FA1FF]/20 bg-[#D9F9DF] shrink-0">
+        <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#1DCED8]/20 bg-[#55E07E] shrink-0">
           <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#161726]">
             SHEESH MAHAL RESORT // WEDDING AMENITY {service.number}
           </span>
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors cursor-pointer"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FFF9D8] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -41,13 +41,13 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         </div>
 
         <div className="p-5 sm:p-8 overflow-y-auto flex-1">
-          <span className="text-4xl font-black italic text-[#9FA1FF] mb-2 block">
+          <span className="text-4xl font-black italic text-[#1DCED8] mb-2 block">
             {service.number}
           </span>
           <h3 className="text-3xl font-black uppercase tracking-tight text-[#161726] mb-2">
             {service.title}
           </h3>
-          <p className="font-cursive text-2xl text-[#9FA1FF] mb-4 font-normal">
+          <p className="font-cursive text-2xl text-[#1DCED8] mb-4 font-normal">
             Bespoke Wedding Curation
           </p>
           <p className="text-sm text-[#161726]/80 leading-relaxed mb-8 font-normal">
@@ -61,15 +61,15 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
             {service.capabilities.map((cap, i) => (
               <div
                 key={i}
-                className="p-4 bg-[#D9F9DF]/40 border border-[#9FA1FF]/25 rounded-xl flex items-start gap-3"
+                className="p-4 bg-[#55E07E]/40 border border-[#1DCED8]/25 rounded-xl flex items-start gap-3"
               >
-                <CheckCircle2 size={16} className="text-[#9FA1FF] shrink-0 mt-0.5" />
+                <CheckCircle2 size={16} className="text-[#1DCED8] shrink-0 mt-0.5" />
                 <span className="text-xs font-bold text-[#161726]">{cap}</span>
               </div>
             ))}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#9FA1FF]/20">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#1DCED8]/20">
             <span className="text-xs text-[#161726]/70 font-semibold">
               Wedding Desk 24/7: {RESORT_CONTACT.primaryPhone}
             </span>
@@ -79,7 +79,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
                 onInquire();
                 onClose();
               }}
-              className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FAEE2F] text-[#161726] hover:bg-[#161726] hover:text-[#FAFDFB] transition-colors cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FF9D50] text-[#161726] hover:bg-[#161726] hover:text-[#FFF9D8] transition-colors cursor-pointer"
             >
               INQUIRE FOR WEDDING
             </button>

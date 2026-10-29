@@ -59,17 +59,17 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAFDFB] text-[#161726]">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FFF9D8] text-[#161726]">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#9FA1FF]/20 mb-12 sm:mb-16">
+        <div className="py-8 sm:py-12 border-b border-[#1DCED8]/20 mb-12 sm:mb-16">
           <span className="label-utility text-[#161726]/70">
             TRANSPARENT CURATED PACKAGES
           </span>
           <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
             WEDDING PACKAGES
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#9FA1FF] mt-2 font-normal">
+          <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
             Designed for Seamless Royal Nuptials in Patna
           </p>
           <p className="text-base sm:text-lg text-[#161726]/75 max-w-3xl mt-4 font-normal">
@@ -84,22 +84,22 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
               <div
                 className={`p-6 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[28px] border h-full flex flex-col justify-between transition-all duration-300 ${
                   pkg.popular
-                    ? 'bg-[#FAFDFB] border-[#FAEE2F] ring-2 ring-[#FAEE2F] shadow-2xl relative'
-                    : 'bg-[#FAFDFB] border-[#9FA1FF]/30 shadow-lg'
+                    ? 'bg-[#FFF9D8] border-[#FF9D50] ring-2 ring-[#FF9D50] shadow-2xl relative'
+                    : 'bg-[#FFF9D8] border-[#1DCED8]/30 shadow-lg'
                 }`}
               >
                 <div>
                   {pkg.popular && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#FAEE2F] text-[#161726] px-4 py-1 rounded-md text-[10px] font-black uppercase tracking-widest shadow">
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#FF9D50] text-[#161726] px-4 py-1 rounded-md text-[10px] font-black uppercase tracking-widest shadow">
                       MOST POPULAR WEDDING CHOICE
                     </div>
                   )}
 
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-black tracking-widest uppercase bg-[#D9F9DF] text-[#161726] px-3 py-1 rounded-md">
+                    <span className="text-[10px] font-black tracking-widest uppercase bg-[#55E07E] text-[#161726] px-3 py-1 rounded-md">
                       {pkg.badge}
                     </span>
-                    <span className="text-xs font-bold tracking-wider text-[#9FA1FF]">
+                    <span className="text-xs font-bold tracking-wider text-[#1DCED8]">
                       {pkg.capacity}
                     </span>
                   </div>
@@ -111,8 +111,8 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
                     {pkg.tagline}
                   </p>
 
-                  <div className="p-3 bg-[#D9F9DF]/50 rounded-xl border border-[#9FA1FF]/20 mb-6">
-                    <p className="text-[10px] font-black uppercase tracking-wider text-[#9FA1FF]">
+                  <div className="p-3 bg-[#55E07E]/50 rounded-xl border border-[#1DCED8]/20 mb-6">
+                    <p className="text-[10px] font-black uppercase tracking-wider text-[#1DCED8]">
                       INCLUDED VENUES
                     </p>
                     <p className="text-xs font-bold text-[#161726]">
@@ -123,21 +123,21 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
                   <ul className="space-y-3 mb-8">
                     {pkg.inclusions.map((inc, idx) => (
                       <li key={idx} className="flex items-start gap-2.5 text-xs text-[#161726] font-semibold">
-                        <CheckCircle2 size={15} className="text-[#9FA1FF] shrink-0 mt-0.5" />
+                        <CheckCircle2 size={15} className="text-[#1DCED8] shrink-0 mt-0.5" />
                         <span>{inc}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="pt-6 border-t border-[#9FA1FF]/20">
+                <div className="pt-6 border-t border-[#1DCED8]/20">
                   <button
                     type="button"
                     onClick={onOpenInquiry}
                     className={`w-full py-3.5 rounded-xl text-xs font-black tracking-widest uppercase transition-colors cursor-pointer shadow-md ${
                       pkg.popular
-                        ? 'bg-[#FAEE2F] text-[#161726] hover:bg-[#161726] hover:text-[#FAFDFB]'
-                        : 'bg-[#161726] text-[#FAEE2F] hover:bg-[#9FA1FF] hover:text-[#161726]'
+                        ? 'bg-[#FF9D50] text-[#161726] hover:bg-[#161726] hover:text-[#FFF9D8]'
+                        : 'bg-[#161726] text-[#FF9D50] hover:bg-[#1DCED8] hover:text-[#161726]'
                     }`}
                   >
                     INQUIRE FOR THIS PACKAGE

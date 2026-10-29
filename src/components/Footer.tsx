@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenCookies
 }) => {
   return (
-    <footer className="bg-[#FAFDFB] text-[#161726] border-t border-[#161726]/10 pt-16 sm:pt-20 pb-24 md:pb-12 shadow-[0_-4px_25px_rgba(22,23,38,0.03)]">
+    <footer className="bg-[#FFF9D8] text-[#161726] border-t border-[#161726]/10 pt-16 sm:pt-20 pb-24 md:pb-12 shadow-[0_-4px_25px_rgba(22,23,38,0.03)]">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pb-14">
@@ -33,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({
                   className="cursor-pointer"
                 />
               </div>
-              <p className="font-cursive text-2xl text-[#4D53A8] mb-3 font-normal">
+              <p className="font-cursive text-2xl text-[#FF9D50] mb-3 font-normal">
                 Patna's Premier Royal Wedding Destination
               </p>
               <p className="text-xs sm:text-sm text-[#161726]/85 leading-relaxed max-w-md mb-6 font-normal">
@@ -54,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({
               <button
                 type="button"
                 onClick={onOpenInquiry}
-                className="px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FAFDFB] hover:bg-[#FAEE2F] hover:text-[#161726] transition-all duration-300 cursor-pointer shadow-md hover:scale-105 active:scale-95"
+                className="px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FFF9D8] hover:bg-[#FF9D50] hover:text-[#161726] transition-all duration-300 cursor-pointer shadow-md hover:scale-105 active:scale-95"
               >
                 BOOK WEDDING DATES
               </button>
@@ -71,7 +71,7 @@ export const Footer: React.FC<FooterProps> = ({
                 style={{
                   textDecoration: 'underline',
                   textUnderlineOffset: '8px',
-                  textDecorationColor: '#4D53A8'
+                  textDecorationColor: '#FF9D50'
                 }}
               >
                 WEDDING VENUES
@@ -81,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('spaces')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     The Sheesh Banquet
                   </button>
@@ -90,7 +90,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('spaces')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     Shahi Utsav Lawn
                   </button>
@@ -99,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('spaces')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     Vedic Mandap Pavilion
                   </button>
@@ -108,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('spaces')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     Courtyard & Poolside
                   </button>
@@ -117,7 +117,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('amenities')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     Shahi Wedding Catering
                   </button>
@@ -132,7 +132,7 @@ export const Footer: React.FC<FooterProps> = ({
                 style={{
                   textDecoration: 'underline',
                   textUnderlineOffset: '8px',
-                  textDecorationColor: '#4D53A8'
+                  textDecorationColor: '#FF9D50'
                 }}
               >
                 CEREMONIES
@@ -142,7 +142,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('rituals')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     Haldi & Mehndi
                   </button>
@@ -151,7 +151,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('rituals')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     Baraat & Varmala
                   </button>
@@ -160,7 +160,7 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('rituals')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     Saat Phere & Havan
                   </button>
@@ -169,13 +169,13 @@ export const Footer: React.FC<FooterProps> = ({
                   <button
                     type="button"
                     onClick={() => onNavigateSection('rituals')}
-                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer text-left"
+                    className="text-xs font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer text-left"
                   >
                     Shahi Reception Dawat
                   </button>
                 </li>
                 <li>
-                  <span className="text-[11px] font-bold text-[#4D53A8] flex items-center gap-1.5 pt-2">
+                  <span className="text-[11px] font-bold text-[#FF9D50] flex items-center gap-1.5 pt-2">
                     <Clock size={13} className="text-[#9E7A00]" />
                     <span>Open 24 Hours Daily</span>
                   </span>
@@ -190,7 +190,7 @@ export const Footer: React.FC<FooterProps> = ({
                 style={{
                   textDecoration: 'underline',
                   textUnderlineOffset: '8px',
-                  textDecorationColor: '#4D53A8'
+                  textDecorationColor: '#FF9D50'
                 }}
               >
                 CONNECT WITH US
@@ -206,7 +206,7 @@ export const Footer: React.FC<FooterProps> = ({
                   href={`tel:${RESORT_CONTACT.primaryPhone}`}
                   title="Direct Wedding Concierge Call"
                   aria-label="Call Sheesh Mahal Resort"
-                  className="w-10 h-10 rounded-xl bg-[#161726] text-[#FAFDFB] flex items-center justify-center hover:bg-[#4D53A8] transition-all duration-300 shadow-sm hover:scale-105"
+                  className="w-10 h-10 rounded-xl bg-[#161726] text-[#FFF9D8] flex items-center justify-center hover:bg-[#FF9D50] transition-all duration-300 shadow-sm hover:scale-105"
                 >
                   <Phone size={16} />
                 </a>
@@ -254,7 +254,7 @@ export const Footer: React.FC<FooterProps> = ({
                   rel="noopener noreferrer"
                   title="View on Google Maps"
                   aria-label="View on Google Maps"
-                  className="w-10 h-10 rounded-xl bg-[#161726]/5 text-[#161726] border border-[#161726]/15 flex items-center justify-center hover:bg-[#161726] hover:text-[#FAEE2F] transition-all duration-300 shadow-sm hover:scale-105"
+                  className="w-10 h-10 rounded-xl bg-[#161726]/5 text-[#161726] border border-[#161726]/15 flex items-center justify-center hover:bg-[#161726] hover:text-[#FF9D50] transition-all duration-300 shadow-sm hover:scale-105"
                 >
                   <MapPin size={17} />
                 </a>
@@ -288,7 +288,7 @@ export const Footer: React.FC<FooterProps> = ({
           <p
             className="font-semibold tracking-wider text-center text-[#161726]/75 text-[11px]"
           >
-            Designed and Developed by <span className="font-bold text-[#161726] hover:text-[#4D53A8] transition-colors cursor-pointer">ACCustomLabs</span>
+            Designed and Developed by <span className="font-bold text-[#161726] hover:text-[#FF9D50] transition-colors cursor-pointer">ACCustomLabs</span>
           </p>
 
           {/* Just Terms & Conditions and Cookies Policy */}
@@ -296,7 +296,7 @@ export const Footer: React.FC<FooterProps> = ({
             <button
               type="button"
               onClick={onOpenTerms}
-              className="text-[10px] font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer hover:underline"
+              className="text-[10px] font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer hover:underline"
             >
               Terms & Conditions
             </button>
@@ -304,7 +304,7 @@ export const Footer: React.FC<FooterProps> = ({
             <button
               type="button"
               onClick={onOpenCookies}
-              className="text-[10px] font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#4D53A8] transition-colors cursor-pointer hover:underline"
+              className="text-[10px] font-bold uppercase tracking-wider text-[#161726]/75 hover:text-[#FF9D50] transition-colors cursor-pointer hover:underline"
             >
               Cookies Policy
             </button>

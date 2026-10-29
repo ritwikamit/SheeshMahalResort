@@ -91,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
     <section
       ref={heroSectionRef}
       id="top"
-      className="relative min-h-[100dvh] w-full pt-[82px] sm:pt-[90px] pb-6 sm:pb-10 bg-transparent text-white flex flex-col justify-center overflow-hidden border-b border-[#26532B]/20"
+      className="relative min-h-[100dvh] w-full pt-[82px] sm:pt-[90px] pb-0 bg-transparent text-white flex flex-col justify-between overflow-hidden border-b border-[#26532B]/20"
     >
       {/* Background Full-Bleed Video (GeminiHero.mp4 without audio on loop) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -141,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
             </h1>
 
             {/* Below headline: body text floating transparently */}
-            <p className="text-xs sm:text-base lg:text-xl text-[#1D261E] font-medium leading-relaxed max-w-xl mb-2 sm:mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <p className="text-xs sm:text-base lg:text-xl text-white font-medium leading-relaxed max-w-xl mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
               Orchestrate your dream royal wedding at Sheesh Mahal Resort. Grand air-conditioned ballrooms for majestic Varmalas, sprawling starlit lawns for grand Baraats, consecrated Vedic Mandaps for Saat Phere, and masterfully curated wedding feasts.
             </p>
             <p className="font-cursive text-base sm:text-xl lg:text-2xl text-[#E88A1A] mb-3 sm:mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
@@ -225,39 +225,39 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
         </div>
       </div>
 
-      {/* Moving Marquee Ticker at the bottom edge of Hero (Redesigned as requested) */}
-      <div className="w-full border-t border-[#26532B]/15 bg-[#FAF6EE]/95 backdrop-blur-md py-3 sm:py-3.5 relative z-10 text-[#1D261E] mt-auto overflow-hidden select-none shadow-[0_-4px_20px_rgba(29,38,30,0.06)]">
-        <div className="animate-marquee flex items-center gap-8 sm:gap-12 whitespace-nowrap text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase text-[#1D261E]">
+      {/* Moving Marquee Ticker at the bottom edge where hero ends (Claymorphic Orange) */}
+      <div className="w-full clay-ticker-orange py-3 sm:py-3.5 relative z-20 text-white mt-auto overflow-hidden select-none border-t border-white/40">
+        <div className="animate-marquee flex items-center gap-6 sm:gap-8 whitespace-nowrap text-[10px] sm:text-xs font-black tracking-[0.22em] uppercase text-white">
           {/* Continuous Loop Set 1 */}
-          <div className="flex items-center gap-8 sm:gap-12 shrink-0">
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse"></span>CUSTOM MANDAP DECOR</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>BARAAT WELCOME CORRIDOR</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>100% POWER BACKUP</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>LUXURY BRIDAL SUITES</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>AIR-CONDITIONED BANQUET</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>SPRAWLING STARLIT LAWNS</span>
-            <span className="text-[#E88A1A]">✦</span>
+          <div className="flex items-center gap-6 sm:gap-8 shrink-0">
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>CUSTOM MANDAP DECOR</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>BARAAT WELCOME CORRIDOR</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>100% POWER BACKUP</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>LUXURY BRIDAL SUITES</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>AIR-CONDITIONED BANQUET</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>SPRAWLING STARLIT LAWNS</span>
+            <span className="text-white/80">✦</span>
           </div>
 
           {/* Continuous Loop Set 2 (Seamless Infinite Duplicate) */}
-          <div className="flex items-center gap-8 sm:gap-12 shrink-0" aria-hidden="true">
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse"></span>CUSTOM MANDAP DECOR</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>BARAAT WELCOME CORRIDOR</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>100% POWER BACKUP</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>LUXURY BRIDAL SUITES</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>AIR-CONDITIONED BANQUET</span>
-            <span className="text-[#E88A1A]">✦</span>
-            <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-[#E88A1A]"></span>SPRAWLING STARLIT LAWNS</span>
-            <span className="text-[#E88A1A]">✦</span>
+          <div className="flex items-center gap-6 sm:gap-8 shrink-0" aria-hidden="true">
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>CUSTOM MANDAP DECOR</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>BARAAT WELCOME CORRIDOR</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>100% POWER BACKUP</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>LUXURY BRIDAL SUITES</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>AIR-CONDITIONED BANQUET</span>
+            <span className="text-white/80">✦</span>
+            <span className="clay-pill-ticker px-3.5 py-1.5 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-white"></span>SPRAWLING STARLIT LAWNS</span>
+            <span className="text-white/80">✦</span>
           </div>
         </div>
       </div>

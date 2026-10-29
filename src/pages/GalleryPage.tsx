@@ -56,30 +56,30 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
   }, [activeLightboxIndex, filteredItems.length]);
 
   return (
-    <div className="pt-[88px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FFF9D8] text-[#161726]">
+    <div className="pt-[88px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#F5F5F5] text-[#303841]">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         
         {/* Page Header */}
-        <div className="py-8 sm:py-12 border-b border-[#1DCED8]/20 mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="py-8 sm:py-12 border-b border-[#76ABAE]/20 mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="label-utility text-[#161726]/70">
+              <span className="label-utility text-[#303841]/70">
                 OFFICIAL RESORT PHOTO ARCHIVE
               </span>
-              <span className="w-8 h-[1px] bg-[#1DCED8]"></span>
-              <span className="text-[9px] font-black tracking-widest text-[#161726] bg-[#FF9D50] px-2 py-0.5 rounded-sm uppercase">
+              <span className="w-8 h-[1px] bg-[#76ABAE]"></span>
+              <span className="text-[9px] font-black tracking-widest text-[#303841] bg-[#FF5722] px-2 py-0.5 rounded-sm uppercase">
                 {filteredItems.length} REAL PHOTOS
               </span>
             </div>
             
-            <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
+            <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#303841] mt-2">
               PHOTO GALLERY
             </h1>
             
-            <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
+            <p className="font-cursive text-2xl sm:text-4xl text-[#76ABAE] mt-2 font-normal">
               Authentic Glimpse into Royal Ceremonies & Palatial Grounds
             </p>
-            <p className="text-xs sm:text-sm text-[#161726]/75 mt-3 max-w-2xl font-normal">
+            <p className="text-xs sm:text-sm text-[#303841]/75 mt-3 max-w-2xl font-normal">
               Every photograph below captures real celebrations, grand ballrooms, starlit lawns, and sacred mandaps at Sheesh Mahal Resort, Ashiana–Digha Road, Patna.
             </p>
           </div>
@@ -93,8 +93,8 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
                 onClick={() => setFilter(cat)}
                 className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[9px] sm:text-[10px] font-black uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
                   filter === cat
-                    ? 'bg-[#161726] text-[#FF9D50] shadow-sm'
-                    : 'bg-[#55E07E] text-[#161726]/70 hover:text-[#161726] hover:bg-[#FF9D50]/40'
+                    ? 'bg-[#303841] text-[#FF5722] shadow-sm'
+                    : 'bg-[#76ABAE] text-[#303841]/70 hover:text-[#303841] hover:bg-[#FF5722]/40'
                 }`}
               >
                 {cat}
@@ -109,10 +109,10 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
             <RevealUp key={item.id} delay={(idx % 4) * 35}>
               <div
                 onClick={() => openLightbox(idx)}
-                className="group rounded-[20px] overflow-hidden bg-[#FFF9D8] border border-[#1DCED8]/25 shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col h-full transform hover:-translate-y-1"
+                className="group rounded-[20px] overflow-hidden bg-[#F5F5F5] border border-[#76ABAE]/25 shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col h-full transform hover:-translate-y-1"
               >
                 {/* Visual */}
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#161726]">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#303841]">
                   <LuxuryVisual
                     src={item.image}
                     alt={item.title}
@@ -124,36 +124,36 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
 
                   {/* Hover Overlay with Tap to Enlarge */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <div className="w-11 h-11 rounded-full bg-[#FF9D50] text-[#161726] flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                    <div className="w-11 h-11 rounded-full bg-[#FF5722] text-[#303841] flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
                       <Maximize2 size={18} />
                     </div>
                   </div>
 
                   {/* Corner Category Tag */}
                   <div className="absolute top-3 left-3 z-10 pointer-events-none">
-                    <span className="text-[8.5px] font-black uppercase tracking-wider text-[#161726] bg-[#FF9D50] px-2 py-0.5 rounded-sm shadow-sm">
+                    <span className="text-[8.5px] font-black uppercase tracking-wider text-[#303841] bg-[#FF5722] px-2 py-0.5 rounded-sm shadow-sm">
                       {item.category}
                     </span>
                   </div>
                 </div>
 
                 {/* Details */}
-                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between border-t border-[#1DCED8]/15">
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between border-t border-[#76ABAE]/15">
                   <div>
-                    <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-[#161726] group-hover:text-[#1DCED8] transition-colors leading-snug">
+                    <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-[#303841] group-hover:text-[#76ABAE] transition-colors leading-snug">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-[#1DCED8] font-cursive mt-0.5">
+                    <p className="text-xs text-[#76ABAE] font-cursive mt-0.5">
                       {item.caption}
                     </p>
-                    <p className="text-[11px] sm:text-xs text-[#161726]/75 mt-2 leading-relaxed font-normal">
+                    <p className="text-[11px] sm:text-xs text-[#303841]/75 mt-2 leading-relaxed font-normal">
                       {item.description}
                     </p>
                   </div>
 
-                  <div className="pt-3 mt-3 border-t border-[#1DCED8]/10 flex items-center justify-between text-[9px] font-bold tracking-wider uppercase text-[#161726]/60">
+                  <div className="pt-3 mt-3 border-t border-[#76ABAE]/10 flex items-center justify-between text-[9px] font-bold tracking-wider uppercase text-[#303841]/60">
                     <span>SHEESH MAHAL PATNA</span>
-                    <span className="text-[#1DCED8] group-hover:translate-x-1 transition-transform">
+                    <span className="text-[#76ABAE] group-hover:translate-x-1 transition-transform">
                       VIEW FULL →
                     </span>
                   </div>
@@ -165,18 +165,18 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
 
         {/* Bottom Booking Invitation */}
         <RevealUp delay={150}>
-          <div className="p-8 sm:p-12 bg-[#161726] text-[#FFF9D8] rounded-[24px] border border-[#1DCED8]/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+          <div className="p-8 sm:p-12 bg-[#303841] text-[#F5F5F5] rounded-[24px] border border-[#76ABAE]/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
             <div className="max-w-2xl text-center md:text-left">
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#FF9D50] block mb-2">
+              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#FF5722] block mb-2">
                 RESERVE YOUR WEDDING DATES
               </span>
               <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight leading-tight">
                 VISIT SHEESH MAHAL RESORT IN PERSON
               </h3>
-              <p className="font-cursive text-xl sm:text-3xl text-[#1DCED8] mt-1 mb-3">
+              <p className="font-cursive text-xl sm:text-3xl text-[#76ABAE] mt-1 mb-3">
                 "Where Sacred Vows Meet Royal Grandeur"
               </p>
-              <p className="text-xs sm:text-sm text-[#55E07E] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#76ABAE] leading-relaxed">
                 Experience our palatial banquet ballrooms, consecrated Mandaps, and starlit lawns live. Open 24 hours daily opposite St. Xavier's College gate, Ashiana–Digha Road, Patna.
               </p>
             </div>
@@ -185,7 +185,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
               <button
                 type="button"
                 onClick={onOpenInquiry}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FF9D50] text-[#161726] hover:bg-[#FFF9D8] transition-all duration-300 shadow-xl cursor-pointer hover:scale-105 active:scale-95 text-center"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FF5722] text-[#303841] hover:bg-[#F5F5F5] transition-all duration-300 shadow-xl cursor-pointer hover:scale-105 active:scale-95 text-center"
               >
                 <Calendar size={15} />
                 <span>CHECK WEDDING DATES</span>
@@ -208,14 +208,14 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-3">
-              <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-[#161726] bg-[#FF9D50] px-2.5 py-1 rounded-sm">
+              <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-[#303841] bg-[#FF5722] px-2.5 py-1 rounded-sm">
                 {filteredItems[activeLightboxIndex].category}
               </span>
               <div>
                 <h4 className="text-sm sm:text-lg font-black uppercase tracking-tight text-white">
                   {filteredItems[activeLightboxIndex].title}
                 </h4>
-                <p className="font-cursive text-xs sm:text-sm text-[#1DCED8]">
+                <p className="font-cursive text-xs sm:text-sm text-[#76ABAE]">
                   {filteredItems[activeLightboxIndex].caption}
                 </p>
               </div>
@@ -245,7 +245,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
             <button
               type="button"
               onClick={prevImage}
-              className="absolute left-2 sm:left-4 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/60 hover:bg-[#FF9D50] hover:text-[#161726] text-white border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-2xl"
+              className="absolute left-2 sm:left-4 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/60 hover:bg-[#FF5722] hover:text-[#303841] text-white border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-2xl"
               aria-label="Previous photo"
             >
               <ChevronLeft size={24} />
@@ -263,7 +263,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
             <button
               type="button"
               onClick={nextImage}
-              className="absolute right-2 sm:right-4 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/60 hover:bg-[#FF9D50] hover:text-[#161726] text-white border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-2xl"
+              className="absolute right-2 sm:right-4 z-20 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/60 hover:bg-[#FF5722] hover:text-[#303841] text-white border border-white/20 flex items-center justify-center transition-all cursor-pointer shadow-2xl"
               aria-label="Next photo"
             >
               <ChevronRight size={24} />
@@ -286,7 +286,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
                   closeLightbox();
                   onOpenInquiry();
                 }}
-                className="px-6 py-2.5 rounded-lg text-xs font-black tracking-widest uppercase bg-[#FF9D50] text-[#161726] hover:bg-white transition-colors cursor-pointer shadow-md"
+                className="px-6 py-2.5 rounded-lg text-xs font-black tracking-widest uppercase bg-[#FF5722] text-[#303841] hover:bg-white transition-colors cursor-pointer shadow-md"
               >
                 BOOK THIS VENUE
               </button>

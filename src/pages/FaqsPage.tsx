@@ -37,17 +37,17 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FFF9D8] text-[#161726]">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#F5F5F5] text-[#303841]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#1DCED8]/20 mb-12 sm:mb-16 text-center">
-          <span className="label-utility text-[#161726]/70">
+        <div className="py-8 sm:py-12 border-b border-[#76ABAE]/20 mb-12 sm:mb-16 text-center">
+          <span className="label-utility text-[#303841]/70">
             TRANSPARENT GUIDANCE
           </span>
-          <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
+          <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#303841] mt-2">
             WEDDING FAQS & POLICIES
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
+          <p className="font-cursive text-2xl sm:text-4xl text-[#76ABAE] mt-2 font-normal">
             Everything You Need to Know for Your Special Day
           </p>
         </div>
@@ -59,22 +59,22 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
             return (
               <div
                 key={idx}
-                className="bg-[#FFF9D8] rounded-[20px] border border-[#1DCED8]/30 shadow-sm overflow-hidden transition-all duration-300"
+                className="bg-[#F5F5F5] rounded-[20px] border border-[#76ABAE]/30 shadow-sm overflow-hidden transition-all duration-300"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full text-left p-6 flex items-center justify-between gap-4 cursor-pointer hover:bg-[#55E07E]/30"
+                  className="w-full text-left p-6 flex items-center justify-between gap-4 cursor-pointer hover:bg-[#76ABAE]/30"
                 >
-                  <span className="text-base sm:text-lg font-black uppercase tracking-tight text-[#161726]">
+                  <span className="text-base sm:text-lg font-black uppercase tracking-tight text-[#303841]">
                     {faq.q}
                   </span>
-                  <div className={`p-1.5 rounded-lg bg-[#55E07E] text-[#161726] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 bg-[#FF9D50]' : ''}`}>
+                  <div className={`p-1.5 rounded-lg bg-[#76ABAE] text-[#303841] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 bg-[#FF5722]' : ''}`}>
                     <ChevronDown size={18} />
                   </div>
                 </button>
                 {isOpen && (
-                  <div className="px-6 pb-6 pt-2 border-t border-[#1DCED8]/15 text-sm text-[#161726]/80 leading-relaxed font-normal">
+                  <div className="px-6 pb-6 pt-2 border-t border-[#76ABAE]/15 text-sm text-[#303841]/80 leading-relaxed font-normal">
                     {faq.a}
                   </div>
                 )}
@@ -84,24 +84,24 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
         </div>
 
         {/* Contact Banner */}
-        <div className="p-8 sm:p-10 bg-[#55E07E] rounded-[24px] border border-[#1DCED8]/30 text-center">
-          <h3 className="text-2xl font-black uppercase text-[#161726] mb-2">
+        <div className="p-8 sm:p-10 bg-[#76ABAE] rounded-[24px] border border-[#76ABAE]/30 text-center">
+          <h3 className="text-2xl font-black uppercase text-[#303841] mb-2">
             HAVE SPECIFIC CUSTOM QUESTIONS?
           </h3>
-          <p className="text-sm text-[#161726]/80 mb-6 font-medium">
+          <p className="text-sm text-[#303841]/80 mb-6 font-medium">
             Our wedding desk is available 24 hours daily. Connect with our senior wedding manager directly.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               type="button"
               onClick={onOpenInquiry}
-              className="px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FF9D50] hover:bg-[#FF9D50] hover:text-[#161726] transition-colors cursor-pointer shadow-md"
+              className="px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#303841] text-[#FF5722] hover:bg-[#FF5722] hover:text-[#303841] transition-colors cursor-pointer shadow-md"
             >
               BOOK CONSULTATION
             </button>
             <a
               href={`tel:${RESORT_CONTACT.primaryPhone}`}
-              className="px-6 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FFF9D8] text-[#161726] border border-[#1DCED8]/30 hover:bg-[#FF9D50] transition-colors"
+              className="px-6 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#F5F5F5] text-[#303841] border border-[#76ABAE]/30 hover:bg-[#FF5722] transition-colors"
             >
               Call: {RESORT_CONTACT.primaryPhone}
             </a>

@@ -30,14 +30,14 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
   // Fallback in the rare event the image cannot be displayed
   const renderFallback = () => (
     <div className="flex items-center gap-3">
-      <div className="w-10 h-10 rounded-full bg-[#FF9D50] border-2 border-[#161726] flex items-center justify-center font-bold text-sm text-[#161726]">
+      <div className="w-10 h-10 rounded-full bg-[#FF5722] border-2 border-[#303841] flex items-center justify-center font-bold text-sm text-[#303841]">
         SM
       </div>
       <div className="flex flex-col text-left">
-        <span className="text-lg font-black tracking-tighter text-[#161726] uppercase">
+        <span className="text-lg font-black tracking-tighter text-[#303841] uppercase">
           SHEESH MAHAL
         </span>
-        <span className="text-[10px] font-black tracking-[0.2em] text-[#FF9D50] uppercase -mt-0.5">
+        <span className="text-[10px] font-black tracking-[0.2em] text-[#FF5722] uppercase -mt-0.5">
           RESORT • PATNA
         </span>
       </div>
@@ -53,7 +53,7 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
       >
         <div className="relative flex items-center justify-center p-4">
           {/* Subtle golden & lavender ambient aura */}
-          <div className="absolute -inset-6 rounded-3xl bg-radial from-[#FF9D50]/20 via-[#FF9D50]/10 to-transparent blur-2xl pointer-events-none"></div>
+          <div className="absolute -inset-6 rounded-3xl bg-radial from-[#FF5722]/20 via-[#FF5722]/10 to-transparent blur-2xl pointer-events-none"></div>
 
           {!imgError ? (
             <img

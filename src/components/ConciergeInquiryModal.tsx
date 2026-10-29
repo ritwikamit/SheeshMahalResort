@@ -47,17 +47,17 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-[#161726]/80 backdrop-blur-md overflow-y-auto"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 lg:p-10 bg-[#303841]/80 backdrop-blur-md overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl max-h-[92dvh] flex flex-col bg-[#FFF9D8] text-[#161726] rounded-[20px] sm:rounded-[24px] shadow-2xl border border-[#1DCED8]/30 overflow-hidden my-auto"
+        className="relative w-full max-w-2xl max-h-[92dvh] flex flex-col bg-[#F5F5F5] text-[#303841] rounded-[20px] sm:rounded-[24px] shadow-2xl border border-[#76ABAE]/30 overflow-hidden my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top bar */}
-        <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#1DCED8]/20 bg-[#55E07E] shrink-0">
+        <div className="flex items-center justify-between px-4 sm:px-8 py-3.5 sm:py-5 border-b border-[#76ABAE]/20 bg-[#76ABAE] shrink-0">
           <div className="flex items-center gap-2">
-            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#161726]">
+            <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#303841]">
               SHEESH MAHAL RESORT · WEDDING DESK
             </span>
           </div>
@@ -65,7 +65,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#161726]/20 flex items-center justify-center hover:bg-[#161726] hover:text-[#FFF9D8] transition-colors cursor-pointer"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#303841]/20 flex items-center justify-center hover:bg-[#303841] hover:text-[#F5F5F5] transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X size={16} className="sm:w-[18px] sm:h-[18px]" />
@@ -77,16 +77,16 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
           {!isSubmitted ? (
             <form onSubmit={handleSubmit}>
               <div className="mb-6">
-                <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#1DCED8] block mb-1">
+                <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#76ABAE] block mb-1">
                   PATNA ROYAL WEDDING RESERVATIONS
                 </span>
-                <h3 className="text-3xl font-black uppercase tracking-tight text-[#161726]">
+                <h3 className="text-3xl font-black uppercase tracking-tight text-[#303841]">
                   CHECK WEDDING DATES
                 </h3>
-                <p className="font-cursive text-2xl sm:text-3xl text-[#1DCED8] mt-1 mb-2 font-normal">
+                <p className="font-cursive text-2xl sm:text-3xl text-[#76ABAE] mt-1 mb-2 font-normal">
                   Reserve Your Auspicious Wedding Muhurat
                 </p>
-                <p className="text-sm text-[#161726]/75 font-medium">
+                <p className="text-sm text-[#303841]/75 font-medium">
                   Direct connection with Sheesh Mahal Resort wedding managers. Open 24 hours daily.
                 </p>
               </div>
@@ -95,7 +95,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                 {/* Full name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#161726]/70 mb-2">
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#303841]/70 mb-2">
                       FAMILY / BRIDE / GROOM NAME *
                     </label>
                     <input
@@ -104,11 +104,11 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                       placeholder="e.g. Verma & Sharma Family"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#55E07E]/40 border border-[#1DCED8]/30 rounded-xl text-sm text-[#161726] focus:outline-none focus:border-[#FF9D50] transition-colors"
+                      className="w-full px-4 py-3 clay-inset px-4 py-3 text-sm text-[#303841] focus:outline-none focus:border-[#FF5722] transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#161726]/70 mb-2">
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#303841]/70 mb-2">
                       PHONE NUMBER (CALL & WHATSAPP) *
                     </label>
                     <input
@@ -117,7 +117,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#55E07E]/40 border border-[#1DCED8]/30 rounded-xl text-sm text-[#161726] focus:outline-none focus:border-[#FF9D50] transition-colors"
+                      className="w-full px-4 py-3 clay-inset px-4 py-3 text-sm text-[#303841] focus:outline-none focus:border-[#FF5722] transition-colors"
                     />
                   </div>
                 </div>
@@ -125,13 +125,13 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                 {/* Wedding Ritual Type & Venue Space */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#161726]/70 mb-2">
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#303841]/70 mb-2">
                       WEDDING CEREMONY TYPE
                     </label>
                     <select
                       value={formData.eventType}
                       onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#55E07E]/40 border border-[#1DCED8]/30 rounded-xl text-sm text-[#161726] focus:outline-none focus:border-[#FF9D50] transition-colors font-medium uppercase"
+                      className="w-full px-4 py-3 clay-inset px-4 py-3 text-sm text-[#303841] focus:outline-none focus:border-[#FF5722] transition-colors font-medium uppercase"
                     >
                       <option value="Grand Royal Wedding & Reception">Grand Royal Wedding & Reception</option>
                       <option value="Sacred Saat Phere & Vedic Mandap">Sacred Saat Phere & Vedic Mandap</option>
@@ -142,13 +142,13 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                     </select>
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#161726]/70 mb-2">
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#303841]/70 mb-2">
                       WEDDING VENUE PREFERENCE
                     </label>
                     <select
                       value={formData.spacePreference}
                       onChange={(e) => setFormData({ ...formData, spacePreference: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#55E07E]/40 border border-[#1DCED8]/30 rounded-xl text-sm text-[#161726] focus:outline-none focus:border-[#FF9D50] transition-colors font-medium uppercase"
+                      className="w-full px-4 py-3 clay-inset px-4 py-3 text-sm text-[#303841] focus:outline-none focus:border-[#FF5722] transition-colors font-medium uppercase"
                     >
                       <option value="THE SHEESH BANQUET (INDOOR)">THE SHEESH BANQUET (500-1200 GUESTS)</option>
                       <option value="SHAHI UTSAV LAWN (OPEN-AIR)">SHAHI UTSAV LAWN (800-2000 GUESTS)</option>
@@ -162,7 +162,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                 {/* Wedding Date & Guest Count */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#161726]/70 mb-2">
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#303841]/70 mb-2">
                       AUSPICIOUS WEDDING DATE *
                     </label>
                     <input
@@ -170,17 +170,17 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                       required
                       value={formData.eventDate}
                       onChange={(e) => setFormData({ ...formData, eventDate: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#55E07E]/40 border border-[#1DCED8]/30 rounded-xl text-sm text-[#161726] focus:outline-none focus:border-[#FF9D50] transition-colors font-medium"
+                      className="w-full px-4 py-3 clay-inset px-4 py-3 text-sm text-[#303841] focus:outline-none focus:border-[#FF5722] transition-colors font-medium"
                     />
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#161726]/70 mb-2">
+                    <label className="block text-[10px] font-black uppercase tracking-widest text-[#303841]/70 mb-2">
                       ESTIMATED WEDDING GUEST COUNT
                     </label>
                     <select
                       value={formData.guestCount}
                       onChange={(e) => setFormData({ ...formData, guestCount: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#55E07E]/40 border border-[#1DCED8]/30 rounded-xl text-sm text-[#161726] focus:outline-none focus:border-[#FF9D50] transition-colors font-medium"
+                      className="w-full px-4 py-3 clay-inset px-4 py-3 text-sm text-[#303841] focus:outline-none focus:border-[#FF5722] transition-colors font-medium"
                     >
                       <option value="200 - 400 Guests">200 - 400 Guests</option>
                       <option value="500 - 800 Guests">500 - 800 Guests</option>
@@ -191,33 +191,33 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                 </div>
 
                 {/* Wedding Logistics Toggles */}
-                <div className="p-4 bg-[#55E07E]/60 rounded-xl border border-[#1DCED8]/20 flex flex-wrap items-center justify-between gap-4">
-                  <label className="flex items-center gap-2 cursor-pointer text-xs font-bold uppercase tracking-wider text-[#161726]">
+                <div className="p-4 bg-[#76ABAE]/60 rounded-xl border border-[#76ABAE]/20 flex flex-wrap items-center justify-between gap-4">
+                  <label className="flex items-center gap-2 cursor-pointer text-xs font-bold uppercase tracking-wider text-[#303841]">
                     <input
                       type="checkbox"
                       checked={formData.cateringRequired}
                       onChange={(e) => setFormData({ ...formData, cateringRequired: e.target.checked })}
-                      className="accent-[#161726] w-4 h-4 cursor-pointer"
+                      className="accent-[#303841] w-4 h-4 cursor-pointer"
                     />
                     <span>Shahi Wedding Catering</span>
                   </label>
 
-                  <label className="flex items-center gap-2 cursor-pointer text-xs font-bold uppercase tracking-wider text-[#161726]">
+                  <label className="flex items-center gap-2 cursor-pointer text-xs font-bold uppercase tracking-wider text-[#303841]">
                     <input
                       type="checkbox"
                       checked={formData.customDecor}
                       onChange={(e) => setFormData({ ...formData, customDecor: e.target.checked })}
-                      className="accent-[#161726] w-4 h-4 cursor-pointer"
+                      className="accent-[#303841] w-4 h-4 cursor-pointer"
                     />
                     <span>Custom Mandap & Floral Decor</span>
                   </label>
 
-                  <label className="flex items-center gap-2 cursor-pointer text-xs font-bold uppercase tracking-wider text-[#161726]">
+                  <label className="flex items-center gap-2 cursor-pointer text-xs font-bold uppercase tracking-wider text-[#303841]">
                     <input
                       type="checkbox"
                       checked={formData.powerBackup}
                       onChange={(e) => setFormData({ ...formData, powerBackup: e.target.checked })}
-                      className="accent-[#161726] w-4 h-4 cursor-pointer"
+                      className="accent-[#303841] w-4 h-4 cursor-pointer"
                     />
                     <span>100% Baraat Power Backup</span>
                   </label>
@@ -225,7 +225,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
 
                 {/* Additional requirements */}
                 <div>
-                  <label className="block text-[10px] font-black uppercase tracking-widest text-[#161726]/70 mb-2">
+                  <label className="block text-[10px] font-black uppercase tracking-widest text-[#303841]/70 mb-2">
                     SPECIAL WEDDING / CATERING / BARAAT REQUESTS
                   </label>
                   <textarea
@@ -233,20 +233,20 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                     placeholder="E.g. Awadhi live counters, bridal room preparation timing, dhol procession arrangements..."
                     value={formData.specialNotes}
                     onChange={(e) => setFormData({ ...formData, specialNotes: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#55E07E]/40 border border-[#1DCED8]/30 rounded-xl text-sm text-[#161726] focus:outline-none focus:border-[#FF9D50] transition-colors"
+                    className="w-full px-4 py-3 clay-inset px-4 py-3 text-sm text-[#303841] focus:outline-none focus:border-[#FF5722] transition-colors"
                   ></textarea>
                 </div>
               </div>
 
               {/* Submit CTA */}
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#1DCED8]/20">
-                <div className="text-xs text-[#161726]/70 font-semibold">
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#76ABAE]/20">
+                <div className="text-xs text-[#303841]/70 font-semibold">
                   <span>Wedding Desk 24/7: {RESORT_CONTACT.primaryPhone}</span>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FF9D50] text-[#161726] hover:bg-[#161726] hover:text-[#FFF9D8] transition-all duration-300 shadow-md cursor-pointer"
+                  className="w-full sm:w-auto px-8 py-3.5 clay-btn-orange text-xs font-black tracking-widest uppercase cursor-pointer"
                 >
                   SUBMIT WEDDING INQUIRY
                 </button>
@@ -255,28 +255,28 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
           ) : (
             /* Confirmation State */
             <div className="text-center py-8">
-              <div className="w-14 h-14 rounded-2xl bg-[#FF9D50] text-[#161726] flex items-center justify-center mx-auto mb-6 shadow-md">
+              <div className="w-14 h-14 rounded-2xl bg-[#FF5722] text-[#303841] flex items-center justify-center mx-auto mb-6 shadow-md">
                 <CheckCircle2 size={32} />
               </div>
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#1DCED8] block mb-2">
+              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#76ABAE] block mb-2">
                 WEDDING DESK NOTIFIED
               </span>
-              <h3 className="text-3xl font-black uppercase tracking-tight text-[#161726] mb-1">
+              <h3 className="text-3xl font-black uppercase tracking-tight text-[#303841] mb-1">
                 WEDDING INQUIRY LOGGED
               </h3>
-              <p className="font-cursive text-2xl text-[#1DCED8] mb-3 font-normal">
+              <p className="font-cursive text-2xl text-[#76ABAE] mb-3 font-normal">
                 Congratulations! We Look Forward to Hosting Your Royal Wedding
               </p>
-              <p className="text-sm text-[#161726]/80 max-w-md mx-auto mb-6 font-medium">
+              <p className="text-sm text-[#303841]/80 max-w-md mx-auto mb-6 font-medium">
                 Thank you, {formData.name}. Our master wedding coordinator at Sheesh Mahal Resort has received your details for {formData.eventType} on {formData.eventDate}. We will connect with you within 30 minutes.
               </p>
 
               {/* Reference ID badge without typewriter font */}
-              <div className="p-4 bg-[#55E07E] border border-[#1DCED8]/30 rounded-xl inline-block mb-8">
-                <p className="text-[9px] font-black uppercase tracking-widest text-[#161726]/60 mb-1">
+              <div className="p-4 bg-[#76ABAE] border border-[#76ABAE]/30 rounded-xl inline-block mb-8">
+                <p className="text-[9px] font-black uppercase tracking-widest text-[#303841]/60 mb-1">
                   PATNA WEDDING REFERENCE
                 </p>
-                <p className="text-base font-black tracking-wider text-[#161726]">
+                <p className="text-base font-black tracking-wider text-[#303841]">
                   {bookingRef}
                 </p>
               </div>
@@ -295,7 +295,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#161726] text-[#FF9D50] hover:bg-[#FF9D50] hover:text-[#161726] transition-colors cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-black tracking-widest uppercase bg-[#303841] text-[#FF5722] hover:bg-[#FF5722] hover:text-[#303841] transition-colors cursor-pointer"
                 >
                   BACK TO WEDDING RESORT
                 </button>

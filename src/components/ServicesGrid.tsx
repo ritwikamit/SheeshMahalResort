@@ -26,27 +26,27 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
   return (
     <section
       id="amenities"
-      className="py-16 sm:py-24 lg:py-32 bg-[#55E07E]/40 text-[#161726] border-b border-[#1DCED8]/20 relative"
+      className="py-16 sm:py-24 lg:py-32 bg-[#76ABAE]/40 text-[#303841] border-b border-[#76ABAE]/20 relative"
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Section Header */}
         <RevealUp>
           <div className="mb-12 sm:mb-16 lg:mb-20">
             <div className="flex items-center gap-3 mb-3 sm:mb-4">
-              <span className="label-utility text-[#161726]/70">
+              <span className="label-utility text-[#303841]/70">
                 ROYAL WEDDING EXCELLENCE
               </span>
-              <span className="w-8 sm:w-10 h-[1px] bg-[#1DCED8]"></span>
+              <span className="w-8 sm:w-10 h-[1px] bg-[#76ABAE]"></span>
             </div>
 
             {/* Headline: 8xl font-size with cursive flourish */}
-            <h2 className="text-3xl sm:text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726]">
+            <h2 className="text-3xl sm:text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.85] text-[#303841]">
               WEDDING SERVICES
             </h2>
-            <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
+            <p className="font-cursive text-2xl sm:text-4xl text-[#76ABAE] mt-2 font-normal">
               Royal Wedding Hospitality & Flawless Execution
             </p>
-            <p className="mt-4 text-base sm:text-xl text-[#161726]/75 max-w-2xl font-medium">
+            <p className="mt-4 text-base sm:text-xl text-[#303841]/75 max-w-2xl font-medium">
               Every wedding ritual is backed by complete logistical mastery — in-house royal wedding banqueting, customisable mirror-work Mandap decor, continuous heavy-duty power backup for Baraat lighting, and dedicated bridal suites.
             </p>
           </div>
@@ -68,12 +68,12 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 border border-[#1DCED8]/30 bg-[#FFF9D8] divide-y md:divide-y-0 md:divide-x divide-[#1DCED8]/30 rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 border border-[#76ABAE]/30 bg-[#F5F5F5] divide-y md:divide-y-0 md:divide-x divide-[#76ABAE]/30 rounded-2xl overflow-hidden shadow-xl">
               {RESORT_SERVICES.map((service) => (
                 <div
                   key={service.number}
                   onClick={() => onSelectService(service)}
-                  className="group relative flex flex-col justify-between pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 px-6 sm:px-10 bg-[#FFF9D8] hover:bg-[#FF9D50] cursor-pointer transition-colors duration-1000"
+                  className="group relative flex flex-col justify-between pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 px-6 sm:px-10 bg-[#F5F5F5] hover:bg-[#FF5722] cursor-pointer transition-colors duration-1000"
                   style={{
                     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
@@ -81,20 +81,20 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
                   {/* Top header row: Number and Arrow icon */}
                   <div>
                     <div className="flex items-center justify-between mb-6 sm:mb-8">
-                      <span className="text-sm font-black tracking-widest text-[#161726]/50 group-hover:text-[#161726] transition-colors duration-1000">
+                      <span className="text-sm font-black tracking-widest text-[#303841]/50 group-hover:text-[#303841] transition-colors duration-1000">
                         {service.number}
                       </span>
-                      <div className="w-8 h-8 rounded-full border border-[#161726]/20 flex items-center justify-center opacity-40 group-hover:opacity-100 group-hover:border-[#161726] transition-all duration-700">
+                      <div className="w-8 h-8 rounded-full border border-[#303841]/20 flex items-center justify-center opacity-40 group-hover:opacity-100 group-hover:border-[#303841] transition-all duration-700">
                         <ArrowUpRight
                           size={16}
-                          className="text-[#161726] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500"
+                          className="text-[#303841] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500"
                         />
                       </div>
                     </div>
 
-                    {/* Icon: 4xl size, transitioning from #1DCED8 to #161726 on hover */}
+                    {/* Icon: 4xl size, transitioning from #76ABAE to #303841 on hover */}
                     <div
-                      className="mb-8 text-[#1DCED8] group-hover:text-[#161726] transition-colors duration-1000"
+                      className="mb-8 text-[#76ABAE] group-hover:text-[#303841] transition-colors duration-1000"
                       style={{
                         transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)'
                       }}
@@ -103,25 +103,25 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
                     </div>
 
                     {/* Card Title: h3 bold uppercase */}
-                    <h3 className="text-2xl font-black uppercase tracking-tight text-[#161726] mb-4">
+                    <h3 className="text-2xl font-black uppercase tracking-tight text-[#303841] mb-4">
                       {service.title}
                     </h3>
 
                     {/* Card Text: p small leading-relaxed */}
-                    <p className="text-sm text-[#161726]/80 leading-relaxed font-normal mb-8">
+                    <p className="text-sm text-[#303841]/80 leading-relaxed font-normal mb-8">
                       {service.description}
                     </p>
                   </div>
 
                   {/* Capability Bullet list */}
-                  <div className="pt-6 border-t border-[#161726]/10">
+                  <div className="pt-6 border-t border-[#303841]/10">
                     <ul className="space-y-2.5">
                       {service.capabilities.map((cap, i) => (
                         <li
                           key={i}
-                          className="text-xs font-bold tracking-wide text-[#161726]/80 group-hover:text-[#161726] flex items-center gap-2 transition-colors duration-700"
+                          className="text-xs font-bold tracking-wide text-[#303841]/80 group-hover:text-[#303841] flex items-center gap-2 transition-colors duration-700"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#1DCED8] group-hover:bg-[#161726] shrink-0"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#76ABAE] group-hover:bg-[#303841] shrink-0"></span>
                           <span>{cap}</span>
                         </li>
                       ))}

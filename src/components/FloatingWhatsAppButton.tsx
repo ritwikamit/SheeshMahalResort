@@ -36,12 +36,12 @@ export const FloatingWhatsAppButton: React.FC<FloatingWhatsAppButtonProps> = ({ 
 
         {/* Floating Tooltip Label */}
         <div
-          className={`hidden sm:block absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#161726] text-[#FFF9D8] text-[11px] font-black tracking-widest uppercase shadow-xl border border-[#1DCED8]/30 whitespace-nowrap pointer-events-none transition-all duration-200 ${
+          className={`hidden sm:block absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-[#303841] text-[#F5F5F5] text-[11px] font-black tracking-widest uppercase shadow-xl border border-[#76ABAE]/30 whitespace-nowrap pointer-events-none transition-all duration-200 ${
             isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'
           }`}
         >
           Chat on WhatsApp
-          <span className="block text-[9px] font-medium text-[#FF9D50]">24/7 Wedding Desk</span>
+          <span className="block text-[9px] font-medium text-[#FF5722]">24/7 Wedding Desk</span>
         </div>
       </a>
     </aside>

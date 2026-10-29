@@ -99,7 +99,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF9D8] text-[#161726] font-['League_Spartan',sans-serif] selection:bg-[#FF9D50] selection:text-[#161726]">
+    <div className="min-h-screen bg-[#F5F5F5] text-[#303841] font-['League_Spartan',sans-serif] selection:bg-[#FF5722] selection:text-[#303841]">
       {/* Minimal Loading Screen: Displays completely until ready, then fades out */}
       {isLoading && <LoadingScreen isFadingOut={isFadingOut} />}
 

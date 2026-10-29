@@ -32,27 +32,27 @@ export const CateringPage: React.FC<CateringPageProps> = ({ onOpenInquiry }) => 
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FFF9D8] text-[#161726]">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#F5F5F5] text-[#303841]">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#1DCED8]/20 mb-12 sm:mb-16">
-          <span className="label-utility text-[#161726]/70">
+        <div className="py-8 sm:py-12 border-b border-[#76ABAE]/20 mb-12 sm:mb-16">
+          <span className="label-utility text-[#303841]/70">
             IN-HOUSE ROYAL WEDDING BANQUETING
           </span>
-          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
+          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#303841] mt-2">
             SHAHI WEDDING CATERING
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
+          <p className="font-cursive text-2xl sm:text-4xl text-[#76ABAE] mt-2 font-normal">
             A Feast of Royal Flavors, Crafted with Devotion
           </p>
-          <p className="text-base sm:text-lg text-[#161726]/75 max-w-3xl mt-4 font-normal">
+          <p className="text-base sm:text-lg text-[#303841]/75 max-w-3xl mt-4 font-normal">
             At Sheesh Mahal Resort, we believe the wedding feast is the soul of hospitality. Our master chefs prepare lavish multi-course banquets using pure desi ghee, custom spice blends, and segregated pure vegetarian and gourmet kitchens.
           </p>
         </div>
 
         {/* Feature Split Banner */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center p-8 lg:p-12 bg-[#55E07E]/40 rounded-[28px] border border-[#1DCED8]/30 mb-20">
-          <div className="lg:col-span-6 rounded-[20px] overflow-hidden shadow-xl bg-[#161726]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center p-8 lg:p-12 bg-[#76ABAE]/40 rounded-[28px] border border-[#76ABAE]/30 mb-20">
+          <div className="lg:col-span-6 rounded-[20px] overflow-hidden shadow-xl bg-[#303841]">
             <LuxuryVisual
               src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1200&q=85"
               alt="Shahi royal wedding catering presentation at Sheesh Mahal Resort"
@@ -62,28 +62,28 @@ export const CateringPage: React.FC<CateringPageProps> = ({ onOpenInquiry }) => 
             />
           </div>
           <div className="lg:col-span-6">
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#1DCED8] block mb-2">
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#76ABAE] block mb-2">
               KITCHEN STANDARDS
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#161726] mb-4">
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-[#303841] mb-4">
               RIGOROUS HYGIENE & SEPARATE KITCHENS
             </h2>
             <div className="space-y-3.5 mb-6">
               <div className="flex items-start gap-3">
-                <ChefHat size={18} className="text-[#1DCED8] shrink-0 mt-0.5" />
-                <p className="text-xs text-[#161726]/85 font-semibold">
+                <ChefHat size={18} className="text-[#76ABAE] shrink-0 mt-0.5" />
+                <p className="text-xs text-[#303841]/85 font-semibold">
                   100% physically separated pure vegetarian kitchens with independent cooking vessels, preparation zones, and specialized Jain catering capabilities.
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <Flame size={18} className="text-[#1DCED8] shrink-0 mt-0.5" />
-                <p className="text-xs text-[#161726]/85 font-semibold">
+                <Flame size={18} className="text-[#76ABAE] shrink-0 mt-0.5" />
+                <p className="text-xs text-[#303841]/85 font-semibold">
                   Authentic copper and clay tandoors preparing piping hot breads in real-time as guests dine.
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <Award size={18} className="text-[#1DCED8] shrink-0 mt-0.5" />
-                <p className="text-xs text-[#161726]/85 font-semibold">
+                <Award size={18} className="text-[#76ABAE] shrink-0 mt-0.5" />
+                <p className="text-xs text-[#303841]/85 font-semibold">
                   Pre-wedding tasting sessions for the bride and groom's family to customize spices, sweetness, and course presentation.
                 </p>
               </div>
@@ -91,7 +91,7 @@ export const CateringPage: React.FC<CateringPageProps> = ({ onOpenInquiry }) => 
             <button
               type="button"
               onClick={onOpenInquiry}
-              className="px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FF9D50] text-[#161726] hover:bg-[#161726] hover:text-[#FFF9D8] transition-colors cursor-pointer shadow-md"
+              className="px-8 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase bg-[#FF5722] text-[#303841] hover:bg-[#303841] hover:text-[#F5F5F5] transition-colors cursor-pointer shadow-md"
             >
               REQUEST TASTING & MENU CARD
             </button>
@@ -102,25 +102,25 @@ export const CateringPage: React.FC<CateringPageProps> = ({ onOpenInquiry }) => 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
           {culinaryHighlights.map((cat, i) => (
             <RevealUp key={i} delay={i * 100}>
-              <div className="p-8 bg-[#FFF9D8] rounded-[24px] border border-[#1DCED8]/30 shadow-md h-full flex flex-col justify-between">
+              <div className="p-8 bg-[#F5F5F5] rounded-[24px] border border-[#76ABAE]/30 shadow-md h-full flex flex-col justify-between">
                 <div>
-                  <span className="text-xs font-bold tracking-wider text-[#1DCED8] mb-2 block">
+                  <span className="text-xs font-bold tracking-wider text-[#76ABAE] mb-2 block">
                     COURSE 0{i + 1}
                   </span>
-                  <h3 className="text-2xl font-black uppercase tracking-tight text-[#161726] mb-3">
+                  <h3 className="text-2xl font-black uppercase tracking-tight text-[#303841] mb-3">
                     {cat.title}
                   </h3>
-                  <p className="text-xs text-[#161726]/80 leading-relaxed mb-6 font-normal">
+                  <p className="text-xs text-[#303841]/80 leading-relaxed mb-6 font-normal">
                     {cat.description}
                   </p>
                   
-                  <div className="space-y-2 pt-4 border-t border-[#1DCED8]/20">
-                    <p className="text-[10px] font-black uppercase tracking-wider text-[#161726]/60 mb-2">
+                  <div className="space-y-2 pt-4 border-t border-[#76ABAE]/20">
+                    <p className="text-[10px] font-black uppercase tracking-wider text-[#303841]/60 mb-2">
                       SIGNATURE DELICACIES:
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {cat.items.map((item, idx) => (
-                        <span key={idx} className="text-xs font-bold bg-[#55E07E] text-[#161726] px-3 py-1 rounded-md border border-[#1DCED8]/20">
+                        <span key={idx} className="text-xs font-bold bg-[#76ABAE] text-[#303841] px-3 py-1 rounded-md border border-[#76ABAE]/20">
                           {item}
                         </span>
                       ))}

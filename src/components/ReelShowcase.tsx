@@ -148,21 +148,21 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
   const reelHighlights = [
     {
       title: 'STARLIT BARAAT PROCESSION',
-      icon: <Flame className="w-8 h-8 text-[#FF9D50]" strokeWidth={1.5} />,
+      icon: <Flame className="w-8 h-8 text-[#FF5722]" strokeWidth={1.5} />,
       cursiveTag: 'High-Energy Grand Arrival',
       badge: 'BARAAT LAWN',
       description: 'Starlit driveway with traditional dhol beats, imperial welcome gates, and royal vintage carriage processions.'
     },
     {
       title: 'REVOLVING VARMALA STAGE',
-      icon: <Sparkles className="w-8 h-8 text-[#1DCED8]" strokeWidth={1.5} />,
+      icon: <Sparkles className="w-8 h-8 text-[#76ABAE]" strokeWidth={1.5} />,
       cursiveTag: 'Cinematic Garland Exchange',
       badge: 'VARMALA STAGE',
       description: 'Dramatic revolving stage synchronised with cold pyrotechnics, starlit smoke effects, and fragrant marigold showers.'
     },
     {
       title: 'SACRED VEDIC MANDAP',
-      icon: <SunMedium className="w-8 h-8 text-[#55E07E]" strokeWidth={1.5} />,
+      icon: <SunMedium className="w-8 h-8 text-[#76ABAE]" strokeWidth={1.5} />,
       cursiveTag: 'Seven Eternal Vows',
       badge: 'SAAT PHERE',
       description: 'Consecrated floral mandap with authentic Vedic havan chanting, holy fire rites, and blessings under starry skies.'
@@ -172,7 +172,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
   return (
     <section
       id="wedding-reel"
-      className="py-16 sm:py-24 lg:py-32 bg-[#55E07E]/40 text-[#161726] border-b border-[#1DCED8]/20 relative overflow-hidden"
+      className="py-16 sm:py-24 lg:py-32 bg-[#76ABAE]/40 text-[#303841] border-b border-[#76ABAE]/20 relative overflow-hidden"
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative">
         
@@ -180,21 +180,21 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
         <RevealUp>
           <div className="mb-10 sm:mb-14 lg:mb-16">
             <div className="flex items-center gap-3 mb-3 sm:mb-4">
-              <span className="label-utility text-[#161726]/70">
+              <span className="label-utility text-[#303841]/70">
                 REAL CELEBRATIONS IN MOTION
               </span>
-              <span className="w-8 sm:w-10 h-[1px] bg-[#1DCED8]"></span>
+              <span className="w-8 sm:w-10 h-[1px] bg-[#76ABAE]"></span>
             </div>
 
-            <h2 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726]">
+            <h2 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#303841]">
               WITNESS THE ROYAL GRANDEUR
             </h2>
 
-            <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
+            <p className="font-cursive text-2xl sm:text-4xl text-[#76ABAE] mt-2 font-normal">
               Authentic Wedding Celebrations in Motion
             </p>
 
-            <p className="mt-4 text-base sm:text-xl text-[#161726]/75 max-w-3xl font-medium">
+            <p className="mt-4 text-base sm:text-xl text-[#303841]/75 max-w-3xl font-medium">
               Step inside an authentic royal wedding celebrated at Sheesh Mahal Resort. From majestic starlit Baraats to emotional Saat Phere under consecrated floral Mandaps — experience the pulse of Patna’s finest wedding sanctuary.
             </p>
           </div>
@@ -218,7 +218,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
             </div>
 
             {/* The Medium-Sized Landscape Video Card */}
-            <div className="relative rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-2xl border sm:border-2 border-[#1DCED8]/30 group bg-[#161726]">
+            <div className="relative rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-2xl border sm:border-2 border-[#76ABAE]/30 group bg-[#303841]">
               
               {/* Landscape 16:9 Aspect Ratio Frame */}
               <div
@@ -248,7 +248,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                   
                   {/* Left: Sheesh Mahal Live Pill */}
                   <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[9px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase truncate max-w-[55%] sm:max-w-none">
-                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#FF9D50] animate-pulse shrink-0" />
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[#FF5722] animate-pulse shrink-0" />
                     <span className="truncate">SHEESH MAHAL FILM</span>
                   </div>
 
@@ -260,7 +260,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                     className={`flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-xl backdrop-blur-md shrink-0 ${
                       isMuted
                         ? 'bg-black/70 text-white hover:bg-black/90 border border-white/30 hover:border-white'
-                        : 'bg-[#FF9D50] text-[#161726] hover:bg-[#FFF9D8] border border-[#FF9D50] shadow-[#FF9D50]/40'
+                        : 'bg-[#FF5722] text-[#303841] hover:bg-[#F5F5F5] border border-[#FF5722] shadow-[#FF5722]/40'
                     }`}
                   >
                     {isMuted ? (
@@ -270,8 +270,8 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                       </>
                     ) : (
                       <>
-                        <Volume2 size={14} className="sm:w-4 sm:h-4 text-[#161726] animate-pulse" />
-                        <span className="text-[#161726]">AUDIO ON</span>
+                        <Volume2 size={14} className="sm:w-4 sm:h-4 text-[#303841] animate-pulse" />
+                        <span className="text-[#303841]">AUDIO ON</span>
                       </>
                     )}
                   </button>
@@ -283,8 +283,8 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                     onClick={togglePlay}
                     className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex flex-col items-center justify-center z-30 cursor-pointer transition-all"
                   >
-                    <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-[#FF9D50] text-[#161726] flex items-center justify-center shadow-2xl shadow-[#FF9D50]/50 transform hover:scale-110 transition-transform">
-                      <Play size={26} className="ml-1 fill-[#161726] sm:w-8 sm:h-8" />
+                    <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full clay-btn-orange text-white flex items-center justify-center transform hover:scale-110 transition-transform">
+                      <Play size={26} className="ml-1 fill-[#303841] sm:w-8 sm:h-8" />
                     </div>
                     <span className="mt-2.5 sm:mt-3 text-[9px] sm:text-xs font-black uppercase tracking-widest text-white bg-black/75 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-white/20 shadow-lg">
                       TAP TO PLAY
@@ -296,7 +296,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                 {showPlayStateFlash && isPlaying && (
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 transition-opacity">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-black/65 backdrop-blur-md flex items-center justify-center text-white border border-white/20 shadow-2xl">
-                      <Play size={24} className="ml-1 text-[#FF9D50] sm:w-7 sm:h-7" />
+                      <Play size={24} className="ml-1 text-[#FF5722] sm:w-7 sm:h-7" />
                     </div>
                   </div>
                 )}
@@ -307,7 +307,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                   {/* Video Title & Location */}
                   <div className="flex items-center justify-between text-white drop-shadow mb-2 sm:mb-3">
                     <div>
-                      <p className="font-cursive text-base sm:text-2xl text-[#FF9D50]">
+                      <p className="font-cursive text-base sm:text-2xl text-[#FF5722]">
                         The Royal Nuptials
                       </p>
                       <p className="text-[10px] sm:text-sm font-bold tracking-tight uppercase">
@@ -338,7 +338,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                     className="relative w-full h-1.5 bg-white/25 rounded-full cursor-pointer overflow-hidden group/bar"
                   >
                     <div
-                      className="h-full bg-gradient-to-r from-[#1DCED8] via-[#FF9D50] to-[#FF9D50] rounded-full relative transition-[width] duration-100"
+                      className="h-full bg-gradient-to-r from-[#76ABAE] via-[#FF5722] to-[#FF5722] rounded-full relative transition-[width] duration-100"
                       style={{ width: `${progress}%` }}
                     >
                       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md opacity-0 group-hover/bar:opacity-100 transition-opacity" />
@@ -352,7 +352,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                       <button
                         type="button"
                         onClick={toggleAudio}
-                        className="text-[#FF9D50] font-bold hover:underline cursor-pointer"
+                        className="text-[#FF5722] font-bold hover:underline cursor-pointer"
                       >
                         {isMuted ? 'UNMUTE AUDIO' : 'MUTED'}
                       </button>
@@ -371,7 +371,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                   <button
                     type="button"
                     onClick={togglePlay}
-                    className="flex items-center gap-1.5 text-white hover:text-[#FF9D50] cursor-pointer"
+                    className="flex items-center gap-1.5 text-white hover:text-[#FF5722] cursor-pointer"
                   >
                     {isPlaying ? <Pause size={14} /> : <Play size={14} />}
                     <span>{isPlaying ? 'PAUSE' : 'PLAY'}</span>
@@ -384,7 +384,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                     type="button"
                     onClick={toggleAudio}
                     className={`flex items-center gap-1.5 cursor-pointer transition-colors ${
-                      isMuted ? 'text-white/70 hover:text-white' : 'text-[#FF9D50]'
+                      isMuted ? 'text-white/70 hover:text-white' : 'text-[#FF5722]'
                     }`}
                   >
                     {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
@@ -392,8 +392,8 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                   </button>
                 </div>
 
-                <div className="flex items-center gap-2 text-[#1DCED8]">
-                  <MapPin size={13} className="text-[#FF9D50]" />
+                <div className="flex items-center gap-2 text-[#76ABAE]">
+                  <MapPin size={13} className="text-[#FF5722]" />
                   <span className="text-[10px] font-mono tracking-widest uppercase">
                     PATNA 800011
                   </span>
@@ -408,36 +408,36 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
           {reelHighlights.map((item, idx) => (
             <RevealUp key={idx} delay={idx * 100}>
-              <div className="p-8 sm:p-10 bg-[#FFF9D8] rounded-[24px] border border-[#1DCED8]/30 h-full flex flex-col justify-between group hover:border-[#FF9D50] transition-all duration-700 shadow-sm hover:shadow-md">
+              <div className="p-8 sm:p-10 clay-card h-full flex flex-col justify-between group hover:border-[#FF5722]/50 transition-all duration-500">
                 <div>
                   <div className="flex items-center justify-between mb-5 sm:mb-6">
-                    <div className="p-3 bg-[#55E07E] rounded-xl border border-[#1DCED8]/20">
+                    <div className="p-3 bg-[#76ABAE] rounded-xl border border-[#76ABAE]/20">
                       {item.icon}
                     </div>
-                    <span className="text-[9px] font-black tracking-widest uppercase bg-[#161726] text-[#FF9D50] px-2.5 py-1 rounded-md">
+                    <span className="text-[9px] font-black tracking-widest uppercase bg-[#303841] text-[#FF5722] px-2.5 py-1 rounded-md">
                       {item.badge}
                     </span>
                   </div>
 
-                  <p className="font-cursive text-2xl text-[#1DCED8] mb-1 font-normal">
+                  <p className="font-cursive text-2xl text-[#76ABAE] mb-1 font-normal">
                     {item.cursiveTag}
                   </p>
-                  <h3 className="text-xl font-black uppercase tracking-tight text-[#161726] mb-3">
+                  <h3 className="text-xl font-black uppercase tracking-tight text-[#303841] mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-[#161726]/80 leading-relaxed font-normal">
+                  <p className="text-sm text-[#303841]/80 leading-relaxed font-normal">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-[#1DCED8]/15 mt-6 flex items-center justify-between">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-[#161726]/60">
+                <div className="pt-6 border-t border-[#76ABAE]/15 mt-6 flex items-center justify-between">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#303841]/60">
                     4K LIVE CAPTURE
                   </span>
                   <button
                     type="button"
                     onClick={onOpenInquiry}
-                    className="text-xs font-black uppercase tracking-wider text-[#1DCED8] hover:text-[#161726] transition-colors cursor-pointer"
+                    className="text-xs font-black uppercase tracking-wider text-[#76ABAE] hover:text-[#303841] transition-colors cursor-pointer"
                   >
                     INQUIRE DATES →
                   </button>
@@ -449,9 +449,9 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
 
         {/* Bottom Call to Action Bar */}
         <RevealUp delay={200}>
-          <div className="p-6 sm:p-10 rounded-[24px] bg-[#161726] text-[#FFF9D8] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-[#1DCED8]/30">
+          <div className="p-6 sm:p-10 clay-card-dark text-[#F5F5F5] flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <p className="font-cursive text-2xl sm:text-3xl text-[#FF9D50]">
+              <p className="font-cursive text-2xl sm:text-3xl text-[#FF5722]">
                 Plan Your Royal Wedding At Sheesh Mahal
               </p>
               <p className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white/80 mt-1">
@@ -462,7 +462,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
             <button
               type="button"
               onClick={onOpenInquiry}
-              className="inline-flex items-center gap-3 px-6 py-3.5 bg-[#FF9D50] text-[#161726] font-black text-xs sm:text-sm uppercase tracking-[0.2em] rounded-md hover:bg-[#FFF9D8] transition-colors shadow-lg shadow-[#FF9D50]/20 cursor-pointer shrink-0"
+              className="inline-flex items-center gap-3 px-6 py-3.5 clay-btn-orange font-black text-xs sm:text-sm uppercase tracking-[0.2em] cursor-pointer shrink-0"
             >
               <Calendar size={16} />
               <span>BOOK YOUR WEDDING DATE</span>

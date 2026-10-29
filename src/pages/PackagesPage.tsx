@@ -59,20 +59,20 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FFF9D8] text-[#161726]">
+    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#F5F5F5] text-[#303841]">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#1DCED8]/20 mb-12 sm:mb-16">
-          <span className="label-utility text-[#161726]/70">
+        <div className="py-8 sm:py-12 border-b border-[#76ABAE]/20 mb-12 sm:mb-16">
+          <span className="label-utility text-[#303841]/70">
             TRANSPARENT CURATED PACKAGES
           </span>
-          <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#161726] mt-2">
+          <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#303841] mt-2">
             WEDDING PACKAGES
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#1DCED8] mt-2 font-normal">
+          <p className="font-cursive text-2xl sm:text-4xl text-[#76ABAE] mt-2 font-normal">
             Designed for Seamless Royal Nuptials in Patna
           </p>
-          <p className="text-base sm:text-lg text-[#161726]/75 max-w-3xl mt-4 font-normal">
+          <p className="text-base sm:text-lg text-[#303841]/75 max-w-3xl mt-4 font-normal">
             Whether you envision a sacred Vedic ceremony for close family or a monumental 2,000-guest celebration under starry skies, our comprehensive packages combine venue spaces, master catering, and decor.
           </p>
         </div>
@@ -84,60 +84,60 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
               <div
                 className={`p-6 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[28px] border h-full flex flex-col justify-between transition-all duration-300 ${
                   pkg.popular
-                    ? 'bg-[#FFF9D8] border-[#FF9D50] ring-2 ring-[#FF9D50] shadow-2xl relative'
-                    : 'bg-[#FFF9D8] border-[#1DCED8]/30 shadow-lg'
+                    ? 'bg-[#F5F5F5] border-[#FF5722] ring-2 ring-[#FF5722] shadow-2xl relative'
+                    : 'bg-[#F5F5F5] border-[#76ABAE]/30 shadow-lg'
                 }`}
               >
                 <div>
                   {pkg.popular && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#FF9D50] text-[#161726] px-4 py-1 rounded-md text-[10px] font-black uppercase tracking-widest shadow">
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#FF5722] text-[#303841] px-4 py-1 rounded-md text-[10px] font-black uppercase tracking-widest shadow">
                       MOST POPULAR WEDDING CHOICE
                     </div>
                   )}
 
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-black tracking-widest uppercase bg-[#55E07E] text-[#161726] px-3 py-1 rounded-md">
+                    <span className="text-[10px] font-black tracking-widest uppercase bg-[#76ABAE] text-[#303841] px-3 py-1 rounded-md">
                       {pkg.badge}
                     </span>
-                    <span className="text-xs font-bold tracking-wider text-[#1DCED8]">
+                    <span className="text-xs font-bold tracking-wider text-[#76ABAE]">
                       {pkg.capacity}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl font-black uppercase tracking-tight text-[#161726] mb-1">
+                  <h3 className="text-2xl font-black uppercase tracking-tight text-[#303841] mb-1">
                     {pkg.name}
                   </h3>
-                  <p className="text-xs text-[#161726]/70 font-medium mb-6">
+                  <p className="text-xs text-[#303841]/70 font-medium mb-6">
                     {pkg.tagline}
                   </p>
 
-                  <div className="p-3 bg-[#55E07E]/50 rounded-xl border border-[#1DCED8]/20 mb-6">
-                    <p className="text-[10px] font-black uppercase tracking-wider text-[#1DCED8]">
+                  <div className="p-3 bg-[#76ABAE]/50 rounded-xl border border-[#76ABAE]/20 mb-6">
+                    <p className="text-[10px] font-black uppercase tracking-wider text-[#76ABAE]">
                       INCLUDED VENUES
                     </p>
-                    <p className="text-xs font-bold text-[#161726]">
+                    <p className="text-xs font-bold text-[#303841]">
                       {pkg.venue}
                     </p>
                   </div>
 
                   <ul className="space-y-3 mb-8">
                     {pkg.inclusions.map((inc, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-xs text-[#161726] font-semibold">
-                        <CheckCircle2 size={15} className="text-[#1DCED8] shrink-0 mt-0.5" />
+                      <li key={idx} className="flex items-start gap-2.5 text-xs text-[#303841] font-semibold">
+                        <CheckCircle2 size={15} className="text-[#76ABAE] shrink-0 mt-0.5" />
                         <span>{inc}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="pt-6 border-t border-[#1DCED8]/20">
+                <div className="pt-6 border-t border-[#76ABAE]/20">
                   <button
                     type="button"
                     onClick={onOpenInquiry}
                     className={`w-full py-3.5 rounded-xl text-xs font-black tracking-widest uppercase transition-colors cursor-pointer shadow-md ${
                       pkg.popular
-                        ? 'bg-[#FF9D50] text-[#161726] hover:bg-[#161726] hover:text-[#FFF9D8]'
-                        : 'bg-[#161726] text-[#FF9D50] hover:bg-[#1DCED8] hover:text-[#161726]'
+                        ? 'bg-[#FF5722] text-[#303841] hover:bg-[#303841] hover:text-[#F5F5F5]'
+                        : 'bg-[#303841] text-[#FF5722] hover:bg-[#76ABAE] hover:text-[#303841]'
                     }`}
                   >
                     INQUIRE FOR THIS PACKAGE

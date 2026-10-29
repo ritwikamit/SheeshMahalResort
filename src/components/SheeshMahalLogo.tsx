@@ -54,28 +54,23 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
     </div>
   );
 
-  // Variant: Loading Screen (Centered with gentle royal glow)
+  // Variant: Loading Screen (Pure transparent logo, no background box as requested)
   if (variant === 'loading') {
     return (
       <div
         className={`flex flex-col items-center text-center select-none ${className}`}
         onClick={onClick}
       >
-        <div className="relative flex items-center justify-center p-4">
-          {/* Subtle golden & lavender ambient aura */}
-          <div className="absolute -inset-6 rounded-3xl bg-radial from-[#E88A1A]/20 via-[#E88A1A]/10 to-transparent blur-2xl pointer-events-none"></div>
-
-          {!imgError ? (
-            <img
-              src={headerLogoSrc}
-              alt="Sheesh Mahal Resort Palace Logo"
-              onError={() => handleImgError(false)}
-              className="relative z-10 w-[300px] sm:w-[420px] md:w-[500px] max-w-[88vw] h-auto object-contain drop-shadow-md transition-transform duration-700 hover:scale-105"
-            />
-          ) : (
-            renderFallback()
-          )}
-        </div>
+        {!imgError ? (
+          <img
+            src={headerLogoSrc}
+            alt="Sheesh Mahal Resort Palace Logo"
+            onError={() => handleImgError(false)}
+            className="w-[280px] sm:w-[380px] md:w-[460px] max-w-[85vw] h-auto object-contain drop-shadow-[0_8px_25px_rgba(0,0,0,0.3)] transition-transform duration-700 hover:scale-105"
+          />
+        ) : (
+          renderFallback()
+        )}
       </div>
     );
   }

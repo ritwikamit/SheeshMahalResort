@@ -32,59 +32,64 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
   const [duration, setDuration] = useState(35);
   const [showPlayStateFlash, setShowPlayStateFlash] = useState(false);
 
-  // Autoplay & viewport-triggered playback lifecycle
+  // Robust autoplay and scroll-triggered playback lifecycle
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     video.defaultMuted = true;
-    video.muted = true;
+    video.muted = isMuted;
     video.playsInline = true;
 
     const playVideo = () => {
-      video
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => setIsPlaying(false));
-    };
-
-    const pauseVideo = () => {
-      video.pause();
-      setIsPlaying(false);
-    };
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            playVideo();
-          } else {
-            pauseVideo();
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(video);
-
-    const onUserGesture = () => {
-      if (video.paused && observer) {
-        // Only if intersecting
-        const rect = video.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          playVideo();
-        }
+      if (!video) return;
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise
+          .then(() => setIsPlaying(true))
+          .catch(() => {
+            // Autoplay restricted until interaction
+          });
       }
     };
-    window.addEventListener('click', onUserGesture, { once: true });
-    window.addEventListener('touchstart', onUserGesture, { once: true });
+
+    // Attempt playback immediately
+    playVideo();
+
+    // Observer to play when user scrolls to section
+    let observer: IntersectionObserver | null = null;
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              playVideo();
+            }
+          });
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(video);
+    }
+
+    // Unmute or play on first user interaction
+    const onUserGesture = () => {
+      if (video && video.paused) {
+        playVideo();
+      }
+    };
+
+    ['touchstart', 'click', 'scroll', 'pointerdown'].forEach((evt) => {
+      window.addEventListener(evt, onUserGesture, { once: true, passive: true });
+    });
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener('click', onUserGesture);
-      window.removeEventListener('touchstart', onUserGesture);
+      if (observer) observer.disconnect();
+      ['touchstart', 'click', 'scroll', 'pointerdown'].forEach((evt) => {
+        window.removeEventListener(evt, onUserGesture);
+      });
     };
-  }, []);
+  }, [isMuted]);
 
   const handleTimeUpdate = () => {
     if (!videoRef.current) return;
@@ -285,7 +290,8 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                       loop
                       muted={isMuted}
                       playsInline
-                      preload="metadata"
+                      preload="auto"
+                      onLoadedData={(e) => { e.currentTarget.muted = isMuted; e.currentTarget.play().catch(() => {}); }}
                       onPlay={() => setIsPlaying(true)}
                       onPause={() => setIsPlaying(false)}
                       onTimeUpdate={handleTimeUpdate}

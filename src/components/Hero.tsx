@@ -12,78 +12,66 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
   const cardVideoRef = useRef<HTMLVideoElement>(null);
   const bgVideoRef = useRef<HTMLVideoElement>(null);
 
-  // Synchronize both hero background video and card box video to play in exact lockstep
-  // and pause automatically when scrolled out of view to ensure 60fps smooth scrolling
+  // Robust, foolproof autoplay engine for both background and foreground hero videos
   useEffect(() => {
     const bg = bgVideoRef.current;
     const card = cardVideoRef.current;
-    const section = heroSectionRef.current;
-    if (!bg || !card) return;
 
-    // Enforce muted & inline playback for browser autoplay policies
-    bg.defaultMuted = true;
-    bg.muted = true;
-    bg.playsInline = true;
-
-    card.defaultMuted = true;
-    card.muted = true;
-    card.playsInline = true;
-
-    const playBothInSync = () => {
-      Promise.all([bg.play(), card.play()]).catch(() => {});
+    const startVideo = (vid: HTMLVideoElement | null) => {
+      if (!vid) return;
+      vid.defaultMuted = true;
+      vid.muted = true;
+      vid.playsInline = true;
+      const playPromise = vid.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay blocked: will auto-resume on first interaction
+        });
+      }
     };
 
-    const pauseBoth = () => {
-      bg.pause();
-      card.pause();
+    const playAll = () => {
+      startVideo(bg);
+      startVideo(card);
     };
 
-    playBothInSync();
+    // Immediate start attempt
+    playAll();
 
-    // Pause when hero is scrolled out of viewport
-    let observer: IntersectionObserver | null = null;
-    if (section && 'IntersectionObserver' in window) {
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              playBothInSync();
-            } else {
-              pauseBoth();
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(section);
+    // Secondary start when metadata is ready
+    const handleBgMeta = () => startVideo(bg);
+    const handleCardMeta = () => startVideo(card);
+
+    if (bg) {
+      bg.addEventListener('loadedmetadata', handleBgMeta);
+      bg.addEventListener('canplay', handleBgMeta);
+    }
+    if (card) {
+      card.addEventListener('loadedmetadata', handleCardMeta);
+      card.addEventListener('canplay', handleCardMeta);
     }
 
-    // Prevent drift: resync card video to background video if discrepancy exceeds 0.12s
-    const handleSync = () => {
-      if (bg && card && !bg.paused && !card.paused) {
-        const drift = Math.abs(bg.currentTime - card.currentTime);
-        if (drift > 0.12) {
-          card.currentTime = bg.currentTime;
-        }
-      }
+    // Browser interaction unlock: instantly plays videos on first touch, click, scroll or mousemove
+    const handleInteraction = () => {
+      playAll();
     };
 
-    bg.addEventListener('timeupdate', handleSync, { passive: true });
-
-    const onUserTouch = () => {
-      if (bg.paused || card.paused) {
-        playBothInSync();
-      }
-    };
-
-    window.addEventListener('click', onUserTouch, { once: true });
-    window.addEventListener('touchstart', onUserTouch, { once: true });
+    ['touchstart', 'click', 'scroll', 'pointerdown', 'keydown'].forEach((evt) => {
+      window.addEventListener(evt, handleInteraction, { once: true, passive: true });
+    });
 
     return () => {
-      if (observer) observer.disconnect();
-      bg.removeEventListener('timeupdate', handleSync);
-      window.removeEventListener('click', onUserTouch);
-      window.removeEventListener('touchstart', onUserTouch);
+      if (bg) {
+        bg.removeEventListener('loadedmetadata', handleBgMeta);
+        bg.removeEventListener('canplay', handleBgMeta);
+      }
+      if (card) {
+        card.removeEventListener('loadedmetadata', handleCardMeta);
+        card.removeEventListener('canplay', handleCardMeta);
+      }
+      ['touchstart', 'click', 'scroll', 'pointerdown', 'keydown'].forEach((evt) => {
+        window.removeEventListener(evt, handleInteraction);
+      });
     };
   }, []);
 
@@ -101,7 +89,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
+          onLoadedData={(e) => { e.currentTarget.muted = true; e.currentTarget.play().catch(() => {}); }}
           className="w-full h-full object-cover object-center scale-105 filter blur-[5px] sm:blur-[6px] transition-all"
         >
           <source src="/videos/GeminiHero.mp4" type="video/mp4" />
@@ -179,7 +168,8 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                   loop
                   muted
                   playsInline
-                  preload="metadata"
+                  preload="auto"
+                  onLoadedData={(e) => { e.currentTarget.muted = true; e.currentTarget.play().catch(() => {}); }}
                   className="w-full h-full object-cover object-center scale-100"
                 >
                   <source src="/videos/GeminiHero.mp4" type="video/mp4" />
@@ -189,7 +179,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
 
                 {/* Discreet caption tag inside bottom */}
-                <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 flex items-center justify-between text-[#1D261E] z-20 pointer-events-none drop-shadow-md">
+                <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 flex items-center justify-between text-white z-20 pointer-events-none drop-shadow-md">
                   <div>
                     <p className="font-cursive text-base sm:text-2xl text-[#E88A1A] tracking-wide">
                       The Wedding Palace
@@ -199,7 +189,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-[8px] sm:text-[10px] tracking-wider sm:tracking-widest uppercase font-bold text-[#1D261E] bg-black/75 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border border-white/10">
+                    <span className="text-[8px] sm:text-[10px] tracking-wider sm:tracking-widest uppercase font-bold text-white bg-black/75 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md border border-white/10">
                       UP TO 2000 GUESTS
                     </span>
                   </div>
@@ -230,33 +220,33 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
         <div className="animate-marquee flex items-center gap-6 sm:gap-8 whitespace-nowrap text-[10px] sm:text-xs font-black tracking-[0.22em] uppercase text-white">
           {/* Continuous Loop Set 1 (Clean text without cylinders) */}
           <div className="flex items-center gap-8 sm:gap-12 shrink-0">
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>CUSTOM MANDAP DECOR</span>
+            <span className="flex items-center gap-2.5 font-black">CUSTOM MANDAP DECOR</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>BARAAT WELCOME CORRIDOR</span>
+            <span className="flex items-center gap-2.5 font-black">BARAAT WELCOME CORRIDOR</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>100% POWER BACKUP</span>
+            <span className="flex items-center gap-2.5 font-black">100% POWER BACKUP</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>LUXURY BRIDAL SUITES</span>
+            <span className="flex items-center gap-2.5 font-black">LUXURY BRIDAL SUITES</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>AIR-CONDITIONED BANQUET</span>
+            <span className="flex items-center gap-2.5 font-black">AIR-CONDITIONED BANQUET</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>SPRAWLING STARLIT LAWNS</span>
+            <span className="flex items-center gap-2.5 font-black">SPRAWLING STARLIT LAWNS</span>
             <span className="text-white/80 text-xs">✦</span>
           </div>
 
           {/* Continuous Loop Set 2 (Seamless Infinite Duplicate without cylinders) */}
           <div className="flex items-center gap-8 sm:gap-12 shrink-0" aria-hidden="true">
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>CUSTOM MANDAP DECOR</span>
+            <span className="flex items-center gap-2.5 font-black">CUSTOM MANDAP DECOR</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>BARAAT WELCOME CORRIDOR</span>
+            <span className="flex items-center gap-2.5 font-black">BARAAT WELCOME CORRIDOR</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>100% POWER BACKUP</span>
+            <span className="flex items-center gap-2.5 font-black">100% POWER BACKUP</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>LUXURY BRIDAL SUITES</span>
+            <span className="flex items-center gap-2.5 font-black">LUXURY BRIDAL SUITES</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>AIR-CONDITIONED BANQUET</span>
+            <span className="flex items-center gap-2.5 font-black">AIR-CONDITIONED BANQUET</span>
             <span className="text-white/80 text-xs">✦</span>
-            <span className="flex items-center gap-2.5 font-black"><span className="w-2 h-2 rounded-full bg-white"></span>SPRAWLING STARLIT LAWNS</span>
+            <span className="flex items-center gap-2.5 font-black">SPRAWLING STARLIT LAWNS</span>
             <span className="text-white/80 text-xs">✦</span>
           </div>
         </div>

@@ -14,13 +14,11 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ isFadingOut = fals
         isFadingOut ? 'opacity-0 pointer-events-none scale-105' : 'opacity-100'
       }`}
     >
-      <div className="flex flex-col items-center gap-6 text-center select-none animate-in fade-in zoom-in-95 duration-500">
-        {/* Logo in warm royal clay island */}
-        <div className="p-4 sm:p-6 rounded-3xl bg-[#FAF6EE] shadow-[10px_20px_45px_rgba(0,0,0,0.2),inset_2px_2px_3px_rgba(255,255,255,0.95)] border border-white/80">
-          <SheeshMahalLogo variant="loading" size="lg" />
-        </div>
+      <div className="flex flex-col items-center gap-6 text-center select-none animate-in fade-in zoom-in-95 duration-500 px-4">
+        {/* Pure logo floating freely with no box/card background as requested */}
+        <SheeshMahalLogo variant="loading" size="lg" />
 
-        {/* Minimal loading indicator with high contrast */}
+        {/* Minimal white loading dots */}
         <div className="flex items-center gap-2 mt-2">
           <span className="w-2.5 h-2.5 rounded-full bg-white animate-bounce"></span>
           <span className="w-2.5 h-2.5 rounded-full bg-white/80 animate-bounce [animation-delay:0.2s]"></span>

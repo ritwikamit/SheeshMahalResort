@@ -326,30 +326,30 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
       </div>
-      {/* Stretched Edge-to-Edge & Vertically Carved Watermark (Reaches up to Book Wedding Dates button, overlapped by content) */}
+      {/* Edge-to-Edge Claymorphically Carved Watermark with Balanced Architectural Proportions */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 w-full flex items-end justify-center pointer-events-none select-none z-0 px-0.5 sm:px-2 overflow-hidden h-[260px] sm:h-[290px] md:h-[320px] lg:h-[360px] xl:h-[390px]"
+        className="absolute inset-x-0 bottom-1 sm:bottom-2 w-full flex items-end justify-center pointer-events-none select-none z-0 px-1 sm:px-3 overflow-hidden h-[80px] sm:h-[100px] md:h-[120px] lg:h-[140px] xl:h-[160px]"
       >
         <svg
-          viewBox="0 0 1000 170"
-          className="w-full h-full select-none pointer-events-none opacity-85"
+          viewBox="0 0 1000 115"
+          className="w-full h-full select-none pointer-events-none opacity-80"
           preserveAspectRatio="none"
         >
           <defs>
             <filter id="clay-carve" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="-2" dy="-2" stdDeviation="1.5" floodColor="rgba(29, 38, 30, 0.22)" />
+              <feDropShadow dx="-2" dy="-2" stdDeviation="1.5" floodColor="rgba(29, 38, 30, 0.20)" />
               <feDropShadow dx="2" dy="2" stdDeviation="2" floodColor="rgba(255, 255, 255, 0.95)" />
             </filter>
           </defs>
           <text
             x="500"
-            y="90"
+            y="65"
             textAnchor="middle"
             dominantBaseline="middle"
             textLength="980"
             lengthAdjust="spacingAndGlyphs"
-            fontSize="150"
+            fontSize="106"
             fontWeight="900"
             fill="#EEE6D8"
             filter="url(#clay-carve)"

@@ -275,6 +275,13 @@ export const Footer: React.FC<FooterProps> = ({
 
         </div>
 
+        {/* Monumental Claymorphically Carved Watermark Text */}
+        <div className="w-full overflow-hidden flex justify-center items-center py-6 sm:py-10 select-none pointer-events-none">
+          <span className="clay-carved-watermark text-[clamp(2.8rem,11.5vw,11.5rem)] font-black uppercase tracking-[0.14em] sm:tracking-[0.18em] leading-none whitespace-nowrap text-center opacity-90">
+            SHEESH MAHAL
+          </span>
+        </div>
+
         {/* Centered Footer Bottom Bar */}
         <div className="pt-8 border-t border-[#1D261E]/10 flex flex-col items-center justify-center text-center gap-3">
           {/* Centered All Rights Reserved */}

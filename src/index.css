@@ -466,3 +466,16 @@
     inset -1px -1px 3px rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(38, 83, 43, 0.2);
 }
+
+
+/* Claymorphically Carved Architectural Watermark */
+.clay-carved-watermark {
+  color: #EEE6D8;
+  text-shadow: 
+    -2px -2px 3px rgba(29, 38, 30, 0.16),
+    2px 2px 4px rgba(255, 255, 255, 0.95),
+    -1px -1px 1px rgba(29, 38, 30, 0.22),
+    1px 1px 2px rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.14em;
+  user-select: none;
+}

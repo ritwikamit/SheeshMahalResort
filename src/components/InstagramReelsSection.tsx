@@ -215,7 +215,7 @@ const ReelCard: React.FC<{ reel: ReelItem }> = ({ reel }) => {
 };
 
 export const InstagramReelsSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'all' | 'landscape' | 'portrait'>('all');
+  
 
   const landscapeReels = REELS_DATA.filter((r) => r.type === 'landscape');
   const portraitReels = REELS_DATA.filter((r) => r.type === 'portrait');
@@ -244,86 +244,43 @@ export const InstagramReelsSection: React.FC = () => {
               </p>
             </div>
 
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
-              <button
-                type="button"
-                onClick={() => setActiveTab('all')}
-                className={`px-4 py-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] rounded-xl transition-all duration-300 cursor-pointer ${
-                  activeTab === 'all'
-                    ? 'clay-btn-gold text-white shadow-xs'
-                    : 'clay-pill text-[#1D261E] hover:text-[#E88A1A]'
-                }`}
-              >
-                ALL REELS (6)
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab('landscape')}
-                className={`px-4 py-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] rounded-xl transition-all duration-300 cursor-pointer ${
-                  activeTab === 'landscape'
-                    ? 'clay-btn-gold text-white shadow-xs'
-                    : 'clay-pill text-[#1D261E] hover:text-[#E88A1A]'
-                }`}
-              >
-                LANDSCAPE (3)
-              </button>
-              <button
-                type="button"
-                onClick={() => setActiveTab('portrait')}
-                className={`px-4 py-2 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] rounded-xl transition-all duration-300 cursor-pointer ${
-                  activeTab === 'portrait'
-                    ? 'clay-btn-gold text-white shadow-xs'
-                    : 'clay-pill text-[#1D261E] hover:text-[#E88A1A]'
-                }`}
-              >
-                PORTRAIT (3)
-              </button>
-            </div>
+
           </div>
         </RevealUp>
 
         {/* Landscape Reels View */}
-        {(activeTab === 'all' || activeTab === 'landscape') && (
-          <div className="mb-12 sm:mb-16">
-            {activeTab === 'all' && (
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-[#26532B]">
-                  CINEMATIC LANDSCAPE MOMENTS
-                </span>
-                <span className="flex-1 h-[1px] bg-[#26532B]/15"></span>
-              </div>
-            )}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-start">
-              {landscapeReels.map((reel) => (
-                <RevealUp key={reel.id}>
-                  <ReelCard reel={reel} />
-                </RevealUp>
-              ))}
-            </div>
+        <div className="mb-12 sm:mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-[#26532B]">
+              CINEMATIC LANDSCAPE MOMENTS
+            </span>
+            <span className="flex-1 h-[1px] bg-[#26532B]/15"></span>
           </div>
-        )}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-start">
+            {landscapeReels.map((reel) => (
+              <RevealUp key={reel.id}>
+                <ReelCard reel={reel} />
+              </RevealUp>
+            ))}
+          </div>
+        </div>
 
         {/* Portrait Reels View */}
-        {(activeTab === 'all' || activeTab === 'portrait') && (
-          <div>
-            {activeTab === 'all' && (
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-[#26532B]">
-                  VERTICAL PORTRAIT REELS
-                </span>
-                <span className="flex-1 h-[1px] bg-[#26532B]/15"></span>
-              </div>
-            )}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-start">
-              {portraitReels.map((reel) => (
-                <RevealUp key={reel.id}>
-                  <ReelCard reel={reel} />
-                </RevealUp>
-              ))}
-            </div>
+        <div>
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.25em] text-[#26532B]">
+              VERTICAL PORTRAIT REELS
+            </span>
+            <span className="flex-1 h-[1px] bg-[#26532B]/15"></span>
           </div>
-        )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-start">
+            {portraitReels.map((reel) => (
+              <RevealUp key={reel.id}>
+                <ReelCard reel={reel} />
+              </RevealUp>
+            ))}
+          </div>
+        </div>
 
         {/* Minimal Luxury Instagram Follow Action Bar */}
         <RevealUp delay={120}>
@@ -356,3 +313,4 @@ export const InstagramReelsSection: React.FC = () => {
     </section>
   );
 };
+

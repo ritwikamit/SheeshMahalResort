@@ -18,8 +18,8 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenCookies
 }) => {
   return (
-    <footer className="bg-[#FAF6EE] text-[#1D261E] border-t border-[#1D261E]/10 pt-16 sm:pt-20 pb-24 md:pb-12 shadow-[0_-4px_25px_rgba(22,23,38,0.03)]">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+    <footer className="relative bg-[#FAF6EE] text-[#1D261E] border-t border-[#1D261E]/10 pt-16 sm:pt-20 pb-24 md:pb-12 shadow-[0_-4px_25px_rgba(22,23,38,0.03)] overflow-hidden">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pb-14">
           
@@ -275,12 +275,7 @@ export const Footer: React.FC<FooterProps> = ({
 
         </div>
 
-        {/* Monumental Claymorphically Carved Watermark Text */}
-        <div className="w-full overflow-hidden flex justify-center items-center py-6 sm:py-10 select-none pointer-events-none">
-          <span className="clay-carved-watermark text-[clamp(2.8rem,11.5vw,11.5rem)] font-black uppercase tracking-[0.14em] sm:tracking-[0.18em] leading-none whitespace-nowrap text-center opacity-90">
-            SHEESH MAHAL
-          </span>
-        </div>
+
 
         {/* Centered Footer Bottom Bar */}
         <div className="pt-8 border-t border-[#1D261E]/10 flex flex-col items-center justify-center text-center gap-3">
@@ -318,6 +313,15 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
+      </div>
+      {/* Background Claymorphically Carved Watermark (Overlapped by footer text, fits viewport without cut-off) */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-3 sm:bottom-6 flex items-center justify-center pointer-events-none select-none z-0 px-4 overflow-hidden"
+      >
+        <span className="clay-carved-watermark text-[clamp(2rem,6.8vw,7.8rem)] font-black uppercase tracking-[0.05em] sm:tracking-[0.08em] leading-none whitespace-nowrap text-center opacity-70 max-w-full">
+          SHEESH MAHAL
+        </span>
       </div>
     </footer>
   );

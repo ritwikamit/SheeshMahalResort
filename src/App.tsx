@@ -129,6 +129,9 @@ export default function App() {
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
             />
 
+            {/* Section: Live Instagram Reels Showcase (Landscape & Portrait) */}
+            <InstagramReelsSection />
+
             {/* Section 3: 3-Column Wedding Services Grid (Badge covering corner on LEFT) */}
             <ServicesGrid
               onSelectService={handleSelectService}
@@ -141,9 +144,6 @@ export default function App() {
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
               onOpenGallery={() => handleNavigatePage('gallery')}
             />
-
-            {/* Section: Live Instagram Reels Showcase (Landscape & Portrait) */}
-            <InstagramReelsSection />
 
             {/* Section 5: Sacred Wedding Rituals & Location Highlights (Badge covering corner on LEFT) */}
             <PhilosophySection

@@ -11,21 +11,43 @@ interface VenuesPageProps {
 
 export const VenuesPage: React.FC<VenuesPageProps> = ({ onSelectSpace, onOpenInquiry }) => {
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Page Header */}
-        <div className="py-8 sm:py-12 border-b border-[#26532B]/20 mb-12 sm:mb-16">
-          <span className="label-utility text-[#1D261E]/70">
-            DEDICATED ARCHITECTURAL SHOWCASE
-          </span>
-          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#1D261E] mt-2">
+    <div className="pt-[78px] sm:pt-[88px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
+      
+      {/* Landscaped Hero Banner */}
+      <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[400px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
+        <img
+          src="/images/gallery/LandingPage3.webp"
+          alt="Sheesh Mahal Resort Palatial Venues"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+
+        <div className="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="label-utility text-[#E88A1A]">
+              DEDICATED ARCHITECTURAL SHOWCASE
+            </span>
+            <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
+            <span className="text-[10px] font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
+              45,000+ SQ. FT.
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase leading-[0.85] text-white drop-shadow-md">
             ROYAL WEDDING VENUES
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#26532B] mt-2 font-normal">
+
+          <p className="font-cursive text-xl sm:text-3xl text-[#E88A1A] mt-1 font-normal drop-shadow-sm">
             Breathtaking Ballrooms, Sacred Mandaps & Starlit Lawns
           </p>
-          <p className="text-base sm:text-lg text-[#1D261E]/75 max-w-3xl mt-4 font-normal">
-            Sheesh Mahal Resort offers over 45,000 sq. ft. of combined indoor and outdoor royal wedding space on Ashiana–Digha Road, Patna. Each zone is architecturally engineered for specific wedding rites.
+        </div>
+      </div>
+
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Intro Lead */}
+        <div className="pb-8 border-b border-[#26532B]/20 mb-10 sm:mb-14">
+          <p className="text-sm sm:text-base text-[#1D261E]/85 max-w-3xl font-medium leading-relaxed">
+            Sheesh Mahal Resort offers over 45,000 sq. ft. of combined indoor and outdoor royal wedding space on Ashiana–Digha Road, Patna. Each zone is architecturally engineered for specific wedding rites with backup generators, luxury suites, and all-faith ceremony hospitality.
           </p>
         </div>
 

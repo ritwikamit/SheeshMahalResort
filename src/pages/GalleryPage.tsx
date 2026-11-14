@@ -1,20 +1,235 @@
-import React, { useState, useEffect } from 'react';
-import { X, ChevronLeft, ChevronRight, Maximize2, Calendar, Sparkles } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { X, ChevronLeft, ChevronRight, Maximize2, Volume2, VolumeX, Instagram, Play } from 'lucide-react';
 import { LuxuryVisual } from '../components/LuxuryVisual.tsx';
 import { RevealUp } from '../components/RevealUp.tsx';
-
-import { ALL_GALLERY_PHOTOS, GalleryItem } from '../data/galleryData.ts';
+import { ALL_GALLERY_PHOTOS } from '../data/galleryData.ts';
 
 interface GalleryPageProps {
   onOpenInquiry: () => void;
 }
+
+interface GalleryVideoItem {
+  id: string;
+  type: 'landscape' | 'portrait';
+  title: string;
+  oneLineDetail: string;
+  videoSrc: string;
+  posterSrc: string;
+  instagramUrl: string;
+  aspectClass: string;
+}
+
+const GALLERY_VIDEOS: GalleryVideoItem[] = [
+  {
+    id: 'gal-drone-1',
+    type: 'landscape',
+    title: 'Aerial Resort Architecture',
+    oneLineDetail: 'Full drone tour of illuminated starlit lawns and palatial ballrooms',
+    videoSrc: '/videos/reels_optimized/drone-full-view.mp4',
+    posterSrc: '/images/reels_posters/drone-full-view.webp',
+    instagramUrl: 'https://www.instagram.com/reel/DfJPDf3SXI5/',
+    aspectClass: 'aspect-video'
+  },
+  {
+    id: 'gal-land-1',
+    type: 'landscape',
+    title: 'Imperial Entrance & Grand Baraat',
+    oneLineDetail: 'Royal arrival corridor with brass lamps and celebration fireworks',
+    videoSrc: '/videos/reels_optimized/landscape-1.mp4',
+    posterSrc: '/images/reels_posters/landscape-1.webp',
+    instagramUrl: 'https://www.instagram.com/reel/DbiRkw1JZzT/',
+    aspectClass: 'aspect-video'
+  },
+  {
+    id: 'gal-land-2',
+    type: 'landscape',
+    title: 'Sacred Mandap Nuptials',
+    oneLineDetail: 'Floral Vedic mandap set up for eternal Saat Phere rituals',
+    videoSrc: '/videos/reels_optimized/landscape-2.mp4',
+    posterSrc: '/images/reels_posters/landscape-2.webp',
+    instagramUrl: 'https://www.instagram.com/reel/DfRIHHKyZ90/',
+    aspectClass: 'aspect-video'
+  },
+  {
+    id: 'gal-port-1',
+    type: 'portrait',
+    title: 'Bridal Grand Entry & Varmala',
+    oneLineDetail: 'Emotional bridal arrival with royal floral chadar and sparklers',
+    videoSrc: '/videos/reels_optimized/portrait-1.mp4',
+    posterSrc: '/images/reels_posters/portrait-1.webp',
+    instagramUrl: 'https://www.instagram.com/reel/DfZrZWJyGA-/',
+    aspectClass: 'aspect-[9/16]'
+  },
+  {
+    id: 'gal-port-2',
+    type: 'portrait',
+    title: 'Baraat Symphony & Dhol',
+    oneLineDetail: 'Lively celebration moments on expansive outdoor lawns',
+    videoSrc: '/videos/reels_optimized/portrait-2.mp4',
+    posterSrc: '/images/reels_posters/portrait-2.webp',
+    instagramUrl: 'https://www.instagram.com/reel/DfX8DXBz4tg/',
+    aspectClass: 'aspect-[9/16]'
+  }
+];
+
+const GalleryVideoCard: React.FC<{ item: GalleryVideoItem }> = ({ item }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  // Play video only when it scrolls into view; pause when scrolled away
+  useEffect(() => {
+    const card = cardRef.current;
+    const video = videoRef.current;
+    if (!card || !video || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.playsInline = true;
+            video
+              .play()
+              .then(() => setIsPlaying(true))
+              .catch(() => {});
+          } else {
+            video.pause();
+            setIsPlaying(false);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, []);
+
+  // Global audio sync
+  useEffect(() => {
+    const handleGlobalUnmute = (e: Event) => {
+      const customEvt = e as CustomEvent<{ id: string }>;
+      if (customEvt.detail?.id !== item.id) {
+        if (videoRef.current) videoRef.current.muted = true;
+        setIsMuted(true);
+      }
+    };
+    window.addEventListener('resort-video-unmuted', handleGlobalUnmute);
+    return () => window.removeEventListener('resort-video-unmuted', handleGlobalUnmute);
+  }, [item.id]);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const video = videoRef.current;
+    if (!video) return;
+
+    const nextMuted = !isMuted;
+    video.muted = nextMuted;
+    setIsMuted(nextMuted);
+
+    if (!nextMuted) {
+      window.dispatchEvent(
+        new CustomEvent('resort-video-unmuted', { detail: { id: item.id } })
+      );
+      if (video.paused) {
+        video.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    }
+  };
+
+  const handleCardClick = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const isPortrait = item.type === 'portrait';
+
+  return (
+    <div className={isPortrait ? 'w-full max-w-[270px] lg:max-w-[260px] mx-auto' : 'w-full'}>
+      <div
+        ref={cardRef}
+        onClick={handleCardClick}
+        className={`relative group rounded-[20px] overflow-hidden bg-[#1D261E] border-2 border-white/70 hover:border-[#E88A1A]/70 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer ${
+          isPortrait ? 'aspect-[9/16] max-h-[460px] w-full' : item.aspectClass
+        }`}
+      >
+        <video
+          ref={videoRef}
+          src={item.videoSrc}
+          poster={item.posterSrc}
+          loop
+          muted={isMuted}
+          playsInline
+          preload="metadata"
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/50 pointer-events-none" />
+
+        <div className="absolute top-2.5 left-2.5 z-20 pointer-events-auto">
+          <a
+            href={item.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            aria-label="View Reel on Instagram"
+            className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 hover:bg-[#1D261E] backdrop-blur-md border border-white/20 text-white/90 hover:text-[#E88A1A] text-[9px] font-black tracking-wider uppercase transition-colors shadow-md"
+          >
+            <Instagram size={11} className="text-[#E88A1A]" />
+            <span>REEL</span>
+          </a>
+        </div>
+
+        <div className="absolute top-2.5 right-2.5 z-20 pointer-events-auto">
+          <button
+            type="button"
+            onClick={toggleMute}
+            aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer shadow-xl backdrop-blur-md border ${
+              isMuted
+                ? 'bg-black/65 text-white/90 hover:bg-[#E88A1A] hover:text-[#1D261E] border-white/25'
+                : 'bg-[#E88A1A] text-[#1D261E] hover:bg-white border-[#E88A1A] shadow-[0_0_12px_rgba(232,138,26,0.6)]'
+            }`}
+          >
+            {isMuted ? <VolumeX size={13} /> : <Volume2 size={13} className="animate-pulse" />}
+          </button>
+        </div>
+
+        {!isPlaying && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 transition-opacity duration-300">
+            <div className="w-11 h-11 rounded-full bg-black/60 backdrop-blur-sm border border-white/30 text-white flex items-center justify-center pl-0.5 shadow-xl group-hover:scale-110 group-hover:bg-[#E88A1A] group-hover:text-[#1D261E] transition-all">
+              <Play size={16} fill="currentColor" />
+            </div>
+          </div>
+        )}
+
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 z-20 pointer-events-none drop-shadow">
+          <p className="font-cursive text-xs sm:text-sm text-[#E88A1A] truncate">
+            {item.title}
+          </p>
+          <p className="text-[10px] sm:text-[11px] font-semibold text-white/90 truncate leading-snug">
+            {item.oneLineDetail}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
   const [filter, setFilter] = useState('ALL');
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
 
   const galleryItems = ALL_GALLERY_PHOTOS;
-
   const categories = ['ALL', 'BANQUET', 'LAWN', 'MANDAP', 'DECOR', 'FACADE', 'CATERING'];
 
   const filteredItems = galleryItems.filter((item) => {
@@ -22,7 +237,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
     return item.category === filter;
   });
 
-  // Lightbox navigation
   const openLightbox = (index: number) => {
     setActiveLightboxIndex(index);
   };
@@ -43,7 +257,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
     }
   };
 
-  // Keyboard navigation for Lightbox
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (activeLightboxIndex === null) return;
@@ -56,42 +269,53 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
   }, [activeLightboxIndex, filteredItems.length]);
 
   return (
-    <div className="pt-[88px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
-        
-        {/* Page Header */}
-        <div className="py-8 sm:py-12 border-b border-[#26532B]/20 mb-8 sm:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="label-utility text-[#1D261E]/70">
-                OFFICIAL RESORT PHOTO ARCHIVE
-              </span>
-              <span className="w-8 h-[1px] bg-[#26532B]"></span>
-              <span className="text-[9px] font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
-                {filteredItems.length} REAL PHOTOS
-              </span>
-            </div>
-            
-            <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#1D261E] mt-2">
-              PHOTO GALLERY
-            </h1>
-            
-            <p className="font-cursive text-2xl sm:text-4xl text-[#26532B] mt-2 font-normal">
-              Authentic Glimpse into Royal Ceremonies & Palatial Grounds
-            </p>
-            <p className="text-xs sm:text-sm text-[#1D261E]/75 mt-3 max-w-2xl font-normal">
-              Every photograph below captures real celebrations, grand ballrooms, starlit lawns, and sacred mandaps at Sheesh Mahal Resort, Ashiana–Digha Road, Patna.
-            </p>
+    <div className="pt-[78px] sm:pt-[88px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
+      
+      {/* Landscaped Hero Banner */}
+      <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[400px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
+        <img
+          src="/images/gallery/smr-02.webp"
+          alt="Sheesh Mahal Resort Panoramic View"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+
+        <div className="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="label-utility text-[#E88A1A]">
+              OFFICIAL RESORT ARCHIVE
+            </span>
+            <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
+            <span className="text-[10px] font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
+              {filteredItems.length} REAL PHOTOS
+            </span>
           </div>
 
-          {/* Filter Tabs */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase leading-[0.85] text-white drop-shadow-md">
+            PHOTO & REEL GALLERY
+          </h1>
+
+          <p className="font-cursive text-xl sm:text-3xl text-[#E88A1A] mt-1 font-normal drop-shadow-sm">
+            Authentic Glimpse into Royal Ceremonies & Palatial Grounds
+          </p>
+        </div>
+      </div>
+
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+        
+        {/* Filter Tabs */}
+        <div className="pb-6 mb-8 border-b border-[#26532B]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <p className="text-xs sm:text-sm text-[#1D261E]/80 max-w-xl font-normal">
+            Real celebrations, grand ballrooms, starlit lawns, and sacred mandaps at Sheesh Mahal Resort, Patna.
+          </p>
+
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setFilter(cat)}
-                className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[9px] sm:text-[10px] font-black uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[10px] font-black uppercase tracking-wider rounded-lg transition-all cursor-pointer ${
                   filter === cat
                     ? 'bg-[#1D261E] text-[#E88A1A] shadow-sm'
                     : 'clay-pill text-[#1D261E] hover:text-[#E88A1A]'
@@ -111,7 +335,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
                 onClick={() => openLightbox(idx)}
                 className="group rounded-[20px] overflow-hidden bg-[#FAF6EE] border border-[#26532B]/25 shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer flex flex-col h-full transform hover:-translate-y-1"
               >
-                {/* Visual */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#1D261E]">
                   <LuxuryVisual
                     src={item.image}
@@ -122,14 +345,12 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
                     priority={idx < 8}
                   />
 
-                  {/* Hover Overlay with Tap to Enlarge */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                     <div className="w-11 h-11 rounded-full bg-[#E88A1A] text-[#1D261E] flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
                       <Maximize2 size={18} />
                     </div>
                   </div>
 
-                  {/* Corner Category Tag */}
                   <div className="absolute top-3 left-3 z-10 pointer-events-none">
                     <span className="text-[8.5px] font-black uppercase tracking-wider text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm shadow-sm">
                       {item.category}
@@ -137,7 +358,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
                   </div>
                 </div>
 
-                {/* Details */}
                 <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between border-t border-[#26532B]/15">
                   <div>
                     <h3 className="text-base sm:text-lg font-black uppercase tracking-tight text-[#1D261E] group-hover:text-[#26532B] transition-colors leading-snug">
@@ -163,46 +383,48 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
           ))}
         </div>
 
-        {/* Bottom Booking Invitation */}
-        <RevealUp delay={150}>
-          <div className="p-8 sm:p-12 bg-[#1D261E] text-[#FAF6EE] rounded-[24px] border border-[#26532B]/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
-            <div className="max-w-2xl text-center md:text-left">
-              <span className="text-[10px] font-black tracking-[0.3em] uppercase text-[#E88A1A] block mb-2">
-                RESERVE YOUR WEDDING DATES
-              </span>
-              <h3 className="text-2xl sm:text-4xl font-black uppercase tracking-tight leading-tight">
-                VISIT SHEESH MAHAL RESORT IN PERSON
-              </h3>
-              <p className="font-cursive text-xl sm:text-3xl text-[#26532B] mt-1 mb-3">
-                "Where Sacred Vows Meet Royal Grandeur"
-              </p>
-              <p className="text-xs sm:text-sm text-[#26532B] leading-relaxed">
-                Experience our palatial banquet ballrooms, consecrated Mandaps, and starlit lawns live. Open 24 hours daily opposite St. Xavier's College gate, Ashiana–Digha Road, Patna.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-              <button
-                type="button"
-                onClick={onOpenInquiry}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#E88A1A] text-[#1D261E] hover:bg-[#FAF6EE] transition-all duration-300 shadow-xl cursor-pointer hover:scale-105 active:scale-95 text-center"
-              >
-                <Calendar size={15} />
-                <span>CHECK WEDDING DATES</span>
-              </button>
-            </div>
+        {/* Video Reel Archive in Gallery Page */}
+        <div className="pt-8 sm:pt-12 border-t border-[#26532B]/20 mb-16 sm:mb-20">
+          <div className="flex items-center gap-3 mb-2">
+            <span className="label-utility text-[#1D261E]/70">
+              OFFICIAL REEL & VIDEO ARCHIVE
+            </span>
+            <span className="w-8 sm:w-10 h-[1px] bg-[#26532B]"></span>
           </div>
-        </RevealUp>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase leading-[0.9] text-[#1D261E] mb-2">
+            EXPERIENCE THE RESORT IN MOTION
+          </h2>
+          <p className="font-cursive text-xl sm:text-3xl text-[#26532B] mb-8 font-normal">
+            Drone Sweeps, Baraat Processions & Sacred Saat Phere
+          </p>
+
+          {/* Landscape Videos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {GALLERY_VIDEOS.filter((v) => v.type === 'landscape').map((item) => (
+              <RevealUp key={item.id}>
+                <GalleryVideoCard item={item} />
+              </RevealUp>
+            ))}
+          </div>
+
+          {/* Portrait Videos */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto gap-6 sm:gap-8 items-center justify-center">
+            {GALLERY_VIDEOS.filter((v) => v.type === 'portrait').map((item) => (
+              <RevealUp key={item.id}>
+                <GalleryVideoCard item={item} />
+              </RevealUp>
+            ))}
+          </div>
+        </div>
 
       </div>
 
-      {/* Full-Screen Interactive Lightbox Modal */}
+      {/* Lightbox Modal */}
       {activeLightboxIndex !== null && (
         <div
           className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex flex-col justify-between p-3 sm:p-6 animate-in fade-in duration-300"
           onClick={closeLightbox}
         >
-          {/* Top Bar with Title & Close */}
           <div
             className="flex items-center justify-between z-20 shrink-0 pb-3 border-b border-white/15 text-white"
             onClick={(e) => e.stopPropagation()}
@@ -236,12 +458,10 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
             </div>
           </div>
 
-          {/* Central Image with Prev / Next Arrow Controls */}
           <div
             className="relative flex-1 flex items-center justify-center my-3 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Previous Button */}
             <button
               type="button"
               onClick={prevImage}
@@ -251,7 +471,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
               <ChevronLeft size={24} />
             </button>
 
-            {/* Main Preview Image */}
             <img
               key={filteredItems[activeLightboxIndex].id}
               src={filteredItems[activeLightboxIndex].image}
@@ -259,7 +478,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
               className="max-h-[75vh] max-w-[92vw] object-contain rounded-xl sm:rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-white/20 select-none animate-in zoom-in-95 duration-200"
             />
 
-            {/* Next Button */}
             <button
               type="button"
               onClick={nextImage}
@@ -270,7 +488,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onOpenInquiry }) => {
             </button>
           </div>
 
-          {/* Bottom Bar: Description & Book Dates CTA */}
           <div
             className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-white/15 text-white z-20 shrink-0"
             onClick={(e) => e.stopPropagation()}

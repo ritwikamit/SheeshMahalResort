@@ -32,28 +32,42 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
   };
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
+    <div className="pt-[78px] sm:pt-[88px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
+      
+      {/* Landscaped Hero Banner */}
+      <div className="relative w-full h-[220px] sm:h-[280px] overflow-hidden bg-[#151D16] mb-8 sm:mb-10">
+        <img
+          src="/images/gallery/smr-04.webp"
+          alt="Sheesh Mahal Resort Privacy & Cookies"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+
+        <div className="absolute inset-0 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-6 sm:pb-8">
+          <span className="label-utility text-[#E88A1A] mb-1">
+            DIGITAL PRIVACY PROTOCOL
+          </span>
+          <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white drop-shadow-md">
+            COOKIES POLICY
+          </h1>
+          <p className="font-cursive text-xl text-[#E88A1A] mt-1 font-normal">
+            Privacy & Performance Standards for Our Wedding Guests
+          </p>
+        </div>
+      </div>
+
       <div className="max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-12">
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#26532B] hover:text-[#1D261E] mb-8 cursor-pointer transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#26532B] hover:text-[#1D261E] mb-6 cursor-pointer transition-colors"
         >
           <ArrowLeft size={16} />
           <span>RETURN TO RESORT</span>
         </button>
 
-        <div className="border-b border-[#26532B]/20 pb-8 mb-10">
-          <span className="label-utility text-[#1D261E]/70">
-            DIGITAL PRIVACY PROTOCOL
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#1D261E] mt-2">
-            COOKIES POLICY
-          </h1>
-          <p className="font-cursive text-2xl text-[#26532B] mt-1 font-normal">
-            Privacy & Performance Standards for Our Wedding Guests
-          </p>
-          <p className="text-xs text-[#1D261E]/60 mt-2 font-bold tracking-wider">
+        <div className="border-b border-[#26532B]/20 pb-6 mb-8">
+          <p className="text-xs text-[#1D261E]/60 font-bold tracking-wider">
             UPDATED: OCTOBER 2026 · SHEESH MAHAL RESORT
           </p>
         </div>

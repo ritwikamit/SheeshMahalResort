@@ -59,21 +59,43 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#26532B]/20 mb-12 sm:mb-16">
-          <span className="label-utility text-[#1D261E]/70">
-            TRANSPARENT CURATED PACKAGES
-          </span>
-          <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#1D261E] mt-2">
+    <div className="pt-[78px] sm:pt-[88px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
+      
+      {/* Landscaped Hero Banner */}
+      <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[400px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
+        <img
+          src="/images/gallery/smr-12.webp"
+          alt="Sheesh Mahal Resort Wedding Packages"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+
+        <div className="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="label-utility text-[#E88A1A]">
+              CURATED WEDDING TIERS
+            </span>
+            <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
+            <span className="text-[10px] font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
+              ACCESSIBLE LUXURY
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase leading-[0.85] text-white drop-shadow-md">
             WEDDING PACKAGES
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#26532B] mt-2 font-normal">
-            Designed for Seamless Royal Nuptials in Patna
+
+          <p className="font-cursive text-xl sm:text-3xl text-[#E88A1A] mt-1 font-normal drop-shadow-sm">
+            Curated Starting Tiers Designed for Seamless Royal Nuptials
           </p>
-          <p className="text-base sm:text-lg text-[#1D261E]/75 max-w-3xl mt-4 font-normal">
-            Whether you envision a sacred Vedic ceremony for close family or a monumental 2,000-guest celebration under starry skies, our comprehensive packages combine venue spaces, master catering, and decor.
+        </div>
+      </div>
+
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Intro Lead */}
+        <div className="pb-8 border-b border-[#26532B]/20 mb-10 sm:mb-14">
+          <p className="text-sm sm:text-base text-[#1D261E]/85 max-w-3xl font-medium leading-relaxed">
+            Every wedding package is structured with attractive, accessible starting tiers without hidden markups. Whether you are hosting an intimate sacred ceremony or a 2,000-guest celebration, our team customizes venue spaces, master banqueting, and decor to your exact preferences.
           </p>
         </div>
 

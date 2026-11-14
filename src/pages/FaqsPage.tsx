@@ -37,18 +37,43 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#26532B]/20 mb-12 sm:mb-16 text-center">
-          <span className="label-utility text-[#1D261E]/70">
-            TRANSPARENT GUIDANCE
-          </span>
-          <h1 className="text-3xl sm:text-6xl font-black tracking-tighter uppercase leading-[0.85] text-[#1D261E] mt-2">
+    <div className="pt-[78px] sm:pt-[88px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
+      
+      {/* Landscaped Hero Banner */}
+      <div className="relative w-full h-[240px] sm:h-[320px] lg:h-[360px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
+        <img
+          src="/images/gallery/smr-14.webp"
+          alt="Sheesh Mahal Resort FAQs & Planning"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+
+        <div className="absolute inset-0 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="label-utility text-[#E88A1A]">
+              TRANSPARENT GUIDANCE
+            </span>
+            <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
+            <span className="text-[10px] font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
+              24/7 CONCIERGE
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase leading-[0.85] text-white drop-shadow-md">
             WEDDING FAQS & POLICIES
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#26532B] mt-2 font-normal">
-            Everything You Need to Know for Your Special Day
+
+          <p className="font-cursive text-xl sm:text-3xl text-[#E88A1A] mt-1 font-normal drop-shadow-sm">
+            Everything You Need to Plan With Complete Confidence
+          </p>
+        </div>
+      </div>
+
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Intro Lead */}
+        <div className="pb-6 border-b border-[#26532B]/20 mb-10 sm:mb-14">
+          <p className="text-sm sm:text-base text-[#1D261E]/85 max-w-3xl font-medium leading-relaxed">
+            Planning a royal wedding is a once-in-a-lifetime journey. Here are clear answers to our most frequent questions regarding booking policies, capacity, catering segregation, power backup, and date reservations.
           </p>
         </div>
 

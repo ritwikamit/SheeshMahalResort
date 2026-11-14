@@ -15,7 +15,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "HALDI CEREMONY",
       timing: "Morning 10:00 AM",
       venue: "Poolside & Courtyard",
-      image: "/images/gallery/smr-48.jpg",
+      image: "/images/gallery/smr-48.webp",
       description: "Sunlit yellow cabana setups with fresh marigold floral decor, brass urlis, organic yellow turmeric paste, and lively Punjabi & Bihari dhol folk songs.",
       curatedBy: "Courtyard & Waterbody Pavilion"
     },
@@ -24,7 +24,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "MEHNDI SOIRÉE",
       timing: "Afternoon 02:00 PM",
       venue: "Shaded Garden Canopies",
-      image: "/images/gallery/smr-76.jpg",
+      image: "/images/gallery/smr-76.webp",
       description: "Master bridal henna artists, custom bangle bazaars, live street chaat stalls, and relaxed lounge seating for both families to celebrate together.",
       curatedBy: "Garden Canopy Terraces"
     },
@@ -33,7 +33,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "SANGEET MUSICAL EXTRAVAGANZA",
       timing: "Evening 07:00 PM",
       venue: "The Sheesh Ballroom / Shahi Lawn",
-      image: "/images/gallery/smr-13.jpg",
+      image: "/images/gallery/smr-13.webp",
       description: "Full stage truss lighting, acoustic concert sound system, professional DJ consoles, and elevated dance stages for family choreographed dances.",
       curatedBy: "Central Climate-Controlled Ballroom"
     },
@@ -42,7 +42,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "THE GRAND BARAAT",
       timing: "Night 08:00 PM",
       venue: "Royal Reception Avenue",
-      image: "/images/gallery/smr-08.jpg",
+      image: "/images/gallery/smr-08.webp",
       description: "Wide illuminated corridor allowing horse carriages, vintage cars, and brass band processions, followed by traditional rosewater Milni welcoming.",
       curatedBy: "Dedicated Entry Corridor"
     },
@@ -51,7 +51,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "CINEMATIC VARMALA",
       timing: "Night 09:30 PM",
       venue: "Elevated Royal Stage",
-      image: "/images/gallery/smr-57.jpg",
+      image: "/images/gallery/smr-57.webp",
       description: "Hydraulic revolving stage with cold-pyro fireworks, low-lying fog, shower of fresh rose petals, and synchronized thematic lighting.",
       curatedBy: "40ft Pillarless Royal Stage"
     },
@@ -60,28 +60,50 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       name: "SACRED SAAT PHERE",
       timing: "Midnight 12:30 AM",
       venue: "Royal Mandap Pavilion",
-      image: "/images/gallery/smr-54.jpg",
+      image: "/images/gallery/smr-54.webp",
       description: "Consecrated Vedic havan kund with specialized smoke extraction, tiered family baithak seating, and sacred Sanskrit chanting for the seven eternal vows.",
       curatedBy: "Consecrated Fire Altar Pavilion"
     }
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#26532B]/20 mb-12 sm:mb-16">
-          <span className="label-utility text-[#1D261E]/70">
-            THE CHRONOLOGY OF ROYAL CELEBRATIONS
-          </span>
-          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#1D261E] mt-2">
+    <div className="pt-[78px] sm:pt-[88px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
+      
+      {/* Landscaped Hero Banner */}
+      <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[400px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
+        <img
+          src="/images/gallery/smr-07.webp"
+          alt="Sheesh Mahal Resort Sacred Wedding Rituals"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+
+        <div className="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="label-utility text-[#E88A1A]">
+              THE CHRONOLOGY OF ROYAL CELEBRATIONS
+            </span>
+            <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
+            <span className="text-[10px] font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
+              ALL FAITHS & RITUALS
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase leading-[0.85] text-white drop-shadow-md">
             WEDDING RITUALS
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#26532B] mt-2 font-normal">
+
+          <p className="font-cursive text-xl sm:text-3xl text-[#E88A1A] mt-1 font-normal drop-shadow-sm">
             Every Sacred Rite Honored with Palatial Grandeur
           </p>
-          <p className="text-base sm:text-lg text-[#1D261E]/75 max-w-3xl mt-4 font-normal">
-            From the joyful yellow showers of the Haldi to the solemn majesty of the Saat Phere under starry skies, Sheesh Mahal Resort provides customized environments tailored to each auspicious milestone.
+        </div>
+      </div>
+
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Intro Lead */}
+        <div className="pb-8 border-b border-[#26532B]/20 mb-10 sm:mb-14">
+          <p className="text-sm sm:text-base text-[#1D261E]/85 max-w-3xl font-medium leading-relaxed">
+            From the joyful yellow showers of the Haldi to solemn Saat Phere, Muslim Nikah, Sikh Anand Karaj, and Christian nuptials, Sheesh Mahal Resort provides customized environments tailored to each auspicious milestone.
           </p>
         </div>
 

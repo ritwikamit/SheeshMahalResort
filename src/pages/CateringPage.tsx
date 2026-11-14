@@ -32,20 +32,42 @@ export const CateringPage: React.FC<CateringPageProps> = ({ onOpenInquiry }) => 
   ];
 
   return (
-    <div className="pt-[90px] sm:pt-[100px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Header */}
-        <div className="py-8 sm:py-12 border-b border-[#26532B]/20 mb-12 sm:mb-16">
-          <span className="label-utility text-[#1D261E]/70">
-            IN-HOUSE ROYAL WEDDING BANQUETING
-          </span>
-          <h1 className="text-3xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#1D261E] mt-2">
+    <div className="pt-[78px] sm:pt-[88px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
+      
+      {/* Landscaped Hero Banner */}
+      <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[400px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
+        <img
+          src="/images/gallery/smr-22.webp"
+          alt="Sheesh Mahal Resort Royal Banqueting & Catering"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+
+        <div className="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="label-utility text-[#E88A1A]">
+              IN-HOUSE ROYAL WEDDING BANQUETING
+            </span>
+            <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
+            <span className="text-[10px] font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
+              PURE VEG & NON-VEG KITCHENS
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight uppercase leading-[0.85] text-white drop-shadow-md">
             SHAHI WEDDING CATERING
           </h1>
-          <p className="font-cursive text-2xl sm:text-4xl text-[#26532B] mt-2 font-normal">
+
+          <p className="font-cursive text-xl sm:text-3xl text-[#E88A1A] mt-1 font-normal drop-shadow-sm">
             A Feast of Royal Flavors, Crafted with Devotion
           </p>
-          <p className="text-base sm:text-lg text-[#1D261E]/75 max-w-3xl mt-4 font-normal">
+        </div>
+      </div>
+
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Intro Lead */}
+        <div className="pb-8 border-b border-[#26532B]/20 mb-10 sm:mb-14">
+          <p className="text-sm sm:text-base text-[#1D261E]/85 max-w-3xl font-medium leading-relaxed">
             At Sheesh Mahal Resort, we believe the wedding feast is the soul of hospitality. Our master chefs prepare lavish multi-course banquets using pure desi ghee, custom spice blends, and segregated pure vegetarian and gourmet kitchens.
           </p>
         </div>

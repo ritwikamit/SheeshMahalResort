@@ -12,7 +12,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 1,
     "title": "The Sheesh Banquet Ballroom",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-01.jpg",
+    "image": "/images/gallery/smr-01.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -20,7 +20,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 2,
     "title": "Shahi Utsav Starlit Lawn",
     "category": "LAWN",
-    "image": "/images/gallery/smr-02.png",
+    "image": "/images/gallery/smr-02.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -28,7 +28,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 3,
     "title": "Consecrated Vedic Mandap",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-03.png",
+    "image": "/images/gallery/smr-03.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -36,7 +36,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 4,
     "title": "Artisanal Floral Stage Backdrop",
     "category": "DECOR",
-    "image": "/images/gallery/smr-04.png",
+    "image": "/images/gallery/smr-04.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -44,7 +44,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 5,
     "title": "Palace Architecture at Twilight",
     "category": "FACADE",
-    "image": "/images/gallery/smr-05.png",
+    "image": "/images/gallery/smr-05.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -52,7 +52,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 6,
     "title": "Shahi Awadhi Live Food Stations",
     "category": "CATERING",
-    "image": "/images/gallery/smr-06.png",
+    "image": "/images/gallery/smr-06.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -60,7 +60,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 7,
     "title": "Grand Crystal Chandelier Hall",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-07.jpg",
+    "image": "/images/gallery/smr-07.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -68,7 +68,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 8,
     "title": "Grand Baraat Welcoming Avenue",
     "category": "LAWN",
-    "image": "/images/gallery/smr-08.jpg",
+    "image": "/images/gallery/smr-08.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -76,7 +76,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 9,
     "title": "Varmala Revolving Dais",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-09.jpg",
+    "image": "/images/gallery/smr-09.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -84,7 +84,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 10,
     "title": "Royal Velvet Thrones & Baithak",
     "category": "DECOR",
-    "image": "/images/gallery/smr-10.jpg",
+    "image": "/images/gallery/smr-10.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -92,7 +92,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 11,
     "title": "Night Wedding Fairy Light Glow",
     "category": "FACADE",
-    "image": "/images/gallery/smr-11.jpg",
+    "image": "/images/gallery/smr-11.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -100,7 +100,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 12,
     "title": "Royal Live Tandoor & Bread Court",
     "category": "CATERING",
-    "image": "/images/gallery/smr-12.jpg",
+    "image": "/images/gallery/smr-12.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -108,7 +108,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 13,
     "title": "Palatial Indoor Varmala Dais",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-13.jpg",
+    "image": "/images/gallery/smr-13.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -116,7 +116,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 14,
     "title": "Open-Sky Wedding Amphitheater",
     "category": "LAWN",
-    "image": "/images/gallery/smr-14.jpg",
+    "image": "/images/gallery/smr-14.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -124,7 +124,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 15,
     "title": "Sacred Agni Havan Pavilion",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-15.jpg",
+    "image": "/images/gallery/smr-15.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -132,7 +132,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 16,
     "title": "Sheesh Crystal Mirror Decor",
     "category": "DECOR",
-    "image": "/images/gallery/smr-16.jpg",
+    "image": "/images/gallery/smr-16.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -140,7 +140,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 17,
     "title": "Illuminated Resort Main Gate",
     "category": "FACADE",
-    "image": "/images/gallery/smr-17.jpg",
+    "image": "/images/gallery/smr-17.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -148,7 +148,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 18,
     "title": "Artisanal Mithai & Rabri-Jalebi",
     "category": "CATERING",
-    "image": "/images/gallery/smr-18.jpg",
+    "image": "/images/gallery/smr-18.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -156,7 +156,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 19,
     "title": "Royal Reception Dining Pavilion",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-19.jpg",
+    "image": "/images/gallery/smr-19.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -164,7 +164,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 20,
     "title": "Emerald Lawn Perimeter Lighting",
     "category": "LAWN",
-    "image": "/images/gallery/smr-20.jpg",
+    "image": "/images/gallery/smr-20.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -172,7 +172,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 21,
     "title": "Fresh Marigold & Rose Altar",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-21.jpg",
+    "image": "/images/gallery/smr-21.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -180,7 +180,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 22,
     "title": "Luxury Bridal Dressing Suite",
     "category": "DECOR",
-    "image": "/images/gallery/smr-22.jpg",
+    "image": "/images/gallery/smr-22.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -188,7 +188,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 23,
     "title": "Royal St. Xavier's Corridor View",
     "category": "FACADE",
-    "image": "/images/gallery/smr-23.jpg",
+    "image": "/images/gallery/smr-23.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -196,7 +196,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 24,
     "title": "Lavish Multi-Cuisine Wedding Feast",
     "category": "CATERING",
-    "image": "/images/gallery/smr-24.jpg",
+    "image": "/images/gallery/smr-24.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -204,7 +204,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 25,
     "title": "Mirrored Glass Welcoming Foyer",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-25.jpg",
+    "image": "/images/gallery/smr-25.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -212,7 +212,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 26,
     "title": "Starlit Wedding Dining Court",
     "category": "LAWN",
-    "image": "/images/gallery/smr-26.jpg",
+    "image": "/images/gallery/smr-26.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -220,7 +220,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 27,
     "title": "Saat Phere Ceremonial Stage",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-27.jpg",
+    "image": "/images/gallery/smr-27.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -228,7 +228,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 28,
     "title": "Pre-Wedding Pastel Floral Swings",
     "category": "DECOR",
-    "image": "/images/gallery/smr-28.jpg",
+    "image": "/images/gallery/smr-28.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -236,7 +236,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 29,
     "title": "Dazzling Palace Illumination",
     "category": "FACADE",
-    "image": "/images/gallery/smr-29.jpg",
+    "image": "/images/gallery/smr-29.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -244,7 +244,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 30,
     "title": "Live Chaat & Street Food Fiesta",
     "category": "CATERING",
-    "image": "/images/gallery/smr-30.jpg",
+    "image": "/images/gallery/smr-30.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -252,7 +252,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 31,
     "title": "Executive Wedding Lounge",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-31.jpg",
+    "image": "/images/gallery/smr-31.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -260,7 +260,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 32,
     "title": "Baraat Dhol Procession Corridor",
     "category": "LAWN",
-    "image": "/images/gallery/smr-32.jpg",
+    "image": "/images/gallery/smr-32.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -268,7 +268,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 33,
     "title": "Vedic Nuptial Canopy",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-33.jpg",
+    "image": "/images/gallery/smr-33.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -276,7 +276,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 34,
     "title": "Brass Samai Lamps & Flower Urli",
     "category": "DECOR",
-    "image": "/images/gallery/smr-34.jpg",
+    "image": "/images/gallery/smr-34.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -284,7 +284,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 35,
     "title": "Grand Resort Facade & Driveway",
     "category": "FACADE",
-    "image": "/images/gallery/smr-35.jpg",
+    "image": "/images/gallery/smr-35.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -292,7 +292,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 36,
     "title": "Copper Handi Dum Biryani Court",
     "category": "CATERING",
-    "image": "/images/gallery/smr-36.jpg",
+    "image": "/images/gallery/smr-36.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -300,7 +300,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 37,
     "title": "Pillarless AC Banquet Hall",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-37.jpg",
+    "image": "/images/gallery/smr-37.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -308,7 +308,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 38,
     "title": "Palace Gardens Under the Stars",
     "category": "LAWN",
-    "image": "/images/gallery/smr-38.jpg",
+    "image": "/images/gallery/smr-38.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -316,7 +316,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 39,
     "title": "Golden Wedding Mandap Pillars",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-39.jpg",
+    "image": "/images/gallery/smr-39.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -324,7 +324,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 40,
     "title": "Custom Entry Welcome Arches",
     "category": "DECOR",
-    "image": "/images/gallery/smr-40.jpg",
+    "image": "/images/gallery/smr-40.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -332,7 +332,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 41,
     "title": "Starlit Twilight Panorama",
     "category": "FACADE",
-    "image": "/images/gallery/smr-41.jpg",
+    "image": "/images/gallery/smr-41.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -340,7 +340,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 42,
     "title": "Gourmet Wedding Banquet Spread",
     "category": "CATERING",
-    "image": "/images/gallery/smr-42.jpg",
+    "image": "/images/gallery/smr-42.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -348,7 +348,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 43,
     "title": "Royal Couple Stage Setup",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-43.jpg",
+    "image": "/images/gallery/smr-43.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -356,7 +356,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 44,
     "title": "Illuminated Lawn Walkways",
     "category": "LAWN",
-    "image": "/images/gallery/smr-44.jpg",
+    "image": "/images/gallery/smr-44.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -364,7 +364,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 45,
     "title": "Sacred Wedding Blessings Dais",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-45.jpg",
+    "image": "/images/gallery/smr-45.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -372,7 +372,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 46,
     "title": "Traditional Dhol & Sangeet Props",
     "category": "DECOR",
-    "image": "/images/gallery/smr-46.jpg",
+    "image": "/images/gallery/smr-46.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -380,7 +380,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 47,
     "title": "Architectural Lanterns & Palms",
     "category": "FACADE",
-    "image": "/images/gallery/smr-47.jpg",
+    "image": "/images/gallery/smr-47.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -388,7 +388,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 48,
     "title": "Royal Welcome Mocktail Lounge",
     "category": "CATERING",
-    "image": "/images/gallery/smr-48.jpg",
+    "image": "/images/gallery/smr-48.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -396,7 +396,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 49,
     "title": "The Sheesh Banquet Ballroom",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-49.jpg",
+    "image": "/images/gallery/smr-49.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -404,7 +404,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 50,
     "title": "Shahi Utsav Starlit Lawn",
     "category": "LAWN",
-    "image": "/images/gallery/smr-50.jpg",
+    "image": "/images/gallery/smr-50.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -412,7 +412,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 51,
     "title": "Consecrated Vedic Mandap",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-51.jpg",
+    "image": "/images/gallery/smr-51.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -420,7 +420,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 52,
     "title": "Artisanal Floral Stage Backdrop",
     "category": "DECOR",
-    "image": "/images/gallery/smr-52.jpg",
+    "image": "/images/gallery/smr-52.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -428,7 +428,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 53,
     "title": "Palace Architecture at Twilight",
     "category": "FACADE",
-    "image": "/images/gallery/smr-53.jpg",
+    "image": "/images/gallery/smr-53.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -436,7 +436,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 54,
     "title": "Shahi Awadhi Live Food Stations",
     "category": "CATERING",
-    "image": "/images/gallery/smr-54.jpg",
+    "image": "/images/gallery/smr-54.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -444,7 +444,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 55,
     "title": "Grand Crystal Chandelier Hall",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-55.jpg",
+    "image": "/images/gallery/smr-55.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -452,7 +452,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 56,
     "title": "Grand Baraat Welcoming Avenue",
     "category": "LAWN",
-    "image": "/images/gallery/smr-56.jpg",
+    "image": "/images/gallery/smr-56.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -460,7 +460,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 57,
     "title": "Varmala Revolving Dais",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-57.jpg",
+    "image": "/images/gallery/smr-57.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -468,7 +468,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 58,
     "title": "Royal Velvet Thrones & Baithak",
     "category": "DECOR",
-    "image": "/images/gallery/smr-58.jpg",
+    "image": "/images/gallery/smr-58.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -476,7 +476,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 59,
     "title": "Night Wedding Fairy Light Glow",
     "category": "FACADE",
-    "image": "/images/gallery/smr-59.jpg",
+    "image": "/images/gallery/smr-59.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -484,7 +484,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 60,
     "title": "Royal Live Tandoor & Bread Court",
     "category": "CATERING",
-    "image": "/images/gallery/smr-60.jpg",
+    "image": "/images/gallery/smr-60.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -492,7 +492,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 61,
     "title": "Palatial Indoor Varmala Dais",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-61.jpg",
+    "image": "/images/gallery/smr-61.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -500,7 +500,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 62,
     "title": "Open-Sky Wedding Amphitheater",
     "category": "LAWN",
-    "image": "/images/gallery/smr-62.jpg",
+    "image": "/images/gallery/smr-62.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -508,7 +508,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 63,
     "title": "Sacred Agni Havan Pavilion",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-63.jpg",
+    "image": "/images/gallery/smr-63.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -516,7 +516,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 64,
     "title": "Sheesh Crystal Mirror Decor",
     "category": "DECOR",
-    "image": "/images/gallery/smr-64.jpg",
+    "image": "/images/gallery/smr-64.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -524,7 +524,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 65,
     "title": "Illuminated Resort Main Gate",
     "category": "FACADE",
-    "image": "/images/gallery/smr-65.jpg",
+    "image": "/images/gallery/smr-65.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -532,7 +532,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 66,
     "title": "Artisanal Mithai & Rabri-Jalebi",
     "category": "CATERING",
-    "image": "/images/gallery/smr-66.jpg",
+    "image": "/images/gallery/smr-66.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -540,7 +540,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 67,
     "title": "Royal Reception Dining Pavilion",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-67.jpg",
+    "image": "/images/gallery/smr-67.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -548,7 +548,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 68,
     "title": "Emerald Lawn Perimeter Lighting",
     "category": "LAWN",
-    "image": "/images/gallery/smr-68.jpg",
+    "image": "/images/gallery/smr-68.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -556,7 +556,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 69,
     "title": "Fresh Marigold & Rose Altar",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-69.jpg",
+    "image": "/images/gallery/smr-69.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -564,7 +564,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 70,
     "title": "Luxury Bridal Dressing Suite",
     "category": "DECOR",
-    "image": "/images/gallery/smr-70.jpg",
+    "image": "/images/gallery/smr-70.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -572,7 +572,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 71,
     "title": "Royal St. Xavier's Corridor View",
     "category": "FACADE",
-    "image": "/images/gallery/smr-71.jpg",
+    "image": "/images/gallery/smr-71.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -580,7 +580,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 72,
     "title": "Lavish Multi-Cuisine Wedding Feast",
     "category": "CATERING",
-    "image": "/images/gallery/smr-72.jpg",
+    "image": "/images/gallery/smr-72.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -588,7 +588,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 73,
     "title": "Mirrored Glass Welcoming Foyer",
     "category": "BANQUET",
-    "image": "/images/gallery/smr-73.jpg",
+    "image": "/images/gallery/smr-73.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -596,7 +596,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 74,
     "title": "Starlit Wedding Dining Court",
     "category": "LAWN",
-    "image": "/images/gallery/smr-74.jpg",
+    "image": "/images/gallery/smr-74.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -604,7 +604,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 75,
     "title": "Saat Phere Ceremonial Stage",
     "category": "MANDAP",
-    "image": "/images/gallery/smr-75.jpg",
+    "image": "/images/gallery/smr-75.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -612,7 +612,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 76,
     "title": "Pre-Wedding Pastel Floral Swings",
     "category": "DECOR",
-    "image": "/images/gallery/smr-76.jpg",
+    "image": "/images/gallery/smr-76.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   },
@@ -620,7 +620,7 @@ export const ALL_GALLERY_PHOTOS: GalleryItem[] = [
     "id": 77,
     "title": "Dazzling Palace Illumination",
     "category": "FACADE",
-    "image": "/images/gallery/smr-77.png",
+    "image": "/images/gallery/smr-77.webp",
     "caption": "Authentic Sheesh Mahal Resort Celebration",
     "description": "High-resolution photograph captured at Sheesh Mahal Resort, opposite St. Xavier's College gate, Ashiana–Digha Road, Patna."
   }

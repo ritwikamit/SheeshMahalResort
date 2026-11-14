@@ -177,33 +177,23 @@ export const Navigation: React.FC<NavigationProps> = ({
 
       {/* Right Side: Quick Dial + Tactile Clay CTA Button */}
       <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
-        {/* Direct Call Icon Button (No exposed number string as requested) */}
+        {/* Direct Call Icon Button */}
         <a
           href={`tel:${RESORT_CONTACT.rawPhone}`}
           aria-label="Call 24/7 Wedding Concierge"
-          className="w-10 h-10 rounded-full clay-pill flex items-center justify-center text-[#26532B] hover:text-[#E88A1A] transition-all cursor-pointer group shadow-xs"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-full clay-pill flex items-center justify-center text-[#26532B] hover:text-[#E88A1A] transition-all cursor-pointer group shadow-xs"
           title="Call 24/7 Wedding Concierge"
         >
-          <Phone size={16} className="text-[#E88A1A] group-hover:rotate-12 transition-transform" />
+          <Phone size={15} className="text-[#E88A1A] group-hover:rotate-12 transition-transform" />
         </a>
 
-        {/* Primary Booking CTA in Royal Saffron Gold Clay (Icon removed as requested) */}
+        {/* Primary Booking CTA in Royal Saffron Gold Clay */}
         <button
           type="button"
           onClick={onOpenInquiry}
-          className="clay-btn-gold px-4 sm:px-6 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-md"
+          className="clay-btn-gold px-3.5 sm:px-6 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black tracking-wider sm:tracking-widest uppercase transition-all duration-300 cursor-pointer shadow-md"
         >
           <span>BOOK DATES</span>
-        </button>
-
-        {/* Tactile Mobile Menu Toggle */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden w-10 h-10 rounded-xl clay-pill flex items-center justify-center text-[#1D261E] hover:text-[#E88A1A] transition-colors cursor-pointer border border-white/80"
-          aria-label="Toggle navigation menu"
-        >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -218,7 +208,15 @@ export const Navigation: React.FC<NavigationProps> = ({
               <span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse"></span>
               PATNA ROYAL WEDDINGS
             </span>
-            <span className="text-[#1D261E]/70 font-bold">OPEN 24 HOURS</span>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-1 rounded-md text-[#1D261E]/70 hover:text-[#E88A1A] transition-colors cursor-pointer flex items-center gap-1 text-[10px] font-black uppercase tracking-wider"
+              aria-label="Close navigation menu"
+            >
+              <span>CLOSE</span>
+              <X size={14} />
+            </button>
           </div>
 
           {/* 6 Tactile Clay Menu Tiles (2 Columns Grid) */}

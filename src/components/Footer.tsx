@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenCookies
 }) => {
   return (
-    <footer className="relative bg-[#151D16] text-[#FAF6EE] border-t-2 border-[#E88A1A]/40 pt-8 sm:pt-10 pb-4 sm:pb-6 shadow-[0_-8px_30px_rgba(0,0,0,0.25)] overflow-hidden">
+    <footer className="relative bg-[#151D16] text-[#FAF6EE] border-t-2 border-[#E88A1A]/40 pt-8 sm:pt-10 pb-24 md:pb-6 shadow-[0_-8px_30px_rgba(0,0,0,0.25)] overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         
         {/* Top Trust & Legacy Bar across Footer */}
@@ -344,7 +344,7 @@ export const Footer: React.FC<FooterProps> = ({
       {/* Edge-to-Edge Claymorphically Carved Dark Watermark inside the footer backdrop */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 w-full flex items-end justify-center pointer-events-none select-none z-0 px-2 overflow-hidden h-[50px] sm:h-[65px] md:h-[80px]"
+        className="absolute inset-x-0 bottom-16 md:bottom-0 w-full flex items-end justify-center pointer-events-none select-none z-0 px-2 overflow-hidden h-[50px] sm:h-[65px] md:h-[80px]"
       >
         <svg
           viewBox="0 0 1000 115"

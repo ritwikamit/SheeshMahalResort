@@ -75,21 +75,19 @@ export const Navigation: React.FC<NavigationProps> = ({
 
   const isLinkActive = (page: PageRoute) => currentPage === page;
 
-  // Primary navigation items
+  // Primary navigation items (Strictly Home, Venues, Catering, Gallery as requested)
   const mainNavItems: { label: string; page: PageRoute; icon: React.ReactNode }[] = [
     { label: 'HOME', page: 'home', icon: <HomeIcon size={13} /> },
     { label: 'VENUES', page: 'venues', icon: <MapPin size={13} /> },
     { label: 'CATERING', page: 'catering', icon: <Utensils size={13} /> },
-    { label: 'RITUALS', page: 'rituals', icon: <Heart size={13} /> },
     { label: 'GALLERY', page: 'gallery', icon: <Camera size={13} /> },
-    { label: 'PACKAGES', page: 'packages', icon: <Crown size={13} /> },
   ];
 
-  // Secondary "More" items with rich subtitles
-  const moreItems: { label: string; page: PageRoute; desc: string; icon: React.ReactNode }[] = [
-    { label: 'WEDDING FAQS', page: 'faqs', desc: 'Policies, timings & catering guidelines', icon: <HelpCircle size={16} className="text-[#E88A1A]" /> },
-    { label: 'ROYAL PACKAGES', page: 'packages', desc: 'All-inclusive weddings & suites', icon: <Crown size={16} className="text-[#26532B]" /> },
-    { label: 'PHOTO GALLERY', page: 'gallery', desc: 'Real Baraats, Mandaps & Stage decor', icon: <Camera size={16} className="text-[#E88A1A]" /> },
+  // Secondary items placed under More menu: Rituals, Packages, and FAQs
+  const moreDropdownItems: { label: string; page: PageRoute; tag: string }[] = [
+    { label: 'WEDDING RITUALS', page: 'rituals', tag: 'SAAT PHERE' },
+    { label: 'ROYAL PACKAGES', page: 'packages', tag: 'TIERS' },
+    { label: 'WEDDING FAQS', page: 'faqs', tag: 'HELP' },
   ];
 
   return (
@@ -113,7 +111,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       </div>
 
       {/* Redesigned Desktop Menu: Floating Tactile Clay Pill Island */}
-      <nav className="hidden lg:flex items-center clay-pill px-2 py-1.5 bg-[#FAF6EE]/90 border border-white/90 shadow-[6px_8px_18px_rgba(29,38,30,0.05),-4px_-4px_12px_rgba(255,255,255,0.95)]">
+      <nav className="hidden lg:flex items-center clay-pill px-2.5 py-1.5 bg-[#FAF6EE]/90 border border-white/90 shadow-[6px_8px_18px_rgba(29,38,30,0.05),-4px_-4px_12px_rgba(255,255,255,0.95)] gap-1">
         {mainNavItems.map((item) => {
           const active = isLinkActive(item.page);
           return (
@@ -121,7 +119,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               key={item.page}
               type="button"
               onClick={() => handleNavClick(item.page)}
-              className={`relative px-3.5 py-1.5 text-[10.5px] font-black uppercase tracking-[0.16em] transition-all duration-250 cursor-pointer flex items-center gap-1.5 rounded-full ${
+              className={`relative px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-all duration-250 cursor-pointer flex items-center gap-1.5 rounded-full ${
                 active
                   ? 'bg-[#E88A1A] text-white shadow-[0_4px_14px_rgba(232,138,26,0.35),inset_1px_1px_2px_rgba(255,255,255,0.4)] scale-[1.02]'
                   : 'text-[#1D261E]/75 hover:text-[#1D261E] hover:bg-white/80'
@@ -137,41 +135,40 @@ export const Navigation: React.FC<NavigationProps> = ({
           <button
             type="button"
             onClick={() => setMoreMenuOpen(!moreMenuOpen)}
-            className={`px-3 py-1.5 text-[10.5px] font-black uppercase tracking-[0.16em] transition-all duration-200 cursor-pointer flex items-center gap-1 rounded-full ${
-              ['faqs', 'terms', 'cookies'].includes(currentPage)
+            className={`px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-all duration-200 cursor-pointer flex items-center gap-1.5 rounded-full ${
+              ['rituals', 'packages', 'faqs', 'terms', 'cookies'].includes(currentPage)
                 ? 'bg-[#26532B] text-white shadow-sm'
                 : 'text-[#1D261E]/75 hover:text-[#1D261E] hover:bg-white/80'
             }`}
           >
             <span>MORE</span>
-            <ChevronDown size={12} className={`transition-transform duration-200 ${moreMenuOpen ? 'rotate-180' : ''}`} />
+            <ChevronDown size={13} className={`transition-transform duration-200 ${moreMenuOpen ? 'rotate-180' : ''}`} />
           </button>
 
-          {/* Minimal Clay Dropdown Menu (No icons as requested) */}
+          {/* Minimal Clay Dropdown Menu with Rituals, Packages, and FAQs */}
           {moreMenuOpen && (
-            <div className="absolute top-full right-0 mt-2.5 w-44 clay-card-white p-1.5 z-50 rounded-xl border border-white shadow-[8px_14px_28px_rgba(29,38,30,0.08),-4px_-4px_12px_rgba(255,255,255,0.95)] animate-in fade-in slide-in-from-top-2 duration-150">
-              <div className="flex flex-col space-y-0.5">
-                <button
-                  type="button"
-                  onClick={() => handleNavClick('gallery')}
-                  className="w-full text-left px-3 py-2 rounded-lg text-[11px] font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] hover:bg-[#FAF6EE] transition-colors cursor-pointer"
-                >
-                  PHOTO GALLERY
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleNavClick('packages')}
-                  className="w-full text-left px-3 py-2 rounded-lg text-[11px] font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] hover:bg-[#FAF6EE] transition-colors cursor-pointer"
-                >
-                  ROYAL PACKAGES
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleNavClick('faqs')}
-                  className="w-full text-left px-3 py-2 rounded-lg text-[11px] font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] hover:bg-[#FAF6EE] transition-colors cursor-pointer"
-                >
-                  WEDDING FAQS
-                </button>
+            <div className="absolute top-full right-0 mt-3 w-56 clay-card-white p-2 z-50 rounded-2xl border border-white shadow-[8px_16px_32px_rgba(29,38,30,0.12),-4px_-4px_12px_rgba(255,255,255,0.95)] animate-in fade-in slide-in-from-top-2 duration-150">
+              <div className="flex flex-col space-y-1">
+                {moreDropdownItems.map((item) => {
+                  const active = isLinkActive(item.page);
+                  return (
+                    <button
+                      key={item.page}
+                      type="button"
+                      onClick={() => handleNavClick(item.page)}
+                      className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-between ${
+                        active
+                          ? 'bg-[#E88A1A] text-white shadow-xs'
+                          : 'text-[#1D261E] hover:text-[#E88A1A] hover:bg-[#FAF6EE]'
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <span className={`text-[9px] font-bold ${active ? 'text-white/80' : 'text-[#26532B]/70'}`}>
+                        {item.tag}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -226,7 +223,11 @@ export const Navigation: React.FC<NavigationProps> = ({
 
           {/* 6 Tactile Clay Menu Tiles (2 Columns Grid) */}
           <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-4">
-            {mainNavItems.map((item) => {
+            {[
+              ...mainNavItems,
+              { label: 'RITUALS', page: 'rituals' as PageRoute, icon: <Heart size={13} /> },
+              { label: 'PACKAGES', page: 'packages' as PageRoute, icon: <Crown size={13} /> }
+            ].map((item) => {
               const active = isLinkActive(item.page);
               return (
                 <button

@@ -45,11 +45,11 @@ export const CateringPage: React.FC<CateringPageProps> = ({ onOpenInquiry }) => 
 
         <div className="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
           <div className="flex items-center gap-2 mb-2">
-            <span className="label-utility text-[#E88A1A]">
+            <span className="text-xs sm:text-sm font-black tracking-[0.2em] text-[#E88A1A] uppercase drop-shadow-md">
               IN-HOUSE ROYAL WEDDING BANQUETING
             </span>
             <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
-            <span className="text-[10px] font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
+            <span className="text-[10px] sm:text-xs font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
               PURE VEG & NON-VEG KITCHENS
             </span>
           </div>

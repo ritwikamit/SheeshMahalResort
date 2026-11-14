@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   ChevronDown, 
+  ChevronRight,
   Phone, 
   Sparkles, 
   MapPin, 
@@ -197,21 +198,20 @@ export const Navigation: React.FC<NavigationProps> = ({
         </button>
       </div>
 
-      {/* Redesigned Mobile Clay Drawer Menu */}
+      {/* Redesigned Minimal & Aesthetic Mobile List Drawer Menu */}
       {mobileMenuOpen && (
         <div
-          className="absolute top-[78px] sm:top-[84px] left-0 right-0 p-4 sm:p-6 bg-[#FAF6EE] border-b border-[#26532B]/15 shadow-2xl lg:hidden max-h-[calc(100vh-84px)] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-4 duration-300"
+          className="absolute top-[78px] sm:top-[84px] left-0 right-0 p-4 sm:p-5 bg-[#FAF6EE]/98 backdrop-blur-xl border-b border-[#26532B]/15 shadow-2xl lg:hidden max-h-[calc(100vh-84px)] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-3 duration-250"
         >
-          {/* Header pill inside drawer */}
-          <div className="mb-4 p-2.5 rounded-xl clay-pill flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-[#26532B] px-4">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse"></span>
+          {/* Header Bar inside drawer - dots removed */}
+          <div className="mb-3 px-3 py-2 rounded-xl bg-white/80 border border-[#26532B]/10 flex items-center justify-between text-[#26532B]">
+            <span className="text-[11px] font-black uppercase tracking-[0.2em]">
               PATNA ROYAL WEDDINGS
             </span>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-1 rounded-md text-[#1D261E]/70 hover:text-[#E88A1A] transition-colors cursor-pointer flex items-center gap-1 text-[10px] font-black uppercase tracking-wider"
+              className="p-1 rounded-md text-[#1D261E]/70 hover:text-[#E88A1A] hover:bg-black/5 transition-colors cursor-pointer flex items-center gap-1 text-[10px] font-black uppercase tracking-wider"
               aria-label="Close navigation menu"
             >
               <span>CLOSE</span>
@@ -219,12 +219,16 @@ export const Navigation: React.FC<NavigationProps> = ({
             </button>
           </div>
 
-          {/* 6 Tactile Clay Menu Tiles (2 Columns Grid) */}
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-4">
+          {/* Minimal Aesthetic Menu List */}
+          <div className="flex flex-col divide-y divide-[#26532B]/10 rounded-2xl bg-white/90 border border-[#26532B]/15 overflow-hidden shadow-sm mb-3">
             {[
-              ...mainNavItems,
-              { label: 'RITUALS', page: 'rituals' as PageRoute, icon: <Heart size={13} /> },
-              { label: 'PACKAGES', page: 'packages' as PageRoute, icon: <Crown size={13} /> }
+              { label: 'HOME', page: 'home' as PageRoute, detail: 'Overview & Palace Grandeur', icon: <HomeIcon size={15} /> },
+              { label: 'VENUES & LAWNS', page: 'venues' as PageRoute, detail: 'Ballroom & 45,000+ sq. ft.', icon: <MapPin size={15} /> },
+              { label: 'ROYAL CATERING', page: 'catering' as PageRoute, detail: 'Awadhi & Pure-Veg Kitchens', icon: <Utensils size={15} /> },
+              { label: 'WEDDING RITUALS', page: 'rituals' as PageRoute, detail: 'Saat Phere, Mandap & Haldi', icon: <Heart size={15} /> },
+              { label: 'ROYAL PACKAGES', page: 'packages' as PageRoute, detail: 'Transparent Starting Tiers', icon: <Crown size={15} /> },
+              { label: 'PHOTO & REEL GALLERY', page: 'gallery' as PageRoute, detail: 'Real Weddings & 4K Reels', icon: <Camera size={15} /> },
+              { label: 'FAQS & POLICIES', page: 'faqs' as PageRoute, detail: '24/7 Booking Guidance', icon: <HelpCircle size={15} /> },
             ].map((item) => {
               const active = isLinkActive(item.page);
               return (
@@ -232,58 +236,64 @@ export const Navigation: React.FC<NavigationProps> = ({
                   key={item.page}
                   type="button"
                   onClick={() => handleNavClick(item.page)}
-                  className={`p-3.5 rounded-2xl text-left transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[82px] ${
+                  className={`w-full px-4 py-3 flex items-center justify-between transition-all text-left cursor-pointer group ${
                     active
-                      ? 'clay-btn-gold text-white scale-[1.01]'
-                      : 'clay-card hover:bg-white text-[#1D261E]'
+                      ? 'bg-[#E88A1A]/10 text-[#1D261E]'
+                      : 'hover:bg-[#FAF6EE] text-[#1D261E]/85'
                   }`}
                 >
-                  <div className={`p-1.5 rounded-lg w-fit ${active ? 'bg-white/20 text-white' : 'bg-white text-[#E88A1A] shadow-2xs'}`}>
-                    {item.icon}
-                  </div>
-                  <div>
-                    <div className="text-xs font-black uppercase tracking-wider mt-2">
-                      {item.label}
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 ${
+                        active
+                          ? 'bg-[#E88A1A] text-white shadow-xs'
+                          : 'bg-[#26532B]/10 text-[#26532B]'
+                      }`}
+                    >
+                      {item.icon}
+                    </div>
+                    <div>
+                      <div
+                        className={`text-xs uppercase tracking-wider leading-snug ${
+                          active ? 'font-black text-[#E88A1A]' : 'font-extrabold text-[#1D261E]'
+                        }`}
+                      >
+                        {item.label}
+                      </div>
+                      <div className="text-[10px] font-medium text-[#1D261E]/60 leading-tight">
+                        {item.detail}
+                      </div>
                     </div>
                   </div>
+                  <ChevronRight
+                    size={14}
+                    className={`shrink-0 transition-transform group-hover:translate-x-0.5 ${
+                      active ? 'text-[#E88A1A]' : 'text-[#1D261E]/30'
+                    }`}
+                  />
                 </button>
               );
             })}
           </div>
 
-          {/* Extra explore link: FAQs & Policies */}
-          <button
-            type="button"
-            onClick={() => handleNavClick('faqs')}
-            className="w-full mb-4 p-3 rounded-xl clay-pill flex items-center justify-between text-xs font-black uppercase tracking-wider text-[#1D261E] hover:text-[#E88A1A] transition-colors"
-          >
-            <span className="flex items-center gap-2">
-              <HelpCircle size={15} className="text-[#E88A1A]" />
-              WEDDING FAQS & POLICIES
-            </span>
-            <span className="text-[10px] font-bold text-[#26532B] bg-[#26532B]/10 px-2 py-0.5 rounded-full">
-              READ
-            </span>
-          </button>
-
-          {/* Quick Direct Mobile Contact Actions */}
-          <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
+          {/* Quick Contact Dual Actions */}
+          <div className="flex gap-2 pt-1">
             <a
               href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20would%20like%20to%20inquire%20about%20booking%20wedding%20dates.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 py-3 px-4 rounded-xl text-xs font-black tracking-widest uppercase bg-[#25D366] text-white flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="flex-1 py-2.5 px-3 rounded-xl text-[11px] font-black tracking-wider uppercase bg-[#25D366] text-white flex items-center justify-center gap-1.5 shadow-sm active:scale-98 transition-all"
             >
-              <WhatsAppIcon className="w-4 h-4 fill-current shrink-0" />
-              <span>WHATSAPP CONCIERGE</span>
+              <WhatsAppIcon className="w-3.5 h-3.5 fill-current shrink-0" />
+              <span>WHATSAPP</span>
             </a>
 
             <a
               href={`tel:${RESORT_CONTACT.rawPhone}`}
-              className="flex-1 py-3 px-4 rounded-xl text-xs font-black tracking-widest uppercase clay-btn-emerald flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
+              className="flex-1 py-2.5 px-3 rounded-xl text-[11px] font-black tracking-wider uppercase clay-btn-emerald flex items-center justify-center gap-1.5 shadow-sm active:scale-98 transition-all"
             >
-              <Phone size={14} className="shrink-0" />
-              <span>CALL 24/7 DESK</span>
+              <Phone size={13} className="shrink-0" />
+              <span>CALL CONCIERGE</span>
             </a>
           </div>
         </div>

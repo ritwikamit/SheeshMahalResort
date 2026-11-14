@@ -30,6 +30,7 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [bookingRef, setBookingRef] = useState('');
+  const [lastWhatsAppUrl, setLastWhatsAppUrl] = useState('');
 
   if (!isOpen) return null;
 
@@ -37,7 +38,37 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
     e.preventDefault();
     const generatedRef = `SMR-WEDDING-${Math.floor(1000 + Math.random() * 9000)}`;
     setBookingRef(generatedRef);
+
+    // Build structured inquiry text for WhatsApp
+    const messageLines = [
+      `*ROYAL WEDDING INQUIRY — SHEESH MAHAL RESORT*`,
+      `*Reference:* ${generatedRef}`,
+      `• *Name:* ${formData.name.trim() || 'Valued Guest'}`,
+      `• *Phone:* ${formData.phone.trim() || 'Not provided'}`,
+      formData.email.trim() ? `• *Email:* ${formData.email.trim()}` : null,
+      `• *Event Date:* ${formData.eventDate}`,
+      `• *Event Type:* ${formData.eventType}`,
+      `• *Preferred Venue:* ${formData.spacePreference}`,
+      `• *Estimated Guests:* ${formData.guestCount}`,
+      `• *Catering Service:* ${formData.cateringRequired ? 'Yes (Royal Catering)' : 'No'}`,
+      `• *Floral & Stage Decor:* ${formData.customDecor ? 'Yes' : 'No'}`,
+      `• *100% Power Backup:* ${formData.powerBackup ? 'Yes' : 'No'}`,
+      formData.specialNotes.trim() ? `• *Special Notes:* ${formData.specialNotes.trim()}` : null
+    ].filter(Boolean).join('\n');
+
+    const whatsappUrl = `https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=${encodeURIComponent(messageLines)}`;
+    setLastWhatsAppUrl(whatsappUrl);
     setIsSubmitted(true);
+
+    // Automatically redirect filled inquiry to WhatsApp
+    try {
+      const newWin = window.open(whatsappUrl, '_blank');
+      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+        window.location.href = whatsappUrl;
+      }
+    } catch {
+      window.location.href = whatsappUrl;
+    }
   };
 
   const handleReset = () => {
@@ -283,13 +314,13 @@ export const ConciergeInquiryModal: React.FC<ConciergeInquiryModalProps> = ({
 
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <a
-                  href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20just%20submitted%20wedding%20inquiry%20reference%20${bookingRef}%20for%20date%20${formData.eventDate}.`}
+                  href={lastWhatsAppUrl || `https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20just%20submitted%20wedding%20inquiry%20reference%20${bookingRef}%20for%20date%20${formData.eventDate}.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-6 py-3 rounded-full text-xs font-black tracking-widest uppercase clay-btn-whatsapp inline-flex items-center justify-center gap-2.5 shadow-md cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4 fill-current shrink-0" />
-                  <span>CONFIRM ON WHATSAPP</span>
+                  <span>OPEN IN WHATSAPP</span>
                 </a>
 
                 <button

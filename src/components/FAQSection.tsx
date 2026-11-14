@@ -168,7 +168,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenInquiry }) => {
           <div className="mt-10 sm:mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#1D261E] to-[#141C15] text-[#FAF6EE] shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start gap-2 mb-2 text-[#E88A1A]">
-                <Sparkles size={16} />
+                <ShieldCheck size={16} />
                 <span className="text-xs font-black uppercase tracking-widest text-[#E88A1A]">
                   Reserve Your Auspicious Dates
                 </span>

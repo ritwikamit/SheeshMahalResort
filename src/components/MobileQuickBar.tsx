@@ -40,17 +40,12 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({
           onClick={() => handleNav('home')}
           className={`flex flex-col items-center justify-center gap-1 py-1 px-3 rounded-xl transition-all cursor-pointer ${
             currentPage === 'home'
-              ? 'text-[#1D261E] font-black'
+              ? 'text-[#E88A1A] font-black'
               : 'text-[#1D261E]/65 hover:text-[#1D261E]'
           }`}
           aria-label="Navigate to Home"
         >
-          <div className="relative">
-            <Home size={19} strokeWidth={currentPage === 'home' ? 2.5 : 2} />
-            {currentPage === 'home' && (
-              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#E88A1A]" />
-            )}
-          </div>
+          <Home size={19} strokeWidth={currentPage === 'home' ? 2.5 : 2} />
           <span className="text-[10px] uppercase tracking-wider font-extrabold">Home</span>
         </button>
 

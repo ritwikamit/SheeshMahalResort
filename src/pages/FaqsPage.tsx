@@ -42,7 +42,7 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
       {/* Landscaped Hero Banner */}
       <div className="relative w-full h-[240px] sm:h-[320px] lg:h-[360px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
         <img
-          src="/images/gallery/smr-77.webp"
+          src="/images/heroes/faqs-hero.webp"
           alt="Sheesh Mahal Resort FAQs & Planning"
           className="w-full h-full object-cover object-center"
         />
@@ -51,11 +51,11 @@ export const FaqsPage: React.FC<FaqsPageProps> = ({ onOpenInquiry }) => {
         <div className="absolute inset-0 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs sm:text-sm font-black tracking-[0.2em] text-[#E88A1A] uppercase drop-shadow-md">
-              TRANSPARENT GUIDANCE
+              DEDICATED CONCIERGE & FAQS SHOWCASE
             </span>
             <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
             <span className="text-[10px] sm:text-xs font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
-              24/7 CONCIERGE
+              24/7 ASSISTANCE
             </span>
           </div>
 

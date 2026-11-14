@@ -72,7 +72,7 @@ export const RitualsPage: React.FC<RitualsPageProps> = ({ onOpenInquiry }) => {
       {/* Landscaped Hero Banner */}
       <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[400px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
         <img
-          src="/images/reels_posters/landscape-1.webp"
+          src="/images/heroes/rituals-hero.webp"
           alt="Sheesh Mahal Resort Sacred Wedding Rituals"
           className="w-full h-full object-cover object-center"
         />

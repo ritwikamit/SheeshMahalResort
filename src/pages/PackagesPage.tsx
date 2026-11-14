@@ -60,11 +60,11 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
 
   return (
     <div className="pt-[78px] sm:pt-[88px] pb-20 sm:pb-24 bg-[#FAF6EE] text-[#1D261E]">
-      
+
       {/* Landscaped Hero Banner */}
       <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[400px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
         <img
-          src="/images/reels_posters/drone-full-view.webp"
+          src="/images/heroes/packages-hero.webp"
           alt="Sheesh Mahal Resort Wedding Packages"
           className="w-full h-full object-cover object-center"
         />
@@ -73,11 +73,11 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
         <div className="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs sm:text-sm font-black tracking-[0.2em] text-[#E88A1A] uppercase drop-shadow-md">
-              CURATED WEDDING TIERS
+              DEDICATED WEDDING TIERS SHOWCASE
             </span>
             <span className="w-8 h-[1px] bg-[#E88A1A]"></span>
             <span className="text-[10px] sm:text-xs font-black tracking-widest text-[#1D261E] bg-[#E88A1A] px-2 py-0.5 rounded-sm uppercase">
-              ACCESSIBLE LUXURY
+              HONEST PACKAGES
             </span>
           </div>
 
@@ -104,11 +104,10 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
           {packages.map((pkg, i) => (
             <RevealUp key={i} delay={i * 100}>
               <div
-                className={`p-6 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[28px] border h-full flex flex-col justify-between transition-all duration-300 ${
-                  pkg.popular
-                    ? 'bg-[#FAF6EE] border-[#E88A1A] ring-2 ring-[#E88A1A] shadow-2xl relative'
-                    : 'bg-[#FAF6EE] border-[#26532B]/30 shadow-lg'
-                }`}
+                className={`p-6 sm:p-8 lg:p-10 rounded-[24px] sm:rounded-[28px] border h-full flex flex-col justify-between transition-all duration-300 ${pkg.popular
+                  ? 'bg-[#FAF6EE] border-[#E88A1A] ring-2 ring-[#E88A1A] shadow-2xl relative'
+                  : 'bg-[#FAF6EE] border-[#26532B]/30 shadow-lg'
+                  }`}
               >
                 <div>
                   {pkg.popular && (
@@ -156,11 +155,10 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenInquiry }) => 
                   <button
                     type="button"
                     onClick={onOpenInquiry}
-                    className={`w-full py-3.5 rounded-xl text-xs font-black tracking-widest uppercase transition-colors cursor-pointer shadow-md ${
-                      pkg.popular
-                        ? 'bg-[#E88A1A] text-[#1D261E] hover:bg-[#1D261E] hover:text-[#FAF6EE]'
-                        : 'bg-[#1D261E] text-[#E88A1A] hover:bg-[#26532B] hover:text-white'
-                    }`}
+                    className={`w-full py-3.5 rounded-xl text-xs font-black tracking-widest uppercase transition-colors cursor-pointer shadow-md ${pkg.popular
+                      ? 'bg-[#E88A1A] text-[#1D261E] hover:bg-[#1D261E] hover:text-[#FAF6EE]'
+                      : 'bg-[#1D261E] text-[#E88A1A] hover:bg-[#26532B] hover:text-white'
+                      }`}
                   >
                     INQUIRE FOR THIS PACKAGE
                   </button>

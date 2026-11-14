@@ -37,7 +37,7 @@ export const CateringPage: React.FC<CateringPageProps> = ({ onOpenInquiry }) => 
       {/* Landscaped Hero Banner */}
       <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[400px] overflow-hidden bg-[#151D16] mb-8 sm:mb-12">
         <img
-          src="/images/reels_posters/landscape-3.webp"
+          src="/images/heroes/catering-hero.webp"
           alt="Sheesh Mahal Resort Royal Banqueting & Catering"
           className="w-full h-full object-cover object-center"
         />

@@ -13,7 +13,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onBack }) => {
       {/* Landscaped Hero Banner */}
       <div className="relative w-full h-[220px] sm:h-[280px] overflow-hidden bg-[#151D16] mb-8 sm:mb-10">
         <img
-          src="/images/hero-poster.webp"
+          src="/images/heroes/terms-hero.webp"
           alt="Sheesh Mahal Resort Terms & Protocols"
           className="w-full h-full object-cover object-center"
         />
@@ -21,7 +21,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onBack }) => {
 
         <div className="absolute inset-0 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-6 sm:pb-8">
           <span className="text-xs sm:text-sm font-black tracking-[0.2em] text-[#E88A1A] uppercase drop-shadow-md mb-1">
-            OFFICIAL POLICY & PROTOCOLS
+            DEDICATED POLICY & PROTOCOLS
           </span>
           <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white drop-shadow-md">
             TERMS & CONDITIONS

@@ -37,7 +37,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
       {/* Landscaped Hero Banner */}
       <div className="relative w-full h-[220px] sm:h-[280px] overflow-hidden bg-[#151D16] mb-8 sm:mb-10">
         <img
-          src="/images/og-preview.jpg"
+          src="/images/heroes/cookies-hero.webp"
           alt="Sheesh Mahal Resort Privacy & Cookies"
           className="w-full h-full object-cover object-center"
         />
@@ -45,7 +45,7 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
 
         <div className="absolute inset-0 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-6 sm:pb-8">
           <span className="text-xs sm:text-sm font-black tracking-[0.2em] text-[#E88A1A] uppercase drop-shadow-md mb-1">
-            DIGITAL PRIVACY PROTOCOL
+            DEDICATED PRIVACY PROTOCOL
           </span>
           <h1 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-white drop-shadow-md">
             COOKIES POLICY

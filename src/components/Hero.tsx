@@ -104,27 +104,37 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
         <div className="absolute inset-0 bg-gradient-to-r from-[#1D261E]/50 via-transparent to-transparent pointer-events-none" />
       </div>
 
-      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 pt-24 sm:pt-28 lg:pt-24 pb-8 sm:pb-12 lg:pb-16 relative z-10 my-auto">
+      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 lg:pt-12 pb-6 sm:pb-8 lg:pb-8 relative z-10 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center">
           
           {/* Left Column: Floating text with SANCTUARY overlapping the enlarged right video card */}
           <div className="lg:col-span-5 flex flex-col justify-center relative z-20">
             
-            {/* Utility kicker with cursive flourish */}
-            <div className="mb-2 sm:mb-4 lg:mb-6 flex flex-wrap items-center gap-2 sm:gap-3">
-              <span className="font-cursive text-lg sm:text-2xl lg:text-3xl text-white font-normal drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
-                Where Sacred Vows Meet Royal Grandeur
+            {/* Trust Chip & Multi-faith Authority Pill */}
+            <div className="mb-2 sm:mb-3 flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#E88A1A]/40 text-[#FAF6EE] text-[10px] sm:text-xs font-bold shadow-md">
+                <span className="text-[#E88A1A]">★★★★★</span>
+                <span className="font-extrabold text-[#E88A1A]">4.9</span>
+                <span className="text-white/90">• Google Verified</span>
+                <span className="text-[#E88A1A]">• Raj Resort Group</span>
               </span>
-              <span className="w-5 sm:w-8 h-[1px] bg-[#26532B]"></span>
-              <span className="text-[8px] sm:text-[10px] font-black tracking-[0.25em] uppercase text-[#1D261E] bg-[#E88A1A] px-2 sm:px-2.5 py-0.5 rounded-sm shadow-md">
-                PATNA ROYAL WEDDINGS
+              <span className="text-[9px] sm:text-[10px] font-black tracking-[0.2em] uppercase text-[#1D261E] bg-[#E88A1A] px-2.5 py-0.5 rounded-sm shadow-md">
+                ALL RELIGIONS WELCOME
               </span>
             </div>
 
-            {/* Massive headline with purple cursive 'weddings' and 'SANCTUARY' overlapping right box */}
-            <h1 className="text-[clamp(2.4rem,8.8vw,10.5rem)] font-black tracking-tighter leading-[0.8] uppercase text-white mb-3 sm:mb-6 lg:mb-8 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+            {/* Utility kicker with cursive flourish */}
+            <div className="mb-1 sm:mb-2 flex items-center gap-2 sm:gap-3">
+              <span className="font-cursive text-lg sm:text-2xl text-white font-normal drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
+                Where Sacred Vows Meet Royal Grandeur
+              </span>
+              <span className="w-5 sm:w-8 h-[1px] bg-[#26532B]"></span>
+            </div>
+
+            {/* Massive headline with gold cursive 'weddings' and 'SANCTUARY' overlapping right box */}
+            <h1 className="text-[clamp(2.2rem,7.5vw,9.5rem)] font-black tracking-tighter leading-[0.82] uppercase text-white mb-2 sm:mb-4 select-none drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
               ROYAL
-              <span className="block font-cursive text-[3.2rem] sm:text-7xl lg:text-[8.5rem] text-[#E88A1A] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+              <span className="block font-cursive text-[2.8rem] sm:text-6xl lg:text-[7.5rem] text-[#E88A1A] capitalize tracking-normal font-normal -my-1 sm:-my-2 leading-[0.75] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
                 weddings
               </span>
               <span className="block lg:relative lg:z-30 lg:w-[160%] lg:-mr-64 whitespace-nowrap pointer-events-none drop-shadow-[0_8px_24px_rgba(0,0,0,0.95)] text-white">
@@ -132,31 +142,42 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               </span>
             </h1>
 
-            {/* Below headline: body text floating transparently */}
-            <p className="text-xs sm:text-base lg:text-xl text-white font-medium leading-relaxed max-w-xl mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
-              Orchestrate your dream royal wedding at Sheesh Mahal Resort. Grand air-conditioned ballrooms for majestic Varmalas, sprawling starlit lawns for grand Baraats, consecrated Vedic Mandaps for Saat Phere, and masterfully curated wedding feasts.
+            {/* Concise, high-intent body text tailored for new wedding seekers */}
+            <p className="text-xs sm:text-sm lg:text-base text-white/95 font-medium leading-relaxed max-w-xl mb-2 sm:mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
+              Patna's distinguished royal wedding destination. Grand air-conditioned ballrooms, starlit lawns, and sacred pavilions for Hindu Saat Phere, Muslim Nikah, Sikh Anand Karaj, Christian & Jain grand weddings at accessible starting package tiers.
             </p>
-            <p className="font-cursive text-base sm:text-xl lg:text-2xl text-[#E88A1A] mb-3 sm:mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <p className="font-cursive text-sm sm:text-lg text-[#E88A1A] mb-2 sm:mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               "Crafting timeless wedding moments opposite St. Xavier's, Patna"
             </p>
 
             {/* Location verified marker */}
-            <div className="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-white/90 mb-5 sm:mb-8 max-w-lg drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
-              <MapPin size={14} className="text-[#E88A1A] shrink-0" />
+            <div className="flex items-center gap-2 text-[10px] sm:text-xs font-bold text-white/90 mb-3 sm:mb-4 max-w-lg drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+              <MapPin size={13} className="text-[#E88A1A] shrink-0" />
               <span>Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna 800011</span>
             </div>
 
-            {/* Primary Clay CTA with Royal Gold Vibrancy */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+            {/* Primary Clay CTA with Royal Gold Vibrancy & Soft Pricing Note */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <button
                 type="button"
                 onClick={onExploreClick}
-                className="clay-btn-gold px-6 py-3 sm:px-8 sm:py-3.5 text-xs sm:text-sm font-black tracking-widest uppercase text-white transition-all cursor-pointer shadow-lg flex items-center gap-3"
+                className="clay-btn-gold px-5 py-2.5 sm:px-7 sm:py-3 text-xs sm:text-sm font-black tracking-widest uppercase text-white transition-all cursor-pointer shadow-lg flex items-center gap-2 hover:scale-105"
               >
-                <span>EXPLORE WEDDING VENUES</span>
-                <ArrowRight size={16} className="text-white" />
+                <span>EXPLORE VENUES</span>
+                <ArrowRight size={15} className="text-white" />
+              </button>
+              <button
+                type="button"
+                onClick={onOpenInquiry}
+                className="px-5 py-2.5 sm:px-6 sm:py-3 bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/30 text-white text-xs sm:text-sm font-black tracking-wider uppercase rounded-xl transition-all cursor-pointer shadow-md"
+              >
+                <span>BESPOKE TIERS</span>
               </button>
             </div>
+            <p className="text-[10px] sm:text-[11px] text-white/80 mt-2 font-medium flex items-center gap-1.5">
+              <span className="text-[#E88A1A]">✦</span>
+              <span>Royal luxury at accessible starting tiers • Custom estimates with zero hidden fees</span>
+            </p>
 
           </div>
 

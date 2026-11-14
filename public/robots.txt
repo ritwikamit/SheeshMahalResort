@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /favicon.ico
+Allow: /favicon*.png
+Allow: /android-chrome*.png
+Allow: /apple-touch-icon*.png
+
+Sitemap: https://sheeshmahalresorts.com/sitemap.xml

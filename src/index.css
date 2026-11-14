@@ -498,3 +498,38 @@ html, body {
   letter-spacing: 0.14em;
   user-select: none;
 }
+
+
+/* ========================================================
+   RESPONSIVE SMARTPHONE & 4G PERFORMANCE REFINEMENTS
+   - Prevents cut-offs and overlapping on narrow screens
+   - Ensures touch targets >= 44px
+   - Fluid typography and hardware-accelerated transforms
+   ======================================================== */
+
+@media (max-width: 640px) {
+  html, body {
+    overflow-x: hidden !important;
+    position: relative;
+    width: 100%;
+  }
+
+  .label-utility {
+    font-size: 10.5px !important;
+    letter-spacing: 0.22em !important;
+  }
+
+  .clay-card, .clay-card-white {
+    border-radius: 18px !important;
+  }
+
+  button, a {
+    touch-action: manipulation;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

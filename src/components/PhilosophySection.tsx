@@ -48,20 +48,23 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
         <RevealUp>
           {/* Section Header */}
           <div className="mb-16 lg:mb-20">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="label-utility text-[#1D261E]/70">
-                SACRED WEDDING RITUALS & MILESTONES
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-[10px] sm:text-xs font-black tracking-[0.2em] uppercase text-[#E88A1A] bg-[#1D261E] px-2.5 py-1 rounded-sm shadow-sm">
+                SACRED CEREMONIES & MILESTONES
               </span>
               <span className="w-10 h-[1px] bg-[#26532B]"></span>
+              <span className="text-xs font-bold text-[#1D261E]/80 hidden sm:inline">
+                All Religions Celebrated • 4.9★ Google Rated
+              </span>
             </div>
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85] text-[#1D261E]">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-[#1D261E]">
               WEDDING RITUALS
             </h2>
-            <p className="font-cursive text-3xl sm:text-4xl text-[#26532B] mt-2 font-normal">
-              From Sacred Vedic Vows to Starlit Wedding Banquets
+            <p className="font-cursive text-2xl sm:text-3xl text-[#26532B] mt-1.5 font-normal">
+              From Sacred Saat Phere & Nikah to Starlit Wedding Banquets
             </p>
-            <p className="mt-4 text-lg sm:text-xl text-[#1D261E]/75 max-w-2xl font-medium">
-              Every ceremonial rite is honored with authentic traditions, bespoke stage architecture, flawless catering, and dedicated wedding coordinators on call 24 hours.
+            <p className="mt-3 text-sm sm:text-base text-[#1D261E]/80 max-w-2xl font-normal leading-relaxed">
+              Honoring Hindu Saat Phere, Muslim Nikah & Walima, Sikh Anand Karaj, Christian & Jain weddings with bespoke cultural pavilions, dedicated pure-veg / halal kitchens, and accessible royal starting tiers.
             </p>
           </div>
         </RevealUp>

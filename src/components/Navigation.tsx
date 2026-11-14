@@ -106,7 +106,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       </div>
 
       {/* Redesigned Desktop Menu: Floating Tactile Clay Pill Island */}
-      <nav className="hidden xl:flex items-center clay-pill px-2 py-1.5 bg-[#FAF6EE]/90 border border-white/90 shadow-[6px_8px_18px_rgba(29,38,30,0.05),-4px_-4px_12px_rgba(255,255,255,0.95)]">
+      <nav className="hidden lg:flex items-center clay-pill px-2 py-1.5 bg-[#FAF6EE]/90 border border-white/90 shadow-[6px_8px_18px_rgba(29,38,30,0.05),-4px_-4px_12px_rgba(255,255,255,0.95)]">
         {mainNavItems.map((item) => {
           const active = isLinkActive(item.page);
           return (
@@ -196,7 +196,7 @@ export const Navigation: React.FC<NavigationProps> = ({
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="xl:hidden w-10 h-10 rounded-xl clay-pill flex items-center justify-center text-[#1D261E] hover:text-[#E88A1A] transition-colors cursor-pointer border border-white/80"
+          className="lg:hidden w-10 h-10 rounded-xl clay-pill flex items-center justify-center text-[#1D261E] hover:text-[#E88A1A] transition-colors cursor-pointer border border-white/80"
           aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -206,7 +206,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       {/* Redesigned Mobile Clay Drawer Menu */}
       {mobileMenuOpen && (
         <div
-          className="absolute top-[78px] sm:top-[84px] left-0 right-0 p-4 sm:p-6 bg-[#FAF6EE] border-b border-[#26532B]/15 shadow-2xl xl:hidden max-h-[calc(100vh-84px)] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-4 duration-300"
+          className="absolute top-[78px] sm:top-[84px] left-0 right-0 p-4 sm:p-6 bg-[#FAF6EE] border-b border-[#26532B]/15 shadow-2xl lg:hidden max-h-[calc(100vh-84px)] overflow-y-auto z-50 animate-in fade-in slide-in-from-top-4 duration-300"
         >
           {/* Header pill inside drawer */}
           <div className="mb-4 p-2.5 rounded-xl clay-pill flex items-center justify-between text-[10px] font-black uppercase tracking-wider text-[#26532B] px-4">

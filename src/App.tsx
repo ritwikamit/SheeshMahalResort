@@ -7,6 +7,8 @@ import { PhilosophySection } from './components/PhilosophySection.tsx';
 import { ReelShowcase } from './components/ReelShowcase.tsx';
 import { InstagramReelsSection } from './components/InstagramReelsSection.tsx';
 import { MapSection } from './components/MapSection.tsx';
+import { FAQSection } from './components/FAQSection.tsx';
+
 import { Footer } from './components/Footer.tsx';
 import { CaseStudyModal } from './components/CaseStudyModal.tsx';
 import { ConciergeInquiryModal } from './components/ConciergeInquiryModal.tsx';
@@ -40,7 +42,7 @@ export default function App() {
   const [selectedService, setSelectedService] = useState<ResortService | null>(null);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
 
-  // Loading screen completes and smoothly reveals landing page fast even on slow networks
+  // Loading screen displayed for 1 second as requested, then smoothly fades out
   useEffect(() => {
     let dismissed = false;
     const triggerFadeOut = () => {
@@ -53,16 +55,9 @@ export default function App() {
       }, 500);
     };
 
-    // Instant reveal: fallback at 350ms max, instant on DOM ready
-    const fallbackTimer = setTimeout(triggerFadeOut, 350);
-
-    if (document.readyState === 'complete') {
-      setTimeout(triggerFadeOut, 150);
-    } else {
-      window.addEventListener('load', () => setTimeout(triggerFadeOut, 100), { once: true });
-    }
-
-    return () => clearTimeout(fallbackTimer);
+    // Exactly 1 second brand presentation before revealing the palace experience
+    const timer = setTimeout(triggerFadeOut, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleOpenCase = (spaceItem: VenueSpace) => {
@@ -152,6 +147,11 @@ export default function App() {
 
             {/* Section 5: Dedicated Map Section before Footer (Badge covering corner of map on RIGHT) */}
             <MapSection
+              onOpenInquiry={() => setIsInquiryModalOpen(true)}
+            />
+
+            {/* Section 6: Essential Wedding FAQs & Trust Authority (Right below Map) */}
+            <FAQSection
               onOpenInquiry={() => setIsInquiryModalOpen(true)}
             />
           </div>

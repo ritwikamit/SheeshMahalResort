@@ -37,11 +37,11 @@ export const CookiesPage: React.FC<CookiesPageProps> = ({ onBack }) => {
       {/* Landscaped Hero Banner */}
       <div className="relative w-full h-[220px] sm:h-[280px] overflow-hidden bg-[#151D16] mb-8 sm:mb-10">
         <img
-          src="/images/gallery/smr-04.webp"
+          src="/images/og-preview.jpg"
           alt="Sheesh Mahal Resort Privacy & Cookies"
-          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-black/35 to-black/20" />
 
         <div className="absolute inset-0 max-w-[1000px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-6 sm:pb-8">
           <span className="label-utility text-[#E88A1A] mb-1">

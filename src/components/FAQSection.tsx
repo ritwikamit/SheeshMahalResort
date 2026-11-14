@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Sparkles, Star, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { ChevronDown, CheckCircle2, ShieldCheck, HeartHandshake } from 'lucide-react';
 import { RevealUp } from './RevealUp.tsx';
 
 interface FAQItem {
@@ -34,7 +34,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenInquiry }) => {
     {
       category: "HERITAGE TRUST & PROVEN LEGACY",
       question: "Is Sheesh Mahal Resort connected to Raj Resort Patna?",
-      answer: "Yes. Sheesh Mahal Resort is founded and operated by the same esteemed hospitality family behind Raj Resort Patna (rajresortpatna.com). With over a decade of celebrated wedding legacy, 1,000+ successful royal marriages, and a verified 4.9★ Google Business rating, you receive Patna's most trusted wedding management team."
+      answer: "Yes. Sheesh Mahal Resort is founded and operated by the same esteemed hospitality family behind Raj Resort Patna (rajresortpatna.com). With over a decade of celebrated wedding legacy, 1,000+ successful royal marriages, and a verified 4.9 / 5.0 Google Business rating, you receive Patna's most trusted wedding management team."
     },
     {
       category: "LOCATION & PARKING CONVENIENCE",
@@ -79,16 +79,17 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenInquiry }) => {
             {/* Google Rating Trust Chip */}
             <div className="clay-card-white px-4 py-3 rounded-2xl flex items-center gap-3 shrink-0 self-start md:self-auto border border-[#E88A1A]/30">
               <div className="w-10 h-10 rounded-xl bg-[#26532B] text-white flex items-center justify-center font-bold text-sm shadow-inner">
-                4.9★
+                4.9
               </div>
               <div className="flex flex-col">
-                <div className="flex items-center gap-1 text-[#E88A1A]">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={13} className="fill-[#E88A1A] text-[#E88A1A]" />
-                  ))}
+                <div className="flex items-center gap-1.5 text-[#26532B]">
+                  <CheckCircle2 size={13} className="text-[#26532B]" />
+                  <span className="text-[11px] font-black text-[#1D261E] uppercase tracking-wider">
+                    Google Business Verified
+                  </span>
                 </div>
-                <span className="text-[11px] font-bold text-[#1D261E] uppercase tracking-wider mt-0.5">
-                  Google Business Verified
+                <span className="text-[10px] font-medium text-[#1D261E]/70 mt-0.5">
+                  Patna's Most Trusted Wedding Group
                 </span>
               </div>
             </div>

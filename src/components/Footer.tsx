@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Clock, Instagram, Facebook, Star, ShieldCheck } from 'lucide-react';
+import { MapPin, Phone, Clock, Instagram, Facebook, ShieldCheck } from 'lucide-react';
 import { RESORT_CONTACT } from '../data/resortData.ts';
 import { SheeshMahalLogo } from './SheeshMahalLogo.tsx';
 import { WhatsAppIcon } from './WhatsAppIcon.tsx';
@@ -24,14 +24,10 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Top Trust & Legacy Bar across Footer */}
         <div className="pb-10 mb-12 border-b border-[#FAF6EE]/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="flex flex-wrap items-center gap-3">
-            <div className="flex items-center gap-1.5 bg-[#FAF6EE]/10 border border-[#E88A1A]/30 px-3.5 py-1.5 rounded-xl">
-              <div className="flex items-center gap-0.5 text-[#E88A1A]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={13} className="fill-[#E88A1A] text-[#E88A1A]" />
-                ))}
-              </div>
-              <span className="text-xs font-black tracking-wider text-[#FAF6EE] ml-1">
-                4.9★ GOOGLE RATED
+            <div className="flex items-center gap-2 bg-[#FAF6EE]/10 border border-[#E88A1A]/30 px-3.5 py-1.5 rounded-xl">
+              <ShieldCheck size={14} className="text-[#E88A1A]" />
+              <span className="text-xs font-black tracking-wider text-[#FAF6EE]">
+                4.9 / 5.0 GOOGLE VERIFIED
               </span>
             </div>
 
@@ -42,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
 
           <div className="flex items-center gap-3 text-xs text-[#FAF6EE]/80">
-            <span className="text-[#E88A1A] font-bold">✦</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E88A1A]"></span>
             <span>All Religions & Sacred Vows Celebrated at Accessible Starting Tiers</span>
           </div>
         </div>
@@ -324,10 +320,14 @@ export const Footer: React.FC<FooterProps> = ({
           </p>
 
           {/* Designed and Developed by ACCustomLabs */}
-          <p
-            className="font-semibold tracking-wider text-center text-[#FAF6EE]/70 text-[11px]"
-          >
-            Designed and Developed by <span className="font-bold text-[#FAF6EE] hover:text-[#E88A1A] transition-colors cursor-pointer">ACCustomLabs</span>
+          <p className="font-semibold tracking-wider text-center text-[#FAF6EE]/70 text-[11px] flex items-center justify-center gap-1.5 flex-wrap">
+            <span>Designed and Developed by</span>
+            <img
+              src="/images/ac-custom-labs.png"
+              alt="ACCustomLabs"
+              className="h-4 sm:h-5 w-auto object-contain inline-block align-middle opacity-90 hover:opacity-100 transition-opacity"
+            />
+            <span className="font-bold text-[#FAF6EE] hover:text-[#E88A1A] transition-colors cursor-pointer">ACCustomLabs</span>
           </p>
 
           {/* Just Terms & Conditions and Cookies Policy */}

@@ -48,6 +48,13 @@ export const Navigation: React.FC<NavigationProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Listen for mobile menu toggle from bottom quick bar
+  useEffect(() => {
+    const handleToggleMobile = () => setMobileMenuOpen((prev) => !prev);
+    window.addEventListener('toggle-mobile-menu', handleToggleMobile);
+    return () => window.removeEventListener('toggle-mobile-menu', handleToggleMobile);
+  }, []);
+
   // Close "More" dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {

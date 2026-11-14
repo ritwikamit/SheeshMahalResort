@@ -32,29 +32,29 @@ export const WeddingDeskCircleBadge: React.FC<WeddingDeskCircleBadgeProps> = ({
         color: '#1D261E',
         animationDelay: bounceDelay
       }}
-      className={`relative z-30 w-[115px] h-[115px] sm:w-[150px] sm:h-[150px] lg:w-[160px] lg:h-[160px] rounded-full flex flex-col items-center justify-center text-white border-2 border-white/40 animate-bounce-slow cursor-pointer select-none transition-transform duration-300 hover:scale-105 active:scale-95 group shrink-0 ${className}`}
+      className={`relative z-30 w-[84px] h-[84px] sm:w-[108px] sm:h-[108px] lg:w-[118px] lg:h-[118px] rounded-full flex flex-col items-center justify-center text-white border-2 border-white/40 animate-bounce-slow cursor-pointer select-none transition-transform duration-300 hover:scale-105 active:scale-95 group shrink-0 ${className}`}
       title="Click to check wedding dates at Sheesh Mahal Resort"
     >
       {/* Outer subtle glow ring */}
       <div className="absolute inset-0 rounded-full border border-white/40 pointer-events-none scale-105 group-hover:scale-115 transition-transform duration-300 opacity-60"></div>
 
       {/* Cursive Number / Accent */}
-      <span className="font-cursive text-2xl sm:text-4xl leading-none text-white font-normal mb-0.5 group-hover:text-white transition-colors">
+      <span className="font-cursive text-xl sm:text-2xl lg:text-3xl leading-none text-white font-normal mb-0.5 group-hover:text-white transition-colors">
         {badgeNumber}
       </span>
 
       {/* Title */}
-      <span className="text-[7.5px] sm:text-[9px] font-black uppercase tracking-widest text-center px-2 sm:px-3 leading-tight text-white">
+      <span className="text-[6.5px] sm:text-[8px] font-black uppercase tracking-widest text-center px-1.5 sm:px-2 leading-tight text-white">
         {title}
       </span>
 
       {/* Cursive Subtitle */}
-      <span className="font-cursive text-xs sm:text-base text-white/95 mt-0.5">
+      <span className="font-cursive text-[9px] sm:text-xs text-white/95 mt-0.5">
         {subtitle}
       </span>
 
       {/* Status label at bottom */}
-      <span className="text-[6.5px] sm:text-[8px] font-bold tracking-wider uppercase text-[#1D261E] bg-white/90 font-black px-1.5 sm:px-2 py-0.5 rounded-sm mt-0.5 sm:mt-1">
+      <span className="text-[6px] sm:text-[7px] font-bold tracking-wider uppercase text-[#1D261E] bg-white/90 font-black px-1 sm:px-1.5 py-0.5 rounded-sm mt-0.5">
         {statusText}
       </span>
     </div>

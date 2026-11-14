@@ -4,7 +4,7 @@ import {
   VolumeX,
   Play,
   Flame,
-  Sparkles,
+  Crown,
   SunMedium,
   ArrowRight,
   Calendar
@@ -106,7 +106,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
     },
     {
       title: 'REVOLVING VARMALA STAGE',
-      icon: <Sparkles className="w-5 h-5 text-white" strokeWidth={1.75} />,
+      icon: <Crown className="w-5 h-5 text-white" strokeWidth={1.75} />,
       badge: 'VARMALA STAGE',
       description: 'Dramatic revolving stage synchronised with cold pyrotechnics, starlit smoke effects, and marigold showers.'
     },
@@ -128,8 +128,8 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
         {/* Split 2-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-10 sm:mb-14">
           
-          {/* Left 7 Columns: Storytelling & Highlights */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          {/* Left 5 Columns: Storytelling & Highlights */}
+          <div className="lg:col-span-5 flex flex-col justify-center">
             <RevealUp>
               <div className="flex items-center gap-3 mb-2 sm:mb-3">
                 <span className="label-utility text-[#1D261E]/70">
@@ -138,26 +138,26 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                 <span className="w-8 sm:w-10 h-[1px] bg-[#26532B]"></span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-[#1D261E]">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter uppercase leading-[0.9] text-[#1D261E]">
                 WITNESS THE ROYAL GRANDEUR
               </h2>
 
-              <p className="font-cursive text-2xl sm:text-4xl text-[#E88A1A] mt-2 font-normal">
+              <p className="font-cursive text-xl sm:text-3xl text-[#E88A1A] mt-2 font-normal">
                 Authentic Resort Architecture & Celebrations in Motion
               </p>
 
-              <p className="mt-3 text-sm sm:text-base text-[#1D261E]/85 max-w-2xl font-medium leading-relaxed">
+              <p className="mt-3 text-xs sm:text-sm text-[#1D261E]/85 max-w-xl font-medium leading-relaxed">
                 Step inside an authentic celebration at Sheesh Mahal Resort. From grand aerial views of our illuminated palace and starlit Baraat lawns to emotional vows under consecrated floral mandaps — experience Patna’s premier wedding sanctuary.
               </p>
 
               {/* 3 Highlight Cards */}
-              <div className="mt-6 space-y-3">
+              <div className="mt-5 space-y-2.5">
                 {reelHighlights.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-3.5 sm:p-4 rounded-2xl clay-card flex items-start gap-4 hover:border-[#E88A1A]/40 transition-all"
+                    className="p-3 sm:p-3.5 rounded-2xl clay-card flex items-start gap-3.5 hover:border-[#E88A1A]/40 transition-all"
                   >
-                    <div className="p-2.5 bg-[#26532B] text-white rounded-xl border border-white/20 shadow-xs shrink-0 mt-0.5">
+                    <div className="p-2 bg-[#26532B] text-white rounded-xl border border-white/20 shadow-xs shrink-0 mt-0.5">
                       {item.icon}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -169,7 +169,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                           {item.badge}
                         </span>
                       </div>
-                      <p className="text-[11px] sm:text-xs text-[#1D261E]/80 mt-1 leading-snug">
+                      <p className="text-[11px] text-[#1D261E]/80 mt-0.5 leading-snug">
                         {item.description}
                       </p>
                     </div>
@@ -182,7 +182,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                 <button
                   type="button"
                   onClick={onOpenInquiry}
-                  className="clay-btn-gold px-6 py-3 text-xs font-black uppercase tracking-wider text-white shadow-md cursor-pointer"
+                  className="clay-btn-gold px-5 py-2.5 sm:px-6 sm:py-3 text-xs font-black uppercase tracking-wider text-white shadow-md cursor-pointer"
                 >
                   BOOK DATES FOR WEDDING
                 </button>
@@ -191,7 +191,7 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
                   href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20would%20like%20to%20inquire%20about%20your%20wedding%20lawns.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="clay-pill px-5 py-3 text-xs font-black uppercase tracking-wider text-[#1D261E] hover:text-[#25D366] transition-colors flex items-center gap-2 cursor-pointer shadow-xs"
+                  className="clay-pill px-4 py-2.5 sm:px-5 sm:py-3 text-xs font-black uppercase tracking-wider text-[#1D261E] hover:text-[#25D366] transition-colors flex items-center gap-2 cursor-pointer shadow-xs"
                 >
                   <WhatsAppIcon className="w-4 h-4 fill-[#25D366]" />
                   <span>WHATSAPP DESK</span>
@@ -200,8 +200,8 @@ export const ReelShowcase: React.FC<ReelShowcaseProps> = ({ onOpenInquiry }) => 
             </RevealUp>
           </div>
 
-          {/* Right 5 Columns: Compact Video Box (Clean: Just Mute/Unmute & One-Line Detail, No Progress Bar) */}
-          <div ref={containerRef} className="lg:col-span-5 relative mt-6 lg:mt-0">
+          {/* Right 7 Columns: Prominent Enlarged Video Box */}
+          <div ref={containerRef} className="lg:col-span-7 relative mt-6 lg:mt-0">
             <RevealUp delay={120}>
               <div className="relative pt-4 sm:pt-6">
                 

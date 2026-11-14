@@ -54,7 +54,7 @@ export const PhilosophySection: React.FC<PhilosophySectionProps> = ({ onOpenInqu
               </span>
               <span className="w-10 h-[1px] bg-[#26532B]"></span>
               <span className="text-xs font-bold text-[#1D261E]/80 hidden sm:inline">
-                All Religions Celebrated • 4.9★ Google Rated
+                All Religions Celebrated • 4.9 Google Verified
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tighter uppercase leading-[0.9] text-[#1D261E]">

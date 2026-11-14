@@ -18,9 +18,9 @@ export const VenuesPage: React.FC<VenuesPageProps> = ({ onSelectSpace, onOpenInq
         <img
           src="/images/gallery/LandingPage3.webp"
           alt="Sheesh Mahal Resort Palatial Venues"
-          className="w-full h-full object-cover object-center scale-105 filter brightness-90"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-[#151D16]/75 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF6EE] via-black/35 to-black/20" />
 
         <div className="absolute inset-0 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 flex flex-col justify-end pb-8 sm:pb-10">
           <div className="flex items-center gap-2 mb-2">

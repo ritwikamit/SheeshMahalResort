@@ -1,6 +1,7 @@
 import React from 'react';
-import { Home, Landmark, UtensilsCrossed, Calendar, Phone } from 'lucide-react';
+import { Home, Phone, Menu } from 'lucide-react';
 import { PageRoute } from './Navigation.tsx';
+import { WhatsAppIcon } from './WhatsAppIcon.tsx';
 import { RESORT_CONTACT } from '../data/resortData.ts';
 
 interface MobileQuickBarProps {
@@ -11,109 +12,80 @@ interface MobileQuickBarProps {
 
 export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({
   currentPage,
-  onNavigatePage,
-  onOpenInquiry
+  onNavigatePage
 }) => {
   const handleNav = (page: PageRoute) => {
     onNavigatePage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleToggleMenu = () => {
+    window.dispatchEvent(new CustomEvent('toggle-mobile-menu'));
+  };
+
   return (
     <aside
       aria-label="Mobile Quick Navigation Menu"
-      className="fixed bottom-0 left-0 right-0 z-40 block md:hidden border-t border-[#26532B]/25 shadow-[0_-6px_25px_rgba(22,23,38,0.12)] transition-all duration-300"
+      className="fixed bottom-0 left-0 right-0 z-40 block md:hidden border-t border-[#26532B]/20 shadow-[0_-6px_25px_rgba(22,23,38,0.12)] transition-all duration-300"
       style={{
-        backgroundColor: 'rgba(250, 253, 251, 0.96)',
+        backgroundColor: 'rgba(250, 253, 251, 0.97)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)'
       }}
     >
-      <div className="max-w-md mx-auto px-2 py-1.5 flex items-center justify-around pb-[max(6px,env(safe-area-inset-bottom))]">
-        {/* Home Item */}
+      <div className="max-w-md mx-auto px-4 py-2 flex items-center justify-between pb-[max(8px,env(safe-area-inset-bottom))]">
+        {/* 1. Home */}
         <button
           type="button"
           onClick={() => handleNav('home')}
-          className={`flex flex-col items-center justify-center gap-1 py-1 px-2.5 rounded-xl transition-all cursor-pointer ${
+          className={`flex flex-col items-center justify-center gap-1 py-1 px-3 rounded-xl transition-all cursor-pointer ${
             currentPage === 'home'
-              ? 'text-[#1D261E]'
-              : 'text-[#1D261E]/60 hover:text-[#1D261E]'
+              ? 'text-[#1D261E] font-black'
+              : 'text-[#1D261E]/65 hover:text-[#1D261E]'
           }`}
           aria-label="Navigate to Home"
         >
           <div className="relative">
-            <Home size={18} strokeWidth={currentPage === 'home' ? 2.5 : 2} />
+            <Home size={19} strokeWidth={currentPage === 'home' ? 2.5 : 2} />
             {currentPage === 'home' && (
-              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#1D261E]" />
+              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#E88A1A]" />
             )}
           </div>
-          <span className="text-[9px] font-black uppercase tracking-wider">Home</span>
+          <span className="text-[10px] uppercase tracking-wider font-extrabold">Home</span>
         </button>
 
-        {/* Venues Item */}
-        <button
-          type="button"
-          onClick={() => handleNav('venues')}
-          className={`flex flex-col items-center justify-center gap-1 py-1 px-2.5 rounded-xl transition-all cursor-pointer ${
-            currentPage === 'venues'
-              ? 'text-[#1D261E]'
-              : 'text-[#1D261E]/60 hover:text-[#1D261E]'
-          }`}
-          aria-label="Navigate to Venues"
+        {/* 2. WhatsApp */}
+        <a
+          href={`https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=Hello%20Sheesh%20Mahal%20Resort,%20I%20would%20like%20to%20inquire%20about%20booking%20a%20wedding.`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center justify-center gap-1 py-1 px-3 rounded-xl text-[#1D261E]/75 hover:text-[#25D366] transition-all cursor-pointer"
+          aria-label="Direct WhatsApp Concierge"
         >
-          <div className="relative">
-            <Landmark size={18} strokeWidth={currentPage === 'venues' ? 2.5 : 2} />
-            {currentPage === 'venues' && (
-              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#1D261E]" />
-            )}
-          </div>
-          <span className="text-[9px] font-black uppercase tracking-wider">Venues</span>
-        </button>
+          <WhatsAppIcon className="w-5 h-5 fill-[#25D366]" />
+          <span className="text-[10px] uppercase tracking-wider font-extrabold">WhatsApp</span>
+        </a>
 
-        {/* Center Golden Feature Button: Book Dates / Check Muhurat */}
-        <button
-          type="button"
-          onClick={onOpenInquiry}
-          className="flex flex-col items-center justify-center -mt-3 group cursor-pointer"
-          aria-label="Check Muhurat Wedding Dates and Inquire"
-        >
-          <div className="w-12 h-12 rounded-full bg-[#E88A1A] text-[#1D261E] border-2 border-[#1D261E] flex items-center justify-center shadow-lg transition-transform duration-200 group-hover:scale-105 group-active:scale-95">
-            <Calendar size={20} strokeWidth={2.5} />
-          </div>
-          <span className="text-[9px] font-black uppercase tracking-wider text-[#1D261E] mt-0.5">
-            Book
-          </span>
-        </button>
-
-        {/* Royal Catering Item */}
-        <button
-          type="button"
-          onClick={() => handleNav('catering')}
-          className={`flex flex-col items-center justify-center gap-1 py-1 px-2.5 rounded-xl transition-all cursor-pointer ${
-            currentPage === 'catering'
-              ? 'text-[#1D261E]'
-              : 'text-[#1D261E]/60 hover:text-[#1D261E]'
-          }`}
-          aria-label="Navigate to Royal Catering"
-        >
-          <div className="relative">
-            <UtensilsCrossed size={18} strokeWidth={currentPage === 'catering' ? 2.5 : 2} />
-            {currentPage === 'catering' && (
-              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#1D261E]" />
-            )}
-          </div>
-          <span className="text-[9px] font-black uppercase tracking-wider">Catering</span>
-        </button>
-
-        {/* 24/7 Phone Call Item */}
+        {/* 3. Call */}
         <a
           href={`tel:${RESORT_CONTACT.primaryPhone}`}
-          className="flex flex-col items-center justify-center gap-1 py-1 px-2.5 rounded-xl text-[#1D261E]/75 hover:text-[#1D261E] transition-all cursor-pointer"
-          aria-label={`Call Sheesh Mahal Wedding Desk at ${RESORT_CONTACT.primaryPhone}`}
+          className="flex flex-col items-center justify-center gap-1 py-1 px-3 rounded-xl text-[#1D261E]/75 hover:text-[#E88A1A] transition-all cursor-pointer"
+          aria-label={`Call Wedding Desk at ${RESORT_CONTACT.primaryPhone}`}
         >
-          <Phone size={18} strokeWidth={2} />
-          <span className="text-[9px] font-black uppercase tracking-wider">Call</span>
+          <Phone size={19} strokeWidth={2} />
+          <span className="text-[10px] uppercase tracking-wider font-extrabold">Call</span>
         </a>
+
+        {/* 4. Menu */}
+        <button
+          type="button"
+          onClick={handleToggleMenu}
+          className="flex flex-col items-center justify-center gap-1 py-1 px-3 rounded-xl text-[#1D261E]/75 hover:text-[#1D261E] transition-all cursor-pointer"
+          aria-label="Open Navigation Menu"
+        >
+          <Menu size={19} strokeWidth={2} />
+          <span className="text-[10px] uppercase tracking-wider font-extrabold">Menu</span>
+        </button>
       </div>
     </aside>
   );

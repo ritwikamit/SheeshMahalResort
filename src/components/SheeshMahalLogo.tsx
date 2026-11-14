@@ -75,8 +75,15 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
     );
   }
 
-  // Variant: Footer (High-impact large brand showcase, left-aligned)
+  // Variant: Footer (High-impact brand showcase, left-aligned)
   if (variant === 'footer') {
+    const footerHeightClass = {
+      sm: 'h-10 sm:h-12 lg:h-14',
+      md: 'h-12 sm:h-14 lg:h-16',
+      lg: 'h-16 sm:h-20 lg:h-24',
+      xl: 'h-24 sm:h-32 lg:h-36'
+    }[size];
+
     return (
       <div
         onClick={onClick}
@@ -87,7 +94,7 @@ export const SheeshMahalLogo: React.FC<SheeshMahalLogoProps> = ({
             src={footerLogoSrc}
             alt="Sheesh Mahal Resort Palace Logo"
             onError={() => handleImgError(true)}
-            className="h-24 sm:h-32 lg:h-36 w-auto max-w-[340px] sm:max-w-[440px] lg:max-w-[500px] object-contain object-left drop-shadow-sm group-hover:scale-[1.02] transition-transform duration-300"
+            className={`${footerHeightClass} w-auto max-w-[280px] sm:max-w-[360px] lg:max-w-[420px] object-contain object-left drop-shadow-sm group-hover:scale-[1.02] transition-transform duration-300`}
           />
         ) : (
           renderFallback()

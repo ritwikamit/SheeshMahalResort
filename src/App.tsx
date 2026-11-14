@@ -31,16 +31,88 @@ import { CookiesPage } from './pages/CookiesPage.tsx';
 
 import { VenueSpace, ResortService } from './data/resortData.ts';
 
+const PAGE_META: Record<PageRoute, { title: string; desc: string }> = {
+  home: {
+    title: "Sheesh Mahal Resort Patna — Royal Wedding Venues, Lawns & Banquets | Opp. St. Xavier's",
+    desc: "Patna's distinguished royal wedding destination on Ashiana–Digha Road opposite St. Xavier's College Gate. Sprawling starlit lawns, grand AC ballroom, and sacred setups for all religions at affordable starting tiers."
+  },
+  venues: {
+    title: "Royal Wedding Venues & Lawns — Sheesh Mahal Resort Patna",
+    desc: "Explore 45,000+ sq. ft. of royal celebration spaces: Grand Sheesh Ballroom, Starlit Baraat Lawn, and Consecrated Vedic Mandap on Ashiana–Digha Road, Patna."
+  },
+  catering: {
+    title: "Royal Wedding Catering & Shahi Banquets — Sheesh Mahal Resort Patna",
+    desc: "Exquisite Awadhi Dum Pukht, Champaran Handi, live chaat stalls, and 100% segregated pure-vegetarian kitchens for grand wedding feasts in Patna."
+  },
+  rituals: {
+    title: "Wedding Rituals & Celebrations — Sheesh Mahal Resort Patna",
+    desc: "From Haldi flower showers and Sangeet dances to royal Baraats and sacred Saat Phere under starry skies at Sheesh Mahal Resort."
+  },
+  packages: {
+    title: "All-Inclusive Royal Wedding Packages — Sheesh Mahal Resort Patna",
+    desc: "Transparent, accessible starting tiers for intimate weddings and 2,000-guest royal celebrations with AC ballrooms, catering, and bridal suites."
+  },
+  gallery: {
+    title: "Photo & Video Gallery — Sheesh Mahal Resort Patna",
+    desc: "Authentic photographs and 4K reels of real weddings, illuminated Baraat lawns, and revolving stage Varmala celebrations in Patna."
+  },
+  faqs: {
+    title: "Wedding FAQs & Booking Policies — Sheesh Mahal Resort Patna",
+    desc: "Comprehensive answers regarding guest capacity, pure-veg catering segregation, power backup, valet parking, and booking dates."
+  },
+  terms: {
+    title: "Terms & Protocols — Sheesh Mahal Resort Patna",
+    desc: "Official reservation protocols, occupancy guidelines, and event guidelines for Sheesh Mahal Resort, Ashiana–Digha Road, Patna."
+  },
+  cookies: {
+    title: "Cookies & Digital Privacy — Sheesh Mahal Resort Patna",
+    desc: "Digital privacy protocol and cookie preferences for guests visiting Sheesh Mahal Resort's official website."
+  }
+};
+
+const getInitialPage = (): PageRoute => {
+  if (typeof window === 'undefined') return 'home';
+  const path = window.location.pathname.replace(/^\//, '').toLowerCase();
+  const validPages: PageRoute[] = ['home', 'venues', 'catering', 'rituals', 'gallery', 'packages', 'faqs', 'terms', 'cookies'];
+  if (validPages.includes(path as PageRoute)) {
+    return path as PageRoute;
+  }
+  const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+  if (validPages.includes(hash as PageRoute)) {
+    return hash as PageRoute;
+  }
+  return 'home';
+};
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isLandingReady, setIsLandingReady] = useState(false);
-  const [currentPage, setCurrentPage] = useState<PageRoute>('home');
+  const [currentPage, setCurrentPage] = useState<PageRoute>(getInitialPage);
   const [selectedCase, setSelectedCase] = useState<VenueSpace | null>(null);
   const [isCaseModalOpen, setIsCaseModalOpen] = useState(false);
   const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<ResortService | null>(null);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
+
+  // Dynamic SEO & Title tag updates per page
+  useEffect(() => {
+    const meta = PAGE_META[currentPage] || PAGE_META.home;
+    document.title = meta.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', meta.desc);
+    }
+  }, [currentPage]);
+
+  // Sync browser back/forward history navigation for SXO & deep URLs
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPage(getInitialPage());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Loading screen displayed for 1 second as requested, then smoothly fades out
   useEffect(() => {
@@ -78,6 +150,10 @@ export default function App() {
 
   const handleNavigatePage = (page: PageRoute) => {
     setCurrentPage(page);
+    const targetPath = page === 'home' ? '/' : `/${page}`;
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ page }, '', targetPath);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

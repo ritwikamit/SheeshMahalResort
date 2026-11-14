@@ -17,8 +17,8 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
     { name: "Loknayak Ganga Path (Marine Drive)", distance: "2.1 km", time: "5 mins drive" }
   ];
 
-  // Map embed query with iwloc=B to guarantee pointer visibility on Google Maps
-  const mapEmbedUrl = "https://maps.google.com/maps?q=Sheesh+Mahal+Resort,+Opposite+Gate+of+St.+Xavier's+College,+Ashiana-Digha+Road,+Mica+Colony,+Patna,+Bihar+800011&t=&z=17&ie=UTF8&iwloc=B&output=embed";
+  // Verified Google Maps CID embed for Sheesh Mahal Resorts (FTID: 0x39ed57923806b4a3:0x94581ba7ad065ec5)
+  const mapEmbedUrl = "https://maps.google.com/maps?cid=10689324122540236485&output=embed";
 
   return (
     <section

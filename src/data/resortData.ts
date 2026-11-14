@@ -41,7 +41,8 @@ export const RESORT_CONTACT = {
   secondaryPhone: "+91 73608 00001",
   whatsappNumber: "917360800001",
   hours: "Open 24 Hours for Wedding Consultations",
-  googleMapsUrl: "https://maps.app.goo.gl/4cLP3LqdCvT1H9qT6",
+  googleMapsUrl: "https://www.google.com/maps?ftid=0x39ed57923806b4a3:0x94581ba7ad065ec5",
+  googleMapsCidUrl: "https://maps.google.com/?cid=10689324122540236485",
   instagramUrl: "https://www.instagram.com/sheeshmahalresort/",
   facebookUrl: "https://www.facebook.com/61591536904994/"
 };

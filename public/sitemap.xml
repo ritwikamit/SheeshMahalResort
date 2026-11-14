@@ -1,57 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://sheeshmahalresorts.com/</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/hero-reel-poster.webp</image:loc>
+      <image:title>Sheesh Mahal Resort Patna Palatial Wedding Architecture</image:title>
+      <image:caption>Sheesh Mahal Resort opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/venues-hero.webp</image:loc>
+      <image:title>Grand Sheesh Banquet Ballroom and Starlit Lawn</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://sheeshmahalresorts.com/venues</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/venues-hero.webp</image:loc>
+      <image:title>Royal Wedding Venues &amp; Starlit Dining Courts at Sheesh Mahal Resort</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://sheeshmahalresorts.com/catering</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/catering-hero.webp</image:loc>
+      <image:title>Gourmet Awadhi &amp; Bihari Wedding Catering Feast</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://sheeshmahalresorts.com/rituals</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/rituals-hero.webp</image:loc>
+      <image:title>Sacred Vedic Mandap &amp; Agni Havan Pavilion</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://sheeshmahalresorts.com/packages</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/packages-hero.webp</image:loc>
+      <image:title>Curated Royal Wedding Packages &amp; Floral Stage Setup</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://sheeshmahalresorts.com/gallery</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/gallery-hero.webp</image:loc>
+      <image:title>Illuminated Resort Main Gate &amp; Night Facade</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://sheeshmahalresorts.com/faqs</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/faqs-hero.webp</image:loc>
+      <image:title>Mirrored Glass Welcoming Foyer &amp; Concierge</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://sheeshmahalresorts.com/terms</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/terms-hero.webp</image:loc>
+      <image:title>Sheesh Mahal Resort Entrance Driveway</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://sheeshmahalresorts.com/cookies</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+    <image:image>
+      <image:loc>https://sheeshmahalresorts.com/images/heroes/cookies-hero.webp</image:loc>
+      <image:title>Palace Gardens &amp; Starlit Palms</image:title>
+    </image:image>
   </url>
 </urlset>

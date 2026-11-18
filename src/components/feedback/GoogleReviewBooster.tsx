@@ -7,23 +7,23 @@ import {
   RotateCcw,
   Wand2,
   Copy,
-  ExternalLink,
   Printer,
   Download,
   Check,
   QrCode,
   MapPin,
-  RefreshCw
+  RefreshCw,
+  Loader2
 } from 'lucide-react';
 import { SheeshMahalLogo } from '../SheeshMahalLogo.tsx';
 
-// Google Place ID for Sheesh Mahal Resort
+// Verified Google Place ID for Sheesh Mahal Resort
 const SHEESH_MAHAL_PLACE_ID = 'ChIJo7QGOJJX7TkRxV4GracbWJQ';
 const GOOGLE_WRITE_REVIEW_URL = `https://search.google.com/local/writereview?placeid=${SHEESH_MAHAL_PLACE_ID}`;
 const FEEDBACK_URL = 'https://www.sheeshmahalresorts.com/feedback';
 
 /**
- * Devanagari to Latin / English Script Transliteration Map.
+ * Transliterates Devanagari Hindi characters to English / Latin script.
  * Strictly guarantees NO Devanagari characters appear in voice typing or output.
  */
 const DEVANAGARI_MAP: Record<string, string> = {
@@ -48,7 +48,7 @@ function transliterateDevanagariToLatin(input: string): string {
     if (DEVANAGARI_MAP[char] !== undefined) {
       out += DEVANAGARI_MAP[char];
     } else if (char.charCodeAt(0) >= 0x0900 && char.charCodeAt(0) <= 0x097F) {
-      // skip unmapped Devanagari signs
+      // ignore unmapped marks
     } else {
       out += char;
     }
@@ -85,111 +85,24 @@ function mergeSpeechChunks(baseText: string, newChunk: string): string {
   return `${base} ${chunk}`;
 }
 
-/**
- * High-Entropy Combinatorial Hybrid Matrix
- * 12 Openers x 12 Highlights x 12 Catering details x 12 Closings = 20,736+ Unique Reviews!
- * Generates instantly in 0ms with zero wait time.
- */
-const HYBRID_MATRIX = {
-  hindi: {
-    openers: [
-      "Sheesh Mahal Resort me cousin ki grand wedding attend kiya tha,",
-      "Last weekend family wedding function attend karne Sheesh Mahal Resort gaye the,",
-      "Patna me Ashiana Digha road pe Sheesh Mahal Resort bohot hi royal venue hai,",
-      "Humne brother ki shadi ke liye Sheesh Mahal Resort book kiya tha,",
-      "Recently ek relative ki shadi attend karne Sheesh Mahal Resort gaye the,",
-      "Sheesh Mahal Resort me celebration ka experience sach me royal tha,",
-      "Friend ki shadi me pehli baar Sheesh Mahal Resort jana hua,",
-      "Shadi attend kiya Sheesh Mahal Resort me St. Xavier's college ke samne,",
-      "Family ke sath Sheesh Mahal Resort me marriage reception enjoy kiya,",
-      "Baraat aur wedding celebration ke liye Sheesh Mahal Resort ekdum top-tier laga,",
-      "Last night Sheesh Mahal Resort me grand shadi attend kiya,",
-      "Wedding ceremonies ke liye Sheesh Mahal Resort ka arrangement kafi royal tha,"
-    ],
-    highlights: [
-      "lawn ka open space aur fairy lighting decor sach me majestic tha.",
-      "AC Sheesh ballroom bohot spacious aur clean tha, seating arrangement badhiya tha.",
-      "St. Xavier's college ke samne location find karna bohot easy tha aur valet parking bhi smooth thi.",
-      "Baraat entry, Varmala stage aur sacred mandap setup bohot khoobsurat banaya tha.",
-      "resort ka royal palace look aur architecture photography ke liye bohot acha hai.",
-      "entry gate se leke main stage tak ka flower decoration lajawab tha.",
-      "150 se zyada gadiyon ke liye valet parking kafi organized aur quick thi.",
-      "stage lighting aur audio setup high quality tha, celebration me maza aa gaya.",
-      "mandap ki setting aur pooja pavilion bohot shant aur pavitra feel deta hai.",
-      "lawn me guests ke ghoomne aur photos lene ke liye bohot space tha.",
-      "ballroom ki centrally AC cooling full crowd me bhi ekdum chilled thi.",
-      "grand entrance aur royal welcome dhol beats ne dil jeet liya."
-    ],
-    catering: [
-      "Khana sach me lajawab tha, specially Champaran mutton, paneer tikka aur live chaat counters.",
-      "Awadhi biryani aur garam rabri jalebi ka taste sabhi guests ko bohot pasand aaya.",
-      "Catering me veg aur non-veg dono ka separate kitchen setup bohot acha laga, hygiene top notch tha.",
-      "Starter se leke main course aur desserts sab kuch fresh aur bohot swadisht tha.",
-      "Champaran handi gosht aur Zafrani pulao ka authentic desi ghee swad tha.",
-      "Live counter pe Banarasi chaat aur crispy jalebi sabse zyada popular rahi.",
-      "Pure vegetarian dishes me Dal Makhani aur Shahi Paneer lajawab the.",
-      "Snacks garam garam serve ho rahe the aur waiters ka service quick tha.",
-      "Food quality 100% fresh thi aur desert section me kulfi falooda bohot tasty tha.",
-      "Gourmet food arrangement tha, sabhi rishtedar khane ki tareef kar rahe the.",
-      "Desi ghee ka authentic swad tha har dish me, presentation bhi royal thi.",
-      "Mocktails aur live tandoori starters ka swad ekdum restaurant quality tha."
-    ],
-    closings: [
-      "Patna me royal wedding ke liye best resort hai, 5 star rating!",
-      "Management aur staff ka behavior bohot polite aur cooperative tha. Highly recommended!",
-      "Overall bohot memorable experience raha, puri family bohot khush hui.",
-      "Grand wedding ya reception plan karne ke liye perfect jagah hai Patna me!",
-      "Shaadi ke liye Patna me aisi luxury property milna bohot badi baat hai. 5 stars!",
-      "Full family bohot impress hui hospitality dekh kar. Best wedding venue!",
-      "Har function ke liye recommended hai, definitely Patna ka top resort hai.",
-      "Unforgettable royal wedding experience, staff coordination ko full marks!"
-    ]
-  },
-  english: {
-    openers: [
-      "Attended my cousin's royal wedding celebration at Sheesh Mahal Resort last weekend.",
-      "We recently hosted our family wedding function at Sheesh Mahal Resort on Ashiana-Digha road.",
-      "Visited Sheesh Mahal Resort for a close friend's grand marriage reception,",
-      "Had a truly palatial experience attending a multi-day wedding celebration at Sheesh Mahal Resort Patna.",
-      "Celebrated a family wedding at Sheesh Mahal Resort opposite St. Xavier's College Gate,",
-      "Attended an extravagant evening wedding at Sheesh Mahal Resort Patna,",
-      "First time visiting Sheesh Mahal Resort for a grand Baraat and reception,",
-      "Recently attended a wedding function here on Ashiana-Digha Road,",
-      "Celebrated Saat Phere and reception dinner at Sheesh Mahal Resort,",
-      "Attended a royal destination-style wedding right inside Patna at Sheesh Mahal Resort,"
-    ],
-    highlights: [
-      "the sprawling 45,000 sq. ft. starlit Baraat lawn and ambient lighting setup looked breathtaking.",
-      "the centrally air-conditioned ballroom was massive, clean, and easily accommodated everyone comfortably.",
-      "location opposite St. Xavier's gate made it effortless to reach, and valet parking service was super smooth.",
-      "the stage floral decor, mandap pavilion, and wedding aesthetic felt straight out of a palace.",
-      "architectural carvings and illuminated domes made the wedding photos look stunning.",
-      "the revolving Varmala stage and grand welcome dhol created an electric royal vibe.",
-      "plenty of open lawn seating and prompt valet service made the guest experience hassle-free.",
-      "the climate control inside the Sheesh banquet was flawless despite a packed house."
-    ],
-    catering: [
-      "Food quality was outstanding, specially the Champaran handi mutton, live chaat counter, and hot rabri jalebi.",
-      "The Awadhi dum biryani and tandoori starters were absolute crowd favorites with pure desi ghee flavor.",
-      "Catering hospitality was top-notch with strict separate pure-veg kitchen counters and swift service.",
-      "Live snacks were served piping hot and the dessert section with rabri and kulfi was pure perfection.",
-      "From starter kebabs to the main course Champaran gosht and dal makhani, every dish was delicious.",
-      "The food presentation and attentive stewards ensured no guest had to wait for refreshments."
-    ],
-    closings: [
-      "Hands down one of Patna's best royal wedding venues. Truly a 5-star experience!",
-      "Staff and event coordinators were extremely attentive and courteous throughout the evening. Highly recommended!",
-      "A memorable celebration from start to finish. Perfect luxury venue for grand weddings!",
-      "Cannot recommend Sheesh Mahal Resort enough for anyone planning a grand wedding in Patna. 5 stars!",
-      "Top-tier venue, regal ambience, and delicious catering. A complete luxury package!"
-    ]
-  }
+// Procedural Fallback Matrix (Overtakes ONLY if AI API times out or fails)
+const FALLBACK_MATRIX = {
+  hindi: [
+    "Sheesh Mahal Resort me cousin ki shadi attend kiya tha, lawn decor sach me lajawab tha aur AC Sheesh banquet bohot comfortable tha. Khana bohot swadisht tha specially Champaran handi mutton aur live chaat counters. Valet parking St. Xavier's ke samne bohot smooth thi. 5 star royal wedding experience!",
+    "Last weekend family wedding function tha Sheesh Mahal Resort me. Ambience totally royal palace jaisa tha aur flower lighting arrangement bohot khoobsurat thi. Awadhi biryani aur garam rabri jalebi sabhi guests ko bohot pasand aayi. Best marriage venue in Patna!",
+    "Humne relative ki shadi attend kiya Sheesh Mahal Resort me. Grand Baraat lawn ka open space bohot spacious tha aur staff coordination kafi polite aur cooperative tha. Food quality was top notch, pure desi ghee flavor. Shadi ke liye Patna ka best resort hai.",
+    "Sheesh Mahal Resort Ashiana Digha road pe ekdum premier property hai. Starlit lawn aur stage decor royal tha. Catering me veg aur non veg separate kitchen setup dekh kar bohot acha laga. Khana garam aur delicious tha. Highly recommended for weddings!"
+  ],
+  english: [
+    "Attended my cousin's grand wedding at Sheesh Mahal Resort last weekend. The 45,000 sq ft starlit lawn and royal decor were breathtaking. Food was outstanding, specially the Champaran handi meat and Awadhi biryani. Valet parking opposite St. Xavier's was seamless. A true 5-star royal experience in Patna!",
+    "Hosted a family wedding celebration at Sheesh Mahal Resort on Ashiana-Digha road. The centrally air-conditioned Sheesh ballroom easily accommodated all our guests. Catering hospitality was superb with hot rabri jalebi and authentic live counters. Highly recommended for weddings!",
+    "Visited Sheesh Mahal Resort for a marriage reception. The stage lighting, mandap pavilion, and palace architecture made for incredible family photos. Courteous staff and prompt banquet service throughout the evening. One of Patna's finest wedding venues!"
+  ]
 };
 
-function generateHybridReview(language: 'hindi' | 'english'): string {
-  const set = language === 'hindi' ? HYBRID_MATRIX.hindi : HYBRID_MATRIX.english;
-  const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
-  return `${pick(set.openers)} ${pick(set.highlights)} ${pick(set.catering)} ${pick(set.closings)}`;
+function getProceduralFallback(language: 'hindi' | 'english'): string {
+  const list = language === 'hindi' ? FALLBACK_MATRIX.hindi : FALLBACK_MATRIX.english;
+  return list[Math.floor(Math.random() * list.length)];
 }
 
 export const GoogleReviewBooster: React.FC = () => {
@@ -207,7 +120,7 @@ export const GoogleReviewBooster: React.FC = () => {
   const baseSpeechTranscriptRef = useRef<string>('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // High-Speed Typewriter effect (3 chars every 10ms for snappy instant feel)
+  // Typewriter streaming effect (3 chars every 10ms for snappy response)
   const streamText = useCallback((fullText: string) => {
     if (typewriterTimerRef.current) {
       window.clearInterval(typewriterTimerRef.current);
@@ -276,9 +189,9 @@ export const GoogleReviewBooster: React.FC = () => {
   };
 
   /**
-   * Fast Hybrid Review Generator:
-   * 1. Delivers instantaneous 0ms unique review via local 20,000+ combinatorial engine.
-   * 2. In parallel attempts quick AI enhancement with strict 1.5s timeout.
+   * Primary AI Review Generator:
+   * 1. Calls AI API key first as the primary engine.
+   * 2. If AI is delayed, times out, or network fails, procedural dictionary overtakes.
    */
   const handleGenerate = async () => {
     if (isListening && speechRecognitionRef.current) {
@@ -292,14 +205,10 @@ export const GoogleReviewBooster: React.FC = () => {
 
     setIsGenerating(true);
 
-    // Step 1: Instantly start streaming a fresh unique hybrid review
-    const fastReview = generateHybridReview(language);
-    streamText(fastReview);
-
-    // Step 2: Parallel non-blocking quick AI fetch with 1.8s timeout
     try {
+      // 3.5s timeout on client before procedural dictionary overtakes
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 1800);
+      const timeoutId = setTimeout(() => controller.abort(), 3500);
 
       const res = await fetch('/api/feedback/improve', {
         method: 'POST',
@@ -316,19 +225,28 @@ export const GoogleReviewBooster: React.FC = () => {
 
       if (res.ok) {
         const data = await res.json();
-        // If AI returned a clean response in time, stream it
-        if (data.review && !data.isFallback) {
+        if (data.review) {
           streamText(data.review);
+          return;
         }
       }
+
+      // Procedural fallback overtakes if AI response status is not ok
+      const fallback = getProceduralFallback(language);
+      streamText(fallback);
     } catch {
-      // Fast procedural is already streaming, so nothing breaks
+      // Network issue or timeout -> procedural dictionary overtakes
+      const fallback = getProceduralFallback(language);
+      streamText(fallback);
     } finally {
       setIsGenerating(false);
     }
   };
 
-  // Polish Current Draft
+  /**
+   * Polish Draft:
+   * Calls AI to correct ONLY spelling mistakes while preserving raw informal grammar.
+   */
   const handlePolish = async () => {
     if (!reviewText.trim()) return;
 
@@ -345,7 +263,7 @@ export const GoogleReviewBooster: React.FC = () => {
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2000);
+      const timeoutId = setTimeout(() => controller.abort(), 3500);
 
       const res = await fetch('/api/feedback/improve', {
         method: 'POST',
@@ -369,11 +287,8 @@ export const GoogleReviewBooster: React.FC = () => {
         }
       }
     } catch {
-      // Quick fallback: clean double spaces and capitalize sentences
-      const cleaned = reviewText
-        .replace(/\s+/g, ' ')
-        .replace(/([.?!]\s*)([a-z])/g, (_, p1, p2) => p1 + p2.toUpperCase())
-        .trim();
+      // Fallback: cleanup duplicate whitespace only, preserve grammar
+      const cleaned = reviewText.replace(/\s+/g, ' ').trim();
       setReviewText(cleaned);
     } finally {
       setIsPolishing(false);
@@ -404,7 +319,7 @@ export const GoogleReviewBooster: React.FC = () => {
   /**
    * Voice Typing strictly in English / Latin Script.
    * - Uses en-IN recognition engine.
-   * - Filters through transliterateDevanagariToLatin to eliminate any Devanagari characters.
+   * - Passes output through transliterateDevanagariToLatin to eliminate any Devanagari letters.
    */
   const toggleSpeechRecognition = () => {
     const SpeechRec = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -430,7 +345,6 @@ export const GoogleReviewBooster: React.FC = () => {
       const recognition = new SpeechRec();
       recognition.continuous = true;
       recognition.interimResults = true;
-      // Use en-IN so spoken Hindi / Hinglish is transcribed in English Latin letters
       recognition.lang = 'en-IN';
 
       baseSpeechTranscriptRef.current = reviewText;
@@ -445,7 +359,6 @@ export const GoogleReviewBooster: React.FC = () => {
 
         for (let i = event.resultIndex; i < event.results.length; ++i) {
           const rawChunk = event.results[i][0].transcript;
-          // Transliterate any Devanagari strictly into English letters
           const cleanChunk = transliterateDevanagariToLatin(rawChunk);
 
           if (event.results[i].isFinal) {
@@ -488,7 +401,7 @@ export const GoogleReviewBooster: React.FC = () => {
     let finalPayload = reviewText.trim();
 
     if (!finalPayload) {
-      finalPayload = generateHybridReview(language);
+      finalPayload = getProceduralFallback(language);
       setReviewText(finalPayload);
     }
 
@@ -525,7 +438,7 @@ export const GoogleReviewBooster: React.FC = () => {
     ctx.lineWidth = 4;
     ctx.strokeRect(60, 60, canvas.width - 120, canvas.height - 120);
 
-    // Header Text
+    // Header
     ctx.fillStyle = '#1D261E';
     ctx.font = 'bold 54px sans-serif';
     ctx.textAlign = 'center';
@@ -568,29 +481,29 @@ export const GoogleReviewBooster: React.FC = () => {
   const hasContent = reviewText.trim().length > 0;
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
-      {/* Top Bar: View Switcher */}
-      <div className="no-print flex items-center justify-between mb-5 pb-3 border-b border-[#E88A1A]/20">
+    <div className="w-full max-w-xl mx-auto px-3 sm:px-4 py-3 sm:py-5">
+      {/* Top Toggle: Review Form vs Counter Standee */}
+      <div className="no-print flex items-center justify-between mb-4 pb-2 border-b border-[#E88A1A]/15">
         <div className="flex items-center gap-2">
-          <SheeshMahalLogo className="w-8 h-8" />
+          <SheeshMahalLogo className="w-7 h-7" />
           <div>
-            <h1 className="text-lg sm:text-xl font-black text-[#1D261E] font-spartan leading-tight">
-              Sheesh Mahal Guest Reviews
+            <h1 className="text-base sm:text-lg font-black text-[#1D261E] font-spartan leading-tight">
+              Guest Feedback
             </h1>
-            <p className="text-[11px] text-[#26532B] font-bold">
-              ★★★★★ 4.9 Verified on Google
+            <p className="text-[10px] text-[#26532B] font-bold">
+              ★★★★★ 4.9 Google Verified
             </p>
           </div>
         </div>
 
         <button
           onClick={() => setShowStandee(!showStandee)}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border border-[#E88A1A]/40 bg-[#FAF6EE] hover:bg-[#E88A1A]/10 text-[#1D261E] transition-all shadow-xs cursor-pointer"
+          className="clay-pill inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#1D261E] hover:text-[#E88A1A] cursor-pointer"
         >
           {showStandee ? (
             <>
               <Sparkles className="w-3.5 h-3.5 text-[#E88A1A]" />
-              <span>Back to Form</span>
+              <span>Review Form</span>
             </>
           ) : (
             <>
@@ -602,26 +515,26 @@ export const GoogleReviewBooster: React.FC = () => {
       </div>
 
       {/* ========================================================
-          MODE 1: USER-FRIENDLY & COMPACT REVIEW BOOSTER
+          MODE 1: MINIMAL CLAYMORPHIC REVIEW BOOSTER
           ======================================================== */}
       {!showStandee && (
-        <div className="no-print bg-white rounded-2xl p-4 sm:p-6 border border-[#E88A1A]/25 shadow-xl space-y-4">
-          {/* Header Row: Stars & Language Switcher */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-gray-100">
-            {/* 1-5 Star Interactive Selector */}
-            <div className="flex items-center gap-1 bg-[#FAF6EE] px-3 py-1.5 rounded-xl border border-[#E88A1A]/30">
+        <div className="no-print clay-card p-4 sm:p-6 space-y-3.5">
+          {/* Rating & Language Selector Row */}
+          <div className="flex flex-wrap items-center justify-between gap-2.5 pb-2 border-b border-[#26532B]/10">
+            {/* Interactive 5-Star Selector in Clay Pill */}
+            <div className="clay-pill px-3 py-1 flex items-center gap-1">
               <span className="text-xs font-bold text-[#1D261E] mr-1">Rating:</span>
               {[1, 2, 3, 4, 5].map((starIndex) => (
                 <button
                   key={starIndex}
                   type="button"
                   onClick={() => setRating(starIndex)}
-                  className="p-0.5 hover:scale-120 transition-transform cursor-pointer focus:outline-hidden"
+                  className="p-0.5 hover:scale-125 transition-transform cursor-pointer focus:outline-hidden"
                   title={`${starIndex} Stars`}
                   aria-label={`Rate ${starIndex} stars`}
                 >
                   <Star
-                    className={`w-5 h-5 sm:w-6 sm:h-6 transition-colors ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${
                       starIndex <= rating
                         ? 'fill-[#E88A1A] text-[#E88A1A] drop-shadow-xs'
                         : 'text-gray-300'
@@ -635,25 +548,25 @@ export const GoogleReviewBooster: React.FC = () => {
             </div>
 
             {/* Language Switcher Tabs */}
-            <div className="inline-flex p-1 bg-gray-100 rounded-xl">
+            <div className="inline-flex p-0.5 bg-[#FAF6EE] rounded-xl border border-white/80 shadow-inner">
               <button
                 type="button"
                 onClick={() => setLanguage('hindi')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   language === 'hindi'
-                    ? 'bg-white text-[#1D261E] shadow-xs border border-gray-200'
-                    : 'text-gray-500 hover:text-gray-900'
+                    ? 'bg-[#E88A1A] text-white shadow-xs'
+                    : 'text-[#1D261E]/70 hover:text-[#1D261E]'
                 }`}
               >
-                Hinglish (English script)
+                Hinglish
               </button>
               <button
                 type="button"
                 onClick={() => setLanguage('english')}
                 className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                   language === 'english'
-                    ? 'bg-white text-[#1D261E] shadow-xs border border-gray-200'
-                    : 'text-gray-500 hover:text-gray-900'
+                    ? 'bg-[#E88A1A] text-white shadow-xs'
+                    : 'text-[#1D261E]/70 hover:text-[#1D261E]'
                 }`}
               >
                 English
@@ -661,67 +574,61 @@ export const GoogleReviewBooster: React.FC = () => {
             </div>
           </div>
 
-          {/* Compact Review Textarea */}
-          <div className="relative rounded-xl border-2 border-gray-200 focus-within:border-[#E88A1A] focus-within:ring-2 focus-within:ring-[#E88A1A]/15 transition-all bg-[#FAF6EE]/50">
+          {/* Sunken Inset Textarea Container */}
+          <div className="relative clay-inset p-1 rounded-2xl">
             <textarea
               ref={textareaRef}
-              rows={4}
+              rows={3}
               value={reviewText}
               onChange={(e) => setReviewText(transliterateDevanagariToLatin(e.target.value))}
               placeholder={
                 language === 'hindi'
-                  ? "Type your experience or tap '⭐ 1-Tap Auto Generate' below (e.g. 'Sheesh Mahal Resort me shadi bohot grand thi...')"
-                  : "Type your review or tap '⭐ 1-Tap Auto Generate' below (e.g. 'Attended cousin wedding, royal decor and delicious food...')"
+                  ? "Type your review in Hinglish, or tap 'Auto-Generate Review' below..."
+                  : "Type your review here, or tap 'Auto-Generate Review' below..."
               }
-              className="w-full p-3 sm:p-4 text-sm sm:text-base text-[#1D261E] placeholder:text-gray-400 bg-transparent resize-none outline-hidden font-spartan leading-relaxed"
+              className="w-full p-3 text-sm text-[#1D261E] placeholder:text-gray-400 bg-transparent resize-none outline-hidden font-spartan leading-relaxed"
             />
 
-            {/* Inline Voice Typing Button inside Textarea */}
-            <div className="absolute right-2.5 bottom-2.5 flex items-center gap-2">
+            {/* Inset Voice Typing Indicator */}
+            <div className="absolute right-2.5 bottom-2.5 flex items-center gap-1.5">
               {isListening && (
-                <span className="flex items-center gap-1.5 text-[11px] text-rose-600 font-bold bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200 animate-pulse">
-                  <span className="w-2 h-2 rounded-full bg-rose-600" />
-                  Speaking...
+                <span className="flex items-center gap-1 text-[10px] text-rose-600 font-bold bg-white/90 px-2 py-0.5 rounded-full border border-rose-200 animate-pulse">
+                  <span className="w-1.5 h-1.5 rounded-full bg-rose-600" />
+                  Listening...
                 </span>
               )}
 
               <button
                 type="button"
                 onClick={toggleSpeechRecognition}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-xs ${
+                className={`p-1.5 rounded-lg transition-all cursor-pointer shadow-xs ${
                   isListening
                     ? 'bg-rose-600 text-white animate-pulse'
-                    : 'bg-white text-[#1D261E] hover:bg-gray-50 border border-gray-300'
+                    : 'bg-white hover:bg-gray-100 text-[#1D261E] border border-gray-200'
                 }`}
                 title="Speak to type in English script"
+                aria-label="Voice typing"
               >
                 {isListening ? (
-                  <>
-                    <MicOff className="w-3.5 h-3.5" />
-                    <span>Stop</span>
-                  </>
+                  <MicOff className="w-4 h-4" />
                 ) : (
-                  <>
-                    <Mic className="w-3.5 h-3.5 text-[#E88A1A]" />
-                    <span>Voice Type</span>
-                  </>
+                  <Mic className="w-4 h-4 text-[#E88A1A]" />
                 )}
               </button>
             </div>
           </div>
 
-          {/* Action Row: Dynamic & Prominent Buttons */}
-          <div className="flex flex-wrap items-center justify-between gap-2.5 pt-1">
-            {/* Left buttons (Reset & Polish visible when text exists) */}
-            <div className="flex items-center gap-2">
+          {/* Action Row: Dynamic Controls */}
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-1.5">
               {hasContent && (
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-gray-500 hover:text-rose-600 hover:bg-rose-50 border border-gray-200 hover:border-rose-200 transition-all cursor-pointer"
+                  className="clay-pill px-2.5 py-1 text-xs font-bold text-gray-500 hover:text-rose-600 transition-colors cursor-pointer"
                   title="Clear text"
                 >
-                  <RotateCcw className="w-3.5 h-3.5" />
+                  <RotateCcw className="w-3 h-3 inline mr-1" />
                   <span>Clear</span>
                 </button>
               )}
@@ -731,166 +638,170 @@ export const GoogleReviewBooster: React.FC = () => {
                   type="button"
                   onClick={handlePolish}
                   disabled={isPolishing || isGenerating}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-[#26532B] bg-[#26532B]/10 hover:bg-[#26532B]/20 border border-[#26532B]/30 transition-all cursor-pointer disabled:opacity-50"
+                  className="clay-badge-emerald px-3 py-1 text-xs font-bold transition-all cursor-pointer disabled:opacity-50 flex items-center gap-1"
                 >
-                  <Wand2 className="w-3.5 h-3.5" />
-                  <span>{isPolishing ? "Polishing..." : "Polish Draft"}</span>
+                  {isPolishing ? (
+                    <Loader2 className="w-3 h-3 animate-spin" />
+                  ) : (
+                    <Wand2 className="w-3 h-3" />
+                  )}
+                  <span>{isPolishing ? "Fixing Typos..." : "Correct Spelling"}</span>
                 </button>
               )}
             </div>
 
-            {/* Prominent Auto-Generate Button */}
+            {/* Primary AI Generator Button */}
             <button
               type="button"
               onClick={handleGenerate}
               disabled={isGenerating || isPolishing}
-              className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-black transition-all shadow-sm cursor-pointer disabled:opacity-50 ${
+              className={`clay-btn px-4 py-2 text-xs font-extrabold transition-all cursor-pointer disabled:opacity-50 ${
                 hasContent
-                  ? 'bg-amber-50 hover:bg-amber-100 text-[#1D261E] border border-amber-300'
-                  : 'bg-gradient-to-r from-[#E88A1A] to-[#D4AF37] text-white hover:brightness-105 shadow-md scale-102'
+                  ? 'clay-card-white text-[#1D261E] hover:text-[#E88A1A]'
+                  : 'clay-btn-orange text-white'
               }`}
             >
-              {hasContent ? (
+              {isGenerating ? (
                 <>
-                  <RefreshCw className="w-3.5 h-3.5 text-[#E88A1A]" />
-                  <span>New Review Idea</span>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin mr-1.5" />
+                  <span>AI Writing Review...</span>
+                </>
+              ) : hasContent ? (
+                <>
+                  <RefreshCw className="w-3.5 h-3.5 text-[#E88A1A] mr-1.5" />
+                  <span>New Review</span>
                 </>
               ) : (
                 <>
-                  <Sparkles className="w-4 h-4 text-white animate-spin" />
-                  <span>⭐ 1-Tap Auto Generate Review</span>
+                  <Sparkles className="w-3.5 h-3.5 text-white mr-1.5" />
+                  <span>Auto-Generate Review</span>
                 </>
               )}
             </button>
           </div>
 
-          {/* Primary High-Conversion 1-Click CTA */}
+          {/* 1-Click Post to Google Review CTA */}
           <div className="pt-2">
             <button
               type="button"
               onClick={handlePostToGoogle}
-              className="w-full py-3.5 px-5 rounded-xl bg-gradient-to-r from-[#E88A1A] via-[#D4AF37] to-[#E88A1A] hover:brightness-105 active:scale-[0.99] text-[#1D261E] font-black text-sm sm:text-base transition-all shadow-lg hover:shadow-xl cursor-pointer flex items-center justify-center gap-2 border border-amber-300"
+              className="clay-btn-gold w-full py-3 px-4 text-[#1D261E] font-black text-sm sm:text-base flex items-center justify-center gap-2 cursor-pointer transition-transform"
             >
               {copied ? (
                 <>
-                  <Check className="w-5 h-5 text-emerald-900" />
-                  <span className="font-extrabold text-emerald-950">Copied! Opening Google Reviews...</span>
+                  <Check className="w-4 h-4 text-emerald-900" />
+                  <span className="text-emerald-950 font-black">Copied! Opening Google Reviews...</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-5 h-5" />
-                  <span>Copy & Post to Google Review (1-Click)</span>
-                  <ExternalLink className="w-4 h-4 opacity-75" />
+                  <Copy className="w-4 h-4" />
+                  <span>Copy & Post to Google Review</span>
                 </>
               )}
             </button>
-
-            <p className="text-center text-[11px] text-gray-500 mt-2">
-              Automatically copies the review and opens Sheesh Mahal's official Google review box.
+            <p className="text-center text-[10px] text-gray-500 mt-1.5">
+              Copies your review and opens Sheesh Mahal's official Google review page.
             </p>
           </div>
         </div>
       )}
 
       {/* ========================================================
-          MODE 2: BEAUTIFUL ROYAL RECEPTION DESK STANDEE
+          MODE 2: MINIMAL ROYAL RECEPTION COUNTER STANDEE
           - Strictly 1 Single Page Guarantee in Print
           ======================================================== */}
       <div
         id="reception-qr-standee"
         className={`${
           showStandee ? 'flex' : 'hidden'
-        } print:flex flex-col justify-between items-center bg-white rounded-3xl p-6 sm:p-8 border-4 border-double border-[#D4AF37] shadow-2xl text-center max-w-lg mx-auto`}
+        } print:flex flex-col justify-between items-center bg-white rounded-3xl p-6 sm:p-8 border-4 border-double border-[#D4AF37] shadow-xl text-center max-w-md mx-auto`}
       >
-        {/* Top Filigree & Palace Emblem */}
-        <div className="w-full space-y-2">
+        {/* Standee Header */}
+        <div className="w-full space-y-1.5">
           <div className="flex justify-center mb-1">
-            <SheeshMahalLogo className="w-16 h-16 sm:w-20 sm:h-20" />
+            <SheeshMahalLogo className="w-14 h-14 sm:w-16 sm:h-16" />
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-black text-[#1D261E] uppercase font-spartan tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-black text-[#1D261E] uppercase font-spartan tracking-tight">
             Sheesh Mahal Resort
           </h2>
 
-          <p className="text-[11px] sm:text-xs uppercase tracking-widest text-[#E88A1A] font-bold">
+          <p className="text-[10px] uppercase tracking-widest text-[#E88A1A] font-bold">
             Patna's Distinguished Royal Wedding Destination
           </p>
 
-          <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-xs font-black text-[#1D261E]">
+          <div className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-black text-[#1D261E]">
             <span className="text-[#E88A1A]">★★★★★</span>
             <span>4.9 / 5.0 Google Verified</span>
           </div>
         </div>
 
-        {/* QR Code Container */}
-        <div className="my-4 p-3 sm:p-4 bg-[#FAF6EE] rounded-2xl border-2 border-[#D4AF37]/50 shadow-inner flex flex-col items-center">
+        {/* High-Resolution QR Container */}
+        <div className="my-3 p-3 bg-[#FAF6EE] rounded-2xl border-2 border-[#D4AF37]/50 flex flex-col items-center">
           <img
             src="/images/reception-qr.png"
             alt="Sheesh Mahal Google Feedback QR Code"
-            className="w-52 h-52 sm:w-60 sm:h-60 object-contain rounded-xl"
-            width={240}
-            height={240}
+            className="w-48 h-48 sm:w-56 sm:h-56 object-contain rounded-xl"
+            width={224}
+            height={224}
           />
-          <p className="text-[10px] font-black tracking-widest text-[#1D261E] uppercase mt-1.5">
+          <p className="text-[9px] font-black tracking-widest text-[#1D261E] uppercase mt-1">
             Scan with phone camera
           </p>
         </div>
 
         {/* 3-Step Illustrated Guide */}
-        <div className="w-full grid grid-cols-3 gap-2 py-3 border-t border-b border-gray-100 text-center">
+        <div className="w-full grid grid-cols-3 gap-1.5 py-2.5 border-t border-b border-gray-100 text-center">
           <div className="space-y-0.5">
-            <div className="w-6 h-6 mx-auto rounded-full bg-[#E88A1A]/15 text-[#E88A1A] font-black text-xs flex items-center justify-center">
+            <div className="w-5 h-5 mx-auto rounded-full bg-[#E88A1A]/15 text-[#E88A1A] font-black text-[10px] flex items-center justify-center">
               1
             </div>
-            <p className="text-[11px] font-bold text-[#1D261E]">Scan QR</p>
-            <p className="text-[9px] text-gray-500">Camera / Lens</p>
+            <p className="text-[10px] font-bold text-[#1D261E]">Scan QR</p>
           </div>
 
           <div className="space-y-0.5">
-            <div className="w-6 h-6 mx-auto rounded-full bg-[#E88A1A]/15 text-[#E88A1A] font-black text-xs flex items-center justify-center">
+            <div className="w-5 h-5 mx-auto rounded-full bg-[#E88A1A]/15 text-[#E88A1A] font-black text-[10px] flex items-center justify-center">
               2
             </div>
-            <p className="text-[11px] font-bold text-[#1D261E]">Tap 5 Stars</p>
-            <p className="text-[9px] text-gray-500">Rate Service</p>
+            <p className="text-[10px] font-bold text-[#1D261E]">Tap 5 Stars</p>
           </div>
 
           <div className="space-y-0.5">
-            <div className="w-6 h-6 mx-auto rounded-full bg-[#E88A1A]/15 text-[#E88A1A] font-black text-xs flex items-center justify-center">
+            <div className="w-5 h-5 mx-auto rounded-full bg-[#E88A1A]/15 text-[#E88A1A] font-black text-[10px] flex items-center justify-center">
               3
             </div>
-            <p className="text-[11px] font-bold text-[#1D261E]">Share Review</p>
-            <p className="text-[9px] text-gray-500">1-Tap Post</p>
+            <p className="text-[10px] font-bold text-[#1D261E]">Share Review</p>
           </div>
         </div>
 
         {/* Landmark & URL */}
-        <div className="w-full pt-2 space-y-0.5 text-[11px] text-gray-600">
+        <div className="w-full pt-1.5 space-y-0.5 text-[10px] text-gray-600">
           <p className="flex items-center justify-center gap-1 font-semibold text-[#1D261E]">
-            <MapPin className="w-3.5 h-3.5 text-[#E88A1A]" />
+            <MapPin className="w-3 h-3 text-[#E88A1A]" />
             Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna
           </p>
-          <p className="text-[10px] text-gray-400">
+          <p className="text-[9px] text-gray-400">
             {FEEDBACK_URL}
           </p>
         </div>
 
         {/* Action Controls (Hidden in Print Mode) */}
-        <div className="no-print pt-4 flex flex-wrap items-center justify-center gap-2.5 w-full">
+        <div className="no-print pt-3 flex flex-wrap items-center justify-center gap-2 w-full">
           <button
             type="button"
             onClick={handlePrintStandee}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1D261E] hover:bg-[#26532B] text-white font-bold text-xs transition-all shadow-md cursor-pointer"
+            className="clay-btn clay-btn-dark px-3.5 py-1.5 text-white font-bold text-xs"
           >
-            <Printer className="w-3.5 h-3.5 text-[#E88A1A]" />
+            <Printer className="w-3.5 h-3.5 text-[#E88A1A] mr-1.5" />
             <span>Print Standee (1 Page)</span>
           </button>
 
           <button
             type="button"
             onClick={handleDownloadStandeePNG}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-300 hover:bg-gray-100 text-[#1D261E] font-bold text-xs transition-all shadow-xs cursor-pointer"
+            className="clay-btn clay-card-white px-3.5 py-1.5 text-[#1D261E] font-bold text-xs"
           >
-            <Download className="w-3.5 h-3.5 text-[#E88A1A]" />
+            <Download className="w-3.5 h-3.5 text-[#E88A1A] mr-1.5" />
             <span>Download PNG</span>
           </button>
         </div>

@@ -18,7 +18,7 @@ import { SheeshMahalLogo } from './SheeshMahalLogo.tsx';
 import { WhatsAppIcon } from './WhatsAppIcon.tsx';
 import { RESORT_CONTACT } from '../data/resortData.ts';
 
-export type PageRoute = 'home' | 'venues' | 'catering' | 'rituals' | 'gallery' | 'packages' | 'faqs' | 'terms' | 'cookies';
+export type PageRoute = 'home' | 'venues' | 'catering' | 'rituals' | 'gallery' | 'packages' | 'faqs' | 'terms' | 'cookies' | 'feedback';
 
 interface NavigationProps {
   currentPage: PageRoute;
@@ -84,11 +84,12 @@ export const Navigation: React.FC<NavigationProps> = ({
     { label: 'GALLERY', page: 'gallery', icon: <Camera size={13} /> },
   ];
 
-  // Secondary items placed under More menu: Rituals, Packages, and FAQs
+  // Secondary items placed under More menu: Rituals, Packages, FAQs, and Feedback
   const moreDropdownItems: { label: string; page: PageRoute; tag: string }[] = [
     { label: 'WEDDING RITUALS', page: 'rituals', tag: 'SAAT PHERE' },
     { label: 'ROYAL PACKAGES', page: 'packages', tag: 'TIERS' },
     { label: 'WEDDING FAQS', page: 'faqs', tag: 'HELP' },
+    { label: 'GUEST REVIEWS', page: 'feedback', tag: '5.0★' },
   ];
 
   return (
@@ -137,7 +138,7 @@ export const Navigation: React.FC<NavigationProps> = ({
             type="button"
             onClick={() => setMoreMenuOpen(!moreMenuOpen)}
             className={`px-4 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-all duration-200 cursor-pointer flex items-center gap-1.5 rounded-full ${
-              ['rituals', 'packages', 'faqs', 'terms', 'cookies'].includes(currentPage)
+              ['rituals', 'packages', 'faqs', 'terms', 'cookies', 'feedback'].includes(currentPage)
                 ? 'bg-[#26532B] text-white shadow-sm'
                 : 'text-[#1D261E]/75 hover:text-[#1D261E] hover:bg-white/80'
             }`}
@@ -229,6 +230,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               { label: 'ROYAL PACKAGES', page: 'packages' as PageRoute, detail: 'Transparent Starting Tiers', icon: <Crown size={15} /> },
               { label: 'PHOTO & REEL GALLERY', page: 'gallery' as PageRoute, detail: 'Real Weddings & 4K Reels', icon: <Camera size={15} /> },
               { label: 'FAQS & POLICIES', page: 'faqs' as PageRoute, detail: '24/7 Booking Guidance', icon: <HelpCircle size={15} /> },
+              { label: 'GUEST REVIEWS & STANDEE', page: 'feedback' as PageRoute, detail: '5.0★ Google Review Booster', icon: <Sparkles size={15} /> },
             ].map((item) => {
               const active = isLinkActive(item.page);
               return (

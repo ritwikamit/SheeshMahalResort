@@ -533,3 +533,64 @@ html, body {
     scroll-behavior: smooth;
   }
 }
+
+/* ========================================================
+   LUXURY RECEPTION COUNTER STANDEE PRINT STYLESHEET
+   - Exclusively renders #reception-qr-standee on white paper
+   - Completely suppresses headers, navs, footers, chatbots & forms
+   ======================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #1D261E !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Completely hide all website chrome, headers, footers, navigation, chat widgets & inputs */
+  header,
+  footer,
+  nav,
+  .no-print,
+  button,
+  input,
+  textarea,
+  .mobile-quick-bar,
+  .chatbot-container,
+  #wedding-chatbot,
+  .scroll-to-top,
+  .fixed,
+  [data-print-hide="true"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Exclusively render reception standee card centered with double gold border */
+  #reception-qr-standee {
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    margin: 40px auto !important;
+    max-width: 580px !important;
+    width: 90% !important;
+    padding: 40px 32px !important;
+    background: #ffffff !important;
+    border: 6px double #D4AF37 !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+  }
+
+  #reception-qr-standee * {
+    visibility: visible !important;
+  }
+}
+

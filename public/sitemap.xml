@@ -96,4 +96,14 @@
       <image:title>Palace Gardens &amp; Starlit Palms</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://www.sheeshmahalresorts.com/feedback</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.sheeshmahalresorts.com/images/reception-qr.png</image:loc>
+      <image:title>Sheesh Mahal Resort Google Review Booster &amp; Reception Standee</image:title>
+    </image:image>
+  </url>
 </urlset>

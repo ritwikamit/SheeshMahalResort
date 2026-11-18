@@ -28,6 +28,7 @@ import { PackagesPage } from './pages/PackagesPage.tsx';
 import { FaqsPage } from './pages/FaqsPage.tsx';
 import { TermsPage } from './pages/TermsPage.tsx';
 import { CookiesPage } from './pages/CookiesPage.tsx';
+import { FeedbackPage } from './pages/FeedbackPage.tsx';
 
 import { VenueSpace, ResortService } from './data/resortData.ts';
 
@@ -67,13 +68,17 @@ const PAGE_META: Record<PageRoute, { title: string; desc: string }> = {
   cookies: {
     title: "Cookies & Digital Privacy — Sheesh Mahal Resort Patna",
     desc: "Digital privacy protocol and cookie preferences for guests visiting Sheesh Mahal Resort's official website."
+  },
+  feedback: {
+    title: "Guest Reviews & Reception Standee — Sheesh Mahal Resort Patna",
+    desc: "Share your 5-star royal wedding review on Google or print reception desk standees for Sheesh Mahal Resort, Ashiana–Digha Road, Patna."
   }
 };
 
 const getInitialPage = (): PageRoute => {
   if (typeof window === 'undefined') return 'home';
   const path = window.location.pathname.replace(/^\//, '').toLowerCase();
-  const validPages: PageRoute[] = ['home', 'venues', 'catering', 'rituals', 'gallery', 'packages', 'faqs', 'terms', 'cookies'];
+  const validPages: PageRoute[] = ['home', 'venues', 'catering', 'rituals', 'gallery', 'packages', 'faqs', 'terms', 'cookies', 'feedback'];
   if (validPages.includes(path as PageRoute)) {
     return path as PageRoute;
   }
@@ -280,6 +285,10 @@ export default function App() {
           <CookiesPage
             onBack={() => handleNavigatePage('home')}
           />
+        )}
+
+        {currentPage === 'feedback' && (
+          <FeedbackPage />
         )}
       </main>
 

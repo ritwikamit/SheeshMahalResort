@@ -25,4 +25,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://sheeshmahalresorts.com/sitemap.xml
+Sitemap: https://www.sheeshmahalresorts.com/sitemap.xml

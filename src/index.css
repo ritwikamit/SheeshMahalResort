@@ -542,7 +542,7 @@ html, body {
 @media print {
   @page {
     size: A4 portrait;
-    margin: 0;
+    margin: 15mm auto;
   }
 
   *, *:before, *:after {
@@ -557,9 +557,8 @@ html, body {
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-    overflow: hidden !important;
+    height: 100% !important;
+    overflow: visible !important;
   }
 
   /* Completely hide all website chrome, headers, footers, navigation, chat widgets & inputs */
@@ -580,24 +579,30 @@ html, body {
     visibility: hidden !important;
   }
 
-  /* Exclusively render reception standee card centered on 1 single page */
+  /* Suppress outer page margins and wrapper padding during print */
+  #root, main, .min-h-\[85vh\] {
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Render identical standee box centered on 1 single page */
   #reception-qr-standee {
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
     align-items: center !important;
     visibility: visible !important;
     position: relative !important;
     margin: 0 auto !important;
-    max-width: 620px !important;
-    width: 90% !important;
-    height: 96vh !important;
-    max-height: 96vh !important;
+    width: 420px !important;
+    max-width: 90% !important;
+    height: auto !important;
     box-sizing: border-box !important;
-    padding: 28px 24px !important;
+    padding: 24px 20px !important;
     background: #ffffff !important;
-    border: 5px double #D4AF37 !important;
-    border-radius: 20px !important;
+    border: 4px double #D4AF37 !important;
+    border-radius: 24px !important;
     box-shadow: none !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;

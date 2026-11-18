@@ -15,7 +15,6 @@ import {
   RefreshCw,
   Loader2
 } from 'lucide-react';
-import { SheeshMahalLogo } from '../SheeshMahalLogo.tsx';
 
 // Verified Google Place ID for Sheesh Mahal Resort
 const SHEESH_MAHAL_PLACE_ID = 'ChIJo7QGOJJX7TkRxV4GracbWJQ';
@@ -706,12 +705,16 @@ export const GoogleReviewBooster: React.FC = () => {
         id="reception-qr-standee"
         className={`${
           showStandee ? 'flex' : 'hidden'
-        } print:flex flex-col justify-between items-center bg-white rounded-3xl p-6 sm:p-8 border-4 border-double border-[#D4AF37] shadow-xl text-center max-w-md mx-auto`}
+        } print:flex flex-col items-center bg-white rounded-3xl p-6 sm:p-7 border-4 border-double border-[#D4AF37] shadow-xl text-center max-w-md mx-auto w-full`}
       >
         {/* Standee Header */}
-        <div className="w-full space-y-1.5">
-          <div className="flex justify-center mb-1">
-            <SheeshMahalLogo className="w-14 h-14 sm:w-16 sm:h-16" />
+        <div className="w-full space-y-1.5 flex flex-col items-center text-center">
+          <div className="flex items-center justify-center w-full mb-1">
+            <img
+              src="/images/logo-header.webp"
+              alt="Sheesh Mahal Resort"
+              className="h-12 sm:h-14 w-auto max-w-[200px] object-contain mx-auto"
+            />
           </div>
 
           <h2 className="text-xl sm:text-2xl font-black text-[#1D261E] uppercase font-spartan tracking-tight">

@@ -481,20 +481,12 @@ export const GoogleReviewBooster: React.FC = () => {
   const hasContent = reviewText.trim().length > 0;
 
   return (
-    <div className="w-full max-w-xl mx-auto px-3 sm:px-4 py-3 sm:py-5">
-      {/* Top Toggle: Review Form vs Counter Standee */}
+    <div className="w-full max-w-2xl sm:max-w-3xl mx-auto px-3 sm:px-4 py-2 sm:py-4">
+      {/* Top Controls: Standee Switcher (No Logo above form) */}
       <div className="no-print flex items-center justify-between mb-4 pb-2 border-b border-[#E88A1A]/15">
-        <div className="flex items-center gap-2">
-          <SheeshMahalLogo className="w-7 h-7" />
-          <div>
-            <h1 className="text-base sm:text-lg font-black text-[#1D261E] font-spartan leading-tight">
-              Guest Feedback
-            </h1>
-            <p className="text-[10px] text-[#26532B] font-bold">
-              ★★★★★ 4.9 Google Verified
-            </p>
-          </div>
-        </div>
+        <span className="text-xs font-bold text-[#26532B]/80 uppercase tracking-wider">
+          ★ Google Review Booster
+        </span>
 
         <button
           onClick={() => setShowStandee(!showStandee)}
@@ -508,22 +500,22 @@ export const GoogleReviewBooster: React.FC = () => {
           ) : (
             <>
               <QrCode className="w-3.5 h-3.5 text-[#E88A1A]" />
-              <span>Print Standee QR</span>
+              <span>Reception Standee QR</span>
             </>
           )}
         </button>
       </div>
 
       {/* ========================================================
-          MODE 1: MINIMAL CLAYMORPHIC REVIEW BOOSTER
+          MODE 1: ENLARGED MINIMAL CLAYMORPHIC REVIEW BOOSTER
           ======================================================== */}
       {!showStandee && (
-        <div className="no-print clay-card p-4 sm:p-6 space-y-3.5">
+        <div className="no-print clay-card p-6 sm:p-8 space-y-5 rounded-[28px]">
           {/* Rating & Language Selector Row */}
-          <div className="flex flex-wrap items-center justify-between gap-2.5 pb-2 border-b border-[#26532B]/10">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#26532B]/10">
             {/* Interactive 5-Star Selector in Clay Pill */}
-            <div className="clay-pill px-3 py-1 flex items-center gap-1">
-              <span className="text-xs font-bold text-[#1D261E] mr-1">Rating:</span>
+            <div className="clay-pill px-3.5 py-1.5 flex items-center gap-1.5">
+              <span className="text-xs sm:text-sm font-bold text-[#1D261E] mr-1">Rating:</span>
               {[1, 2, 3, 4, 5].map((starIndex) => (
                 <button
                   key={starIndex}
@@ -542,17 +534,17 @@ export const GoogleReviewBooster: React.FC = () => {
                   />
                 </button>
               ))}
-              <span className="ml-1 text-xs font-black text-[#E88A1A]">
+              <span className="ml-1 text-xs sm:text-sm font-black text-[#E88A1A]">
                 {rating.toFixed(1)}★
               </span>
             </div>
 
             {/* Language Switcher Tabs */}
-            <div className="inline-flex p-0.5 bg-[#FAF6EE] rounded-xl border border-white/80 shadow-inner">
+            <div className="inline-flex p-1 bg-[#FAF6EE] rounded-xl border border-white/80 shadow-inner">
               <button
                 type="button"
                 onClick={() => setLanguage('hindi')}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   language === 'hindi'
                     ? 'bg-[#E88A1A] text-white shadow-xs'
                     : 'text-[#1D261E]/70 hover:text-[#1D261E]'
@@ -563,7 +555,7 @@ export const GoogleReviewBooster: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setLanguage('english')}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                   language === 'english'
                     ? 'bg-[#E88A1A] text-white shadow-xs'
                     : 'text-[#1D261E]/70 hover:text-[#1D261E]'
@@ -574,11 +566,11 @@ export const GoogleReviewBooster: React.FC = () => {
             </div>
           </div>
 
-          {/* Sunken Inset Textarea Container */}
-          <div className="relative clay-inset p-1 rounded-2xl">
+          {/* Sunken Inset Textarea Container (Enlarged) */}
+          <div className="relative clay-inset p-2 rounded-2xl">
             <textarea
               ref={textareaRef}
-              rows={3}
+              rows={5}
               value={reviewText}
               onChange={(e) => setReviewText(transliterateDevanagariToLatin(e.target.value))}
               placeholder={
@@ -586,7 +578,7 @@ export const GoogleReviewBooster: React.FC = () => {
                   ? "Type your review in Hinglish, or tap 'Auto-Generate Review' below..."
                   : "Type your review here, or tap 'Auto-Generate Review' below..."
               }
-              className="w-full p-3 text-sm text-[#1D261E] placeholder:text-gray-400 bg-transparent resize-none outline-hidden font-spartan leading-relaxed"
+              className="w-full p-3 sm:p-4 text-sm sm:text-base text-[#1D261E] placeholder:text-gray-400 bg-transparent resize-none outline-hidden font-spartan leading-relaxed min-h-[140px]"
             />
 
             {/* Inset Voice Typing Indicator */}

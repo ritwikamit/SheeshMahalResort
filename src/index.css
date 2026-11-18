@@ -536,13 +536,18 @@ html, body {
 
 /* ========================================================
    LUXURY RECEPTION COUNTER STANDEE PRINT STYLESHEET
-   - Exclusively renders #reception-qr-standee on white paper
-   - Completely suppresses headers, navs, footers, chatbots & forms
+   - Strictly 1 Single Page Guarantee (no overflow or 2nd page)
+   - Completely suppresses website chrome, headers, footers & inputs
    ======================================================== */
 @media print {
   @page {
     size: A4 portrait;
-    margin: 10mm;
+    margin: 0;
+  }
+
+  *, *:before, *:after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   html, body {
@@ -552,7 +557,9 @@ html, body {
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
-    height: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
   }
 
   /* Completely hide all website chrome, headers, footers, navigation, chat widgets & inputs */
@@ -573,20 +580,29 @@ html, body {
     visibility: hidden !important;
   }
 
-  /* Exclusively render reception standee card centered with double gold border */
+  /* Exclusively render reception standee card centered on 1 single page */
   #reception-qr-standee {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     visibility: visible !important;
     position: relative !important;
-    margin: 40px auto !important;
-    max-width: 580px !important;
+    margin: 0 auto !important;
+    max-width: 620px !important;
     width: 90% !important;
-    padding: 40px 32px !important;
+    height: 96vh !important;
+    max-height: 96vh !important;
+    box-sizing: border-box !important;
+    padding: 28px 24px !important;
     background: #ffffff !important;
-    border: 6px double #D4AF37 !important;
+    border: 5px double #D4AF37 !important;
     border-radius: 20px !important;
     box-shadow: none !important;
     page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
   }
 
   #reception-qr-standee * {

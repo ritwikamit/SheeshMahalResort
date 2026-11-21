@@ -84,140 +84,182 @@ function mergeSpeechChunks(baseText: string, newChunk: string): string {
   return `${base} ${chunk}`;
 }
 
-// Multi-format procedural review generator for seamless offline / fallback parity
-// Formats: 8 distinct structures, strictly in casual lowercase / small letters with intentional typos
+// Multi-style procedural review generator for seamless offline / fallback parity
+// Features totally random human styles: some lazy (1-liners), some detailed, some medium, with intentional typos in small letters
 function getProceduralFallback(language: 'hindi' | 'english'): string {
   const pick = <T,>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
+  const roll = Math.random();
 
   if (language === 'hindi') {
-    const venues = [
-      "sheesh mahal resort",
-      "sheesh mahal resort patna",
-      "sheesh mahal",
-      "sheesh mahal resort ashiana digha road"
+    // 1. LAZY TIER (~35% chance): Ultra short 1-line mobile reaction (8 to 15 words)
+    if (roll < 0.35) {
+      const lazyReviews = [
+        "khana mast tha aur lawn bhi kafi bada h.. sheesh mahal resort best h patna me",
+        "attended wedding here last night.. food was very tasty speacially starter. 5 star",
+        "bht badiya arrengement thaa.. champaran mutton was just lajwab",
+        "patna me best resort h shadi k liye.. 10/10 experiance",
+        "superb lawn and food.. highly recomended in patna!",
+        "bhai ki shadi me gye the bht maza aya.. best resort in patna",
+        "valet parking smooth thi aur AC hall clean tha.. good experiance at sheesh mahal",
+        "food was so tasty and lawn is massive.. best wedding resort in patna",
+        "location easy h opp st xavier aur staff bhi halpful tha.. 5 stars",
+        "shadi k liye ekdum mast jagah h.. khana 10/10",
+        "cousin reception attend kiya, decor lajwab tha.. recomended to all",
+        "champaran handi mutton and jalebi rabri was super delishus.. loved it",
+        "bht khoobsurat venue h sheesh mahal.. lawn lighting top notch thi",
+        "shadi attend kiya tha.. khana lajwab aur staff polite tha. 5/5",
+        "patna me aisi shandar jagah nahi dekhi.. best resort for royal wedding",
+        "decor and khana dono 1st class tha.. fully satisfied"
+      ];
+      return pick(lazyReviews).toLowerCase();
+    }
+
+    // 2. DETAILED TIER (~25% chance): Rich 3-4 sentence guest memory (35 to 55 words)
+    if (roll > 0.75) {
+      const detailedVenues = [
+        "last week cousin ki grand wedding attend kiya sheesh mahal resort me ashiana digha road pe.",
+        "recently relative ka marriage reception tha sheesh mahal resort patna me.",
+        "attended royal wedding ceremony at sheesh mahal resort opposite st xavier college gate."
+      ];
+      const detailedLawn = [
+        "lawn ka fairy lights aur flower decor sach me royal palace vibe de rha tha.",
+        "open baraat lawn boht bada tha aur mandap setup was looking like a dream.",
+        "AC Sheesh ballroom boht spacious tha easily sabhi 1000 guests accommodate ho gaye."
+      ];
+      const detailedFood = [
+        "khana boht lajawab tha speacially champaran handi mutton and awadhi biryani, veg kitchen bhi alag tha jo bht acha laga.",
+        "catering service top notch thi, live chaat counter aur hot rabri jalebi was pure bliss.",
+        "starters se leke main course tak sab kuch fresh tha, paneer tikka aur mutton authentic taste tha."
+      ];
+      const detailedService = [
+        "valet parking smooth thi aur staff pure time attentive tha.",
+        "management team kafi cooperative tha aur service fast thi.",
+        "location reach karna boht easy tha opp st xavier."
+      ];
+      const detailedClosing = [
+        "definitely patna ka best resort h shadi k liye.. 5 star rating!",
+        "overall boht memorable experiance raha, highly recomended to everyone!",
+        "grand shadi plan karne ke liye best venue h patna me.. loved it."
+      ];
+      return `${pick(detailedVenues)} ${pick(detailedLawn)} ${pick(detailedFood)} ${pick(detailedService)} ${pick(detailedClosing)}`.toLowerCase();
+    }
+
+    // 3. CASUAL MEDIUM TIER (~40% chance): 1-2 rambling sentences with random openers & connectors (18 to 32 words)
+    const openers = [
+      "sheesh mahal resort me friend ki wedding thi..",
+      "went for cousin marriage last week opp st xavier..",
+      "humne family reception attend kiya sheesh mahal resort me..",
+      "brother ki shadi k liye sheesh mahal book kiya tha..",
+      "shadi attend kiya ashiana digha road pe sheesh mahal me..",
+      "sister ki marriage ceremony thi last weekend..",
+      "sheesh mahal resort patna me function attend kiya tha.."
     ];
-    const events = [
-      "cousin ki shadi",
-      "friend ki wedding",
-      "family reception function",
-      "brother ki marriage",
-      "sister ki wedding",
-      "relative ka reception",
-      "family wedding celebration"
+    const middles = [
+      "decor was so beutiful and stage setup looked like a palace",
+      "lawn area is massive aur lighting decoration shandar tha",
+      "AC hall was clean and comfortable seating arrangement tha",
+      "starlit baraat lawn me entry sach me royal lag rha tha",
+      "mandap setup aur flower arrengement ekdum lajwab tha",
+      "valet parking quick thi aur photo spots boht badiya the"
     ];
-    const highlights = [
-      "lawn decor aur fairy lights sach me beutiful tha",
-      "AC ballroom bohot spacious aur clean tha",
-      "starlit baraat lawn ka setup ekdum royal palace jaisa tha",
-      "stage decoration aur floral arrengement lajawab tha",
-      "mandap setup aur lighting decor was amazing",
-      "valet parking st xavier gate ke samne bohot smooth thi",
-      "palace look aur architecture photography ke liye super h"
-    ];
-    const caterings = [
-      "khana bohot swadist tha speacially champaran handi mutton aur live chaat",
-      "awadhi biryani aur garam rabri jalebi sabko bohot pasand aayi",
-      "veg aur non veg separate kitchen setup dekh kar acha laga",
-      "starter se leke dessert tak sab kuch fresh aur tasty tha",
-      "paneer tikka aur champaran gosht ka taste lajawab tha",
-      "hot crispy jalebis with rabri was delishus"
-    ];
-    const staff = [
-      "staff bohot halpful aur polite tha",
-      "management kafi cooperative aur prompt tha",
-      "service bohot quick aur attentive thi",
-      "hospitality team was really cooperative"
+    const foods = [
+      "khana bhi bht swadist thaa speacially live chaat and mutton",
+      "champaran handi mutton aur rabri jalebi was super delishus",
+      "pure veg aur non veg ka separate kitchen arrangement bht acha laga",
+      "awadhi biryani aur paneer starter sabhi guests ko pasand aaya",
+      "starter se leke dessert tak sab fresh aur tasty thaa"
     ];
     const closings = [
-      "best resort in patna, 5 star rating!",
-      "shadi ke liye patna ka best resort hai..",
-      "highly recomended venue in patna for weddings",
-      "overall bohot memorable experiance raha..",
-      "definitely the best wedding resort in patna",
-      "royal celebration ke liye perfect resort in patna",
-      "10/10 experiance.. full family was happy!"
+      "best resort in patna for weddings.. 5 star rating!",
+      "overall bht acha experiance raha.. definitely recomended",
+      "puri family khush ho gyi.. 10/10 service",
+      "highly recomended to all friends in patna",
+      "shadi k liye patna me best option h..",
+      "royal celebration k liye perfect resort h patna me"
     ];
 
-    const format = Math.floor(Math.random() * 8);
-    switch (format) {
-      case 0:
-        return `${pick(venues)} me ${pick(events)} attend kiya.. ${pick(highlights)} aur ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
-      case 1:
-        return `${pick(venues)} review: 1. ${pick(highlights)}, 2. ${pick(caterings)}, 3. ${pick(staff)}.. ${pick(closings)}`.toLowerCase();
-      case 2:
-        return `${pick(caterings)}.. ${pick(venues)} me ${pick(events)} tha, ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
-      case 3:
-        return `${pick(highlights)}.. photoshoot aur family gathering ke liye ${pick(venues)} best resort in patna hai. ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
-      case 4:
-        return `hum sabne ${pick(venues)} me ${pick(events)} celebrate kiya.. ${pick(staff)} aur ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
-      case 5:
-        return `${pick(venues)} is definitely the best resort in patna for weddings.. ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
-      case 6:
-        return `location opposite st xavier find karna bohot easy tha aur ${pick(staff)}.. ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
-      case 7:
-      default:
-        return `last week ${pick(events)} tha ${pick(venues)} me.. ${pick(caterings)}, aur ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
-    }
+    const connector = pick([" aur ", ".. ", ", "]);
+    const bridge = pick([".. ", ", ", " speacially "]);
+    return `${pick(openers)} ${pick(middles)}${connector}${pick(foods)}${bridge}${pick(closings)}`.toLowerCase();
   } else {
-    const venues = [
-      "sheesh mahal resort",
-      "sheesh mahal resort patna",
-      "sheesh mahal"
+    // English variations
+    if (roll < 0.35) {
+      const lazyReviews = [
+        "attended wedding here last night.. food was very tasty speacially starters. 5 star",
+        "superb lawn and food.. highly recomended in patna!",
+        "food was so tasty and lawn is massive.. best wedding resort in patna",
+        "location easy to find opp st xavier and staff was very halpful.. 5 stars",
+        "best resort in patna for weddings.. 10/10 experiance",
+        "grand lawn and royal decor.. loved the whole evening",
+        "champaran mutton and jalebi rabri was super delishus.. 5/5",
+        "valet parking was smooth and AC ballroom is huge.. recommended",
+        "great wedding venue in patna.. royal vibe and polite staff",
+        "attended cousin reception here, awesome food and ambience"
+      ];
+      return pick(lazyReviews).toLowerCase();
+    }
+
+    if (roll > 0.75) {
+      const detailedVenues = [
+        "attended a royal wedding at sheesh mahal resort opposite st xavier college gate last weekend.",
+        "hosted our family marriage reception at sheesh mahal resort on ashiana digha road.",
+        "was at sheesh mahal resort for my close friend's grand wedding celebration."
+      ];
+      const detailedLawn = [
+        "the 45000 sq ft starlit lawn was looking breathtaking with royal palace lighting.",
+        "centrally air conditioned sheesh ballroom was huge and easily accommodated 1200+ guests.",
+        "stage floral decor and mandap setup looked straight out of a royal fort."
+      ];
+      const detailedFood = [
+        "food quality was outstanding speacially the champaran mutton and live chaat counters, separate veg kitchen was a big plus.",
+        "awadhi dum biryani and hot rabri jalebi was a huge crowd favorite, everything was super fresh.",
+        "catering hospitality was top tier with authentic desi ghee flavors in all dishes."
+      ];
+      const detailedService = [
+        "valet parking was seamless despite the large crowd and staff was very halpful.",
+        "management was attentive to every small detail throughout the evening.",
+        "hospitality team took care of all guests with prompt service."
+      ];
+      const detailedClosing = [
+        "hands down the best resort in patna for royal weddings.. 5 stars!",
+        "truly a memorable celebration, highly recomended to everyone in patna!",
+        "definitely the top wedding resort in patna.. loved the whole experience."
+      ];
+      return `${pick(detailedVenues)} ${pick(detailedLawn)} ${pick(detailedFood)} ${pick(detailedService)} ${pick(detailedClosing)}`.toLowerCase();
+    }
+
+    const openers = [
+      "attended cousin's wedding celebration at sheesh mahal resort..",
+      "visited sheesh mahal resort for a marriage reception last night..",
+      "hosted a family function at sheesh mahal on ashiana digha road..",
+      "went to sheesh mahal resort opposite st xavier gate..",
+      "celebrated friend's royal wedding at sheesh mahal patna.."
     ];
-    const events = [
-      "cousin's royal wedding",
-      "family marriage reception",
-      "friend's wedding celebration",
-      "sister's grand wedding",
-      "brother's reception ceremony"
+    const middles = [
+      "lawn decor was so beutiful and stage setup was straight out of a palace",
+      "huge open lawn and fairy lighting looked stunning for family photos",
+      "AC ballroom was clean and comfortable with great seating arrangement",
+      "mandap setup and royal floral arrengement was looking gorgeous",
+      "valet parking was effortless and venue atmosphere was pure royalty"
     ];
-    const highlights = [
-      "the 45000 sq ft lawn and fairy lighting decor looked so beutiful",
-      "grand AC ballroom was super spacious and clean",
-      "palace architecture and stage floral arrengement was breathtaking",
-      "valet parking opposite st xavier made arrival effortless",
-      "mandap setup and photo spots were straight out of a royal film"
-    ];
-    const caterings = [
-      "food was so tasty speacially the champaran mutton and live chaat counters",
-      "awadhi biryani and hot rabri jalebi was a huge hit with all guests",
-      "strict separate pure veg kitchen line and top notch hygiene was impressive",
-      "starters and main course were both super fresh and delishus",
-      "hot crispy jalebis and paneer tikkas were top quality"
-    ];
-    const staff = [
-      "staff was very halpful and courteous throughout the evening",
-      "banquet management was prompt and attentive",
-      "hospitality team took care of every small detail"
+    const foods = [
+      "food was delicious speacially champaran handi meat and live chaats",
+      "awadhi biryani and hot crispy jalebis were crowd favorites",
+      "super hygiene with separate pure veg kitchen line was impressive",
+      "starters and desserts both tasted authentic and fresh",
+      "paneer tikka and hot rabri jalebi was just delishus"
     ];
     const closings = [
-      "hands down the best resort in patna for weddings!",
-      "truly a 5 star royal experiance.. highly recomended!",
-      "best luxury resort in patna, 10/10 service",
-      "perfect venue for grand family celebrations in patna",
-      "definitely the best wedding resort in patna.. loved it!"
+      "best resort in patna for weddings.. highly recomended!",
+      "overall a wonderful 5 star experiance.. 10/10",
+      "all our family guests were super happy.. loved it",
+      "definitely the top luxury wedding resort in patna",
+      "staff was very halpful throughout.. 5 stars"
     ];
 
-    const format = Math.floor(Math.random() * 8);
-    switch (format) {
-      case 0:
-        return `attended ${pick(events)} at ${pick(venues)}.. ${pick(highlights)} and ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
-      case 1:
-        return `${pick(venues)} review: 1. ${pick(highlights)}, 2. ${pick(caterings)}, 3. ${pick(staff)}.. ${pick(closings)}`.toLowerCase();
-      case 2:
-        return `${pick(caterings)}.. was at ${pick(venues)} for ${pick(events)}, ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
-      case 3:
-        return `${pick(highlights)}.. for photos and royal vibes ${pick(venues)} is the best resort in patna. ${pick(closings)}`.toLowerCase();
-      case 4:
-        return `hosted our ${pick(events)} at ${pick(venues)}.. ${pick(staff)} and ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
-      case 5:
-        return `${pick(venues)} is definitely the best resort in patna for weddings.. ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
-      case 6:
-        return `location right opp st xavier was super convenient and ${pick(staff)}.. ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
-      case 7:
-      default:
-        return `celebrated ${pick(events)} at ${pick(venues)}.. ${pick(caterings)}, and ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
-    }
+    const connector = pick([" and ", ".. ", ", "]);
+    const bridge = pick([".. ", ", ", " speacially "]);
+    return `${pick(openers)} ${pick(middles)}${connector}${pick(foods)}${bridge}${pick(closings)}`.toLowerCase();
   }
 }
 

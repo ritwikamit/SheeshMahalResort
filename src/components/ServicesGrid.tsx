@@ -44,7 +44,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService, onO
               WEDDING SERVICES
             </h2>
             <p className="font-cursive text-2xl sm:text-4xl text-[#26532B] mt-2 font-normal">
-              Royal Wedding Hospitality & Flawless Execution
+              Best Resort in Patna for Royal Wedding Hospitality & Flawless Execution
             </p>
             <p className="mt-4 text-base sm:text-xl text-[#1D261E]/75 max-w-2xl font-medium">
               Every wedding ritual is backed by complete logistical mastery — in-house royal wedding banqueting, customisable mirror-work Mandap decor, continuous heavy-duty power backup for Baraat lighting, and dedicated bridal suites.

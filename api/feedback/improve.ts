@@ -5,76 +5,141 @@ export const config = {
   maxDuration: 15,
 };
 
-// Procedural Fallback Matrix (Overtakes ONLY if AI API times out or fails)
-// Features intentional human mobile typing quirks (informal grammar, natural wording)
-const PROCEDURAL_MATRIX = {
-  hindi: {
-    openers: [
-      "Sheesh Mahal Resort me cousin ki grand wedding thi,",
-      "Last weekend family wedding function me Sheesh Mahal Resort gaye the,",
-      "Patna me Ashiana Digha road pe Sheesh Mahal Resort bohot hi royal venue hai,",
-      "Humne brother ki shadi ke liye Sheesh Mahal Resort book kiya tha,",
-      "Recently ek relative ki marriage reception me Sheesh Mahal Resort gaye the,",
-      "Sheesh Mahal Resort me celebration ka experience sach me royal tha,",
-      "Friend ki wedding me pehli baar Sheesh Mahal Resort jana hua,",
-      "Shadi attend kiya Sheesh Mahal Resort me St. Xavier's college ke samne,",
-      "Family ke sath Sheesh Mahal Resort me marriage reception attend kiya,"
-    ],
-    highlights: [
-      "lawn ka open space aur fairy lighting decor sach me majestic tha.",
-      "AC Sheesh ballroom bohot spacious aur clean tha, seating arrangement badhiya tha.",
-      "St. Xavier's college ke samne location find karna bohot easy tha aur valet parking bhi smooth thi.",
-      "Baraat entry, Varmala stage aur sacred mandap setup bohot khoobsurat banaya tha.",
-      "resort ka royal palace look aur architecture photography ke liye bohot acha hai.",
-      "150 se zyada gadiyon ke liye valet parking kafi organized aur quick thi."
-    ],
-    catering: [
-      "Khana sach me lajawab tha, specially Champaran mutton, paneer tikka aur live chaat counters.",
-      "Awadhi biryani aur garam rabri jalebi ka taste sabhi guests ko bohot pasand aaya.",
-      "Catering me veg aur non-veg dono ka separate kitchen setup bohot acha laga, hygiene top notch tha.",
-      "Starter se leke main course aur desserts sab kuch fresh aur bohot swadisht tha.",
-      "Champaran handi gosht aur Zafrani pulao ka authentic desi ghee swad tha.",
-      "Live counter pe Banarasi chaat aur crispy jalebi sabse zyada popular rahi."
-    ],
-    closings: [
-      "Patna me royal wedding ke liye best resort hai, 5 star rating!",
-      "Management aur staff ka behavior bohot polite aur cooperative tha. Highly recommended!",
-      "Overall bohot memorable experience raha, puri family bohot khush hui.",
-      "Grand wedding ya reception plan karne ke liye perfect jagah hai Patna me!",
-      "Har function ke liye recommended hai, definitely Patna ka top luxury resort hai."
-    ]
-  },
-  english: {
-    openers: [
-      "Attended my cousin's royal wedding celebration at Sheesh Mahal Resort last weekend.",
-      "We recently hosted our family wedding function at Sheesh Mahal Resort on Ashiana-Digha road.",
-      "Visited Sheesh Mahal Resort for a close friend's grand marriage reception,",
-      "Had a truly palatial experience attending a wedding celebration at Sheesh Mahal Resort Patna.",
-      "Celebrated a family wedding at Sheesh Mahal Resort opposite St. Xavier's College Gate,"
-    ],
-    highlights: [
-      "the sprawling 45,000 sq. ft. starlit Baraat lawn and ambient lighting setup looked breathtaking.",
-      "the centrally air-conditioned ballroom was massive, clean, and easily accommodated everyone comfortably.",
-      "location opposite St. Xavier's gate made it effortless to reach, and valet parking service was super smooth.",
-      "the stage floral decor, mandap pavilion, and wedding aesthetic felt straight out of a palace."
-    ],
-    catering: [
-      "Food quality was outstanding, specially the Champaran handi mutton, live chaat counter, and hot rabri jalebi.",
-      "The Awadhi dum biryani and tandoori starters were absolute crowd favorites with pure desi ghee flavor.",
-      "Catering hospitality was top-notch with strict separate pure-veg kitchen counters and swift service."
-    ],
-    closings: [
-      "Hands down one of Patna's best royal wedding venues. Truly a 5-star experience!",
-      "Staff and event coordinators were extremely attentive and courteous throughout the evening. Highly recommended!",
-      "A memorable celebration from start to finish. Perfect luxury venue for grand weddings!"
-    ]
-  }
-};
-
+// Procedural Fallback Generator (Overtakes if AI API times out or network drops)
+// Features 8 dynamic structural formats, casual lowercase / small letters, and intentional human mobile typos
 export function generateProceduralReview(language: 'hindi' | 'english'): string {
-  const set = language === 'hindi' ? PROCEDURAL_MATRIX.hindi : PROCEDURAL_MATRIX.english;
-  const pick = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
-  return `${pick(set.openers)} ${pick(set.highlights)} ${pick(set.catering)} ${pick(set.closings)}`;
+  const pick = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
+
+  if (language === 'hindi') {
+    const venues = [
+      "sheesh mahal resort",
+      "sheesh mahal resort patna",
+      "sheesh mahal",
+      "sheesh mahal resort ashiana digha road"
+    ];
+    const events = [
+      "cousin ki shadi",
+      "friend ki wedding",
+      "family reception function",
+      "brother ki marriage",
+      "sister ki wedding",
+      "relative ka reception",
+      "family wedding celebration"
+    ];
+    const highlights = [
+      "lawn decor aur fairy lights sach me beutiful tha",
+      "AC ballroom bohot spacious aur clean tha",
+      "starlit baraat lawn ka setup ekdum royal palace jaisa tha",
+      "stage decoration aur floral arrengement lajawab tha",
+      "mandap setup aur lighting decor was amazing",
+      "valet parking st xavier gate ke samne bohot smooth thi",
+      "palace look aur architecture photography ke liye super h"
+    ];
+    const caterings = [
+      "khana bohot swadist tha speacially champaran handi mutton aur live chaat",
+      "awadhi biryani aur garam rabri jalebi sabko bohot pasand aayi",
+      "veg aur non veg separate kitchen setup dekh kar acha laga",
+      "starter se leke dessert tak sab kuch fresh aur tasty tha",
+      "paneer tikka aur champaran gosht ka taste lajawab tha",
+      "hot crispy jalebis with rabri was delishus"
+    ];
+    const staff = [
+      "staff bohot halpful aur polite tha",
+      "management kafi cooperative aur prompt tha",
+      "service bohot quick aur attentive thi",
+      "hospitality team was really cooperative"
+    ];
+    const closings = [
+      "best resort in patna, 5 star rating!",
+      "shadi ke liye patna ka best resort hai..",
+      "highly recomended venue in patna for weddings",
+      "overall bohot memorable experiance raha..",
+      "definitely the best wedding resort in patna",
+      "royal celebration ke liye perfect resort in patna",
+      "10/10 experiance.. full family was happy!"
+    ];
+
+    const format = Math.floor(Math.random() * 8);
+    switch (format) {
+      case 0:
+        return `${pick(venues)} me ${pick(events)} attend kiya.. ${pick(highlights)} aur ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
+      case 1:
+        return `${pick(venues)} review: 1. ${pick(highlights)}, 2. ${pick(caterings)}, 3. ${pick(staff)}.. ${pick(closings)}`.toLowerCase();
+      case 2:
+        return `${pick(caterings)}.. ${pick(venues)} me ${pick(events)} tha, ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
+      case 3:
+        return `${pick(highlights)}.. photoshoot aur family gathering ke liye ${pick(venues)} best resort in patna hai. ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
+      case 4:
+        return `hum sabne ${pick(venues)} me ${pick(events)} celebrate kiya.. ${pick(staff)} aur ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
+      case 5:
+        return `${pick(venues)} is definitely the best resort in patna for weddings.. ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
+      case 6:
+        return `location opposite st xavier find karna bohot easy tha aur ${pick(staff)}.. ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
+      case 7:
+      default:
+        return `last week ${pick(events)} tha ${pick(venues)} me.. ${pick(caterings)}, aur ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
+    }
+  } else {
+    const venues = [
+      "sheesh mahal resort",
+      "sheesh mahal resort patna",
+      "sheesh mahal"
+    ];
+    const events = [
+      "cousin's royal wedding",
+      "family marriage reception",
+      "friend's wedding celebration",
+      "sister's grand wedding",
+      "brother's reception ceremony"
+    ];
+    const highlights = [
+      "the 45000 sq ft lawn and fairy lighting decor looked so beutiful",
+      "grand AC ballroom was super spacious and clean",
+      "palace architecture and stage floral arrengement was breathtaking",
+      "valet parking opposite st xavier made arrival effortless",
+      "mandap setup and photo spots were straight out of a royal film"
+    ];
+    const caterings = [
+      "food was so tasty speacially the champaran mutton and live chaat counters",
+      "awadhi biryani and hot rabri jalebi was a huge hit with all guests",
+      "strict separate pure veg kitchen line and top notch hygiene was impressive",
+      "starters and main course were both super fresh and delishus",
+      "hot crispy jalebis and paneer tikkas were top quality"
+    ];
+    const staff = [
+      "staff was very halpful and courteous throughout the evening",
+      "banquet management was prompt and attentive",
+      "hospitality team took care of every small detail"
+    ];
+    const closings = [
+      "hands down the best resort in patna for weddings!",
+      "truly a 5 star royal experiance.. highly recomended!",
+      "best luxury resort in patna, 10/10 service",
+      "perfect venue for grand family celebrations in patna",
+      "definitely the best wedding resort in patna.. loved it!"
+    ];
+
+    const format = Math.floor(Math.random() * 8);
+    switch (format) {
+      case 0:
+        return `attended ${pick(events)} at ${pick(venues)}.. ${pick(highlights)} and ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
+      case 1:
+        return `${pick(venues)} review: 1. ${pick(highlights)}, 2. ${pick(caterings)}, 3. ${pick(staff)}.. ${pick(closings)}`.toLowerCase();
+      case 2:
+        return `${pick(caterings)}.. was at ${pick(venues)} for ${pick(events)}, ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
+      case 3:
+        return `${pick(highlights)}.. for photos and royal vibes ${pick(venues)} is the best resort in patna. ${pick(closings)}`.toLowerCase();
+      case 4:
+        return `hosted our ${pick(events)} at ${pick(venues)}.. ${pick(staff)} and ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
+      case 5:
+        return `${pick(venues)} is definitely the best resort in patna for weddings.. ${pick(caterings)}. ${pick(closings)}`.toLowerCase();
+      case 6:
+        return `location right opp st xavier was super convenient and ${pick(staff)}.. ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
+      case 7:
+      default:
+        return `celebrated ${pick(events)} at ${pick(venues)}.. ${pick(caterings)}, and ${pick(highlights)}. ${pick(closings)}`.toLowerCase();
+    }
+  }
 }
 
 export default async function handler(req: any, res: any) {
@@ -105,7 +170,7 @@ export default async function handler(req: any, res: any) {
     process.env.Openrouter_key ||
     process.env.OPENROUTER_KEY;
 
-  // Fallback if no API key is available
+  // Fallback if no API key is configured
   if (!apiKey) {
     const procedural = generateProceduralReview(isHindi ? 'hindi' : 'english');
     return res.status(200).json({ review: procedural, isFallback: true });
@@ -117,46 +182,62 @@ export default async function handler(req: any, res: any) {
 
   try {
     const isPolishing = action === 'polish' && text.trim().length > 0;
-
     let systemPrompt = '';
     let userPrompt = '';
 
     if (isPolishing) {
-      // Polish Prompt: ONLY correct spelling mistakes, preserve casual grammar & phrasing
+      // Polish Prompt: ONLY correct spelling mistakes, preserve casual small letters & grammar
       systemPrompt = `You are a helpful spell-checking assistant for mobile Google reviews.
 STRICT INSTRUCTIONS:
-1. ONLY CORRECT SPELLING MISTAKES (e.g. fix obvious typos like "beutiful" -> "beautiful", "speacially" -> "specially", "arrengement" -> "arrangement", "swadist" -> "swadisht").
-2. DO NOT CORRECT CASUAL GRAMMAR, RUN-ON SENTENCES, OR INFORMAL MOBILE PHRASING.
-3. PRESERVE THE EXACT HUMAN VOICE, SLANG, EMOTION, AND SENTENCE STRUCTURE INTACT.
-4. If the text is in Hinglish, KEEP IT STRICTLY IN LATIN / ENGLISH SCRIPT. NEVER output Devanagari script.
-5. Return ONLY the polished review text without quotes, explanations, or markdown.`;
+1. ONLY CORRECT SPELLING MISTAKES (e.g. fix obvious typos like "beutiful" -> "beautiful", "speacially" -> "specially", "arrengement" -> "arrangement", "swadist" -> "swadisht", "halpful" -> "helpful").
+2. DO NOT CHANGE CASING TO TITLE CASE. PREFER SMALL LETTERS / CASUAL LOWERCASE.
+3. DO NOT CORRECT CASUAL GRAMMAR, RUN-ON SENTENCES, OR INFORMAL MOBILE PHRASING.
+4. PRESERVE THE EXACT HUMAN VOICE, SLANG, EMOTION, AND SENTENCE STRUCTURE INTACT.
+5. If the text is in Hinglish, KEEP IT STRICTLY IN LATIN / ENGLISH SCRIPT. NEVER output Devanagari script.
+6. Return ONLY the polished review text without quotes, explanations, or markdown.`;
 
-      userPrompt = `Please fix only the spelling mistakes in this review, keeping its grammar and tone natural:\n"${text}"`;
+      userPrompt = `Please fix only the spelling mistakes in this review, keeping its grammar and small letters natural:\n"${text}"`;
     } else {
-      // Generate Prompt: Real human typing on mobile, unidentical every time, natural quirks
+      // Generate Prompt: Real human typing on smartphone, small letters, random formats, natural quirks
       systemPrompt = `You are a real human wedding guest writing a short 5-star Google review for Sheesh Mahal Resort in Patna from your smartphone.
 Resort context:
 - Located opposite St. Xavier's College Gate, Ashiana-Digha Road, Patna.
-- Features: 45,000+ sq ft starlit Baraat lawn, 1,200 AC Sheesh ballroom, consecrated Vedic Mandap, smooth valet parking.
-- Catering: Royal Awadhi Dum Biryani, Champaran Handi meat, hot rabri jalebi, live chaat stalls, 100% separate pure-veg kitchen line.
+- Known as the best resort in patna for royal weddings, 45,000 sq ft starlit Baraat lawn, 1,200 AC Sheesh ballroom, Vedic Mandap, smooth valet parking.
+- Catering: Royal Awadhi Dum Biryani, Champaran Handi meat, hot rabri jalebi, live chaat stalls, 100% separate pure-veg kitchen.
 
-CRITICAL GOOGLE AUTHENTICITY & HUMAN VARIATION RULES:
-1. SCRIPT:
-   - If Hindi: MUST BE WRITTEN IN CASUAL HINGLISH USING ENGLISH ALPHABET ONLY (e.g., "Sheesh Mahal Resort me cousin ki shadi thi, decor lajawab tha aur khana bohot swadisht tha"). ZERO DEVANAGARI CHARACTERS.
+CRITICAL GOOGLE AUTHENTICITY & MULTI-FORMAT RULES:
+1. CASING: WRITE IN SMALL LETTERS / LOWERCASE (casual phone typing). Do NOT capitalize every word, avoid formal Title Case. Small letters feel authentic.
+2. RANDOM FORMAT: Pick 1 of these formats at random for every review:
+   - Format A: Short punchy 1-2 sentence quick reaction.
+   - Format B: Casual note/numbered points (e.g. "sheesh mahal review: 1. lawn decor, 2. food, 3. parking.. best resort in patna").
+   - Format C: Food & catering focus (starters, Champaran mutton, rabri jalebi, pure veg separate kitchen).
+   - Format D: Lawn & photography focus (huge lawn, stage floral decor, palace vibe for family photos).
+   - Format E: Family emotional celebration (brother/sister/cousin wedding, all relatives delighted).
+   - Format F: Valet & hospitality focus (location opp St. Xavier, smooth valet parking, polite staff).
+3. SCRIPT:
+   - If Hindi: CASUAL HINGLISH USING ENGLISH ALPHABET ONLY (e.g., "sheesh mahal resort me cousin ki shadi attend kiya, lawn decor lajawab tha aur khana bohot swadist tha.. best resort in patna"). ZERO DEVANAGARI CHARACTERS.
    - If English: Casual conversational English typed on a smartphone.
-2. UNIDENTICAL & DIVERSE EVERY TIME:
-   - Randomly vary the guest perspective: bride's side, groom's friend, cousin, family reception, or multi-day wedding.
-   - Pick different distinct highlights each time (e.g. valet parking ease, Champaran gosht flavor, lawn fairy lights, ballroom AC comfort, mandap floral arch).
-3. NATURAL HUMAN QUIRKS:
-   - Intentionally include 1 or 2 minor casual mobile spelling slips (e.g. "beutiful", "tasty", "speacially", "arrengement", "recieved", "defintly", "delishus", "lajwab") and informal casual grammar fragments (e.g. "Specially paneer starter was top notch.", "Ambience totally royal.", "Overall very happy with service."). This makes the review pass Google review policy as genuine human experience.
-4. LENGTH: 3 to 4 punchy sentences (40 to 65 words).
-5. OUTPUT: Output ONLY the raw review text. No quotation marks, no preamble, no markdown.`;
+4. HUMAN TYPOS & CASUAL GRAMMAR:
+   - Intentionally include 1 or 2 minor casual mobile spelling slips (e.g. "beutiful", "speacially", "arrengement", "halpful", "experiance", "recomended", "delishus", "lajwab", "swadist", "boht") and informal grammar fragments.
+   - Naturally mention "sheesh mahal resort" and keywords like "best resort in patna".
+5. LENGTH: 25 to 55 words. Never identical.
+6. OUTPUT: Raw review text only. No quotes, no markdown.`;
 
-      // Add a randomized entropy seed to ensure AI generates unidentical reviews on every request
+      // Random entropy seed & format selector to guarantee unique reviews every time
       const randomSeed = Math.floor(Math.random() * 1000000);
-      userPrompt = `Write a fresh, unidentical 5-star review for Sheesh Mahal Resort in ${
+      const formatHints = [
+        "short punchy reaction",
+        "casual numbered points note",
+        "food and catering focus",
+        "lawn and photography focus",
+        "family emotional celebration",
+        "valet parking and hospitality focus"
+      ];
+      const selectedFormat = formatHints[Math.floor(Math.random() * formatHints.length)];
+
+      userPrompt = `Write a fresh, unidentical 5-star review in mostly small letters / lowercase for Sheesh Mahal Resort in ${
         isHindi ? 'casual Hinglish (English letters only, no Devanagari)' : 'natural conversational English'
-      }. Seed: ${randomSeed}`;
+      }. Style format: ${selectedFormat}. Include natural typos. Seed: ${randomSeed}`;
     }
 
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -173,7 +254,7 @@ CRITICAL GOOGLE AUTHENTICITY & HUMAN VARIATION RULES:
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt }
         ],
-        temperature: 0.95,
+        temperature: 0.98,
         max_tokens: 120,
       }),
       signal: controller.signal,
@@ -197,10 +278,13 @@ CRITICAL GOOGLE AUTHENTICITY & HUMAN VARIATION RULES:
       throw new Error('Empty AI response');
     }
 
+    // Ensure casual lowercase tone as requested
+    reviewText = reviewText.toLowerCase();
+
     return res.status(200).json({ review: reviewText, isFallback: false });
   } catch {
     clearTimeout(timeoutId);
-    // Procedural generator overtakes if AI is delayed or network issue occurs
+    // Multi-format procedural generator overtakes if AI is delayed or network issue occurs
     const procedural = generateProceduralReview(isHindi ? 'hindi' : 'english');
     return res.status(200).json({ review: procedural, isFallback: true });
   }

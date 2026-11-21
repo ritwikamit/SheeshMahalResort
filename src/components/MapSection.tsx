@@ -40,7 +40,7 @@ export const MapSection: React.FC<MapSectionProps> = ({ onOpenInquiry }) => {
                 HOW TO REACH
               </h2>
               <p className="font-cursive text-2xl sm:text-3xl text-[#26532B] mt-2 font-normal">
-                Conveniently Situated on Ashiana–Digha Road
+                Patna's Best Wedding Resort • Conveniently Situated on Ashiana–Digha Road
               </p>
             </div>
 

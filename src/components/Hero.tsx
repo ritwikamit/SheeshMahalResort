@@ -123,7 +123,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               {/* Flourish */}
               <div className="mb-1.5 flex items-center gap-2 sm:gap-3">
                 <span className="font-cursive text-base sm:text-xl lg:text-2xl text-[#E88A1A] drop-shadow-md">
-                  Where Sacred Vows Meet Royal Grandeur
+                  Best Resort in Patna • Where Sacred Vows Meet Royal Grandeur
                 </span>
                 <span className="w-6 sm:w-8 h-[1px] bg-[#E88A1A]/60"></span>
               </div>
@@ -142,7 +142,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenInquiry }) => 
               {/* Location verified marker */}
               <div className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-white/90 mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                 <MapPin size={14} className="text-[#E88A1A] shrink-0" />
-                <span>Opposite St. Xavier's College Gate, Ashiana–Digha Road, Patna • 100 to 2,000 Guests</span>
+                <span>Best Resort in Patna • Opposite St. Xavier's College Gate, Ashiana–Digha Road • 100 to 2,000 Guests</span>
               </div>
 
               {/* Primary Clay CTAs & Pricing Assurance */}
